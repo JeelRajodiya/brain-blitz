@@ -7,7 +7,6 @@ export default function Home() {
 			<Head>
 				<title>Create Next App</title>
 			</Head>
-			<button className="btn">65</button>
 			<LoginBtn />
 		</div>
 	);
