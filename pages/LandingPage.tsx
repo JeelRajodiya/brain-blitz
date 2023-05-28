@@ -22,6 +22,12 @@ export default function LandingPage() {
                         <span className="animate-fire">Blitz</span>
                     </h1>
 
+                    {/* FOR THE GLOW EFFECT: */}
+                    {/* <h1 className="text-7xl font-bold">
+                        <span className="animate-bounce">Brain</span>
+                        <span className="animate-flame">Blitz</span>
+                    </h1> */}
+
                     <br></br>
                     <h1 className="text-4xl font-bold">Login now!</h1>
                     <br></br>
