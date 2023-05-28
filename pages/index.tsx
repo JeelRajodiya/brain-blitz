@@ -7,7 +7,9 @@ export default function Home() {
 			<Head>
 				<title>Create Next App</title>
 			</Head>
-			<LoginBtn />
+			<div className="flex w-64 justify-center flex-col">
+				<LoginBtn />
+			</div>
 		</div>
 	);
 }
