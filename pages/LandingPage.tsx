@@ -9,7 +9,7 @@ export default function LandingPage() {
         return router.push("/Dashboard");
     }
     const performSignIn = () => {
-        signIn();
+        signIn(null, { callbackUrl: "/Dashboard" });
     };
     return (
         <div>

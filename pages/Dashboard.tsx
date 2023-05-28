@@ -7,7 +7,7 @@ export default function Dashboard() {
         return router.push("/LandingPage");
     }
     const performSignOut = () => {
-        signOut();
+        signOut({ callbackUrl: "/LandingPage" });
     };
     return (
         <div className="flex justify-center">
