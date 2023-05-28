@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { MongoClient } from "mongodb";
+import { access } from "fs";
 
 const uri = process.env.MONGO_URI;
 
@@ -35,7 +36,12 @@ export const authOptions = {
     secret: process.env.SECRET,
     callbacks: {
         async signIn({ user, account, profile, email, credentials }) {
-            console.log(account);
+            // console.log(account);
+            const access_token = account.access_token;
+            const id_token = account.id_token;
+            // console.log(access_token, id_token);
+            user.accessToken = access_token;
+            user.idToken = id_token;
             try {
                 await storeInDB(user);
                 console.log("User stored in the database:", user);
