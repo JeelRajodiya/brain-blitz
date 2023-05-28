@@ -1,15 +1,12 @@
-import Head from "next/head";
-import LoginBtn from "./components/LoginBtn";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
-export default function Home() {
-	return (
-		<div>
-			<Head>
-				<title>Create Next App</title>
-			</Head>
-			<div className="flex w-64 justify-center flex-col">
-				<LoginBtn />
-			</div>
-		</div>
-	);
+export default function Index() {
+	const session = useSession();
+	const router = useRouter();
+	if (session.status == "unauthenticated") {
+		router.push("/LandingPage");
+	} else if (session.status == "authenticated") {
+		router.push("/Dashboard");
+	}
 }

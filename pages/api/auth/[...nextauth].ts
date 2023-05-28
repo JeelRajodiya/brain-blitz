@@ -24,6 +24,11 @@ export const authOptions = {
 			session.accessToken = token.accessToken;
 			return session;
 		},
+		async signIn({ user, account, profile, email, credentials }) {
+			// redirect to Dashboard
+
+			return true;
+		},
 	},
 };
 
