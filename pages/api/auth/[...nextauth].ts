@@ -15,6 +15,8 @@ async function storeInDB(user) {
         const existingUser = await users.findOne({ email: user.email });
 
         if (!existingUser) {
+            const date = new Date();
+            user.createdAt = date;
             await users.insertOne(user);
         }
     } catch (error) {
