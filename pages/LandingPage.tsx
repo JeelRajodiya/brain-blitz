@@ -37,14 +37,9 @@ export default function LandingPage() {
                     </p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 lg:w-full">
-                    <div className="card-body">
-                        <button
-                            className="btn btn-primary"
-                            onClick={performSignIn}
-                        >
-                            Login
-                        </button>
-                    </div>
+                    <button className="btn btn-primary" onClick={performSignIn}>
+                        Login
+                    </button>
                 </div>
             </div>
         </div>
