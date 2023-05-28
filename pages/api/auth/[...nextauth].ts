@@ -35,6 +35,7 @@ export const authOptions = {
     secret: process.env.SECRET,
     callbacks: {
         async signIn({ user, account, profile, email, credentials }) {
+            console.log(account);
             try {
                 await storeInDB(user);
                 console.log("User stored in the database:", user);
