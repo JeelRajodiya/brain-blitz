@@ -10,11 +10,11 @@ export default function Dashboard() {
         signOut({ callbackUrl: "/LandingPage" });
     };
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center flex-col ">
             <div className="">
                 <h1>Dashboard</h1>
             </div>
-            <button className="btn" onClick={performSignOut}>
+            <button className="btn w-64 al" onClick={performSignOut}>
                 Log out
             </button>
         </div>
