@@ -13,9 +13,19 @@ export default function LandingPage() {
     };
 
     return (
-        // ALTERNATE LOGIN FORM:
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card-body">
+                        <button
+                            className="btn btn-primary"
+                            onClick={performSignIn}
+                        >
+                            Login
+                        </button>
+                    </div>
+                </div>
+
                 <div className="text-center lg:text-left">
                     <h1 className="text-7xl font-bold">
                         <span className="animate-fire">Brain</span>
@@ -24,9 +34,9 @@ export default function LandingPage() {
 
                     {/* FOR THE GLOW EFFECT: */}
                     {/* <h1 className="text-7xl font-bold">
-                        <span className="animate-bounce">Brain</span>
-                        <span className="animate-flame">Blitz</span>
-                    </h1> */}
+        <span className="animate-bounce">Brain</span>
+        <span className="animate-flame">Blitz</span>
+      </h1> */}
 
                     <br></br>
                     <h1 className="text-4xl font-bold">Login now!</h1>
@@ -43,17 +53,6 @@ export default function LandingPage() {
                         </span>{" "}
                         Quiz Experience!
                     </p>
-                </div>
-
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div className="card-body">
-                        <button
-                            className="btn btn-primary"
-                            onClick={performSignIn}
-                        >
-                            Login
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
