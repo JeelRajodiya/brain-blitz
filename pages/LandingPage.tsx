@@ -11,14 +11,8 @@ export default function LandingPage() {
     const performSignIn = () => {
         signIn(null, { callbackUrl: "/Dashboard" });
     };
-    return (
-        // <div>
-        //     <h1>Landing Page</h1>
-        //     <button className="btn" onClick={performSignIn}>
-        //         Login
-        //     </button>
-        // </div>
 
+    return (
         <div
             className="hero min-h-screen"
             style={{
