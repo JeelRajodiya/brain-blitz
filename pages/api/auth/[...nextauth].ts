@@ -46,7 +46,6 @@ export const authOptions = {
         },
         async signIn({ user, account, profile, email, credentials }) {
             storeInDB(user).catch(console.error);
-            console.log(user);
             return true;
         },
     },
