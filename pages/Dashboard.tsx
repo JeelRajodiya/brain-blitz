@@ -91,7 +91,7 @@ export default function Dashboard() {
             {/* button group */}
             <div
                 className="btn-group button-group"
-                style={{ marginTop: "40px" }}
+                style={{ marginTop: "80px" }}
             >
                 <button className="btn btn-modified join">Join Quiz</button>
                 <button className="btn btn-modified create">Create Quiz</button>
