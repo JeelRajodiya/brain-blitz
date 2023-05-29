@@ -130,10 +130,9 @@ export default function Dashboard() {
                         >
                             {/* IMAGE ATTRIBUTE */}
                             <div className="w-24 mask mask-squircle">
-                                {session.data.user &&
-                                    session.data.user.image && (
-                                        <img src={session.data.user.image} />
-                                    )}
+                                {session.data && session.data.user.image && (
+                                    <img src={session.data.user.image} />
+                                )}
                             </div>
                         </label>
                         <ul
