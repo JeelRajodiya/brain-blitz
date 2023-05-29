@@ -66,6 +66,13 @@ export default function Dashboard() {
                             <div className="w-10 rounded-full">
                                 <img src={session.data.user.image} />
                             </div>
+                            
+                            {/* Better image: */}
+                            {/* <div className="avatar">
+                                <div className="w-24 mask mask-squircle">
+                                    <img src={session.data.user.image} />
+                                </div>
+                            </div> */}
                         </label>
                         <ul
                             tabIndex={0}
