@@ -23,7 +23,7 @@ function QuizForm() {
             </div>
             {showForm && (
                 <div className="fixed inset-0 flex items-center justify-center">
-                    <div className="card card-compact w-52 bg-base-100 shadow">
+                    <div className="card card-compact w-52 bg-base-200 shadow-xl">
                         <div className="card-header">
                             <div className="flex justify-end">
                                 <button
