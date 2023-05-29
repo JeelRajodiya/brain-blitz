@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 function QuizForm() {
-    const [showForm, setShowForm] = useState(true);
+    const [showForm, setShowForm] = useState(false);
 
     const toggleForm = () => {
         setShowForm(!showForm);
@@ -130,7 +130,10 @@ export default function Dashboard() {
                         >
                             {/* IMAGE ATTRIBUTE */}
                             <div className="w-24 mask mask-squircle">
-                                {session.data.user &&
+                                {/* {console.log(session)} */}
+                                {session &&
+                                    session.data &&
+                                    session.data.user &&
                                     session.data.user.image && (
                                         <img src={session.data.user.image} />
                                     )}
