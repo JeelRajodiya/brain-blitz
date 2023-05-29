@@ -1,7 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { MongoClient } from "mongodb";
-import { access } from "fs";
 
 const uri = process.env.MONGO_URI;
 
