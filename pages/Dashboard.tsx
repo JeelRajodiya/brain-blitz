@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 function QuizForm() {
-    const [showForm, setShowForm] = useState(true);
+    const [showForm, setShowForm] = useState(false);
 
     const toggleForm = () => {
         setShowForm(!showForm);
