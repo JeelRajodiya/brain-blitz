@@ -7,8 +7,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
+/* ---------------------   LANDING PAGE   ------------------------------- */
 /* more intense colors in the landing page */
 .text-blue-400 {
   color: hsl(200, 100%, 50%);
@@ -55,3 +59,44 @@
   -webkit-text-fill-color: transparent;
   animation: burn 2s infinite;
 }
+
+
+/* ----------------------- DASHBOARD ------------------------------ */
+
+/* the button group on dashboard */
+.button-group {
+  display: flex;
+  gap: 7px; /* Adjust the value as needed for the desired gap */
+
+}
+
+.btn{
+  width : 200px;
+  height: 100px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: larger;
+}
+
+.join {
+  background-color: #2F80ED; /* Blue color */
+  color: white;
+}
+
+.join:hover {
+  background-color: #1B4C8C; /* Darker blue color on hover */
+  color: white;
+}
+
+.create {
+  background-color: #E53E3E; /* Red color */
+  color: white;
+}
+
+.create:hover {
+  background-color: #B02424; /* Darker red color on hover */
+  color: white;
+}
+

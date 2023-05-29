@@ -10,13 +10,19 @@ export default function Dashboard() {
         signOut({ callbackUrl: "/LandingPage" });
     };
     return (
-        <div className="flex justify-center flex-col ">
-            <div className="">
-                <h1>Dashboard</h1>
+        <div className="flex justify-center flex-col center">
+            <div className="center" style={{ marginBottom: "30px" }}>
+                <h1 className="text-5xl font-bold">Dashboard</h1>
             </div>
-            <button className="btn w-64 al" onClick={performSignOut}>
+
+            <div className="btn-group button-group">
+                <button className="btn join">Join Quiz</button>
+                <button className="btn create">Create Quiz</button>
+            </div>
+
+            {/* <button className="btn w-64 al" onClick={performSignOut}>
                 Log out
-            </button>
+            </button> */}
         </div>
     );
 }
