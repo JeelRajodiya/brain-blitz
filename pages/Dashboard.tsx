@@ -123,7 +123,7 @@ export default function Dashboard() {
                             </div>
                         </div> */}
                     </div>
-                    <div className="dropdown dropdown-end">
+                    <div className="dropdown dropdown-end relative z-50">
                         <label
                             tabIndex={0}
                             className="btn btn-ghost btn-circle avatar"
@@ -131,14 +131,14 @@ export default function Dashboard() {
                             {/* IMAGE ATTRIBUTE */}
                             <div className="w-24 mask mask-squircle">
                                 {session.data && session.data.user.image && (
-                                    <img src={session.data.user.image} />
+                                    <img
+                                        src={session.data.user.image}
+                                        alt="User Avatar"
+                                    />
                                 )}
                             </div>
                         </label>
-                        <ul
-                            tabIndex={0}
-                            className="menu menu-compact dropdown-content mt-8 p-2 shadow bg-base-200 rounded-box w-52"
-                        >
+                        <ul className="menu menu-compact dropdown-content mt-8 p-2 shadow bg-base-200 rounded-box w-52">
                             <li>
                                 <a className="justify-between">
                                     Profile
