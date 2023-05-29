@@ -63,7 +63,7 @@ export default function Dashboard() {
                             className="btn btn-ghost btn-circle avatar"
                         >
                             {/* IMAGE ATTRIBUTE */}
-                            <div className="w-10 rounded-full">
+                            <div className="w-24 mask mask-squircle">
                                 <img src={session.data.user.image} />
                             </div>
                         </label>
