@@ -23,7 +23,7 @@ export default function Dashboard() {
     return (
         <div className="flex justify-center flex-col center">
             {/* menu bar */}
-            <div className="navbar rounded-2xl bg-base-200 shadow-md p-2 mx-2 mb-4 z-50">
+            <div className="navbar bg-base-200 shadow-md p-2 mx-2 mb-4">
                 <div className="flex-1">
                     {/* heading of the page */}
                     <div className="center">
@@ -72,7 +72,6 @@ export default function Dashboard() {
             </div>
 
             <QuizForm></QuizForm>
-            
         </div>
     );
 }
