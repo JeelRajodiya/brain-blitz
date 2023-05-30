@@ -4,7 +4,6 @@ import type { QuizCol } from "../../util/DB";
 import { uuid } from "uuidv4";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
-import { get } from "http";
 
 export default async function createQuiz(
     req: NextApiRequest,

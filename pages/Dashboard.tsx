@@ -17,7 +17,7 @@ export default function Dashboard() {
     const [showDropdown, setShowDropdown] = useState(false);
 
     const toggleDropdown = () => {
-        setShowDropdown(!showDropdown);
+        setShowDropdown(true);
     };
 
     return (
