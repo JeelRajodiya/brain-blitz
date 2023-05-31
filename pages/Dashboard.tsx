@@ -4,7 +4,7 @@ import Layout from "./Layout";
 export default function Dashboard() {
 	return (
 		//@ts-ignore
-		<Layout>
+		<Layout pageTitle={"Dashboard"}>
 			<QuizForm />
 		</Layout>
 	);

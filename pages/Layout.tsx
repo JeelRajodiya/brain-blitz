@@ -2,7 +2,7 @@ import * as React from "react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-export default function Layout({ children }) {
+export default function Layout({ children, pageTitle }) {
 	const session = useSession();
 	const router = useRouter();
 
@@ -23,6 +23,9 @@ export default function Layout({ children }) {
 						>
 							<span className="animate-fire">Brain</span>
 							<span className="animate-fire">Blitz</span>
+						</h1>
+						<h1 className="text-3xl font-bold cursor-default">
+							{"-" + pageTitle}
 						</h1>
 					</div>
 				</div>

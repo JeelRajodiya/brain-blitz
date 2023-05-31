@@ -12,7 +12,7 @@ export default function NewQuiz() {
 	// "markForIncorrect": -1
 	return (
 		// @ts-ignore
-		<Layout>
+		<Layout pageTitle={"New Quiz"}>
 			<div className="flex flex-col">
 				<div className="flex justify-between">
 					<label className="label m-5">
