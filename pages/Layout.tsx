@@ -46,7 +46,7 @@ export default function Layout({ children, pageTitle }) {
 						</label>
 						<ul
 							tabIndex={0}
-							className="dropdown-content menu p-2 bg-base-300  shadow rounded-box w-52"
+							className="dropdown-content menu p-2 bg-base-300  shadow rounded-box w-52 mt-4"
 						>
 							<li>
 								<a>profile</a>
