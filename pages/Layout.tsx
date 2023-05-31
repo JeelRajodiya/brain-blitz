@@ -18,13 +18,13 @@ export default function Layout({ children, pageTitle }) {
 				<div className="flex-1">
 					<div className="center">
 						<h1
-							className="text-5xl font-bold cursor-pointer"
+							className="text-3xl font-bold cursor-pointer"
 							onClick={() => router.push("/Dashboard")}
 						>
 							<span className="animate-fire">Brain</span>
 							<span className="animate-fire">Blitz</span>
 						</h1>
-						<h1 className="text-5xl font-bold cursor-default">
+						<h1 className="text-3xl font-bold cursor-default">
 							{"-" + pageTitle}
 						</h1>
 					</div>
@@ -35,7 +35,7 @@ export default function Layout({ children, pageTitle }) {
 							tabIndex={0}
 							className="btn-circle"
 						>
-							<div className="w-16 mask mask-squircle">
+							<div className="w-14 mask mask-squircle">
 								{session.data && session.data.user?.image && (
 									<img
 										src={session.data.user.image}

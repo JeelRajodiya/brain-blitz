@@ -13,7 +13,7 @@ export default function NewQuiz() {
 	return (
 		// @ts-ignore
 		<Layout pageTitle={"New Quiz"}>
-			<div className="flex flex-col">
+			<div className="flex flex-col" >
 				<div className="flex justify-between">
 					<label className="label m-5">
 						<span className="label-text">Quiz Name</span>
