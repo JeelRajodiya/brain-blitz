@@ -97,9 +97,11 @@ export default function NewQuiz() {
 						className=" m-5 input txtin input-bordered"
 					/>
 				</div>
+			</div>
 
+			<div className="bb">
 				<button
-					className="btn btn-primary btn-active mt-7 w-48 h-20 fixed bottom-10 right-10"
+					className="btn btn-primary btn-active w-48 h-20"
 					disabled={!quizName}
 				>
 					{!quizName ? "Click me" : "Fuck me"}

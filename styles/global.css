@@ -108,3 +108,9 @@
 .txtin{
   font-size: 15px;
 }
+
+.bb{
+  display: flex;
+  justify-content:flex-end; 
+  align-items: flex-end;
+}
