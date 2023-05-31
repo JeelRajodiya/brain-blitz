@@ -102,5 +102,9 @@
 
 /* ----------------- NEW QUIZ FORM --------------------- */
 .txtf{
-  font-size: x-large;
+  font-size: 20px;
+}
+
+.txtin{
+  font-size: 15px;
 }
