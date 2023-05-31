@@ -24,9 +24,9 @@ export default function Layout({ children, pageTitle }) {
 							<span className="animate-fire">Brain</span>
 							<span className="animate-fire">Blitz</span>
 						</h1>
-						<h1 className="text-3xl font-bold cursor-default">
+						{/* <h1 className="text-3xl font-bold cursor-default">
 							{"-" + pageTitle}
-						</h1>
+						</h1> */}
 					</div>
 				</div>
 				<div className="flex-none">
