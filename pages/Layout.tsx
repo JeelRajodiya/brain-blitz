@@ -17,7 +17,13 @@ export default function Layout({ children }) {
 			<div className="navbar bg-base-200 shadow-md p-2 mx-2 mb-4">
 				<div className="flex-1">
 					<div className="center">
-						<h1 className="text-5xl font-bold">Dashboard</h1>
+						<h1
+							className="text-3xl font-bold cursor-pointer"
+							onClick={() => router.push("/Dashboard")}
+						>
+							<span className="animate-fire">Brain</span>
+							<span className="animate-fire">Blitz</span>
+						</h1>
 					</div>
 				</div>
 				<div className="flex-none">
@@ -37,7 +43,7 @@ export default function Layout({ children }) {
 						</label>
 						<ul
 							tabIndex={0}
-							className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+							className="dropdown-content menu p-2 bg-base-300  shadow rounded-box w-52"
 						>
 							<li>
 								<a>profile</a>

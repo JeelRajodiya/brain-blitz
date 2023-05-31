@@ -1,7 +1,8 @@
-import { useState } from "react";
 import * as React from "react";
+import { useRouter } from "next/router";
 
 function QuizForm() {
+	const router = useRouter();
 	return (
 		<div>
 			<div
@@ -9,7 +10,12 @@ function QuizForm() {
 				style={{ marginTop: "40px" }}
 			>
 				<button className="btn btn-modified join">Join Quiz</button>
-				<button className="btn btn-modified create">Create Quiz</button>
+				<button
+					className="btn btn-modified create"
+					onClick={() => router.push("/NewQuiz")}
+				>
+					Create Quiz
+				</button>
 			</div>
 		</div>
 	);
