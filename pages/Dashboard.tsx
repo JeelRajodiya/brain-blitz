@@ -2,6 +2,7 @@ import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import QuizForm from "./components/QuizForm";
+import * as React from "react";
 
 export default function Dashboard() {
 	const session = useSession();
@@ -29,7 +30,7 @@ export default function Dashboard() {
 							className="btn btn-ghost btn-circle avatar"
 						>
 							<div className="w-24 mask mask-squircle">
-								{session.data && session.data.user.image && (
+								{session.data && session.data.user?.image && (
 									<img
 										src={session.data.user.image}
 										alt="User Avatar"
