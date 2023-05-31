@@ -98,8 +98,11 @@ export default function NewQuiz() {
 					/>
 				</div>
 
-				<button className="btn mt-7" disabled={!quizName}>
-					Click Me
+				<button
+					className="btn btn-primary btn-active mt-7 w-48 h-20 fixed bottom-10 right-10"
+					disabled={!quizName}
+				>
+					{!quizName ? "Click me" : "Fuck me"}
 				</button>
 			</div>
 		</Layout>
