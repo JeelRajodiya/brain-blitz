@@ -1,4 +1,5 @@
 import { useState } from "react";
+import * as React from "react";
 
 function QuizForm() {
 	const [showForm, setShowForm] = useState(false);

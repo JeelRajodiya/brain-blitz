@@ -1,6 +1,7 @@
 import { signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import * as React from "react";
 
 export default function LandingPage() {
 	const session = useSession();
@@ -9,7 +10,7 @@ export default function LandingPage() {
 		return router.push("/Dashboard");
 	}
 	const performSignIn = () => {
-		signIn(null, { callbackUrl: "/Dashboard" });
+		signIn(undefined, { callbackUrl: "/Dashboard" });
 	};
 
 	return (

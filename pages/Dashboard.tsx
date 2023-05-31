@@ -1,7 +1,7 @@
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import QuizForm from "./components/QuizForm";
+import QuizForm from "./components/QuizActions";
 import * as React from "react";
 
 export default function Dashboard() {
