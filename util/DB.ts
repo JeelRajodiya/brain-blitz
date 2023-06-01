@@ -23,6 +23,14 @@ type UserCol = {
 	idToken: string;
 	createdAt: Date;
 };
+export type QuestionCol = {
+	quizId: string; // id of the parent quiz
+	id: string;
+	question: string;
+	options: string[]; // [A,B,C,D]
+	correctAnswer: string; // A , B , C , D
+	difficultyTag?: "easy" | "medium" | "hard";
+};
 
 export function getDB() {
 	const uri = process.env.MONGO_URI;
