@@ -1,5 +1,6 @@
-import Layout from "./Layout";
+import Layout from "./../Layout";
 import * as React from "react";
+import { useRouter } from "next/router";
 
 export default function NewQuiz() {
 	const [quizName, setQuizName] = React.useState("");
@@ -10,6 +11,7 @@ export default function NewQuiz() {
 	const [timeForAQuestion, setTimeForAQuestion] = React.useState(10);
 	const [markForCorrect, setMarkForCorrect] = React.useState(5);
 	const [markForIncorrect, setMarkForIncorrect] = React.useState(-1);
+	const router = useRouter();
 	const createQuiz = async () => {
 		const res = await fetch("/api/createQuiz", {
 			method: "POST",
@@ -26,6 +28,8 @@ export default function NewQuiz() {
 				markForIncorrect: markForIncorrect,
 			}),
 		});
+		const quizId = (await res.json()).quizId;
+		router.push({ pathname: `/NewQuiz/Questions`, query: { quizId } });
 	};
 	return (
 		// @ts-ignore

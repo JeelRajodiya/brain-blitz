@@ -26,5 +26,5 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
 	quiz.id = uuid();
 	const db = await getDB();
 	await db.collection<QuizCol>("quizzes").insertOne(quiz);
-	return res.status(200).send("OK");
+	return res.json({ quizId: quiz.id });
 }
