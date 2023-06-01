@@ -34,7 +34,9 @@ export default function Layout({ children, pageTitle }) {
 						<label
 							tabIndex={0}
 							className="btn-circle tooltip tooltip-left mx-4 cursor-pointer"
-							data-tip={session.data.user.name}
+							data-tip={
+								session.data ? session.data.user.name : ""
+							}
 						>
 							<div className="w-14 mask mask-squircle">
 								{session.data && session.data.user?.image && (
