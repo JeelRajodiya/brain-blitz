@@ -1,6 +1,8 @@
 import Layout from "./../Layout";
 import * as React from "react";
 import { useRouter } from "next/router";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export default function NewQuiz() {
 	const [quizName, setQuizName] = React.useState("");
@@ -12,7 +14,9 @@ export default function NewQuiz() {
 	const [markForCorrect, setMarkForCorrect] = React.useState(5);
 	const [markForIncorrect, setMarkForIncorrect] = React.useState(-1);
 	const router = useRouter();
+	const [isLoading, setIsLoading] = React.useState(false);
 	const createQuiz = async () => {
+		setIsLoading(true);
 		const res = await fetch("/api/createQuiz", {
 			method: "POST",
 			headers: {
@@ -29,8 +33,19 @@ export default function NewQuiz() {
 			}),
 		});
 		const quizId = (await res.json()).quizId;
+		setIsLoading(false);
 		router.push({ pathname: `/NewQuiz/Questions`, query: { quizId } });
 	};
+	if (isLoading) {
+		return (
+			// @ts-ignore
+			<Layout>
+				<Suspense fallback={<div>Loading...</div>}>
+					<Loading />
+				</Suspense>
+			</Layout>
+		);
+	}
 	return (
 		// @ts-ignore
 		<Layout pageTitle={"New Quiz"}>
