@@ -154,6 +154,9 @@ export default function Questions() {
 								</tbody>
 							</table>
 						</div>
+						{/* save button as follows: */}
+						<button className="btn mt-4 btn-outline btn-success">Save Question</button>
+
 					</div>
 
 					{/* divider */}
