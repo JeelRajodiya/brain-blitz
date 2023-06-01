@@ -9,7 +9,6 @@
 	},
 	"dependencies": {
 		"autoprefixer": "^10.4.14",
-		"daisyui": "^2.51.6",
 		"mongodb": "5.5",
 		"next": "^13.4.4",
 		"next-auth": "^4.22.1",
@@ -22,6 +21,7 @@
 	"devDependencies": {
 		"@types/node": "^20.2.5",
 		"@types/react": "^18.2.7",
+		"daisyui": "^3.0.0",
 		"typescript": "^5.0.4"
 	}
 }
