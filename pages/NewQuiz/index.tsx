@@ -160,11 +160,11 @@ export default function NewQuiz() {
 
 				<div className="bb  justify-end">
 					<button
-						className="btn btn-primary btn-active w-48 h-20"
-						disabled={!quizName}
+						className="btn btn-primary w-48 h-20"
+						disabled={!quizName }
 						onClick={createQuiz}
 					>
-						Click me
+						Start making the quiz !
 					</button>
 				</div>
 			</div>

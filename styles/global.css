@@ -22,28 +22,6 @@
   color: hsl(0, 100%, 61%);
 }
 
-/* ALternate -GLOW  */
-/* @keyframes bounce { */
-  /* 0%, 100% { transform: translateY(-20%); }
-  50% { transform: translateY(0); }
-}
-
-@keyframes flame {
-  0% { text-shadow: 0 0 5px #FF5722; }
-  25% { text-shadow: 0 0 20px #FF5722, 0 0 40px #FFC107; }
-  50% { text-shadow: 0 0 5px #FF5722; }
-  75% { text-shadow: 0 0 20px #FF5722, 0 0 40px #FFC107; }
-  100% { text-shadow: 0 0 5px #FF5722; }
-}
-
-.animate-bounce {
-  animation: bounce 2s infinite;
-}
-
-.animate-flame {
-  animation: flame 2s infinite;
-} */
-
 /* firey animation */
 @keyframes burn {
   0% { background-position: 0 0; }
