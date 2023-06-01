@@ -17,7 +17,7 @@ export default function Layout({ children, pageTitle }) {
 			<div
 				className="navbar bg-base-200 shadow-md p-2 mx-2 mb-4"
 				style={{ zIndex: "999" }}
-			>
+			>	
 				<div className="flex-1">
 					<div className="center">
 						<h1
@@ -52,7 +52,7 @@ export default function Layout({ children, pageTitle }) {
 						</label>
 						<ul
 							tabIndex={0}
-							className="dropdown-content menu p-2 bg-base-300  shadow rounded-box w-52 mt-5"
+							className="dropdown-content menu p-2 bg-base-200  shadow rounded-box w-52 mt-5"
 						>
 							<li>
 								<a>profile</a>

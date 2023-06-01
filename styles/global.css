@@ -105,3 +105,20 @@
   height: 15px;
 }
 
+/* ------------------------------- QUESTION FORM---------------------------------------------------- */
+.questionForm {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.questionForm > * {
+  flex: 1;
+  margin: 0 10px; /* Add margin for gap */
+}
+
+.questionForm > :nth-child(2) {
+  flex: 2;
+}
