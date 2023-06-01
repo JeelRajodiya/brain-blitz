@@ -17,7 +17,6 @@ export default async function createQuiz(
 
 async function POST(req: NextApiRequest, res: NextApiResponse) {
 	const quiz: QuizCol = req.body;
-	console.log(quiz);
 	const session = await getServerSession(req, res, authOptions);
 	const user = getUser(session.user.email);
 	if (!user) {

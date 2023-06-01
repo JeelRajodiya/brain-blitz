@@ -3,11 +3,30 @@ import * as React from "react";
 
 export default function NewQuiz() {
 	const [quizName, setQuizName] = React.useState("");
-
-	const handleQuizNameChange = (event) => {
-		setQuizName(event.target.value);
+	const [enableDifficultyTags, setEnableDifficultyTags] =
+		React.useState(false);
+	const [enablePolls, setEnablePolls] = React.useState(false);
+	const [jumpQuestions, setJumpQuestions] = React.useState(false);
+	const [timeForAQuestion, setTimeForAQuestion] = React.useState(10);
+	const [markForCorrect, setMarkForCorrect] = React.useState(5);
+	const [markForIncorrect, setMarkForIncorrect] = React.useState(-1);
+	const createQuiz = async () => {
+		const res = await fetch("/api/createQuiz", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				title: quizName,
+				difficultyTags: enableDifficultyTags,
+				isPolls: enablePolls,
+				jumpQuestions: jumpQuestions,
+				timeForAQuestion: timeForAQuestion,
+				markForCorrect: markForCorrect,
+				markForIncorrect: markForIncorrect,
+			}),
+		});
 	};
-
 	return (
 		// @ts-ignore
 		<Layout pageTitle={"New Quiz"}>
@@ -22,7 +41,7 @@ export default function NewQuiz() {
 							placeholder="My awesome quiz"
 							className="txtin m-5 input input-bordered"
 							value={quizName}
-							onChange={handleQuizNameChange}
+							onChange={(e) => setQuizName(e.target.value)}
 						/>
 					</div>
 					<div className="flex justify-between">
@@ -34,6 +53,10 @@ export default function NewQuiz() {
 						<input
 							type="checkbox"
 							className="toggle toggle-md toggle-accent m-5"
+							onChange={(e) => {
+								setEnableDifficultyTags(e.target.checked);
+							}}
+							checked={enableDifficultyTags}
 						/>
 					</div>
 					<div className="flex justify-between">
@@ -45,6 +68,10 @@ export default function NewQuiz() {
 						<input
 							type="checkbox"
 							className="toggle toggle-md toggle-accent m-5"
+							onChange={(e) => {
+								setEnablePolls(e.target.checked);
+							}}
+							checked={enablePolls}
 						/>
 					</div>
 					<div className="flex justify-between">
@@ -56,6 +83,10 @@ export default function NewQuiz() {
 						<input
 							type="checkbox"
 							className="toggle toggle-md toggle-accent m-5"
+							onChange={(e) => {
+								setJumpQuestions(e.target.checked);
+							}}
+							checked={jumpQuestions}
 						/>
 					</div>
 					<div className="flex justify-between">
@@ -68,6 +99,10 @@ export default function NewQuiz() {
 							type="number"
 							placeholder="10"
 							className=" m-5 txtin input input-bordered"
+							value={timeForAQuestion}
+							onChange={(e) => {
+								setTimeForAQuestion(Number(e.target.value));
+							}}
 						/>
 					</div>
 					<div className="flex justify-between">
@@ -80,6 +115,10 @@ export default function NewQuiz() {
 							type="number"
 							placeholder="5"
 							className=" m-5 input txtin input-bordered"
+							value={markForCorrect}
+							onChange={(e) => {
+								setMarkForCorrect(Number(e.target.value));
+							}}
 						/>
 					</div>
 					<div className="flex justify-between">
@@ -92,6 +131,10 @@ export default function NewQuiz() {
 							type="number"
 							placeholder="-1"
 							className=" m-5 input txtin input-bordered"
+							value={markForIncorrect}
+							onChange={(e) => {
+								setMarkForIncorrect(Number(e.target.value));
+							}}
 						/>
 					</div>
 				</div>
@@ -100,6 +143,7 @@ export default function NewQuiz() {
 					<button
 						className="btn btn-primary btn-active w-48 h-20"
 						disabled={!quizName}
+						onClick={createQuiz}
 					>
 						Click me
 					</button>
