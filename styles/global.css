@@ -44,7 +44,7 @@
 /* the button group on dashboard */
 .join {
   display: flex;
-  gap: 7px; /* Adjust the value as needed for the desired gap */
+  gap: 10px; /* Adjust the value as needed for the desired gap */
 }
 
 .btn-modified{
