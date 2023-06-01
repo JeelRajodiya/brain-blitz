@@ -1,7 +1,7 @@
 export default function Loading() {
 	return (
-		<div>
-			<span className="loading loading-ring loading-lg"></span>
+		<div className="loading-container">
+			<progress className="progress w-96"></progress>
 		</div>
 	);
 }

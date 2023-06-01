@@ -114,3 +114,18 @@
   justify-content:flex-end; 
   align-items: flex-end;
 }
+
+/* LOADING */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.progress {
+  border: none;
+  border-radius: 20px;
+  height: 15px;
+}
+
