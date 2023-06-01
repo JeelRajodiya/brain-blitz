@@ -9,9 +9,9 @@ function QuizForm() {
 				className="btn-group button-group"
 				style={{ marginTop: "40px" }}
 			>
-				<button className="btn btn-modified join">Join Quiz</button>
+				<button className="btn glass btn-modified join">Join Quiz</button>
 				<button
-					className="btn btn-modified create"
+					className="btn glass btn-modified create"
 					onClick={() => router.push("/NewQuiz")}
 				>
 					Create Quiz
