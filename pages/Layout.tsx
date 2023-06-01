@@ -14,7 +14,10 @@ export default function Layout({ children, pageTitle }) {
 	};
 	return (
 		<div className="flex justify-center flex-col center">
-			<div className="navbar bg-base-200 shadow-md p-2 mx-2 mb-4">
+			<div
+				className="navbar bg-base-200 shadow-md p-2 mx-2 mb-4"
+				style={{ zIndex: "999" }}
+			>
 				<div className="flex-1">
 					<div className="center">
 						<h1
