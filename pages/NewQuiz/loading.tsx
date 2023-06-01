@@ -1,3 +1,7 @@
 export default function Loading() {
-	return <div>Loading...</div>;
+	return (
+		<div className="hypnosis-container">
+			<div className="hypnosis-circle"></div>
+		</div>
+	);
 }

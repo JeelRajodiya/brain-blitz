@@ -114,3 +114,30 @@
   justify-content:flex-end; 
   align-items: flex-end;
 }
+
+/* --------------LOADING EFFECT----------------- */
+.hypnosis-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.hypnosis-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    border-color: #fff;
+  }
+  100% {
+    transform: rotate(360deg);
+    border-color: #ff00ff;
+  }
+}
