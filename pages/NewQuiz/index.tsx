@@ -10,9 +10,9 @@ export default function NewQuiz() {
 		React.useState(false);
 	const [enablePolls, setEnablePolls] = React.useState(false);
 	const [jumpQuestions, setJumpQuestions] = React.useState(false);
-	const [timeForAQuestion, setTimeForAQuestion] = React.useState(10);
-	const [markForCorrect, setMarkForCorrect] = React.useState(5);
-	const [markForIncorrect, setMarkForIncorrect] = React.useState(-1);
+	// const [timeForAQuestion, setTimeForAQuestion] = React.useState(10);
+	// const [markForCorrect, setMarkForCorrect] = React.useState(5);
+	// const [markForIncorrect, setMarkForIncorrect] = React.useState(-1);
 	const router = useRouter();
 	const [isLoading, setIsLoading] = React.useState(false);
 	const createQuiz = async () => {
@@ -27,9 +27,9 @@ export default function NewQuiz() {
 				difficultyTags: enableDifficultyTags,
 				isPolls: enablePolls,
 				jumpQuestions: jumpQuestions,
-				timeForAQuestion: timeForAQuestion,
-				markForCorrect: markForCorrect,
-				markForIncorrect: markForIncorrect,
+				// timeForAQuestion: timeForAQuestion,
+				// markForCorrect: markForCorrect,
+				// markForIncorrect: markForIncorrect,
 			}),
 		});
 		const quizId = (await res.json()).quizId;
@@ -108,7 +108,7 @@ export default function NewQuiz() {
 							checked={jumpQuestions}
 						/>
 					</div>
-					<div className="flex justify-between">
+					{/* <div className="flex justify-between">
 						<label className="label m-5">
 							<span className=" txtf label-text">
 								Time for a question{" "}
@@ -155,13 +155,13 @@ export default function NewQuiz() {
 								setMarkForIncorrect(Number(e.target.value));
 							}}
 						/>
-					</div>
+					</div> */}
 				</div>
 
 				<div className="bb  justify-end">
 					<button
 						className="btn btn-primary w-48 h-20"
-						disabled={!quizName }
+						disabled={!quizName}
 						onClick={createQuiz}
 					>
 						Start making the quiz !
