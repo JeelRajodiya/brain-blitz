@@ -122,3 +122,11 @@
 .questionForm > :nth-child(2) {
   flex: 2;
 }
+
+.checkBox{
+  width: 10%;
+}
+
+.optionBox{
+  width: 90%;
+}
