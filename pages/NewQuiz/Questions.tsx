@@ -4,8 +4,19 @@ import { useRouter } from "next/router";
 import DeleteButton from "../components/DeleteButton";
 import { useState } from "react";
 
-const IndexEntry = ({ name, setActiveQuestion, index, deleteFunction }) => (
-  <tr className="flex justify-between" onClick={() => setActiveQuestion(index)}>
+const IndexEntry = ({
+  name,
+  setActiveQuestion,
+  activeQuestion,
+  index,
+  deleteFunction,
+}) => (
+  <tr
+    className={`flex justify-between ${
+      activeQuestion == index ? "bg-primary-focus" : ""
+    }`}
+    onClick={() => setActiveQuestion(index)}
+  >
     <td>{name}</td>
     <td>
       <DeleteButton onClick={() => deleteFunction(index)} />
@@ -164,7 +175,7 @@ export default function Questions() {
             </div>
 
             {/* Question Panel Table */}
-            <table className="table table-zebra">
+            <table className="table ">
               <thead>
                 <tr className="grid grid-cols-3">
                   <th className="justify-self-center">Name</th>
@@ -175,6 +186,7 @@ export default function Questions() {
               <tbody>
                 {questions.map((i, n) => (
                   <IndexEntry
+                    activeQuestion={activeQuestion}
                     setActiveQuestion={setActiveQuestion}
                     name={`Question ${n + 1}`}
                     index={n}
@@ -208,8 +220,9 @@ export default function Questions() {
                   } else {
                     newQuestions[activeQuestion] = question;
                   }
-
+                  setActiveQuestion((e) => e + 1);
                   setQuestions(newQuestions);
+                  setQuestion(emptyQuestion);
                 }}
               >
                 Save Question
@@ -224,6 +237,7 @@ export default function Questions() {
                 onChange={(e) => {
                   const newQuestion = structuredClone(question);
                   newQuestion.question = e.target.value;
+
                   setQuestion(newQuestion);
                 }}
               ></input>
