@@ -16,24 +16,28 @@ export default function NewQuiz() {
   const [isLoading, setIsLoading] = React.useState(false);
   const createQuiz = async () => {
     setIsLoading(true);
+    const quizData: any = {
+      title: quizName,
+      difficultyTags: enableDifficultyTags,
+      isPolls: enablePolls,
+      jumpQuestions: jumpQuestions,
+      timeForAQuestion: timeForAQuestion,
+      markForCorrect: markForCorrect,
+      markForIncorrect: markForIncorrect,
+    };
+
     const res = await fetch("/api/createQuiz", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        title: quizName,
-        difficultyTags: enableDifficultyTags,
-        isPolls: enablePolls,
-        jumpQuestions: jumpQuestions,
-        timeForAQuestion: timeForAQuestion,
-        markForCorrect: markForCorrect,
-        markForIncorrect: markForIncorrect,
-      }),
+
+      body: JSON.stringify(quizData),
     });
     const quizId = (await res.json()).quizId;
     setIsLoading(false);
-    router.push({ pathname: `/NewQuiz/Questions`, query: { quizId } });
+    quizData.quizId = quizId;
+    router.push({ pathname: `/NewQuiz/Questions`, query: quizData });
   };
   if (isLoading) {
     return (

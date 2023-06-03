@@ -14,14 +14,19 @@ const IndexEntry = ({ srNo, name }) => (
   </tr>
 );
 
-const Option = () => {
+function Option({ isPoll }: { isPoll: boolean }) {
+  const checkBox = (
+    <td className="checkBox">
+      <label>
+        <input type="checkbox" className="checkbox" />
+      </label>
+    </td>
+  );
+  console.log(isPoll);
   return (
     <tr>
-      <td className="checkBox">
-        <label>
-          <input type="checkbox" className="checkbox" />
-        </label>
-      </td>
+      {!isPoll ? checkBox : null}
+
       <td className="OptionBox">
         <input
           type="text"
@@ -31,17 +36,70 @@ const Option = () => {
       </td>
     </tr>
   );
-};
+}
+
+function DifficultlyTag() {
+  return (
+    <>
+      {/* Divider */}
+      <div className="divider"></div>
+
+      {/* Question Settings: */}
+      <h1 className="text-2xl mb-4">Question Settings:</h1>
+      <div>
+        {/* difficulty tag: */}
+
+        <div className="flex justify-between">
+          <label className="label m-5">
+            <span className=" txtf label-text">
+              Difficulty (double click on stars){" "}
+            </span>
+          </label>
+          <div className="rating rating-lg m-5">
+            <input
+              type="radio"
+              name="rating-7"
+              className="mask mask-star-2 bg-orange-400"
+            />
+            <input
+              type="radio"
+              name="rating-7"
+              className="mask mask-star-2 bg-orange-400"
+              checked
+            />
+            <input
+              type="radio"
+              name="rating-7"
+              className="mask mask-star-2 bg-orange-400"
+            />
+            <input
+              type="radio"
+              name="rating-7"
+              className="mask mask-star-2 bg-orange-400"
+            />
+            <input
+              type="radio"
+              name="rating-7"
+              className="mask mask-star-2 bg-orange-400"
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
 
 export default function Questions() {
   const router = useRouter();
-  const iden = router.query.quizId;
-
-  // for each question:
-  const [timeForAQuestion, setTimeForAQuestion] = React.useState(10);
-  const [markForCorrect, setMarkForCorrect] = React.useState(5);
-  const [markForIncorrect, setMarkForIncorrect] = React.useState(-1);
-
+  const {
+    title,
+    difficultyTags,
+    isPolls,
+    jumpQuestions,
+    timeForAQuestion,
+    markForCorrect,
+    markForIncorrect,
+  } = router.query;
   return (
     <>
       {/* @ts-ignore */}
@@ -107,102 +165,18 @@ export default function Questions() {
                   </tr>
                 </thead>
                 <tbody>
-                  <Option />
-                  <Option />
-                  <Option />
-                  <Option />
+                  {[1, 2, 3, 4].map((i) => {
+                    return (
+                      <Option
+                        key={i}
+                        isPoll={isPolls == "true" ? true : false}
+                      />
+                    );
+                  })}
                 </tbody>
               </table>
 
-              {/* Divider */}
-              <div className="divider"></div>
-
-              {/* Question Settings: */}
-              <h1 className="text-2xl mb-4">Question Settings:</h1>
-              <div>
-                <div className="flex justify-between">
-                  <label className="label m-5">
-                    <span className=" txtf label-text">
-                      Time for the question{" "}
-                    </span>
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="10"
-                    className=" m-5 txtin input input-bordered"
-                    value={timeForAQuestion}
-                    onChange={(e) => {
-                      setTimeForAQuestion(Number(e.target.value));
-                    }}
-                  />
-                </div>
-                <div className="flex justify-between">
-                  <label className="label m-5">
-                    <span className=" txtf label-text">Mark for correct </span>
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="5"
-                    className=" m-5 input txtin input-bordered"
-                    value={markForCorrect}
-                    onChange={(e) => {
-                      setMarkForCorrect(Number(e.target.value));
-                    }}
-                  />
-                </div>
-                <div className="flex justify-between">
-                  <label className="label m-5">
-                    <span className=" txtf label-text">
-                      Mark for incorrect{" "}
-                    </span>
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="-1"
-                    className=" m-5 input txtin input-bordered"
-                    value={markForIncorrect}
-                    onChange={(e) => {
-                      setMarkForIncorrect(Number(e.target.value));
-                    }}
-                  />
-                </div>
-                {/* difficulty tag: */}
-                <div className="flex justify-between">
-                  <label className="label m-5">
-                    <span className=" txtf label-text">
-                      Difficulty (double click on stars){" "}
-                    </span>
-                  </label>
-                  <div className="rating rating-lg m-5">
-                    <input
-                      type="radio"
-                      name="rating-7"
-                      className="mask mask-star-2 bg-orange-400"
-                    />
-                    <input
-                      type="radio"
-                      name="rating-7"
-                      className="mask mask-star-2 bg-orange-400"
-                      checked
-                    />
-                    <input
-                      type="radio"
-                      name="rating-7"
-                      className="mask mask-star-2 bg-orange-400"
-                    />
-                    <input
-                      type="radio"
-                      name="rating-7"
-                      className="mask mask-star-2 bg-orange-400"
-                    />
-                    <input
-                      type="radio"
-                      name="rating-7"
-                      className="mask mask-star-2 bg-orange-400"
-                    />
-                  </div>
-                </div>
-              </div>
+              {difficultyTags == "true" ? <DifficultlyTag /> : ""}
             </div>
           </div>
         </div>
