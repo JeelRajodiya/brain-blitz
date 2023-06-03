@@ -53,7 +53,7 @@ function Option({
           type="text"
           placeholder="Type option here"
           className="input input-bordered input-primary w-full"
-          value={question.options[index]}
+          value={question.options[index] ? question.options[index] : ""}
           onChange={(e) => {
             const newQuestion = structuredClone(question);
             newQuestion.options[index] = e.target.value;
@@ -133,19 +133,18 @@ export default function Questions() {
     markForIncorrect,
   } = router.query;
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [question, setQuestion] = useState<Question>({
+  const emptyQuestion = {
     question: "",
     options: [],
     correctOption: 0,
-  });
+  };
+  const [question, setQuestion] = useState<Question>(emptyQuestion);
   const [activeQuestion, setActiveQuestion] = useState(0);
   React.useEffect(() => {
     setQuestion(
-      questions[activeQuestion] || {
-        question: "",
-        options: [],
-        correctOption: 0,
-      }
+      questions[activeQuestion] ||
+        questions[questions.length - 1] ||
+        emptyQuestion
     );
   }, [activeQuestion]);
   return (
