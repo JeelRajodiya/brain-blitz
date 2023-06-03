@@ -74,6 +74,9 @@ export default function Questions() {
                 <IndexEntry srNo={3} name="Question 3" />
               </tbody>
             </table>
+            <button className="btn btn-success mt-4 mb-4 w-full btn-wide text-center">
+              Save Quiz
+            </button>
           </div>
 
           {/* Add a verticle divider here: it does not work */}
@@ -163,13 +166,46 @@ export default function Questions() {
                     }}
                   />
                 </div>
+                {/* difficulty tag: */}
+                <div className="flex justify-between">
+                  <label className="label m-5">
+                    <span className=" txtf label-text">
+                      Difficulty (double click on stars){" "}
+                    </span>
+                  </label>
+                  <div className="rating rating-lg m-5">
+                    <input
+                      type="radio"
+                      name="rating-7"
+                      className="mask mask-star-2 bg-orange-400"
+                    />
+                    <input
+                      type="radio"
+                      name="rating-7"
+                      className="mask mask-star-2 bg-orange-400"
+                      checked
+                    />
+                    <input
+                      type="radio"
+                      name="rating-7"
+                      className="mask mask-star-2 bg-orange-400"
+                    />
+                    <input
+                      type="radio"
+                      name="rating-7"
+                      className="mask mask-star-2 bg-orange-400"
+                    />
+                    <input
+                      type="radio"
+                      name="rating-7"
+                      className="mask mask-star-2 bg-orange-400"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <button className="btn btn-success mt-4 mb-4 w-80 btn-wide text-center">
-          Save Quiz
-        </button>
       </Layout>
     </>
   );
