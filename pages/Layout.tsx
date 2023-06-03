@@ -54,20 +54,22 @@ export default function Layout({ children, pageTitle }) {
                 )}
               </div>
             </label>
-            {dropdown && (<ul
-              tabIndex={0}
-              className="dropdown-content menu p-2 bg-base-200  shadow rounded-box w-52 mt-5"
-            >
-              <li>
-                <a>profile</a>
-              </li>
-              <li>
-                <a>settings</a>
-              </li>
-              <li>
-                <a onClick={performSignOut}>logout</a>
-              </li>
-            </ul>)}
+            {dropdown && (
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu p-2 bg-base-200  shadow rounded-box w-52 mt-5"
+              >
+                <li>
+                  <a>profile</a>
+                </li>
+                <li>
+                  <a>settings</a>
+                </li>
+                <li>
+                  <a onClick={performSignOut}>logout</a>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
       </div>
