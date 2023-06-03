@@ -22,7 +22,6 @@ function Option({ isPoll }: { isPoll: boolean }) {
       </label>
     </td>
   );
-  console.log(isPoll);
   return (
     <tr>
       {!isPoll ? checkBox : null}
