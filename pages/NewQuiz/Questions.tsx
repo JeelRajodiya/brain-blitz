@@ -19,9 +19,9 @@ export default function Questions() {
       <Layout>
         {/* <h1 className="mb-5">{iden}</h1> */}
 
-        <div className="flex  w-full questionForm">
+        <div className="flex w-full questionForm">
           <div className="w-2/5">
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-row mt-4 justify-between">
               <h1 className="flex text-2xl">Question panel</h1>
               <button className="btn btn-square mb-5 bg-green-500 hover:bg-green-700">
                 <h1 className="text-4xl mb-5">+</h1>
