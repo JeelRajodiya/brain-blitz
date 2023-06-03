@@ -61,7 +61,7 @@ export default function NewQuiz() {
             <input
               type="text"
               placeholder="My awesome quiz"
-              className="txtin m-5 input input-bordered"
+              className="txtin m-5 input input-accent input-bordered"
               value={quizName}
               onChange={(e) => setQuizName(e.target.value)}
             />
