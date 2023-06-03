@@ -77,7 +77,7 @@ export default function Questions() {
           </div>
 
           {/* Add a verticle divider here: it does not work */}
-          <div className="divider lg:divider-horizontal"></div> 
+          <div className="divider divider-horizontal"></div>
           {/* Question Form Div */}
           <div className="w-3/5">
             <div className="flex flex-row justify-between items-center">
