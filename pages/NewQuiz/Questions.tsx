@@ -94,38 +94,30 @@ function DifficultlyTag() {
       <div>
         {/* difficulty tag: */}
 
-        <div className="flex justify-between">
+        <div className="flex justify-between m-5">
           <label className="label m-5">
             <span className=" txtf label-text">
-              Difficulty (double click on stars){" "}
+              Difficulty{" "}
             </span>
           </label>
-          <div className="rating rating-lg m-5">
+          <div className="join m-5">
             <input
+              className="join-item btn"
               type="radio"
-              name="rating-7"
-              className="mask mask-star-2 bg-orange-400"
+              name="options"
+              aria-label="Easy"
             />
             <input
+              className="join-item btn"
               type="radio"
-              name="rating-7"
-              className="mask mask-star-2 bg-orange-400"
-              checked
+              name="options"
+              aria-label="Moderate"
             />
             <input
+              className="join-item btn"
               type="radio"
-              name="rating-7"
-              className="mask mask-star-2 bg-orange-400"
-            />
-            <input
-              type="radio"
-              name="rating-7"
-              className="mask mask-star-2 bg-orange-400"
-            />
-            <input
-              type="radio"
-              name="rating-7"
-              className="mask mask-star-2 bg-orange-400"
+              name="options"
+              aria-label="Hard"
             />
           </div>
         </div>
