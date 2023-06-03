@@ -167,6 +167,9 @@ export default function Questions() {
             </div>
           </div>
         </div>
+        <button className="btn btn-success mt-4 mb-4 w-80 btn-wide text-center">
+          Save Quiz
+        </button>
       </Layout>
     </>
   );
