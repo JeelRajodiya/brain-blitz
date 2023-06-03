@@ -4,11 +4,11 @@ import { useRouter } from "next/router";
 import DeleteButton from "../components/DeleteButton";
 import { useState } from "react";
 
-const IndexEntry = ({ srNo, name }) => (
-  <tr className="flex justify-between">
+const IndexEntry = ({ name, setActiveQuestion, index, deleteFunction }) => (
+  <tr className="flex justify-between" onClick={() => setActiveQuestion(index)}>
     <td>{name}</td>
     <td>
-      <DeleteButton />
+      <DeleteButton onClick={() => deleteFunction(index)} />
     </td>
   </tr>
 );
@@ -24,7 +24,6 @@ function Option({
   setQuestion: Function;
   index: number;
 }) {
-  console.log(index);
   const checkBox = (
     <td className="checkBox">
       <label>
@@ -139,6 +138,16 @@ export default function Questions() {
     options: [],
     correctOption: 0,
   });
+  const [activeQuestion, setActiveQuestion] = useState(0);
+  React.useEffect(() => {
+    setQuestion(
+      questions[activeQuestion] || {
+        question: "",
+        options: [],
+        correctOption: 0,
+      }
+    );
+  }, [activeQuestion]);
   return (
     <>
       {/* @ts-ignore */}
@@ -166,7 +175,17 @@ export default function Questions() {
 
               <tbody>
                 {questions.map((i, n) => (
-                  <IndexEntry srNo={n} name={`Question ${n}`} />
+                  <IndexEntry
+                    setActiveQuestion={setActiveQuestion}
+                    name={`Question ${n + 1}`}
+                    index={n}
+                    key={n}
+                    deleteFunction={(index) => {
+                      const newQuestions = structuredClone(questions);
+                      newQuestions.splice(index, 1);
+                      setQuestions(newQuestions);
+                    }}
+                  />
                 ))}
               </tbody>
             </table>
