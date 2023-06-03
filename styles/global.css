@@ -42,7 +42,7 @@
 /* ----------------------- DASHBOARD--------------------------- */
 
 /* the button group on dashboard */
-.join {
+.joinB {
   display: flex;
   gap: 15px; /* Adjust the value as needed for the desired gap */
 }

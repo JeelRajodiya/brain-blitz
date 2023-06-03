@@ -5,7 +5,7 @@ function QuizForm() {
 	const router = useRouter();
 	return (
 		<div>
-			<div className="join" style={{ marginTop: "40px" }}>
+			<div className="join joinB" style={{ marginTop: "40px" }}>
 				<button className="btn btn-modified joinq">
 					Join Quiz
 				</button>
