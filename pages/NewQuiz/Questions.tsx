@@ -4,6 +4,35 @@ import { useRouter } from "next/router";
 import DeleteButton from "../components/DeleteButton";
 import { useState } from "react";
 
+const IndexEntry = ({ srNo, name }) => (
+  <tr className="flex justify-between">
+    <td>{srNo}</td>
+    <td>{name}</td>
+    <td>
+      <DeleteButton />
+    </td>
+  </tr>
+);
+
+const Option = () => {
+  return (
+    <tr>
+      <td className="checkBox">
+        <label>
+          <input type="checkbox" className="checkbox" />
+        </label>
+      </td>
+      <td className="OptionBox">
+        <input
+          type="text"
+          placeholder="Type option here"
+          className="input input-bordered input-primary w-full"
+        />
+      </td>
+    </tr>
+  );
+};
+
 export default function Questions() {
   const router = useRouter();
   const iden = router.query.quizId;
@@ -20,6 +49,7 @@ export default function Questions() {
         {/* <h1 className="mb-5">{iden}</h1> */}
 
         <div className="flex w-full questionForm">
+          {/* Question Panel Div */}
           <div className="w-2/5">
             <div className="flex flex-row mt-4 justify-between">
               <h1 className="flex text-2xl">Question panel</h1>
@@ -28,43 +58,27 @@ export default function Questions() {
               </button>
             </div>
 
+            {/* Question Panel Table */}
             <table className="table table-zebra">
               <thead>
-                <tr>
-                  <th>Sr.</th>
-                  <th>Name</th>
-                  <th>Action</th> {/* Added Action column */}
+                <tr className="grid grid-cols-3">
+                  <th className="justify-self-start">Sr.</th>
+                  <th className="justify-self-center">Name</th>
+                  <th className="justify-self-end">Action</th>
                 </tr>
               </thead>
+
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Cy Ganderton</td>
-                  <td>
-                    <DeleteButton />
-                  </td>{" "}
-                  {/* Delete button in separate column */}
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Hart Hagerty</td>
-                  <td>
-                    <DeleteButton />
-                  </td>{" "}
-                  {/* Delete button in separate column */}
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Brice Swyre</td>
-                  <td>
-                    <DeleteButton />
-                  </td>{" "}
-                  {/* Delete button in separate column */}
-                </tr>
+                <IndexEntry srNo={1} name="Question 1" />
+                <IndexEntry srNo={2} name="Question 2" />
+                <IndexEntry srNo={3} name="Question 3" />
               </tbody>
             </table>
           </div>
 
+          {/* Add a verticle divider here: it does not work */}
+          <div className="divider lg:divider-horizontal"></div> 
+          {/* Question Form Div */}
           <div className="w-3/5">
             <div className="flex flex-row justify-between items-center">
               <h1 className="text-2xl mb-4">Question:</h1>
@@ -80,6 +94,7 @@ export default function Questions() {
               ></textarea>
             </div>
 
+            {/* MCQ details table */}
             <div className="overflow-x-auto">
               <table className="table">
                 <thead>
@@ -89,65 +104,18 @@ export default function Questions() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="checkBox">
-                      <label>
-                        <input type="checkbox" className="checkbox" />
-                      </label>
-                    </td>
-                    <td className="OptionBox">
-                      <input
-                        type="text"
-                        placeholder="Type option here"
-                        className="input input-bordered input-primary w-full"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="checkBox">
-                      <label>
-                        <input type="checkbox" className="checkbox" />
-                      </label>
-                    </td>
-                    <td className="OptionBox">
-                      <input
-                        type="text"
-                        placeholder="Type option here"
-                        className="input input-bordered input-primary w-full"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="checkBox">
-                      <label>
-                        <input type="checkbox" className="checkbox" />
-                      </label>
-                    </td>
-                    <td className="OptionBox">
-                      <input
-                        type="text"
-                        placeholder="Type option here"
-                        className="input input-bordered input-primary w-full"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="checkBox">
-                      <label>
-                        <input type="checkbox" className="checkbox" />
-                      </label>
-                    </td>
-                    <td className="OptionBox">
-                      <input
-                        type="text"
-                        placeholder="Type option here"
-                        className="input input-bordered input-primary w-full"
-                      />
-                    </td>
-                  </tr>
+                  <Option />
+                  <Option />
+                  <Option />
+                  <Option />
                 </tbody>
               </table>
 
+              {/* Divider */}
+              <div className="divider"></div>
+
+              {/* Question Settings: */}
+              <h1 className="text-2xl mb-4">Question Settings:</h1>
               <div>
                 <div className="flex justify-between">
                   <label className="label m-5">
