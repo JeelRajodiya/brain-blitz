@@ -211,7 +211,7 @@ export default function Questions() {
                 className="btn mb-4 btn-outline btn-success"
                 onClick={() => {
                   const newQuestions = structuredClone(questions);
-                  if (activeQuestion == questions.length - 1) {
+                  if (activeQuestion == questions.length) {
                     newQuestions.push(question);
                   } else {
                     newQuestions[activeQuestion] = question;
