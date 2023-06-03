@@ -12,10 +12,10 @@ const IndexEntry = ({
   deleteFunction,
 }) => (
   <tr
-    className={`flex justify-between ${
-      activeQuestion == index ? "bg-primary-focus" : ""
+    className={`flex justify-between select-none ${
+      activeQuestion == index + 1 ? "bg-primary-focus" : ""
     }`}
-    onClick={() => setActiveQuestion(index)}
+    onClick={() => setActiveQuestion(index + 1)}
   >
     <td>{name}</td>
     <td>
@@ -143,20 +143,16 @@ export default function Questions() {
     markForCorrect,
     markForIncorrect,
   } = router.query;
-  const [questions, setQuestions] = useState<Question[]>([]);
   const emptyQuestion = {
     question: "",
     options: [],
     correctOption: 0,
   };
+  const [questions, setQuestions] = useState<Question[]>([emptyQuestion]);
   const [question, setQuestion] = useState<Question>(emptyQuestion);
-  const [activeQuestion, setActiveQuestion] = useState(0);
+  const [activeQuestion, setActiveQuestion] = useState(1);
   React.useEffect(() => {
-    setQuestion(
-      questions[activeQuestion] ||
-        questions[questions.length - 1] ||
-        emptyQuestion
-    );
+    setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
   return (
     <>
@@ -194,7 +190,7 @@ export default function Questions() {
                     deleteFunction={(index) => {
                       const newQuestions = structuredClone(questions);
                       newQuestions.splice(index, 1);
-                      setQuestions(newQuestions);
+                      +setQuestions(newQuestions);
                     }}
                   />
                 ))}
