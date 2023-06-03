@@ -6,11 +6,11 @@ function QuizForm() {
 	return (
 		<div>
 			<div className="join" style={{ marginTop: "40px" }}>
-				<button className="btn glass btn-modified joinq">
+				<button className="btn btn-modified joinq">
 					Join Quiz
 				</button>
 				<button
-					className="btn glass btn-modified create"
+					className="btn btn-modified create"
 					onClick={() => router.push("/NewQuiz")}
 				>
 					Create Quiz
