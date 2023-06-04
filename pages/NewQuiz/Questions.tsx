@@ -76,7 +76,9 @@ function Option({
   );
 }
 
-function DifficultlyTag() {
+function DifficultyTags() {
+  const [difficulty, setDifficulty] = useState(0);
+
   return (
     <>
       {/* Divider */}
@@ -85,30 +87,38 @@ function DifficultlyTag() {
       {/* Question Settings: */}
       <h1 className="text-2xl mb-4">Question Settings:</h1>
       <div>
-        {/* difficulty tag: */}
-
+        {/* Difficulty tag */}
         <div className="flex justify-between m-5">
           <label className="label m-5">
-            <span className=" txtf label-text">Difficulty </span>
+            <span className="txtf label-text">Difficulty </span>
           </label>
           <div className="join m-5">
             <input
-              className="join-item btn"
+              className={`join-item btn ${
+                difficulty === 1 ? "bg-green-500" : ""
+              }`}
               type="radio"
               name="options"
               aria-label="Easy"
+              onClick={() => setDifficulty(1)}
             />
             <input
-              className="join-item btn"
+              className={`join-item btn ${
+                difficulty === 2 ? "bg-yellow-500" : ""
+              }`}
               type="radio"
               name="options"
               aria-label="Moderate"
+              onClick={() => setDifficulty(2)}
             />
             <input
-              className="join-item btn"
+              className={`join-item btn ${
+                difficulty === 3 ? "bg-red-500" : ""
+              }`}
               type="radio"
               name="options"
               aria-label="Hard"
+              onClick={() => setDifficulty(3)}
             />
           </div>
         </div>
@@ -116,6 +126,7 @@ function DifficultlyTag() {
     </>
   );
 }
+
 type Question = {
   question: string;
   options: string[];
@@ -258,7 +269,7 @@ export default function Questions() {
                 </tbody>
               </table>
 
-              {difficultyTags == "true" ? <DifficultlyTag /> : ""}
+              {difficultyTags == "true" ? <DifficultyTags /> : ""}
             </div>
           </div>
         </div>
