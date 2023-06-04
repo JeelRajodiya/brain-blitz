@@ -19,7 +19,7 @@ const IndexEntry = ({
   >
     <td>{name}</td>
     <td>
-      <DeleteButton onClick={() => deleteFunction(index)} />
+      <DeleteButton onClick={() => deleteFunction(index, setActiveQuestion)} />
     </td>
   </tr>
 );
@@ -141,7 +141,9 @@ export default function Questions() {
   const [questions, setQuestions] = useState<Question[]>([emptyQuestion]);
   const [question, setQuestion] = useState<Question>(emptyQuestion);
   const [activeQuestion, setActiveQuestion] = useState(1);
+
   React.useEffect(() => {
+    console.log(activeQuestion);
     setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
   return (
@@ -177,10 +179,12 @@ export default function Questions() {
                     name={`Question ${n + 1}`}
                     index={n}
                     key={n}
-                    deleteFunction={(index) => {
+                    deleteFunction={(index, setActiveQuestion) => {
                       const newQuestions = structuredClone(questions);
                       newQuestions.splice(index + 1, 1);
+
                       setActiveQuestion(index); // this is not working !! 😭
+                      console.log(typeof setActiveQuestion);
                       setQuestions(newQuestions);
                     }}
                   />
