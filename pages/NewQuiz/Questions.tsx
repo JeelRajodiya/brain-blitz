@@ -1,36 +1,13 @@
 import * as React from "react";
 import Layout from "./../Layout";
 import { useRouter } from "next/router";
-import DeleteButton from "../components/DeleteButton";
 import { useState } from "react";
 import { uuid } from "uuidv4";
+import QuestionsIndexEntry from "../components/QuestionsIndexEntry";
+import DifficultyTag from "../components/DifficultyTag";
 function getNextQuestionId(questions, id) {
   const givenIndex = questions.findIndex((question) => question.id === id);
   return questions[givenIndex + 1].id || id;
-}
-
-function IndexEntry({
-  name,
-  setActiveQuestion,
-  activeQuestion,
-  id,
-  deleteFunction,
-  questions,
-}) {
-  console.log(id, activeQuestion);
-  return (
-    <tr
-      className={`flex justify-between select-none ${
-        id == activeQuestion ? "bg-primary-focus" : ""
-      }`}
-      onClick={() => setActiveQuestion(id)}
-    >
-      <td>{name}</td>
-      <td>
-        <DeleteButton onClick={() => deleteFunction(id)} />
-      </td>
-    </tr>
-  );
 }
 
 function Option({
@@ -85,46 +62,6 @@ function Option({
   );
 }
 
-function DifficultlyTag() {
-  return (
-    <>
-      {/* Divider */}
-      <div className="divider"></div>
-
-      {/* Question Settings: */}
-      <h1 className="text-2xl mb-4">Question Settings:</h1>
-      <div>
-        {/* difficulty tag: */}
-
-        <div className="flex justify-between m-5">
-          <label className="label m-5">
-            <span className=" txtf label-text">Difficulty </span>
-          </label>
-          <div className="join m-5">
-            <input
-              className="join-item btn"
-              type="radio"
-              name="options"
-              aria-label="Easy"
-            />
-            <input
-              className="join-item btn"
-              type="radio"
-              name="options"
-              aria-label="Moderate"
-            />
-            <input
-              className="join-item btn"
-              type="radio"
-              name="options"
-              aria-label="Hard"
-            />
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
 type Question = {
   question: string;
   options: string[];
@@ -197,7 +134,7 @@ export default function Questions() {
 
               <tbody>
                 {questions.map((i, n) => (
-                  <IndexEntry
+                  <QuestionsIndexEntry
                     activeQuestion={activeQuestion}
                     setActiveQuestion={setActiveQuestion}
                     name={`Question ${n + 1}`}
@@ -285,7 +222,7 @@ export default function Questions() {
                 </tbody>
               </table>
 
-              {difficultyTags == "true" ? <DifficultlyTag /> : ""}
+              {difficultyTags == "true" ? <DifficultyTag /> : ""}
             </div>
           </div>
         </div>
