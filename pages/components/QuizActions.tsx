@@ -21,7 +21,7 @@ function QuizForm() {
       window.my_modal_3.close();
       window.my_modal_3.showModal();
     }
-  });
+  }, []);
 
   return (
     <div>
