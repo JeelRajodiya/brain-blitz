@@ -12,7 +12,7 @@ const IndexEntry = ({
   deleteFunction,
 }) => (
   <tr
-    className={`flex justify-between select-none ${
+    className={`flex justify-between rounded-lg hover:bg-secondary-focus select-none ${
       activeQuestion == index + 1 ? "bg-primary-focus" : ""
     }`}
     onClick={() => setActiveQuestion(index + 1)}
@@ -154,7 +154,7 @@ export default function Questions() {
   const [activeQuestion, setActiveQuestion] = useState(1);
 
   React.useEffect(() => {
-    console.log(activeQuestion);
+    // console.log(activeQuestion);
     setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
   return (
@@ -192,10 +192,13 @@ export default function Questions() {
                     key={n}
                     deleteFunction={(index, setActiveQuestion) => {
                       const newQuestions = structuredClone(questions);
+                      let newQuestion = structuredClone(question);
+                      let newActiveQuestion = structuredClone(activeQuestion);
                       newQuestions.splice(index + 1, 1);
-
-                      setActiveQuestion(index); // this is not working !! 😭
-                      console.log(typeof setActiveQuestion);
+                      newQuestion = newQuestions[index];
+                      newActiveQuestion = index + 1;
+                      setActiveQuestion(newActiveQuestion);
+                      setQuestion(newQuestion);
                       setQuestions(newQuestions);
                     }}
                   />
