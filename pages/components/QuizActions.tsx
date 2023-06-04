@@ -15,13 +15,13 @@ function QuizForm() {
   const router = useRouter();
 
   const [quizCode, setQuizCode] = React.useState("");
-  //   React.useEffect(() => {
-  //     if (router.query.quizCode) {
-  //       setQuizCode(router.query.quizCode as string);
-  //       window.my_modal_3.close();
-  //       window.my_modal_3.showModal();
-  //     }
-  //   });
+  React.useEffect(() => {
+    if (router.query.quizCode) {
+      setQuizCode(router.query.quizCode as string);
+      window.my_modal_3.close();
+      window.my_modal_3.showModal();
+    }
+  });
 
   return (
     <div>
