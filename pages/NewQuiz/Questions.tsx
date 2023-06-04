@@ -17,10 +17,11 @@ const IndexEntry = ({
   index,
   deleteFunction,
   questions,
+  question,
 }) => (
   <tr
     className={`flex justify-between select-none ${
-      index == activeQuestion ? "bg-primary-focus" : ""
+      index == question.id ? "bg-primary-focus" : ""
     }`}
     onClick={() => setActiveQuestion(index)}
   >
@@ -153,11 +154,7 @@ export default function Questions() {
   const [question, setQuestion] = useState<Question>(emptyQuestion);
   const [activeQuestion, setActiveQuestion] = useState(emptyQuestion.id);
   React.useEffect(() => {
-    questions.forEach((question) => {
-      if (question.id === activeQuestion) {
-        setQuestion(question);
-      }
-    });
+    setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
   return (
     <>
@@ -189,6 +186,7 @@ export default function Questions() {
                   <IndexEntry
                     activeQuestion={activeQuestion}
                     setActiveQuestion={setActiveQuestion}
+                    question={question}
                     name={`Question ${n + 1}`}
                     index={i.id}
                     key={n}
@@ -217,14 +215,14 @@ export default function Questions() {
                 className="btn mb-4 btn-outline btn-success"
                 onClick={() => {
                   const newQuestions = structuredClone(questions);
-                  if (questions.at(-1).id === question.id) {
+                  if (activeQuestion == question.id) {
                     newQuestions.push(question);
-                    setQuestion(emptyQuestion);
                   } else {
                     newQuestions[activeQuestion] = question;
                   }
                   setActiveQuestion(question.id);
                   setQuestions(newQuestions);
+                  setQuestion(emptyQuestion);
                 }}
               >
                 Save Question
