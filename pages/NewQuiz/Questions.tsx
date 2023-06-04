@@ -89,9 +89,7 @@ function DifficultlyTag() {
 
         <div className="flex justify-between m-5">
           <label className="label m-5">
-            <span className=" txtf label-text">
-              Difficulty{" "}
-            </span>
+            <span className=" txtf label-text">Difficulty </span>
           </label>
           <div className="join m-5">
             <input
@@ -181,8 +179,9 @@ export default function Questions() {
                     key={n}
                     deleteFunction={(index) => {
                       const newQuestions = structuredClone(questions);
-                      newQuestions.splice(index, 1);
-                      +setQuestions(newQuestions);
+                      newQuestions.splice(index + 1, 1);
+                      setActiveQuestion(index); // this is not working !! 😭
+                      setQuestions(newQuestions);
                     }}
                   />
                 ))}
