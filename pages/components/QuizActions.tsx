@@ -16,12 +16,13 @@ function QuizForm() {
 
   const [quizCode, setQuizCode] = React.useState("");
   React.useEffect(() => {
+    console.log(router.query);
     if (router.query.quizCode) {
       setQuizCode(router.query.quizCode as string);
       window.my_modal_3.close();
       window.my_modal_3.showModal();
     }
-  }, []);
+  }, [!router.query.quizCode]);
 
   return (
     <div>
