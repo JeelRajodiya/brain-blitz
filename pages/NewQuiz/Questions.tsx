@@ -174,9 +174,7 @@ export default function Questions() {
           <div className="w-2/5">
             <div className="flex flex-row mt-4 justify-between">
               <h1 className="flex text-2xl">Question panel</h1>
-              <button className="btn btn-square mb-5 bg-green-500 hover:bg-green-700">
-                <h1 className="text-4xl mb-5">+</h1>
-              </button>
+                {/* removed the not used add question button */}
             </div>
 
             {/* Question Panel Table */}
