@@ -174,7 +174,7 @@ export default function Questions() {
           <div className="w-2/5">
             <div className="flex flex-row mt-4 justify-between">
               <h1 className="flex text-2xl">Question panel</h1>
-                {/* removed the not used add question button */}
+              {/* removed the not used add question button */}
             </div>
 
             {/* Question Panel Table */}
@@ -234,7 +234,7 @@ export default function Questions() {
                 Save Question
               </button>
             </div>
-            
+
             {/* Write the main question:  */}
             <div>
               <input
