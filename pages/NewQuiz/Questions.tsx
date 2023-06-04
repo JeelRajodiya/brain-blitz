@@ -3,6 +3,7 @@ import Layout from "./../Layout";
 import { useRouter } from "next/router";
 import DeleteButton from "../components/DeleteButton";
 import { useState } from "react";
+import styles from "./Questions.module.css";
 
 // Indexing function:
 const IndexEntry = ({
@@ -173,7 +174,11 @@ export default function Questions() {
           {/* Question Panel Div */}
           <div className="w-2/5">
             <div className="flex flex-row mt-4 justify-between">
-              <h1 className="flex text-2xl">Question panel</h1>
+              <h1
+                className={["flex", "text-2xl", styles.mobileFonts].join(" ")}
+              >
+                Question panel
+              </h1>
               {/* removed the not used add question button */}
             </div>
 
