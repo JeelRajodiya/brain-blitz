@@ -3,35 +3,33 @@ import Layout from "./../Layout";
 import { useRouter } from "next/router";
 import DeleteButton from "../components/DeleteButton";
 import { useState } from "react";
-import { uuid } from "uuidv4";
+import { get } from "http";
+
 function getNextQuestionId(questions, id) {
   const givenIndex = questions.findIndex((question) => question.id === id);
   return questions[givenIndex + 1].id || id;
 }
 
-function IndexEntry({
+const IndexEntry = ({
   name,
   setActiveQuestion,
   activeQuestion,
-  id,
+  index,
   deleteFunction,
   questions,
-}) {
-  console.log(id, activeQuestion);
-  return (
-    <tr
-      className={`flex justify-between select-none ${
-        id == activeQuestion ? "bg-primary-focus" : ""
-      }`}
-      onClick={() => setActiveQuestion(id)}
-    >
-      <td>{name}</td>
-      <td>
-        <DeleteButton onClick={() => deleteFunction(id)} />
-      </td>
-    </tr>
-  );
-}
+}) => (
+  <tr
+    className={`flex justify-between select-none ${
+      index == activeQuestion ? "bg-primary-focus" : ""
+    }`}
+    onClick={() => setActiveQuestion(index)}
+  >
+    <td>{name}</td>
+    <td>
+      <DeleteButton onClick={() => deleteFunction(index)} />
+    </td>
+  </tr>
+);
 
 function Option({
   isPoll,
@@ -98,7 +96,9 @@ function DifficultlyTag() {
 
         <div className="flex justify-between m-5">
           <label className="label m-5">
-            <span className=" txtf label-text">Difficulty </span>
+            <span className=" txtf label-text">
+              Difficulty{" "}
+            </span>
           </label>
           <div className="join m-5">
             <input
@@ -130,17 +130,7 @@ type Question = {
   options: string[];
   correctOption: number;
   difficulty?: number;
-  id: string;
-};
-const emptyQuestion = () => {
-  const newId = uuid();
-  console.log(newId, "new");
-  return {
-    question: "",
-    options: [],
-    correctOption: 0,
-    id: newId,
-  };
+  id: number;
 };
 export default function Questions() {
   const router = useRouter();
@@ -153,10 +143,15 @@ export default function Questions() {
     markForCorrect,
     markForIncorrect,
   } = router.query;
-
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [question, setQuestion] = useState<Question>(emptyQuestion());
-  const [activeQuestion, setActiveQuestion] = useState("");
+  const emptyQuestion = {
+    question: "",
+    options: [],
+    correctOption: 0,
+    id: Math.random(),
+  };
+  const [questions, setQuestions] = useState<Question[]>([emptyQuestion]);
+  const [question, setQuestion] = useState<Question>(emptyQuestion);
+  const [activeQuestion, setActiveQuestion] = useState(emptyQuestion.id);
   React.useEffect(() => {
     questions.forEach((question) => {
       if (question.id === activeQuestion) {
@@ -164,12 +159,6 @@ export default function Questions() {
       }
     });
   }, [activeQuestion]);
-  React.useEffect(() => {
-    const newEmptyQuestion = emptyQuestion();
-    setQuestion(newEmptyQuestion);
-    setQuestions([newEmptyQuestion]);
-    setActiveQuestion(newEmptyQuestion.id);
-  }, []);
   return (
     <>
       {/* @ts-ignore */}
@@ -201,7 +190,7 @@ export default function Questions() {
                     activeQuestion={activeQuestion}
                     setActiveQuestion={setActiveQuestion}
                     name={`Question ${n + 1}`}
-                    id={i.id}
+                    index={i.id}
                     key={n}
                     questions={questions}
                     deleteFunction={(index) => {
@@ -230,15 +219,10 @@ export default function Questions() {
                   const newQuestions = structuredClone(questions);
                   if (questions.at(-1).id === question.id) {
                     newQuestions.push(question);
-                    setQuestion(emptyQuestion());
+                    setQuestion(emptyQuestion);
                   } else {
-                    newQuestions.forEach((q, index) => {
-                      if (q.id === question.id) {
-                        newQuestions[index] = question;
-                      }
-                    });
+                    newQuestions[activeQuestion] = question;
                   }
-                  console.log(questions);
                   setActiveQuestion(question.id);
                   setQuestions(newQuestions);
                 }}
