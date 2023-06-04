@@ -1,18 +1,43 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-
+declare const window: Window &
+  typeof globalThis & {
+    my_modal_3: {
+      showModal: () => void;
+      close: () => void;
+    };
+  };
 function QuizForm() {
   const joinQuiz = () => {
     console.log("join quiz");
   };
 
   const router = useRouter();
+
+  const [quizCode, setQuizCode] = React.useState("");
+  //   React.useEffect(() => {
+  //     if (router.query.quizCode) {
+  //       setQuizCode(router.query.quizCode as string);
+  //       window.my_modal_3.close();
+  //       window.my_modal_3.showModal();
+  //     }
+  //   });
+
   return (
     <div>
       <div className="join joinB" style={{ marginTop: "40px" }}>
         <button
           className="btn btn-modified joinq"
-          onClick={() => window.my_modal_3.showModal()}
+          onClick={() => {
+            router.push({
+              pathname: "/Dashboard",
+              query: {
+                quizCode: "",
+              },
+            });
+            window.my_modal_3.showModal();
+            setQuizCode("");
+          }}
         >
           Join Quiz
         </button>
@@ -20,8 +45,11 @@ function QuizForm() {
           <form method="dialog" className="modal-box">
             <button
               // htmlFor="my-modal-3"
-              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 hover:bg-red-600"
               style={{ color: "white" }}
+              onClick={() => {
+                router.push("/Dashboard");
+              }}
             >
               ✕
             </button>
@@ -41,6 +69,16 @@ function QuizForm() {
                   borderRadius: "1rem 0 0 1rem",
                   borderColor: "white",
                   color: "white",
+                }}
+                value={quizCode}
+                onChange={(e) => {
+                  setQuizCode(e.target.value);
+                  router.push({
+                    pathname: "/Dashboard",
+                    query: {
+                      quizCode: e.target.value,
+                    },
+                  });
                 }}
               />
               <button
