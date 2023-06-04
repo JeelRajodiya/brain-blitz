@@ -3,12 +3,6 @@ import Layout from "./../Layout";
 import { useRouter } from "next/router";
 import DeleteButton from "../components/DeleteButton";
 import { useState } from "react";
-import { get } from "http";
-
-function getNextQuestionId(questions, id) {
-  const givenIndex = questions.findIndex((question) => question.id === id);
-  return questions[givenIndex + 1].id || id;
-}
 
 const IndexEntry = ({
   name,
@@ -16,14 +10,12 @@ const IndexEntry = ({
   activeQuestion,
   index,
   deleteFunction,
-  questions,
-  question,
 }) => (
   <tr
     className={`flex justify-between select-none ${
-      index == question.id ? "bg-primary-focus" : ""
+      activeQuestion == index + 1 ? "bg-primary-focus" : ""
     }`}
-    onClick={() => setActiveQuestion(index)}
+    onClick={() => setActiveQuestion(index + 1)}
   >
     <td>{name}</td>
     <td>
@@ -131,7 +123,6 @@ type Question = {
   options: string[];
   correctOption: number;
   difficulty?: number;
-  id: number;
 };
 export default function Questions() {
   const router = useRouter();
@@ -148,11 +139,10 @@ export default function Questions() {
     question: "",
     options: [],
     correctOption: 0,
-    id: Math.random(),
   };
   const [questions, setQuestions] = useState<Question[]>([emptyQuestion]);
   const [question, setQuestion] = useState<Question>(emptyQuestion);
-  const [activeQuestion, setActiveQuestion] = useState(emptyQuestion.id);
+  const [activeQuestion, setActiveQuestion] = useState(1);
   React.useEffect(() => {
     setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
@@ -186,15 +176,13 @@ export default function Questions() {
                   <IndexEntry
                     activeQuestion={activeQuestion}
                     setActiveQuestion={setActiveQuestion}
-                    question={question}
                     name={`Question ${n + 1}`}
-                    index={i.id}
+                    index={n}
                     key={n}
-                    questions={questions}
                     deleteFunction={(index) => {
                       const newQuestions = structuredClone(questions);
                       newQuestions.splice(index, 1);
-                      setQuestions(newQuestions);
+                      +setQuestions(newQuestions);
                     }}
                   />
                 ))}
@@ -215,12 +203,12 @@ export default function Questions() {
                 className="btn mb-4 btn-outline btn-success"
                 onClick={() => {
                   const newQuestions = structuredClone(questions);
-                  if (activeQuestion == question.id) {
+                  if (activeQuestion == questions.length) {
                     newQuestions.push(question);
                   } else {
                     newQuestions[activeQuestion] = question;
                   }
-                  setActiveQuestion(question.id);
+                  setActiveQuestion((e) => e + 1);
                   setQuestions(newQuestions);
                   setQuestion(emptyQuestion);
                 }}
