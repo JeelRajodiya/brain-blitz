@@ -91,17 +91,22 @@ export default function Questions() {
     markForIncorrect,
   } = router.query;
 
-  const [questions, setQuestions] = useState<Question[]>([emptyQuestion()]);
-  const [question, setQuestion] = useState<Question>(questions[0]);
-  const [activeQuestionId, setActiveQuestionId] = useState(question.id);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [question, setQuestion] = useState<Question>(emptyQuestion());
+  const [activeQuestion, setActiveQuestion] = useState("");
   React.useEffect(() => {
     questions.forEach((question) => {
-      if (question.id === activeQuestionId) {
+      if (question.id === activeQuestion) {
         setQuestion(question);
       }
     });
-  }, [activeQuestionId]);
-
+  }, [activeQuestion]);
+  React.useEffect(() => {
+    const newEmptyQuestion = emptyQuestion();
+    setQuestion(newEmptyQuestion);
+    setQuestions([newEmptyQuestion]);
+    setActiveQuestion(newEmptyQuestion.id);
+  }, []);
   return (
     <>
       {/* @ts-ignore */}
@@ -130,8 +135,8 @@ export default function Questions() {
               <tbody>
                 {questions.map((i, n) => (
                   <QuestionsIndexEntry
-                    activeQuestion={activeQuestionId}
-                    setActiveQuestion={setActiveQuestionId}
+                    activeQuestion={activeQuestion}
+                    setActiveQuestion={setActiveQuestion}
                     name={`Question ${n + 1}`}
                     id={i.id}
                     key={n}
@@ -160,18 +165,18 @@ export default function Questions() {
                 className="btn mb-4 btn-outline btn-success"
                 onClick={() => {
                   const newQuestions = structuredClone(questions);
-                  //   if (questions.at(-1).id === question.id) {
-                  newQuestions.push(question);
-                  setQuestion(emptyQuestion());
-                  //   } else {
-                  //     newQuestions.forEach((q, index) => {
-                  //       if (q.id === question.id) {
-                  //         newQuestions[index] = question;
-                  //       }
-                  //     });
-                  //   }
+                  if (questions.at(-1).id === question.id) {
+                    newQuestions.push(question);
+                    setQuestion(emptyQuestion());
+                  } else {
+                    newQuestions.forEach((q, index) => {
+                      if (q.id === question.id) {
+                        newQuestions[index] = question;
+                      }
+                    });
+                  }
                   console.log(questions);
-                  setActiveQuestionId(question.id);
+                  setActiveQuestion(question.id);
                   setQuestions(newQuestions);
                 }}
               >
