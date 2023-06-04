@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import DeleteButton from "../components/DeleteButton";
 import { useState } from "react";
 
+// Indexing function:
 const IndexEntry = ({
   name,
   setActiveQuestion,
@@ -24,6 +25,7 @@ const IndexEntry = ({
   </tr>
 );
 
+// Function for the poll:
 function Option({
   isPoll,
   question,
@@ -76,6 +78,7 @@ function Option({
   );
 }
 
+// function for the difficulty tags:
 function DifficultyTags() {
   const [difficulty, setDifficulty] = useState(0);
 
@@ -84,7 +87,6 @@ function DifficultyTags() {
       {/* Divider */}
       <div className="divider"></div>
 
-      {/* Question Settings: */}
       <h1 className="text-2xl mb-4">Question Settings:</h1>
       <div>
         {/* Difficulty tag */}
@@ -92,6 +94,7 @@ function DifficultyTags() {
           <label className="label m-5">
             <span className="txtf label-text">Difficulty </span>
           </label>
+          {/* Tried to color the tag: */}
           <div className="join m-5">
             <input
               className={`join-item btn ${
@@ -127,12 +130,14 @@ function DifficultyTags() {
   );
 }
 
+// type for each question:
 type Question = {
   question: string;
   options: string[];
   correctOption: number;
   difficulty?: number;
 };
+
 export default function Questions() {
   const router = useRouter();
   const {
@@ -157,6 +162,7 @@ export default function Questions() {
     // console.log(activeQuestion);
     setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
+
   return (
     <>
       {/* @ts-ignore */}
@@ -168,9 +174,7 @@ export default function Questions() {
           <div className="w-2/5">
             <div className="flex flex-row mt-4 justify-between">
               <h1 className="flex text-2xl">Question panel</h1>
-              <button className="btn btn-square mb-5 bg-green-500 hover:bg-green-700">
-                <h1 className="text-4xl mb-5">+</h1>
-              </button>
+              {/* removed the not used add question button */}
             </div>
 
             {/* Question Panel Table */}
@@ -234,6 +238,7 @@ export default function Questions() {
               </button>
             </div>
 
+            {/* Write the main question:  */}
             <div>
               <input
                 placeholder="Who is the president of UK?"
