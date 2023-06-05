@@ -106,7 +106,9 @@ function DifficultyTags() {
 
           <div className="join m-5 mt-6">
             <input
-              className={`tooltip tooltip-success tooltip-top join-item bigRad radio ${difficultyRating === 1 ? 'checked:bg-green-500' : ''}`}
+              className={`tooltip tooltip-success tooltip-top join-item bigRad radio ${
+                difficultyRating === 1 ? "checked:bg-green-500" : ""
+              }`}
               data-tip="Easy"
               type="radio"
               name="options"
@@ -115,7 +117,9 @@ function DifficultyTags() {
               defaultChecked={difficultyRating === 1} // Set the "Easy" radio button as defaultChecked
             />
             <input
-              className={`tooltip tooltip-warning tooltip-top join-item bigRad radio ${difficultyRating === 2 ? 'checked:bg-yellow-500' : ''}`}
+              className={`tooltip tooltip-warning tooltip-top join-item bigRad radio ${
+                difficultyRating === 2 ? "checked:bg-yellow-500" : ""
+              }`}
               data-tip="Moderate"
               type="radio"
               name="options"
@@ -124,7 +128,9 @@ function DifficultyTags() {
               defaultChecked={difficultyRating === 2} // Set the "Moderate" radio button as defaultChecked
             />
             <input
-              className={`tooltip tooltip-error tooltip-top join-item bigRad radio ${difficultyRating === 3 ? 'checked:bg-red-500' : ''}`}
+              className={`tooltip tooltip-error tooltip-top join-item bigRad radio ${
+                difficultyRating === 3 ? "checked:bg-red-500" : ""
+              }`}
               data-tip="Hard"
               type="radio"
               name="options"
@@ -139,7 +145,6 @@ function DifficultyTags() {
     </>
   );
 }
-
 
 // type for each question:
 type Question = {
@@ -282,8 +287,7 @@ export default function Questions() {
                     >
                       Correct Option
                     </th>
-
-                    <th className="OptionBox">Options</th>
+                    {!isPolls && <th className="OptionBox">Options</th>}
                   </tr>
                 </thead>
                 <tbody>
