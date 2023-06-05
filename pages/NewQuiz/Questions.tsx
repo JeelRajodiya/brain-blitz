@@ -199,7 +199,6 @@ export default function Questions() {
 
             {/* Question Panel Table */}
             <table className="table ">
-              {/* changes to be made here : */}
               <thead>
                 <tr className="grid grid-cols-2">
                   <th className="justify-self-start">Name</th>
