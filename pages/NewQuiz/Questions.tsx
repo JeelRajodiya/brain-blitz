@@ -2,7 +2,7 @@ import * as React from "react";
 import Layout from "./../Layout";
 import { useRouter } from "next/router";
 import DeleteButton from "../components/DeleteButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Questions.module.css";
 import classnames from "classnames";
 
@@ -85,11 +85,16 @@ function Option({
 }
 
 function DifficultyTags() {
-  const [difficultyRating, setDifficultyRating] = useState(0);
+  const [difficultyRating, setDifficultyRating] = useState(1); // Set the default difficulty rating to 1 (Easy)
 
-  const toggleDifficultyRating = (n: number) => {
+  const toggleDifficultyRating = (n) => {
     setDifficultyRating(n);
   };
+
+  useEffect(() => {
+    // You can perform any additional actions when the difficulty rating changes here
+    console.log('Difficulty Rating:', difficultyRating);
+  }, [difficultyRating]);
 
   return (
     <>
@@ -106,28 +111,31 @@ function DifficultyTags() {
 
           <div className="join m-5 mt-6">
             <input
-              className="tooltip tooltip-success tooltip-top join-item bigRad radio checked:bg-green-500"
+              className={`tooltip tooltip-success tooltip-top join-item bigRad radio ${difficultyRating === 1 ? 'checked:bg-green-500' : ''}`}
               data-tip="Easy"
               type="radio"
               name="options"
               aria-label="Easy"
               onClick={() => toggleDifficultyRating(1)}
+              defaultChecked={difficultyRating === 1} // Set the "Easy" radio button as defaultChecked
             />
             <input
-              className="tooltip tooltip-warning tooltip-top join-item bigRad radio checked:bg-yellow-500"
+              className={`tooltip tooltip-warning tooltip-top join-item bigRad radio ${difficultyRating === 2 ? 'checked:bg-yellow-500' : ''}`}
               data-tip="Moderate"
               type="radio"
               name="options"
               aria-label="Moderate"
               onClick={() => toggleDifficultyRating(2)}
+              defaultChecked={difficultyRating === 2} // Set the "Moderate" radio button as defaultChecked
             />
             <input
-              className="tooltip tooltip-error tooltip-top join-item bigRad radio checked:bg-red-500"
+              className={`tooltip tooltip-error tooltip-top join-item bigRad radio ${difficultyRating === 3 ? 'checked:bg-red-500' : ''}`}
               data-tip="Hard"
               type="radio"
               name="options"
               aria-label="Hard"
               onClick={() => toggleDifficultyRating(3)}
+              defaultChecked={difficultyRating === 3} // Set the "Hard" radio button as defaultChecked
             />
           </div>
         </div>
@@ -136,6 +144,7 @@ function DifficultyTags() {
     </>
   );
 }
+
 
 // type for each question:
 type Question = {
