@@ -121,7 +121,7 @@
 }
 
 .questionForm > :nth-child(1) {
-  flex: 0.5;
+  flex: 0.25;
 }
 
 .questionForm > :nth-child(2) {

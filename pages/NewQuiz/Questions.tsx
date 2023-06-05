@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import styles from "./Questions.module.css";
 import classnames from "classnames";
 
-// Indexing function:
+// The following are the entries of the Question Panel Table:
 const IndexEntry = ({
   name,
   setActiveQuestion,
@@ -15,12 +15,12 @@ const IndexEntry = ({
   deleteFunction,
 }) => (
   <tr
-    className={`flex justify-between rounded-lg  select-none ${
-      activeQuestion == index + 1 ? "bg-primary-focus" : ""
+    className={`flex items-center justify-between rounded-lg select-none ${
+      activeQuestion === index + 1 ? "bg-primary-focus" : ""
     }`}
   >
     <td
-      className="w-full hover:bg-secondary-focus rounded-lg "
+      className="m-2 cursor-pointer hover:bg-secondary-focus rounded-lg"
       onClick={() => setActiveQuestion(index + 1)}
     >
       {name}
