@@ -14,12 +14,13 @@ const IndexEntry = ({
   deleteFunction,
 }) => (
   <tr
-    className={`flex justify-between rounded-lg hover:bg-secondary-focus select-none ${
+    className={`flex justify-between rounded-lg  hover:bg-secondary-focus select-none ${
       activeQuestion == index + 1 ? "bg-primary-focus" : ""
     }`}
-    onClick={() => setActiveQuestion(index + 1)}
   >
-    <td>{name}</td>
+    <td className="w-full" onClick={() => setActiveQuestion(index + 1)}>
+      {name}
+    </td>
     <td>
       <DeleteButton onClick={() => deleteFunction(index, setActiveQuestion)} />
     </td>
@@ -164,7 +165,7 @@ export default function Questions() {
   const [activeQuestion, setActiveQuestion] = useState(1);
 
   React.useEffect(() => {
-    // console.log(activeQuestion);
+    console.log(activeQuestion);
     setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
 
@@ -206,11 +207,9 @@ export default function Questions() {
                     deleteFunction={(index, setActiveQuestion) => {
                       const newQuestions = structuredClone(questions);
                       let newQuestion = structuredClone(question);
-                      let newActiveQuestion = structuredClone(activeQuestion);
                       newQuestions.splice(index + 1, 1);
                       newQuestion = newQuestions[index];
-                      newActiveQuestion = index + 1;
-                      setActiveQuestion(newActiveQuestion);
+                      setActiveQuestion(index !== 0 ? index : 0);
                       setQuestion(newQuestion);
                       setQuestions(newQuestions);
                     }}
