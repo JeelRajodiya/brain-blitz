@@ -91,11 +91,6 @@ function DifficultyTags() {
     setDifficultyRating(n);
   };
 
-  useEffect(() => {
-    // You can perform any additional actions when the difficulty rating changes here
-    console.log('Difficulty Rating:', difficultyRating);
-  }, [difficultyRating]);
-
   return (
     <>
       {/* Divider */}
