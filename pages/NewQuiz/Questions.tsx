@@ -15,11 +15,14 @@ const IndexEntry = ({
   deleteFunction,
 }) => (
   <tr
-    className={`flex justify-between rounded-lg  hover:bg-secondary-focus select-none ${
+    className={`flex justify-between rounded-lg  select-none ${
       activeQuestion == index + 1 ? "bg-primary-focus" : ""
     }`}
   >
-    <td className="w-full" onClick={() => setActiveQuestion(index + 1)}>
+    <td
+      className="w-full hover:bg-secondary-focus rounded-lg "
+      onClick={() => setActiveQuestion(index + 1)}
+    >
       {name}
     </td>
     <td>
