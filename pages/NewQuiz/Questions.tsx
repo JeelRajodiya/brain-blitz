@@ -16,11 +16,11 @@ const IndexEntry = ({
 }) => (
   <tr
     className={`flex items-center justify-between rounded-lg select-none ${
-      activeQuestion === index + 1 ? "bg-primary-focus" : ""
+      activeQuestion === index + 1 ? "bg-base-200" : ""
     }`}
   >
     <td
-      className="m-2 cursor-pointer border hover:bg-secondary-focus rounded-lg"
+      className="m-2 cursor-pointer border hover:bg-base-200 rounded-lg"
       onClick={() => setActiveQuestion(index + 1)}
     >
       {name}
