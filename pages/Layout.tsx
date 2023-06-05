@@ -23,7 +23,7 @@ export default function Layout({ children, pageTitle }) {
   return (
     <div className="flex justify-center flex-col center">
       <div
-        className="navbar bg-base-200 shadow-md p-2 mx-2 mb-4"
+        className="navbar bg-base-200 rounded-lg p-3 shadow-md   mb-4"
         style={{ zIndex: "999" }}
       >
         <div className="flex-1">
@@ -40,15 +40,15 @@ export default function Layout({ children, pageTitle }) {
 						</h1> */}
           </div>
         </div>
-        <div className="flex-none">
-          <div className="dropdown dropdown-end">
+        <div className="flex items-center justify-center">
+          <div className="dropdown dropdown-end ">
             <label
               onClick={toggleDropdown}
               tabIndex={0}
-              className="btn-circle tooltip tooltip-left mx-4 cursor-pointer"
+              className="btn-circle tooltip tooltip-left  flex justify-center items-center cursor-pointer"
               data-tip={session.data ? session.data.user.name : ""}
             >
-              <div className="w-14 mask mask-squircle">
+              <div className="w-12 mask mask-squircle">
                 {session.data && session.data.user?.image && (
                   <img src={session.data.user.image} alt="User Avatar" />
                 )}
