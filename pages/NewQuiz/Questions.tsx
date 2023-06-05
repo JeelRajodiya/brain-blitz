@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import DeleteButton from "../components/DeleteButton";
 import { useState } from "react";
 import styles from "./Questions.module.css";
+import classnames from "classnames";
 
 // Indexing function:
 const IndexEntry = ({
@@ -44,7 +45,7 @@ function Option({
       <label>
         <input
           type="checkbox"
-          className="checkbox"
+          className="checkbox "
           checked={question.correctOption === index}
           onChange={(e) => {
             const newQuestion = structuredClone(question);
@@ -263,10 +264,18 @@ export default function Questions() {
 
             {/* MCQ details table */}
             <div className="overflow-x-auto">
-              <table className="table">
+              <table className="table break-all w-full ">
                 <thead>
                   <tr>
-                    <th className="checkBox">Correct Options</th>
+                    <th
+                      className={classnames(
+                        "whitespace-nowrap max-w-xs min-w-0 break-words truncate",
+                        styles.heading
+                      )}
+                    >
+                      Correct Option
+                    </th>
+
                     <th className="OptionBox">Options</th>
                   </tr>
                 </thead>

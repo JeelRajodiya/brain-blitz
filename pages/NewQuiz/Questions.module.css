@@ -2,4 +2,11 @@
   .mobileFonts {
     font-size: 1em;
   }
+  .heading {
+    max-width: 5ch !important;
+  }
+}
+
+.heading {
+  max-width: 20ch;
 }
