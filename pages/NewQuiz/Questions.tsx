@@ -20,7 +20,7 @@ const IndexEntry = ({
     }`}
   >
     <td
-      className="m-2 cursor-pointer hover:bg-secondary-focus rounded-lg"
+      className="m-2 cursor-pointer border hover:bg-secondary-focus rounded-lg"
       onClick={() => setActiveQuestion(index + 1)}
     >
       {name}
