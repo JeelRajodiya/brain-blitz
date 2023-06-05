@@ -80,6 +80,12 @@ function Option({
 }
 
 function DifficultyTags() {
+  const [difficultyRating, setDifficultyRating] = useState(0);
+
+  const toggleDifficultyRating = (n: number) => {
+    setDifficultyRating(n);
+  };
+
   return (
     <>
       {/* Divider */}
@@ -100,6 +106,7 @@ function DifficultyTags() {
               type="radio"
               name="options"
               aria-label="Easy"
+              onClick={() => toggleDifficultyRating(1)}
             />
             <input
               className="tooltip tooltip-warning tooltip-top join-item bigRad radio checked:bg-yellow-500"
@@ -107,6 +114,7 @@ function DifficultyTags() {
               type="radio"
               name="options"
               aria-label="Moderate"
+              onClick={() => toggleDifficultyRating(2)}
             />
             <input
               className="tooltip tooltip-error tooltip-top join-item bigRad radio checked:bg-red-500"
@@ -114,6 +122,7 @@ function DifficultyTags() {
               type="radio"
               name="options"
               aria-label="Hard"
+              onClick={() => toggleDifficultyRating(3)}
             />
           </div>
         </div>
@@ -133,6 +142,7 @@ type Question = {
 
 export default function Questions() {
   const router = useRouter();
+
   const {
     title,
     difficultyTags,
@@ -142,11 +152,13 @@ export default function Questions() {
     markForCorrect,
     markForIncorrect,
   } = router.query;
+
   const emptyQuestion = {
     question: "",
     options: [],
     correctOption: 0,
   };
+
   const [questions, setQuestions] = useState<Question[]>([emptyQuestion]);
   const [question, setQuestion] = useState<Question>(emptyQuestion);
   const [activeQuestion, setActiveQuestion] = useState(1);
