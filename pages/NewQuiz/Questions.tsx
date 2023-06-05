@@ -180,9 +180,7 @@ export default function Questions() {
           {/* Question Panel Div */}
           <div className="w-2/5">
             <div className="flex flex-row mt-4 justify-between">
-              <h1
-                className={["flex", "text-2xl", styles.mobileFonts].join(" ")}
-              >
+              <h1 className={classnames("flex text-2xl", styles.mobileFonts)}>
                 Question panel
               </h1>
               {/* removed the not used add question button */}
@@ -228,9 +226,11 @@ export default function Questions() {
           {/* Question Form Div */}
           <div className="w-3/5">
             <div className="flex flex-row justify-between items-center">
-              <h1 className="text-2xl mb-4">Question:</h1>
+              <h1 className={classnames("text-2xl mb-4", styles.mobileFonts)}>
+                Question: {activeQuestion}
+              </h1>
               <button
-                className="btn mb-4 btn-outline btn-success"
+                className="btn mb-4 btn-outline btn-success btn-sm"
                 onClick={() => {
                   const newQuestions = structuredClone(questions);
                   if (activeQuestion == questions.length) {
