@@ -207,9 +207,10 @@ export default function Questions() {
                       const newQuestions = structuredClone(questions);
                       let newQuestion = structuredClone(question);
                       newQuestions.splice(index + 1, 1);
+
                       newQuestion = newQuestions[index];
-                      setActiveQuestion(index !== 0 ? index : 0);
-                      setQuestion(newQuestion);
+                      setActiveQuestion(index !== 0 ? index : 1);
+                      //   setQuestion(newQuestion);
                       setQuestions(newQuestions);
                     }}
                   />
