@@ -9,6 +9,7 @@ export default function Dashboard() {
       <button className="btn btn-wide btn-modified btn-primary mt-5">
         View Previous Reports
       </button>
+      
     </Layout>
   );
 }

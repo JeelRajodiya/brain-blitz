@@ -80,12 +80,6 @@ function Option({
 }
 
 function DifficultyTags() {
-  const [difficulty, setDifficulty] = useState(0);
-
-  const toggleDifficulty = (selectedDifficulty:number) => {
-    setDifficulty(selectedDifficulty);
-  };
-
   return (
     <>
       {/* Divider */}
@@ -93,43 +87,37 @@ function DifficultyTags() {
 
       <h1 className="text-2xl mb-4">Question Settings:</h1>
       <div>
-        {/* Difficulty tag */}
-        <div className="flex justify-between m-5">
+        {/* -----------Difficulty tag------------------ */}
+        <div className="flex flex-row justify-between m-5">
           <label className="label m-5">
             <span className="txtf label-text">Difficulty </span>
           </label>
-          {/* Updated to add different colors based on the selected difficulty */}
 
-          <div className="join m-5">
+          <div className="join m-5 mt-6">
             <input
-              className={`join-item btn ${
-                difficulty === 1 ? "bg-green-500" : ""
-              }`}
+              className="tooltip tooltip-success tooltip-top join-item bigRad radio checked:bg-green-500"
+              data-tip="Easy"
               type="radio"
               name="options"
               aria-label="Easy"
-              onClick={() => toggleDifficulty(1)}
             />
             <input
-              className={`join-item btn ${
-                difficulty === 2 ? "bg-yellow-500" : ""
-              }`}
+              className="tooltip tooltip-warning tooltip-top join-item bigRad radio checked:bg-yellow-500"
+              data-tip="Moderate"
               type="radio"
               name="options"
               aria-label="Moderate"
-              onClick={() => toggleDifficulty(2)}
             />
             <input
-              className={`join-item btn ${
-                difficulty === 3 ? "bg-red-500" : ""
-              }`}
+              className="tooltip tooltip-error tooltip-top join-item bigRad radio checked:bg-red-500"
+              data-tip="Hard"
               type="radio"
               name="options"
               aria-label="Hard"
-              onClick={() => toggleDifficulty(3)}
             />
           </div>
         </div>
+        {/* ---------------------------------------- */}
       </div>
     </>
   );
