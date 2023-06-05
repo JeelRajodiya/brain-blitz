@@ -15,15 +15,16 @@ const IndexEntry = ({
   deleteFunction,
 }) => (
   <tr
-    className={`flex items-center justify-between rounded-lg select-none ${
-      activeQuestion === index + 1 ? "bg-base-200" : ""
+    className={`flex items-center rounded-lg select-none ${
+      activeQuestion === index + 1 ? 'bg-base-200' : ''
     }`}
   >
     <td
-      className="m-2 cursor-pointer border hover:bg-base-200 rounded-lg"
+      className="py-2 cursor-pointer border hover:bg-accent rounded-lg flex-grow m-2 hover:text-black hover:font-semibold"
+      style={{borderColor: 'transparent'}}
       onClick={() => setActiveQuestion(index + 1)}
     >
-      {name}
+      <span className="">{name}</span>
     </td>
     <td>
       <DeleteButton onClick={() => deleteFunction(index, setActiveQuestion)} />
