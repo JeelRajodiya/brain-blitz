@@ -169,7 +169,6 @@ export default function Questions() {
   const [activeQuestion, setActiveQuestion] = useState(1);
 
   React.useEffect(() => {
-    console.log(activeQuestion);
     setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
 
