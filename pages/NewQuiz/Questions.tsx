@@ -79,9 +79,12 @@ function Option({
   );
 }
 
-// function for the difficulty tags:
 function DifficultyTags() {
   const [difficulty, setDifficulty] = useState(0);
+
+  const toggleDifficulty = (selectedDifficulty:number) => {
+    setDifficulty(selectedDifficulty);
+  };
 
   return (
     <>
@@ -95,7 +98,8 @@ function DifficultyTags() {
           <label className="label m-5">
             <span className="txtf label-text">Difficulty </span>
           </label>
-          {/* Tried to color the tag: */}
+          {/* Updated to add different colors based on the selected difficulty */}
+
           <div className="join m-5">
             <input
               className={`join-item btn ${
@@ -104,7 +108,7 @@ function DifficultyTags() {
               type="radio"
               name="options"
               aria-label="Easy"
-              onClick={() => setDifficulty(1)}
+              onClick={() => toggleDifficulty(1)}
             />
             <input
               className={`join-item btn ${
@@ -113,7 +117,7 @@ function DifficultyTags() {
               type="radio"
               name="options"
               aria-label="Moderate"
-              onClick={() => setDifficulty(2)}
+              onClick={() => toggleDifficulty(2)}
             />
             <input
               className={`join-item btn ${
@@ -122,7 +126,7 @@ function DifficultyTags() {
               type="radio"
               name="options"
               aria-label="Hard"
-              onClick={() => setDifficulty(3)}
+              onClick={() => toggleDifficulty(3)}
             />
           </div>
         </div>
