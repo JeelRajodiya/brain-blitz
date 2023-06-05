@@ -21,7 +21,7 @@ const IndexEntry = ({
   >
     <td
       className="py-2 cursor-pointer border hover:bg-accent rounded-lg flex-grow m-2 hover:text-black hover:font-semibold"
-      style={{borderColor: 'transparent'}}
+      style={{borderColor: "white", borderWidth: "1px"}}
       onClick={() => setActiveQuestion(index + 1)}
     >
       <span className="">{name}</span>
