@@ -141,6 +141,12 @@
   width: 90%;
 }
 
+.btnTransparent{
+  background-color: transparent;
+  cursor: pointer;
+  font-size: larger;
+}
+
 /* -------------------RADIO BIX ONLY---------------------- */
 .bigRad{
   width :70px;
