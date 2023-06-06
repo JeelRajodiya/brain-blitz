@@ -23,13 +23,13 @@ export default function Layout({ children, pageTitle }) {
   return (
     <div className="flex justify-center flex-col center">
       <div
-        className="navbar bg-base-200 rounded-lg p-3 shadow-md   mb-4"
+        className="navbar bg-base-200 rounded-lg p-3 shadow-md mb-4"
         style={{ zIndex: "999" }}
       >
         <div className="flex-1">
           <div className="center">
             <h1
-              className="text-3xl font-bold cursor-pointer"
+              className="text-3xl btn btn-md font-bold cursor-pointer"
               onClick={() => router.push("/Dashboard")}
             >
               <span className="animate-fire">Brain</span>

@@ -47,13 +47,15 @@
   gap: 15px; /* Adjust the value as needed for the desired gap */
 }
 
-.btn-modified{
-  width : 250px;
-  height: 100px;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: larger;
+@media (min-width: 768px) {
+  .btn-modified {
+    width: 250px;
+    height: 100px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: larger;
+  }
 }
 
 .joinq {
