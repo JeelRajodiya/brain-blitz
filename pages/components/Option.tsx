@@ -4,6 +4,7 @@ export type Question = {
   options: string[];
   correctOption: number;
   difficulty?: number;
+  quizId?: string;
 };
 
 export default function Option({

@@ -10,7 +10,29 @@ import QuestionsIndexEntry from "../components/QuestionsIndexEntry";
 import type { Question } from "../components/Option";
 import Option from "../components/Option";
 // type for each question:
-
+async function postQuestions(
+  questions: Question[],
+  quizId: string,
+  router: any
+) {
+  questions.map((q) => {
+    q.quizId = quizId;
+  });
+  const res = fetch("/api/createQuestions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(questions),
+  });
+  res.then((res) => {
+    if (res.status != 200) {
+      alert("Error in creating quiz");
+      return;
+    }
+    router.push(`/Dashboard`);
+  });
+}
 export default function Questions() {
   const router = useRouter();
 
@@ -22,6 +44,7 @@ export default function Questions() {
     timeForAQuestion,
     markForCorrect,
     markForIncorrect,
+    quizId,
   } = router.query;
 
   const emptyQuestion = {
@@ -85,7 +108,12 @@ export default function Questions() {
                 ))}
               </tbody>
             </table>
-            <button className="btn btn-success mt-4 mb-4 w-full btn-wide text-center">
+            <button
+              className="btn btn-success mt-4 mb-4 w-full btn-wide text-center"
+              onClick={() => {
+                postQuestions(questions, quizId as string, router);
+              }}
+            >
               Save Quiz
             </button>
           </div>
