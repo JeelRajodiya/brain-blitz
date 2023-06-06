@@ -9,6 +9,7 @@ import DifficultyTags from "../components/DifficultyTags";
 import QuestionsIndexEntry from "../components/QuestionsIndexEntry";
 import type { Question } from "../components/Option";
 import Option from "../components/Option";
+
 // type for each question:
 async function postQuestions(
   questions: Question[],
@@ -36,6 +37,7 @@ async function postQuestions(
     router.push(`/Dashboard`);
   });
 }
+
 export default function Questions() {
   const router = useRouter();
 
