@@ -5,155 +5,11 @@ import DeleteButton from "../components/DeleteButton";
 import { useState, useEffect } from "react";
 import styles from "./Questions.module.css";
 import classnames from "classnames";
-
-// The following are the entries of the Question Panel Table:
-const IndexEntry = ({
-  name,
-  setActiveQuestion,
-  activeQuestion,
-  index,
-  deleteFunction,
-}) => (
-  <tr
-    className={`flex items-center rounded-lg select-none ${
-      activeQuestion === index + 1 ? 'bg-base-200' : ''
-    }`}
-  >
-    <td
-      className="py-2 cursor-pointer border hover:bg-accent rounded-lg flex-grow m-2 hover:text-black hover:font-semibold"
-      style={{borderColor: "white", borderWidth: "1px"}}
-      onClick={() => setActiveQuestion(index + 1)}
-    >
-      <span className="">{name}</span>
-    </td>
-    <td>
-      <DeleteButton onClick={() => deleteFunction(index, setActiveQuestion)} />
-    </td>
-  </tr>
-);
-
-// Function for the poll:
-function Option({
-  isPoll,
-  question,
-  setQuestion,
-  index,
-}: {
-  isPoll: boolean;
-  question: Question;
-  setQuestion: Function;
-  index: number;
-}) {
-  const checkBox = (
-    <td className="checkBox">
-      <label>
-        <input
-          type="checkbox"
-          className="checkbox "
-          checked={question.correctOption === index}
-          onChange={(e) => {
-            const newQuestion = structuredClone(question);
-            if (e.target.checked) {
-              newQuestion.correctOption = index;
-            } else {
-              newQuestion.correctOption = -1;
-            }
-            setQuestion(newQuestion);
-          }}
-        />
-      </label>
-    </td>
-  );
-  return (
-    <tr>
-      {!isPoll ? checkBox : null}
-
-      <td className="OptionBox">
-        <input
-          type="text"
-          placeholder="Type option here"
-          className="input input-bordered input-primary w-full"
-          value={question.options[index] ? question.options[index] : ""}
-          onChange={(e) => {
-            const newQuestion = structuredClone(question);
-            newQuestion.options[index] = e.target.value;
-            setQuestion(newQuestion);
-          }}
-        />
-      </td>
-    </tr>
-  );
-}
-
-function DifficultyTags() {
-  const [difficultyRating, setDifficultyRating] = useState(1); // Set the default difficulty rating to 1 (Easy)
-
-  const toggleDifficultyRating = (n) => {
-    setDifficultyRating(n);
-  };
-
-  return (
-    <>
-      {/* Divider */}
-      <div className="divider"></div>
-
-      <h1 className="text-2xl mb-4">Question Settings:</h1>
-      <div>
-        {/* -----------Difficulty tag------------------ */}
-        <div className="flex flex-row justify-between m-5">
-          <label className="label m-5">
-            <span className="txtf label-text">Difficulty </span>
-          </label>
-
-          <div className="join m-5 mt-6">
-            <input
-              className={`tooltip tooltip-success tooltip-top join-item bigRad radio ${
-                difficultyRating === 1 ? "checked:bg-green-500" : ""
-              }`}
-              data-tip="Easy"
-              type="radio"
-              name="options"
-              aria-label="Easy"
-              onClick={() => toggleDifficultyRating(1)}
-              defaultChecked={difficultyRating === 1} // Set the "Easy" radio button as defaultChecked
-            />
-            <input
-              className={`tooltip tooltip-warning tooltip-top join-item bigRad radio ${
-                difficultyRating === 2 ? "checked:bg-yellow-500" : ""
-              }`}
-              data-tip="Moderate"
-              type="radio"
-              name="options"
-              aria-label="Moderate"
-              onClick={() => toggleDifficultyRating(2)}
-              defaultChecked={difficultyRating === 2} // Set the "Moderate" radio button as defaultChecked
-            />
-            <input
-              className={`tooltip tooltip-error tooltip-top join-item bigRad radio ${
-                difficultyRating === 3 ? "checked:bg-red-500" : ""
-              }`}
-              data-tip="Hard"
-              type="radio"
-              name="options"
-              aria-label="Hard"
-              onClick={() => toggleDifficultyRating(3)}
-              defaultChecked={difficultyRating === 3} // Set the "Hard" radio button as defaultChecked
-            />
-          </div>
-        </div>
-        {/* ---------------------------------------- */}
-      </div>
-    </>
-  );
-}
-
+import DifficultyTags from "../components/DifficultyTags";
+import QuestionsIndexEntry from "../components/QuestionsIndexEntry";
+import type { Question } from "../components/Option";
+import Option from "../components/Option";
 // type for each question:
-type Question = {
-  question: string;
-  options: string[];
-  correctOption: number;
-  difficulty?: number;
-};
 
 export default function Questions() {
   const router = useRouter();
@@ -209,7 +65,7 @@ export default function Questions() {
 
               <tbody>
                 {questions.map((i, n) => (
-                  <IndexEntry
+                  <QuestionsIndexEntry
                     activeQuestion={activeQuestion}
                     setActiveQuestion={setActiveQuestion}
                     name={`Question ${n + 1}`}
