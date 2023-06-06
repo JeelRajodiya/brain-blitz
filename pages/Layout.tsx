@@ -20,6 +20,10 @@ export default function Layout({ children, pageTitle }) {
     setDropdown(!dropdown);
   };
 
+  const toDashboard = () => {
+    router.push("/Dashboard");
+  };
+
   return (
     <div className="flex justify-center flex-col center">
       <div
@@ -29,8 +33,8 @@ export default function Layout({ children, pageTitle }) {
         <div className="flex-1">
           <div className="center">
             <h1
-              className="text-3xl btn btn-md font-bold cursor-pointer"
-              onClick={() => router.push("/Dashboard")}
+              className="text-3xl font-bold cursor-pointer"
+              onClick={toDashboard}
             >
               <span className="animate-fire">Brain</span>
               <span className="animate-fire">Blitz</span>
