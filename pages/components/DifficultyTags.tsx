@@ -1,9 +1,14 @@
 import { useState } from "react";
-export default function DifficultyTags() {
-  const [difficultyRating, setDifficultyRating] = useState(1); // Set the default difficulty rating to 1 (Easy)
-
+import { Question } from "./Option";
+export default function DifficultyTags({
+  difficulty,
+  setDifficulty,
+}: {
+  difficulty: number;
+  setDifficulty: any;
+}) {
   const toggleDifficultyRating = (n) => {
-    setDifficultyRating(n);
+    setDifficulty(n);
   };
 
   return (
@@ -22,36 +27,36 @@ export default function DifficultyTags() {
           <div className="join m-5 mt-6">
             <input
               className={`tooltip tooltip-success tooltip-top join-item bigRad radio ${
-                difficultyRating === 1 ? "checked:bg-green-500" : ""
+                difficulty === 1 ? "checked:bg-green-500" : ""
               }`}
               data-tip="Easy"
               type="radio"
               name="options"
               aria-label="Easy"
               onClick={() => toggleDifficultyRating(1)}
-              defaultChecked={difficultyRating === 1} // Set the "Easy" radio button as defaultChecked
+              defaultChecked={difficulty === 1} // Set the "Easy" radio button as defaultChecked
             />
             <input
               className={`tooltip tooltip-warning tooltip-top join-item bigRad radio ${
-                difficultyRating === 2 ? "checked:bg-yellow-500" : ""
+                difficulty === 2 ? "checked:bg-yellow-500" : ""
               }`}
               data-tip="Moderate"
               type="radio"
               name="options"
               aria-label="Moderate"
               onClick={() => toggleDifficultyRating(2)}
-              defaultChecked={difficultyRating === 2} // Set the "Moderate" radio button as defaultChecked
+              defaultChecked={difficulty === 2} // Set the "Moderate" radio button as defaultChecked
             />
             <input
               className={`tooltip tooltip-error tooltip-top join-item bigRad radio ${
-                difficultyRating === 3 ? "checked:bg-red-500" : ""
+                difficulty === 3 ? "checked:bg-red-500" : ""
               }`}
               data-tip="Hard"
               type="radio"
               name="options"
               aria-label="Hard"
               onClick={() => toggleDifficultyRating(3)}
-              defaultChecked={difficultyRating === 3} // Set the "Hard" radio button as defaultChecked
+              defaultChecked={difficulty === 3} // Set the "Hard" radio button as defaultChecked
             />
           </div>
         </div>

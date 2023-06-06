@@ -162,7 +162,18 @@ export default function Questions() {
                 </tbody>
               </table>
 
-              {difficultyTags == "true" ? <DifficultyTags /> : ""}
+              {difficultyTags == "true" ? (
+                <DifficultyTags
+                  difficulty={question.difficulty}
+                  setDifficulty={(d) => {
+                    const newQuestion = structuredClone(question);
+                    newQuestion.difficulty = d;
+                    setQuestion(newQuestion);
+                  }}
+                />
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
