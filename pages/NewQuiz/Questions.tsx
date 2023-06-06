@@ -58,7 +58,7 @@ export default function Questions() {
             <table className="table ">
               <thead>
                 <tr className="grid grid-cols-2">
-                  <th className="justify-self-start">Name</th>
+                  <th className="justify-self-start ">Name</th>
                   <th className="justify-self-end">Action</th>
                 </tr>
               </thead>

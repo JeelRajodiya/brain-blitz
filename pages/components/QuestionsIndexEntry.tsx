@@ -10,18 +10,18 @@ export default function QuestionsIndexEntry({
 }) {
   return (
     <tr
-      className={`flex items-center rounded-lg select-none ${
+      className={`flex items-center rounded-lg  w-full select-none ${
         activeQuestion === index + 1 ? "bg-base-200" : ""
       }`}
     >
       <td
-        className="py-2 cursor-pointer border hover:bg-accent rounded-lg flex-grow m-2 hover:text-black hover:font-semibold"
-        style={{ borderColor: "white", borderWidth: "1px" }}
+        className="py-3 cursor-pointer hover:bg-primary hover:text-white border-white  rounded-lg flex-grow m-0 hover:font-semibold ${
+        "
         onClick={() => setActiveQuestion(index + 1)}
       >
         <span className="">{name}</span>
       </td>
-      <td>
+      <td className="">
         <DeleteButton
           onClick={() => deleteFunction(index, setActiveQuestion)}
         />
