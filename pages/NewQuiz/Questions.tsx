@@ -180,7 +180,7 @@ export default function Questions() {
                     return (
                       <Option
                         key={i}
-                        index={i}
+                        index={i - 1}
                         question={question}
                         setQuestion={setQuestion}
                         isPoll={isPolls == "true" ? true : false}
