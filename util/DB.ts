@@ -10,6 +10,7 @@ export type QuizCol = {
   timeForAQuestion: number; // in seconds, 5 means you have 5 seconds to solve each question, default 30s
   markForCorrect: number; // default +4
   markForIncorrect: number; // default -1
+  createdAt: Date;
 };
 
 type UserCol = {
