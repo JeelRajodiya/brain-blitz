@@ -47,7 +47,7 @@ export default function Option({
           type="text"
           placeholder="Type option here"
           className="input input-bordered input-primary w-full"
-          value={question.options[index] ? question.options[index] : ""}
+          value={question?.options[index] ? question.options[index] : ""}
           onChange={(e) => {
             const newQuestion = structuredClone(question);
             newQuestion.options[index] = e.target.value;

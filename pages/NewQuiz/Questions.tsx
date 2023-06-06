@@ -112,7 +112,7 @@ export default function Questions() {
               </tbody>
             </table>
             <button
-              className="btn btn-success mt-4 mb-4 w-full btn-wide text-center"
+              className="btn btn-success mt-4 mb-4  btn-wide text-center"
               onClick={() => {
                 postQuestions(questions, quizId as string, router);
               }}
