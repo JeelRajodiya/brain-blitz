@@ -24,7 +24,7 @@ export default function Option({
         <input
           type="checkbox"
           className="checkbox "
-          checked={question.correctOption === index}
+          checked={question?.correctOption === index}
           onChange={(e) => {
             const newQuestion = structuredClone(question);
             if (e.target.checked) {
