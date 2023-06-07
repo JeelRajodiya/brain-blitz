@@ -10,25 +10,17 @@ type QuizList = {
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   return (
     <div className="flex flex-col mt-10">
-      <div
-        className="flex flex-row justify-between displayTable border-b-2 text-lg bg-base-200"
-        style={{
-          fontWeight: "bold",
-          borderBottomRightRadius: "0",
-          borderBottomLeftRadius: "0",
-        }}
-      >
+      <div className={styles.tableHeading}>
         <div className="p-2">Title</div>
         <div className="p-2">Code</div>
         <div className="p-2">Created At</div>
       </div>
 
       {quizList.map((quiz, index) => {
-        const isOdd = index % 2 === 1;
         return (
           <div
             className={classNames(
-              `flex flex-row  justify-between ${isOdd ? "bg-base-200" : ""}`,
+              `flex flex-row  justify-between `,
               styles.displayTable
             )}
             key={quiz.id}
