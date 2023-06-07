@@ -57,19 +57,21 @@ export default function NewQuiz() {
         <div className="flex flex-col ">
           <div className="flex justify-between">
             <label className="label m-5">
-              <span className=" txtf label-text">Quiz Name</span>
+              <span className=" text-lg label-text">Quiz Name</span>
             </label>
             <input
               type="text"
               placeholder="My awesome quiz"
-              className="txtin m-5 input input-accent input-bordered"
+              className="text-sm m-5 input input-accent input-bordered"
               value={quizName}
               onChange={(e) => setQuizName(e.target.value)}
             />
           </div>
           <div className="flex justify-between">
             <label className="label m-5">
-              <span className=" txtf label-text">Enable Difficultly Tags </span>
+              <span className=" text-lg label-text">
+                Enable Difficultly Tags{" "}
+              </span>
             </label>
             <input
               type="checkbox"
@@ -82,7 +84,7 @@ export default function NewQuiz() {
           </div>
           <div className="flex justify-between">
             <label className="label m-5">
-              <span className=" txtf label-text">Enable Polls </span>
+              <span className=" text-lg label-text">Enable Polls </span>
             </label>
             <input
               type="checkbox"
@@ -95,7 +97,7 @@ export default function NewQuiz() {
           </div>
           <div className="flex justify-between">
             <label className="label m-5">
-              <span className=" txtf label-text">Jump Questions </span>
+              <span className=" text-lg label-text">Jump Questions </span>
             </label>
             <input
               type="checkbox"
@@ -108,7 +110,7 @@ export default function NewQuiz() {
           </div>
           <div className="flex justify-between">
             <label className="label m-5">
-              <span className=" txtf label-text">
+              <span className=" text-lg label-text">
                 Default time for a question{" "}
               </span>
             </label>
@@ -124,7 +126,7 @@ export default function NewQuiz() {
           </div>
           <div className="flex justify-between">
             <label className="label m-5">
-              <span className=" txtf label-text">
+              <span className=" text-lg label-text">
                 Default marks for correct{" "}
               </span>
             </label>
@@ -140,7 +142,7 @@ export default function NewQuiz() {
           </div>
           <div className="flex justify-between">
             <label className="label m-5">
-              <span className=" txtf label-text">
+              <span className=" text-lg label-text">
                 Default marks for incorrect{" "}
               </span>
             </label>
@@ -156,9 +158,9 @@ export default function NewQuiz() {
           </div>
         </div>
 
-        <div className="bb  justify-end">
+        <div className="justify-end items-end flex">
           <button
-            className="btn btn-primary w-48 h-20"
+            className="btn btn-primary w-48 h-20 "
             disabled={!quizName}
             onClick={createQuiz}
           >
