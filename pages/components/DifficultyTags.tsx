@@ -26,7 +26,7 @@ export default function DifficultyTags({
 
           <div className="join m-5 mt-6">
             <input
-              className={`tooltip tooltip-success tooltip-top join-item bigRad radio ${
+              className={`tooltip tooltip-success tooltip-top join-item w-16 h-10 radio ${
                 difficulty === 1 ? "checked:bg-green-500" : ""
               }`}
               data-tip="Easy"
@@ -37,7 +37,7 @@ export default function DifficultyTags({
               defaultChecked={difficulty === 1} // Set the "Easy" radio button as defaultChecked
             />
             <input
-              className={`tooltip tooltip-warning tooltip-top join-item bigRad radio ${
+              className={`tooltip tooltip-warning tooltip-top join-item w-16 h-10 radio ${
                 difficulty === 2 ? "checked:bg-yellow-500" : ""
               }`}
               data-tip="Moderate"
@@ -48,7 +48,7 @@ export default function DifficultyTags({
               defaultChecked={difficulty === 2} // Set the "Moderate" radio button as defaultChecked
             />
             <input
-              className={`tooltip tooltip-error tooltip-top join-item bigRad radio ${
+              className={`tooltip tooltip-error tooltip-top join-item w-16 h-10 radio ${
                 difficulty === 3 ? "checked:bg-red-500" : ""
               }`}
               data-tip="Hard"

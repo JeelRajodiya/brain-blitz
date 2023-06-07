@@ -12,12 +12,6 @@
   padding-right: 10px;
 }
 
-/* -------------------RADIO BIX ONLY---------------------- */
-.bigRad {
-  width: 70px;
-  height: 40px;
-}
-
 /* firey animation */
 @keyframes burn {
   0% {
