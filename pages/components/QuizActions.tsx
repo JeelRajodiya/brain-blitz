@@ -1,5 +1,14 @@
 import * as React from "react";
 import { useRouter } from "next/router";
+import UserQuizList from "./UserQuizList";
+
+async function fetchQuizList() {
+  const res = await fetch("/api/listUserQuizzes", {
+    method: "GET",
+  });
+  const json = await res.json();
+  return json;
+}
 declare const window: Window &
   typeof globalThis & {
     my_modal_3: {
@@ -15,6 +24,13 @@ function QuizForm() {
   const router = useRouter();
 
   const [quizCode, setQuizCode] = React.useState("");
+  const [quizList, setQuizList] = React.useState([]);
+
+  React.useEffect(() => {
+    fetchQuizList().then((res) => {
+      setQuizList(res);
+    });
+  }, []);
   React.useEffect(() => {
     if (router.query.quizCode) {
       setQuizCode(router.query.quizCode as string);
@@ -98,6 +114,7 @@ function QuizForm() {
           Create Quiz
         </button>
       </div>
+      {quizList ? <UserQuizList quizList={quizList} /> : ""}
     </div>
   );
 }
