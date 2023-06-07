@@ -11,7 +11,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   return (
     <div className="flex flex-col mt-10">
       <div
-        className="flex flex-row justify-between displayTable border-b-2 text-xl bg-base-200"
+        className="flex flex-row justify-between displayTable border-b-2 text-lg bg-base-200"
         style={{
           fontWeight: "bold",
           borderBottomRightRadius: "0",
@@ -33,7 +33,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
             )}
             key={quiz.id}
           >
-            <div className="p-2 justify-self-start">{quiz.title}</div>
+            <div className="p-2 justify-self-start truncate ">{quiz.title}</div>
             <div className="p-2 justify-self-center">{quiz.code}</div>
             <div className="p-2 justify-self-end">
               {new Date(quiz.createdAt).toLocaleDateString(undefined, {

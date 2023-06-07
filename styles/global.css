@@ -42,12 +42,38 @@
 }
 
 /* ------------------------------- QUESTION FORM---------------------------------------------------- */
-.questionForm {
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+@media (max-width: 768px) {
+  .questionForm {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .questionForm > * {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .questionForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px;
+  }
+
+  .questionForm > * {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px;
+  }
 }
 
 /* to make children of this class */
