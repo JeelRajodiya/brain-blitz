@@ -5,6 +5,18 @@ import { useRouter } from "next/router";
 export default function QuizCode() {
   const router = useRouter();
   const { code } = router.query;
+  // let text: string = {code};
+
+  const copyCode = () => {
+    navigator.clipboard
+      .writeText(code as string)
+      .then(() => {
+        alert("Code copied to clipboard");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     // @ts-ignore
@@ -26,6 +38,7 @@ export default function QuizCode() {
               <button
                 className="btn btn-primary tooltip tooltip-left tooltip-info"
                 data-tip="Copy code to clipboard"
+                onClick={copyCode}
               >
                 {/* 📋 */}
                 <svg
