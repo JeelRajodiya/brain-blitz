@@ -18,6 +18,17 @@ export default function QuizCode() {
       });
   };
 
+  const copyLink = () => {
+    navigator.clipboard
+      .writeText(window.location.href)
+      .then(() => {
+        alert("Link copied to clipboard");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     // @ts-ignore
     <Layout>
@@ -58,6 +69,7 @@ export default function QuizCode() {
               <button
                 className="btn btn-accent tooltip tooltip-right tooltip-info"
                 data-tip="Copy link to clipboard"
+                onClick={copyLink}
               >
                 {/* share icon here */}
                 <svg
