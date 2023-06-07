@@ -7,21 +7,35 @@ type QuizList = {
 };
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   return (
-    <div className="flex flex-col">
-      <div className="  flex flex-row justify-between">
-        <div>Title</div>
-        <div>Code</div>
-        <div>Created At</div>
+    <div className="flex flex-col mt-10">
+      <div
+        className="flex flex-row justify-between displayTable border-b-2 text-xl bg-base-200"
+        style={{
+          fontWeight: "bold",
+          borderBottomRightRadius: "0",
+          borderBottomLeftRadius: "0",
+        }}
+      >
+        <div className="p-2">Title</div>
+        <div className="p-2">Code</div>
+        <div className="p-2">Created At</div>
       </div>
+
       {quizList.map((quiz, index) => {
+        const isOdd = index % 2 === 1;
         return (
-          <div className="flex flex-row justify-between" key={quiz.id}>
-            <div>{quiz.title}</div>
-            <div>{quiz.code}</div>
-            <div>
+          <div
+            className={`flex flex-row displayTable justify-between ${
+              isOdd ? "bg-base-200" : ""
+            }`}
+            key={quiz.id}
+          >
+            <div className="p-2 justify-self-start">{quiz.title}</div>
+            <div className="p-2 justify-self-center">{quiz.code}</div>
+            <div className="p-2 justify-self-end">
               {new Date(quiz.createdAt).toLocaleDateString(undefined, {
-                year: "numeric", // Display the full year (e.g., "2023")
-                month: "long", // Display the full month name (e.g., "January")
+                year: "numeric",
+                month: "long",
                 day: "numeric",
               })}
             </div>
