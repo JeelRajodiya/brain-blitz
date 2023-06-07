@@ -27,7 +27,7 @@ export default function QuizCode() {
                 className="btn btn-primary tooltip tooltip-left tooltip-info"
                 data-tip="Copy code to clipboard"
               >
-                {/* clipboard icon here */}
+                {/* 📋 */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
