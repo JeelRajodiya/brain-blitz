@@ -21,8 +21,8 @@ export default function LandingPage() {
       <div className="hero-content flex-col lg:flex-row">
         <div className="text-center lg:text-left lg:w-1/2">
           <h1 className="text-7xl font-bold">
-            <span className={styles["animate-fire"]}>Brain</span>
-            <span className={styles["animate-fire"]}>Blitz</span>
+            <span className="animate-fire">Brain</span>
+            <span className="animate-fire">Blitz</span>
           </h1>
           <br></br>
           <h1 className="text-4xl font-bold">Login now!</h1>

@@ -1,6 +1,6 @@
-import QuizForm from "./components/QuizActions";
+import QuizForm from "./../components/QuizActions";
 import * as React from "react";
-import Layout from "./Layout";
+import Layout from "../Layout";
 export default function Dashboard() {
   return (
     //@ts-ignore
@@ -9,7 +9,6 @@ export default function Dashboard() {
       {/* <button className="btn btn-wide btn-modified btn-primary mt-5">
         View Previous Reports
       </button> */}
-      
     </Layout>
   );
 }

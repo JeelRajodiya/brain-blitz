@@ -1,0 +1,38 @@
+/* ----------------------- DASHBOARD--------------------------- */
+
+/* the button group on dashboard */
+.joinB {
+  display: flex;
+  gap: 15px; /* Adjust the value as needed for the desired gap */
+}
+
+@media (min-width: 768px) {
+  .btn-modified {
+    width: 250px;
+    height: 100px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: larger;
+  }
+}
+
+.joinq {
+  background-color: #2f80ed; /* Blue color */
+  color: white;
+}
+
+.joinq:hover {
+  background-color: #1b4c8c; /* Darker blue color on hover */
+  color: white;
+}
+
+.create {
+  background-color: #e53e3e; /* Red color */
+  color: white;
+}
+
+.create:hover {
+  background-color: #b02424; /* Darker red color on hover */
+  color: white;
+}

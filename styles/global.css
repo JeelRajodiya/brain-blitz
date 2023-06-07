@@ -12,45 +12,6 @@
   padding-right: 10px;
 }
 
-/* ----------------------- DASHBOARD--------------------------- */
-
-/* the button group on dashboard */
-.joinB {
-  display: flex;
-  gap: 15px; /* Adjust the value as needed for the desired gap */
-}
-
-@media (min-width: 768px) {
-  .btn-modified {
-    width: 250px;
-    height: 100px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: larger;
-  }
-}
-
-.joinq {
-  background-color: #2f80ed; /* Blue color */
-  color: white;
-}
-
-.joinq:hover {
-  background-color: #1b4c8c; /* Darker blue color on hover */
-  color: white;
-}
-
-.create {
-  background-color: #e53e3e; /* Red color */
-  color: white;
-}
-
-.create:hover {
-  background-color: #b02424; /* Darker red color on hover */
-  color: white;
-}
-
 /* ----------------- NEW QUIZ FORM --------------------- */
 .txtf {
   font-size: 20px;
@@ -106,25 +67,6 @@
 .questionForm > :nth-child(3) {
   flex: 2;
 }
-/* ---------------- DASHBOARD TABLE------------------ */
-.displayTable {
-  display: flex;
-  flex-direction: row;
-  padding: 5px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-/* to make children of this class */
-.displayTable > * {
-  flex: 1;
-  margin: 0 10px; /* Add margin for gap */
-}
-
-.displayTable > *:last-child {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
 
 /* ----------------------MCQ ONLY--------------------------- */
 .checkBox {
@@ -145,4 +87,24 @@
 .bigRad {
   width: 70px;
   height: 40px;
+}
+
+/* firey animation */
+@keyframes burn {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-fire {
+  background-image: linear-gradient(90deg, #ff5722, #ffc107, #ff5722);
+  background-repeat: repeat;
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: burn 2s infinite;
 }

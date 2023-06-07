@@ -2,7 +2,8 @@ import * as React from "react";
 import { useRouter } from "next/router";
 import UserQuizList from "./UserQuizList";
 import UserQuizListSkeleton from "./UserQuizListSkeleton";
-
+import styles from "./QuizActions.module.css";
+import classNames from "classnames";
 async function fetchQuizList() {
   const res = await fetch("/api/listUserQuizzes", {
     method: "GET",
@@ -49,9 +50,12 @@ function QuizForm() {
 
   return (
     <div>
-      <div className="join joinB" style={{ marginTop: "40px" }}>
+      <div
+        className={classNames("join", styles.joinB)}
+        style={{ marginTop: "40px" }}
+      >
         <button
-          className="btn btn-modified joinq"
+          className={classNames("btn ", styles.joinq, styles["btn-modified"])}
           onClick={() => {
             router.push({
               pathname: "/Dashboard",
@@ -116,7 +120,7 @@ function QuizForm() {
         </dialog>
 
         <button
-          className="btn btn-modified create"
+          className={classNames("btn ", styles.create, styles["btn-modified"])}
           onClick={() => router.push("/NewQuiz")}
         >
           Create Quiz

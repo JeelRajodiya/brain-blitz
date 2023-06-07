@@ -1,4 +1,6 @@
 import * as React from "react";
+import styles from "./UserQuizList.module.css";
+import classNames from "classnames";
 type QuizList = {
   id: string;
   code: string;
@@ -25,9 +27,10 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
         const isOdd = index % 2 === 1;
         return (
           <div
-            className={`flex flex-row displayTable justify-between ${
-              isOdd ? "bg-base-200" : ""
-            }`}
+            className={classNames(
+              `flex flex-row  justify-between ${isOdd ? "bg-base-200" : ""}`,
+              styles.displayTable
+            )}
             key={quiz.id}
           >
             <div className="p-2 justify-self-start">{quiz.title}</div>
