@@ -9,7 +9,26 @@ export default function QuizCode() {
   return (
     // @ts-ignore
     <Layout>
-      <div className="flex flex-col">{code}</div>
+      <div
+        className="flex justify-center items-center transform translate-y-1/2"
+        style={{ scale: "1.2" }}
+      >
+        <div className="card w-96 bg-neutral text-neutral-content">
+          <div className="card-body items-center text-center">
+            <h1 className="card-title text-xl">Invite folks to your Quiz</h1>
+
+            <div className="stat mb-3">
+              <div className="stat-title">Quiz Code</div>
+              <div className="stat-value">{code}</div>
+            </div>
+
+            <div className="card-actions justify-end">
+              <button className="btn btn-primary">Copy Code</button>
+              <button className="btn btn-secondary">Copy Link</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 }
