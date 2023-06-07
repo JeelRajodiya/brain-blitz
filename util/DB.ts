@@ -11,6 +11,7 @@ export type QuizCol = {
   markForCorrect: number; // default +4
   markForIncorrect: number; // default -1
   createdAt: Date;
+  code: string;
 };
 
 type UserCol = {
