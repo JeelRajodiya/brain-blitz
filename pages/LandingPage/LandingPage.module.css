@@ -1,0 +1,29 @@
+/* ---------------------   LANDING PAGE   ------------------------------- */
+/* more intense colors in the landing page */
+.text-blue-400 {
+  color: hsl(200, 100%, 50%);
+}
+
+.text-red-400 {
+  color: hsl(0, 100%, 61%);
+}
+
+/* firey animation */
+@keyframes burn {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-fire {
+  background-image: linear-gradient(90deg, #ff5722, #ffc107, #ff5722);
+  background-repeat: repeat;
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: burn 2s infinite;
+}

@@ -8,36 +8,9 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  padding-left: 10px; 
+  padding-left: 10px;
   padding-right: 10px;
 }
-
-/* ---------------------   LANDING PAGE   ------------------------------- */
-/* more intense colors in the landing page */
-.text-blue-400 {
-  color: hsl(200, 100%, 50%);
-}
-
-.text-red-400 {
-  color: hsl(0, 100%, 61%);
-}
-
-/* firey animation */
-@keyframes burn {
-  0% { background-position: 0 0; }
-  100% { background-position: -200% 0; }
-}
-
-.animate-fire {
-  background-image: linear-gradient(90deg, #FF5722, #FFC107, #FF5722);
-  background-repeat: repeat;
-  background-size: 200% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: burn 2s infinite;
-}
-
 
 /* ----------------------- DASHBOARD--------------------------- */
 
@@ -59,37 +32,37 @@
 }
 
 .joinq {
-  background-color: #2F80ED; /* Blue color */
+  background-color: #2f80ed; /* Blue color */
   color: white;
 }
 
 .joinq:hover {
-  background-color: #1B4C8C; /* Darker blue color on hover */
+  background-color: #1b4c8c; /* Darker blue color on hover */
   color: white;
 }
 
 .create {
-  background-color: #E53E3E; /* Red color */
+  background-color: #e53e3e; /* Red color */
   color: white;
 }
 
 .create:hover {
-  background-color: #B02424; /* Darker red color on hover */
+  background-color: #b02424; /* Darker red color on hover */
   color: white;
 }
 
 /* ----------------- NEW QUIZ FORM --------------------- */
-.txtf{
+.txtf {
   font-size: 20px;
 }
 
-.txtin{
+.txtin {
   font-size: 15px;
 }
 
-.bb{
+.bb {
   display: flex;
-  justify-content:flex-end; 
+  justify-content: flex-end;
   align-items: flex-end;
 }
 
@@ -118,7 +91,7 @@
 
 /* to make children of this class */
 .questionForm > * {
-  flex:1;
+  flex: 1;
   margin: 0 10px; /* Add margin for gap */
 }
 
@@ -134,7 +107,7 @@
   flex: 2;
 }
 /* ---------------- DASHBOARD TABLE------------------ */
-.displayTable{
+.displayTable {
   display: flex;
   flex-direction: row;
   padding: 5px;
@@ -144,7 +117,7 @@
 
 /* to make children of this class */
 .displayTable > * {
-  flex:1;
+  flex: 1;
   margin: 0 10px; /* Add margin for gap */
 }
 
@@ -154,23 +127,22 @@
 }
 
 /* ----------------------MCQ ONLY--------------------------- */
-.checkBox{
+.checkBox {
   width: 10%;
 }
 
-.optionBox{
+.optionBox {
   width: 90%;
 }
 
-.btnTransparent{
+.btnTransparent {
   background-color: transparent;
   cursor: pointer;
   font-size: larger;
 }
 
 /* -------------------RADIO BIX ONLY---------------------- */
-.bigRad{
-  width :70px;
+.bigRad {
+  width: 70px;
   height: 40px;
 }
-
