@@ -54,6 +54,7 @@ export default function QuizCode() {
                 className="btn btn-primary tooltip tooltip-bottom tooltip-info"
                 data-tip="Copy code to clipboard"
                 onClick={copyCode}
+                style={{ scale: "0.8" }}
               >
                 {/* 📋 */}
                 <svg
@@ -74,6 +75,7 @@ export default function QuizCode() {
                 className="btn btn-accent tooltip tooltip-bottom  tooltip-info"
                 data-tip="Copy link to clipboard"
                 onClick={copyLink}
+                style={{ scale: "0.8" }}
               >
                 {/* share icon here */}
                 <svg
