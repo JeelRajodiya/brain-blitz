@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 import UserQuizList from "./UserQuizList";
+import UserQuizListSkeleton from "./UserQuizListSkeleton";
 
 async function fetchQuizList() {
   const res = await fetch("/api/listUserQuizzes", {
@@ -24,12 +25,19 @@ function QuizForm() {
   const router = useRouter();
 
   const [quizCode, setQuizCode] = React.useState("");
-  const [quizList, setQuizList] = React.useState([]);
+  const [quizList, setQuizList] = React.useState();
+  const [isListLoading, setIsListLoading] = React.useState(true);
 
   React.useEffect(() => {
-    fetchQuizList().then((res) => {
-      setQuizList(res);
-    });
+    fetchQuizList()
+      .then((res) => {
+        setQuizList(res);
+        setIsListLoading(false);
+        console.log("done");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
   React.useEffect(() => {
     if (router.query.quizCode) {
@@ -114,7 +122,11 @@ function QuizForm() {
           Create Quiz
         </button>
       </div>
-      {quizList ? <UserQuizList quizList={quizList} /> : ""}
+      {!isListLoading ? (
+        <UserQuizList quizList={quizList} />
+      ) : (
+        <UserQuizListSkeleton />
+      )}
     </div>
   );
 }
