@@ -36,5 +36,5 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
   quiz.createdAt = new Date();
   const db = await getDB();
   await db.collection<QuizCol>("quizzes").insertOne(quiz);
-  return res.json({ quizId: quiz.id });
+  return res.json({ quizId: quiz.id, code: quiz.code });
 }

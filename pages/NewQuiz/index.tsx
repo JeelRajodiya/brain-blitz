@@ -34,9 +34,10 @@ export default function NewQuiz() {
 
       body: JSON.stringify(quizData),
     });
-    const quizId = (await res.json()).quizId;
+    const { quizId, code } = await res.json();
     setIsLoading(false);
     quizData.quizId = quizId;
+    quizData.code = code;
     router.push({ pathname: `/NewQuiz/Questions`, query: quizData });
   };
   if (isLoading) {

@@ -14,7 +14,8 @@ import Option from "../components/Option";
 async function postQuestions(
   questions: Question[],
   quizId: string,
-  router: any
+  router: any,
+  code: string
 ) {
   questions.map((q) => {
     q.quizId = quizId;
@@ -34,7 +35,12 @@ async function postQuestions(
       alert("Error in creating quiz");
       return;
     }
-    router.push(`/Dashboard`);
+    router.push({
+      pathname: "/NewQuiz/QuizCode",
+      query: {
+        code,
+      },
+    });
   });
 }
 
@@ -50,6 +56,7 @@ export default function Questions() {
     markForCorrect,
     markForIncorrect,
     quizId,
+    code,
   } = router.query;
 
   const emptyQuestion = {
@@ -116,7 +123,12 @@ export default function Questions() {
             <button
               className="btn btn-success mt-4 mb-4  btn-wide w-full text-center"
               onClick={() => {
-                postQuestions(questions, quizId as string, router);
+                postQuestions(
+                  questions,
+                  quizId as string,
+                  router,
+                  code as string
+                );
               }}
             >
               Save Quiz
