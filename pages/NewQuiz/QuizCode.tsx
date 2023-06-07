@@ -1,11 +1,15 @@
 import Layout from "./../Layout";
 import * as React from "react";
 import { useRouter } from "next/router";
+import { link } from "fs";
 
 export default function QuizCode() {
   const router = useRouter();
   const { code } = router.query;
   // let text: string = {code};
+
+  const linkTxt: string =
+    "https://brain-blitz-three.vercel.app/Dashboard?quizCode=" + code;
 
   const copyCode = () => {
     navigator.clipboard
@@ -20,7 +24,7 @@ export default function QuizCode() {
 
   const copyLink = () => {
     navigator.clipboard
-      .writeText(window.location.href)
+      .writeText(linkTxt)
       .then(() => {
         alert("Link copied to clipboard");
       })
