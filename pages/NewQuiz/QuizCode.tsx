@@ -51,7 +51,7 @@ export default function QuizCode() {
 
             <div className="card-actions justify-end">
               <button
-                className="btn btn-primary tooltip tooltip-bottom tooltip-info"
+                className="btn btn-md btn-primary tooltip tooltip-bottom tooltip-info"
                 data-tip="Copy code to clipboard"
                 onClick={copyCode}
                 style={{ scale: "0.8" }}
@@ -64,6 +64,7 @@ export default function QuizCode() {
                   fill="currentColor"
                   className="bi bi-clipboard-data"
                   viewBox="0 0 16 16"
+                  style={{ scale: "2" }}
                 >
                   {" "}
                   <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z" />{" "}
@@ -72,7 +73,7 @@ export default function QuizCode() {
                 </svg>
               </button>
               <button
-                className="btn btn-accent tooltip tooltip-bottom  tooltip-info"
+                className="btn btn-accent tooltip tooltip-bottom btn-md tooltip-info"
                 data-tip="Copy link to clipboard"
                 onClick={copyLink}
                 style={{ scale: "0.8" }}
@@ -85,6 +86,7 @@ export default function QuizCode() {
                   fill="currentColor"
                   className="bi bi-arrow-90deg-right"
                   viewBox="0 0 16 16"
+                  style={{ scale: "2" }}
                 >
                   {" "}
                   <path
