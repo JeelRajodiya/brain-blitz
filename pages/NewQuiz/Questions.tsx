@@ -189,7 +189,7 @@ export default function Questions() {
                     >
                       Correct Option
                     </th>
-                    {!isPolls && <th className="OptionBox">Options</th>}
+                    {!isPolls && <th>Options</th>}
                   </tr>
                 </thead>
                 <tbody>

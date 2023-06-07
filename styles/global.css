@@ -12,21 +12,6 @@
   padding-right: 10px;
 }
 
-/* ----------------------MCQ ONLY--------------------------- */
-.checkBox {
-  width: 10%;
-}
-
-.optionBox {
-  width: 90%;
-}
-
-.btnTransparent {
-  background-color: transparent;
-  cursor: pointer;
-  font-size: larger;
-}
-
 /* -------------------RADIO BIX ONLY---------------------- */
 .bigRad {
   width: 70px;
