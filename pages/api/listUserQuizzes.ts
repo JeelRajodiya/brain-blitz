@@ -39,8 +39,8 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
 
   quizzes.map((quiz) => {
     let quizData = quiz.quizData;
-    let { id, title, createdAt } = quizData;
-    quizData = { id, title, createdAt };
+    let { id, title, code, createdAt } = quizData;
+    quizData = { id, title, code, createdAt };
     return quizData;
   });
 
