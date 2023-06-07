@@ -51,7 +51,7 @@ export default function QuizCode() {
 
             <div className="card-actions justify-end">
               <button
-                className="btn btn-primary tooltip tooltip-left tooltip-info"
+                className="btn btn-primary tooltip tooltip-bottom tooltip-info"
                 data-tip="Copy code to clipboard"
                 onClick={copyCode}
               >
@@ -71,7 +71,7 @@ export default function QuizCode() {
                 </svg>
               </button>
               <button
-                className="btn btn-accent tooltip tooltip-right tooltip-info"
+                className="btn btn-accent tooltip tooltip-bottom  tooltip-info"
                 data-tip="Copy link to clipboard"
                 onClick={copyLink}
               >
