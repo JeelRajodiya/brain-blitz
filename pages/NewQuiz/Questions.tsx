@@ -79,7 +79,7 @@ export default function Questions() {
       <Layout>
         {/* <h1 className="mb-5">{iden}</h1> */}
 
-        <div className="flex w-full questionForm">
+        <div className={classnames("flex w-full", styles.questionForm)}>
           {/* Question Panel Div */}
           <div className="w-2/5">
             <div className="flex flex-row mt-4 justify-between">
