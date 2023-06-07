@@ -5,7 +5,8 @@ export default async (req, res) => {
   // debugger;
   const counter = await kv.get("counter");
   if (counter != undefined) {
-    kv.set("counter", (counter as number) + 1);
+    kv.incr("counter");
+    // kv.set("counter", (counter as number) + 1);
   } else {
     kv.set("counter", 0);
   }
