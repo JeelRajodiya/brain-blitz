@@ -32,7 +32,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                 styles.displayTable
               )}
             >
-              <div className="p-2   ">{quiz.title}</div>
+              <div className="p-2">{quiz.title}</div>
               <div
                 className="p-2 tooltip tooltip-top tooltip-info cursor-pointer"
                 data-tip={tooltipText}
@@ -50,6 +50,23 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                   month: "long",
                   day: "numeric",
                 })}
+              </div>
+              {/* Add a button here */}
+              <div className="dropdown dropdown-hover dropdown-bottom">
+                <label tabIndex={0} className="btn m-1">
+                  ...
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content shadow  bg-base-200 rounded-box z-50 p-2"
+                >
+                  <li>
+                    <button className="btn btn-xs btn-ghost"> Edit</button>
+                  </li>
+                  <li>
+                    <button className="btn btn-xs btn-ghost"> Delete</button>
+                  </li>
+                </ul>
               </div>
             </div>
             <div className={styles.line}></div>
