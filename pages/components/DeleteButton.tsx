@@ -2,8 +2,7 @@ import React from "react";
 
 const DeleteButton = ({ onClick }) => (
   <button
-    className="btn btn-square btn-xs hover:bg-red-600   rounded-md"
-    style={{ scale: "1.5", borderColor: "#FFFFFF33", borderWidth: "1px" }}
+    className="btn hover:bg-red-600 rounded-md"
     onClick={onClick}
   >
     <svg
