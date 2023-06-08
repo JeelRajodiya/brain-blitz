@@ -21,13 +21,12 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
 
       {quizList?.map((quiz, index) => {
         return (
-          <>
+          <React.Fragment key={quiz.id}>
             <div
               className={classNames(
                 `flex flex-row  justify-between `,
                 styles.displayTable
               )}
-              key={quiz.id}
             >
               <div className="p-2   ">{quiz.title}</div>
               <div
@@ -50,7 +49,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
               </div>
             </div>
             <div className={styles.line}></div>
-          </>
+          </React.Fragment>
         );
       })}
     </div>
