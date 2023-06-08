@@ -13,7 +13,7 @@
 /* to make children of this class */
 .displayTable > * {
   flex: 1;
-  margin: 0 10px; /* Add margin for gap */
+  margin: 0 10px;
 }
 
 .displayTable > *:last-child {
