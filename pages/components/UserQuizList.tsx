@@ -8,6 +8,7 @@ type QuizList = {
   createdAt: string;
 };
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
+  const [tooltipText, setTooltipText] = React.useState("Click to copy");
   return (
     <div className="flex  items-center flex-col mt-10">
       <div className={styles.tableHeading}>
@@ -18,23 +19,36 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
 
       {quizList?.map((quiz, index) => {
         return (
-          <div
-            className={classNames(
-              `flex flex-row  justify-between `,
-              styles.displayTable
-            )}
-            key={quiz.id}
-          >
-            <div className="p-2   ">{quiz.title}</div>
-            <div className="p-2 ">{quiz.code}</div>
-            <div className="p-2 ">
-              {new Date(quiz.createdAt).toLocaleDateString(undefined, {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+          <>
+            <div
+              className={classNames(
+                `flex flex-row  justify-between `,
+                styles.displayTable
+              )}
+              key={quiz.id}
+            >
+              <div className="p-2   ">{quiz.title}</div>
+              <div
+                className="p-2 tooltip tooltip-top tooltip-info cursor-pointer"
+                data-tip={tooltipText}
+                onClick={() => {
+                  navigator.clipboard.writeText(quiz.code);
+                  setTooltipText("Copied");
+                  setTimeout(() => setTooltipText("Click to copy"), 700);
+                }}
+              >
+                {quiz.code}
+              </div>
+              <div className="p-2 ">
+                {new Date(quiz.createdAt).toLocaleDateString(undefined, {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </div>
             </div>
-          </div>
+            <div className={styles.line}></div>
+          </>
         );
       })}
     </div>

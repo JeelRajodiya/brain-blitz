@@ -7,7 +7,7 @@
   /* border-radius: 10px; */
   justify-content: space-between;
   width: 90%;
-  border-bottom: 1px solid #e2e8f02d;
+  /* border-bottom: 1px solid #e2e8f02d; */
 }
 
 /* to make children of this class */
@@ -25,13 +25,26 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
+  border: 1px solid #e2e8f02d;
   padding: 5px;
   text-align: center;
   border-radius: 10px;
   width: 90%;
+  transition: border-color 200ms ease-in-out;
+}
+.tableHeading:hover {
+  border: 1px solid #e2e8f06e;
 }
 .tableHeading > * {
   flex: 1;
   margin: 0 10px; /* Add margin for gap */
+}
+.line {
+  border-bottom: 1px solid #e2e8f02d;
+  width: 5%;
+  transition: width 200ms ease-in-out;
+}
+
+.displayTable:hover + .line {
+  width: 80%;
 }
