@@ -16,7 +16,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
         <div className="p-2">Created At</div>
       </div>
 
-      {quizList.map((quiz, index) => {
+      {quizList?.map((quiz, index) => {
         return (
           <div
             className={classNames(
