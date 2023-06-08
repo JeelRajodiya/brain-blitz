@@ -16,6 +16,7 @@ declare const window: Window &
     my_modal_3: {
       showModal: () => void;
       close: () => void;
+      open: boolean;
     };
   };
 function QuizForm() {
@@ -43,7 +44,10 @@ function QuizForm() {
   React.useEffect(() => {
     if (router.query.quizCode) {
       setQuizCode(router.query.quizCode as string);
-      window.my_modal_3.close();
+      console.log(window.my_modal_3.open);
+      if (window.my_modal_3.open) {
+        return;
+      }
       window.my_modal_3.showModal();
     }
   }, [!router.query.quizCode]);
