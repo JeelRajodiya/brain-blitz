@@ -9,7 +9,7 @@ type QuizList = {
 };
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   return (
-    <div className="flex flex-col mt-10">
+    <div className="flex  items-center flex-col mt-10">
       <div className={styles.tableHeading}>
         <div className="p-2">Title</div>
         <div className="p-2">Code</div>
@@ -25,9 +25,9 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
             )}
             key={quiz.id}
           >
-            <div className="p-2 justify-self-start truncate ">{quiz.title}</div>
-            <div className="p-2 justify-self-center">{quiz.code}</div>
-            <div className="p-2 justify-self-end">
+            <div className="p-2   ">{quiz.title}</div>
+            <div className="p-2 ">{quiz.code}</div>
+            <div className="p-2 ">
               {new Date(quiz.createdAt).toLocaleDateString(undefined, {
                 year: "numeric",
                 month: "long",

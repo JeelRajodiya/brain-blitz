@@ -2,6 +2,8 @@
 
 /* the button group on dashboard */
 .joinB {
+  align-items: center;
+  justify-content: center;
   display: flex;
   gap: 15px; /* Adjust the value as needed for the desired gap */
 }
