@@ -7,11 +7,11 @@ export default function UserQuizListSkeleton() {
       <div
         className={classNames(`self-center text-xl`, styles.skeletonText)}
       ></div>
-      <div className={classNames(styles.tableHeading, styles.skeleton)}>
-        <div className="p-10"></div>
-        <div className="p-10"></div>
-        <div className="p-10"></div>
-        <div className="p-10"></div>
+      <div className={classNames(`flex justify-between w-365`,styles.tableHeading, styles.skeleton)}>
+        <div className="p-7"></div>
+        <div className="p-7"></div>
+        <div className="p-7"></div>
+        <div className="p-7"></div>
       </div>
 
       <div
@@ -53,7 +53,7 @@ export default function UserQuizListSkeleton() {
             </li>
           </ul>
         </div>
-        
+
       </div>
     </div>
   );
