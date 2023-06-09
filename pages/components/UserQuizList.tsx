@@ -42,7 +42,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
     quizListState.map((quiz, index) => {
       quiz.isDeleted = false;
     });
-  });
+  }, []);
   return (
     <div className="flex  items-center flex-col mt-10 ">
       <div className="self-start text-xl p-5">Your Quizzes</div>
