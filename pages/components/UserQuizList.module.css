@@ -44,3 +44,6 @@
 .displayTable:hover + .line {
   width: 80%;
 }
+.moreIcon {
+  filter: invert();
+}

@@ -3,7 +3,7 @@ import styles from "./UserQuizList.module.css";
 import classNames from "classnames";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
-
+import Image from "next/image";
 type QuizList = {
   id: string;
   code: string;
@@ -28,7 +28,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
           <React.Fragment key={quiz.id}>
             <div
               className={classNames(
-                `flex flex-row  justify-between `,
+                `flex flex-row  justify-between items-center `,
                 styles.displayTable
               )}
             >
@@ -44,7 +44,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
               >
                 {quiz.code}
               </div>
-              <div className="p-2 ">
+              <div className="p-2 text-xs ">
                 {new Date(quiz.createdAt).toLocaleDateString(undefined, {
                   year: "numeric",
                   month: "long",
@@ -52,9 +52,18 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                 })}
               </div>
               {/* Add a button here */}
-              <div className="dropdown dropdown-hover dropdown-bottom">
-                <label tabIndex={0} className="btn m-1">
-                  ...
+              <div className="dropdown dropdown-hover justify-center flex dropdown-bottom">
+                <label
+                  tabIndex={0}
+                  className="hover:bg-base-200 p-1 rounded-md"
+                >
+                  <Image
+                    src="/icons/more_vert.png"
+                    alt="more_vert"
+                    width={25}
+                    height={25}
+                    className={styles.moreIcon}
+                  />
                 </label>
                 <ul
                   tabIndex={0}
