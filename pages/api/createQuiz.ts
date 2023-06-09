@@ -42,24 +42,22 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
 }
 
 async function DELETE(req: NextApiRequest, res: NextApiResponse) {
-  const quiz: QuizCol = req.body;
   const session = await getServerSession(req, res, authOptions);
   const user = getUser(session.user.email);
   if (!user) {
     return res.status(401).send("Unauthorized");
   }
-  quiz.userId = (await user).id;
-  quiz.id = uuid();
-  quiz.code = generateUID();
-  quiz.createdAt = new Date();
   const db = await getDB();
-  const QuizDel = await db.collection<QuizCol>("quizzes").deleteOne(quiz);
+  const quizId = req.headers.id;
+  const QuizDel = await db
+    .collection<QuizCol>("quizzes")
+    .deleteOne({ id: quizId });
   const QueDel = await db
     .collection<QuestionCol>("questions")
-    .deleteMany({ quizId: quiz.id });
+    .deleteMany({ quizId: quizId });
 
   if (QuizDel.acknowledged && QueDel.acknowledged) {
-    return res.json({ quizId: quiz.id, code: quiz.code });
+    return res.status(200).send("Done");
   } else if (!QuizDel.acknowledged && !QueDel.acknowledged) {
     return res.status(500).send("Quiz and Questions not deleted");
   } else if (!QuizDel.acknowledged) {

@@ -10,6 +10,18 @@ type QuizList = {
   title: string;
   createdAt: string;
 };
+async function deleteQuiz(quizId: string) {
+  console.log(quizId);
+  const res = await fetch("/api/createQuiz", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      id: quizId,
+    },
+  });
+  const data = await res.text();
+  console.log(data);
+}
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   const [tooltipText, setTooltipText] = React.useState("Click to copy");
   return (
@@ -73,7 +85,13 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                     <button className="btn btn-xs btn-ghost"> Edit</button>
                   </li>
                   <li>
-                    <button className="btn btn-xs btn-ghost"> Delete</button>
+                    <button
+                      className="btn btn-xs btn-ghost"
+                      onClick={() => deleteQuiz(quiz.id)}
+                    >
+                      {" "}
+                      Delete
+                    </button>
                   </li>
                 </ul>
               </div>
