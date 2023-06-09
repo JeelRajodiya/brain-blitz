@@ -9,8 +9,12 @@ type QuizList = {
   code: string;
   title: string;
   createdAt: string;
+  isDeleted: boolean;
 };
-async function deleteQuiz(quizId: string) {
+async function deleteQuiz(
+  quizId: string,
+  setQuizListState: React.Dispatch<React.SetStateAction<QuizList[]>>
+) {
   console.log(quizId);
   const res = await fetch("/api/createQuiz", {
     method: "DELETE",
@@ -19,11 +23,26 @@ async function deleteQuiz(quizId: string) {
       id: quizId,
     },
   });
-  const data = await res.text();
-  console.log(data);
+  if (res.status === 200) {
+    setQuizListState((prev) =>
+      prev.map((quiz) => {
+        if (quiz.id === quizId) {
+          quiz.isDeleted = true;
+        }
+        return quiz;
+      })
+    );
+  }
 }
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   const [tooltipText, setTooltipText] = React.useState("Click to copy");
+  const [quizListState, setQuizListState] = React.useState(quizList);
+
+  React.useEffect(() => {
+    quizListState.map((quiz, index) => {
+      quiz.isDeleted = false;
+    });
+  });
   return (
     <div className="flex  items-center flex-col mt-10 ">
       <div className="self-start text-xl p-5">Your Quizzes</div>
@@ -35,7 +54,11 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
         <div className="p-2 ">Action</div>
       </div>
 
-      {quizList?.map((quiz, index) => {
+      {quizListState?.map((quiz, index) => {
+        if (quiz.isDeleted) {
+          return null;
+        }
+
         return (
           <React.Fragment key={quiz.id}>
             <div
@@ -87,7 +110,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                   <li>
                     <button
                       className="btn btn-xs btn-ghost"
-                      onClick={() => deleteQuiz(quiz.id)}
+                      onClick={() => deleteQuiz(quiz.id, setQuizListState)}
                     >
                       {" "}
                       Delete
