@@ -45,7 +45,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   }, []);
   return (
     <div className="flex  items-center flex-col mt-10 ">
-      <div className="self-start text-xl p-5">Your Quizzes</div>
+      <div className="self-center text-xl p-5">Your Quizzes</div>
 
       <div className={styles.tableHeading}>
         <div className="p-2 ">Title</div>
