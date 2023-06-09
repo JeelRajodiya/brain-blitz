@@ -52,20 +52,20 @@
 
 .skeleton{
   opacity: 0.7;
+  border-radius: 0.25rem;
   animation: skeleton-loading 1s linear infinite alternate
 }
 
-.skeleton-text{
-  width: 100%;
+.skeletonText{
+  width: 50%;
   height: 0.5rem;
   margin-bottom: 0.25rem;
-  border-radius: 0.125rem;
+  border-radius: 0.25rem;
   animation: skeleton-loading 1s linear infinite alternate;
 }
 
-.skeleton-text:last-child{
+.skeletonText:last-child{
   margin-bottom: 0;
-  width: 80%;
 }
 
 @keyframes skeleton-loading {
