@@ -1,7 +1,6 @@
 import * as React from "react";
 import Layout from "./../Layout";
 import { useRouter } from "next/router";
-import DeleteButton from "../components/DeleteButton";
 import { useState, useEffect } from "react";
 import styles from "./Questions.module.css";
 import classnames from "classnames";
@@ -90,9 +89,9 @@ export default function Questions() {
             </div>
 
             {/* Question Panel Table */}
-            <table className="table ">
+            <table className="table mt-4">
               <thead>
-                <tr className="grid grid-cols-2">
+                <tr className="grid grid-cols-2 mb-2">
                   <th className="justify-self-start ">Name</th>
                   <th className="justify-self-end">Action</th>
                 </tr>
@@ -113,7 +112,6 @@ export default function Questions() {
 
                       newQuestion = newQuestions[index];
                       setActiveQuestion(index !== 0 ? index : 1);
-                      //   setQuestion(newQuestion);
                       setQuestions(newQuestions);
                     }}
                   />
@@ -135,7 +133,6 @@ export default function Questions() {
             </button>
           </div>
 
-          {/* Add a verticle divider here: it does not work */}
           <div className="divider divider-horizontal"></div>
           {/* Question Form Div */}
           <div className="w-3/5">
@@ -189,7 +186,7 @@ export default function Questions() {
                     >
                       Correct Option
                     </th>
-                    {!isPolls && <th>Options</th>}
+                    {isPolls && <th>Options</th>}
                   </tr>
                 </thead>
                 <tbody>

@@ -10,12 +10,12 @@ export default function QuestionsIndexEntry({
 }) {
   return (
     <tr
-      className={`flex items-center rounded-lg  w-full select-none ${
+      className={`flex items-center rounded-lg select-none ${
         activeQuestion === index + 1 ? "bg-base-200" : ""
       }`}
     >
       <td
-        className="py-3 cursor-pointer hover:bg-primary hover:text-white border-white  rounded-lg flex-grow m-0 hover:font-semibold ${
+        className="ml-2 cursor-pointer hover:bg-primary hover:text-white border-white rounded-lg flex-grow m-0 hover:font-semibold ${
         "
         onClick={() => setActiveQuestion(index + 1)}
       >
