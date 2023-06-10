@@ -4,6 +4,7 @@ import classNames from "classnames";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 type QuizList = {
   id: string;
@@ -35,6 +36,18 @@ async function deleteQuiz(
       id: quizId,
     },
   });
+
+  // const router = useRouter();
+  // // useEffect to solve the problem in the deleteQuizModal
+  // React.useEffect(() => {
+  //   if (router.query.quizId) {
+  //     if (window.deleteQuizModal.open) {
+  //       return;
+  //     }
+  //     window.deleteQuizModal.showModal();
+  //   }
+  // }, [!router.query.quizId]);
+
   if (res.status === 200) {
     setQuizListState((prev) =>
       prev.map((quiz) => {

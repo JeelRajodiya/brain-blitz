@@ -44,6 +44,7 @@ function QuizForm() {
         console.error(err);
       });
   }, []);
+  
   React.useEffect(() => {
     if (router.query.quizCode) {
       setQuizCode(router.query.quizCode as string);
