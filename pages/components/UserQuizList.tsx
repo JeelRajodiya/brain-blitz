@@ -4,6 +4,7 @@ import classNames from "classnames";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 import Image from "next/image";
+
 type QuizList = {
   id: string;
   code: string;
@@ -11,6 +12,8 @@ type QuizList = {
   createdAt: string;
   isDeleted: boolean;
 };
+
+// function to delete the quiz
 async function deleteQuiz(
   quizId: string,
   setQuizListState: React.Dispatch<React.SetStateAction<QuizList[]>>
@@ -32,8 +35,11 @@ async function deleteQuiz(
         return quiz;
       })
     );
+    alert("Quiz deleted successfully, please refresh the page!");
+    window.location.reload();
   }
 }
+
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   const [tooltipText, setTooltipText] = React.useState("Click to copy");
   const [quizListState, setQuizListState] = React.useState(quizList);
@@ -110,11 +116,40 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                   <li>
                     <button
                       className="btn btn-xs btn-ghost"
-                      onClick={() => deleteQuiz(quiz.id, setQuizListState)}
+                      onClick={() => window.deleteQuizModal.showModal()}
                     >
-                      {" "}
                       Delete
                     </button>
+
+                    <dialog id="deleteQuizModal" className="modal">
+                      <form method="dialog" className="modal-box">
+                        <button
+                          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                          style={{ color: "white", fontWeight: "bold" }}
+                        >
+                          ✕
+                        </button>
+                        <h1
+                          className="font-bold text-lg"
+                          style={{ color: "white" }}
+                        >
+                          ⚠️ Delete ⚠️
+                        </h1>
+                        <p
+                          className="py-4"
+                          style={{ color: "white", fontSize: "16px" }}
+                        >
+                          Are you sure you want to delete the quiz:{" "}
+                          <span className="font-bold">{quiz.title}</span>
+                        </p>
+                        <button
+                          className="btn bg-red-500 hover:bg-red-600 text-white"
+                          onClick={() => deleteQuiz(quiz.id, setQuizListState)}
+                        >
+                          Delete
+                        </button>
+                      </form>
+                    </dialog>
                   </li>
                 </ul>
               </div>

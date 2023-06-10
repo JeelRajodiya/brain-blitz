@@ -13,7 +13,7 @@ async function fetchQuizList() {
 }
 declare const window: Window &
   typeof globalThis & {
-    my_modal_3: {
+    joinQuizModal: {
       showModal: () => void;
       close: () => void;
       open: boolean;
@@ -44,11 +44,11 @@ function QuizForm() {
   React.useEffect(() => {
     if (router.query.quizCode) {
       setQuizCode(router.query.quizCode as string);
-      console.log(window.my_modal_3.open);
-      if (window.my_modal_3.open) {
+      console.log(window.joinQuizModal.open);
+      if (window.joinQuizModal.open) {
         return;
       }
-      window.my_modal_3.showModal();
+      window.joinQuizModal.showModal();
     }
   }, [!router.query.quizCode]);
 
@@ -67,13 +67,13 @@ function QuizForm() {
                 quizCode: "",
               },
             });
-            window.my_modal_3.showModal();
+            window.joinQuizModal.showModal();
             setQuizCode("");
           }}
         >
           Join Quiz
         </button>
-        <dialog id="my_modal_3" className="modal">
+        <dialog id="joinQuizModal" className="modal">
           <form method="dialog" className="modal-box">
             <button
               // htmlFor="my-modal-3"
