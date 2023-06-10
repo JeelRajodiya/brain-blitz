@@ -4,7 +4,7 @@ import classNames from "classnames";
 export default function UserQuizListSkeleton() {
   return (
     <div className="flex mt-20 items-center flex-col">
-      <div className={classNames(`self-center text-xl`)}>Your Quizzes </div>
+      <div className={classNames(`self-center text-2xl mb-4`)}>Your Quizzes </div>
       <div
         className={classNames(
           `flex justify-between `,
