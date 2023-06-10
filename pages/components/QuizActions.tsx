@@ -26,7 +26,7 @@ function QuizForm() {
   const joinQuiz = () => {
     console.log("join quiz");
   };
-
+ 
   const router = useRouter();
 
   const [quizCode, setQuizCode] = React.useState("");

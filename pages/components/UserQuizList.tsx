@@ -13,6 +13,15 @@ type QuizList = {
   isDeleted: boolean;
 };
 
+declare const window: Window &
+  typeof globalThis & {
+    deleteQuizModal: {
+      showModal: () => void;
+      close: () => void;
+      open: boolean;
+    };
+  };
+
 // function to delete the quiz
 async function deleteQuiz(
   quizId: string,
