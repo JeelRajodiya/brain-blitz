@@ -4,6 +4,7 @@ import UserQuizList from "./UserQuizList";
 import UserQuizListSkeleton from "./UserQuizListSkeleton";
 import styles from "./QuizActions.module.css";
 import classNames from "classnames";
+
 async function fetchQuizList() {
   const res = await fetch("/api/listUserQuizzes", {
     method: "GET",
@@ -11,6 +12,7 @@ async function fetchQuizList() {
   const json = await res.json();
   return json;
 }
+
 declare const window: Window &
   typeof globalThis & {
     joinQuizModal: {
@@ -19,6 +21,7 @@ declare const window: Window &
       open: boolean;
     };
   };
+
 function QuizForm() {
   const joinQuiz = () => {
     console.log("join quiz");
