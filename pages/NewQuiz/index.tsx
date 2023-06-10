@@ -99,7 +99,7 @@ export default function NewQuiz() {
             <label className="label m-5">
               <span className=" text-lg label-text">Jump Questions </span>
             </label>
-            <input
+            <input 
               type="checkbox"
               className="toggle toggle-md toggle-accent m-5"
               onChange={(e) => {

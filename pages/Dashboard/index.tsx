@@ -6,9 +6,6 @@ export default function Dashboard() {
     //@ts-ignore
     <Layout pageTitle={"Dashboard"}>
       <QuizForm />
-      {/* <button className="btn btn-wide btn-modified btn-primary mt-5">
-        View Previous Reports
-      </button> */}
     </Layout>
   );
 }
