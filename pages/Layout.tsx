@@ -36,8 +36,8 @@ export default function Layout({ children, pageTitle }) {
               className="text-3xl font-bold cursor-pointer"
               onClick={toDashboard}
             >
-              <span className="animate-fire">Brain</span>
-              <span className="animate-fire">Blitz</span>
+              <span className="animate-fire glow">Brain</span>
+              <span className="animate-fire glow">Blitz</span>
             </h1>
           </div>
         </div>
