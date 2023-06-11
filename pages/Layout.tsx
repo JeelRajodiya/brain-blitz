@@ -58,17 +58,17 @@ export default function Layout({ children, pageTitle }) {
             {dropdown && (
               <ul
                 tabIndex={0}
-                className="dropdown-content menu p-2 bg-base-200  shadow rounded-box w-52 mt-5"
+                className="dropdown-content menu p-2 bg-base-200  shadow rounded-box mt-5"
               >
-                <li>
+                <button className = "btn btn-sm">
                   <a>profile</a>
-                </li>
-                <li>
+                </button>
+                <button className = "btn btn-sm">
                   <a>settings</a>
-                </li>
-                <li>
+                </button>
+                <button className = "btn btn-sm">
                   <a onClick={performSignOut}>logout</a>
-                </li>
+                </button>
               </ul>
             )}
           </div>
