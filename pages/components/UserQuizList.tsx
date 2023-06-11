@@ -37,17 +37,6 @@ async function deleteQuiz(
     },
   });
 
-  // const router = useRouter();
-  // // useEffect to solve the problem in the deleteQuizModal
-  // React.useEffect(() => {
-  //   if (router.query.quizId) {
-  //     if (window.deleteQuizModal.open) {
-  //       return;
-  //     }
-  //     window.deleteQuizModal.showModal();
-  //   }
-  // }, [!router.query.quizId]);
-
   if (res.status === 200) {
     setQuizListState((prev) =>
       prev.map((quiz) => {
@@ -57,8 +46,6 @@ async function deleteQuiz(
         return quiz;
       })
     );
-    alert("Quiz deleted successfully, please refresh the page!");
-    window.location.reload();
   }
 }
 
@@ -136,14 +123,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                     <button className="btn btn-xs btn-ghost"> Edit</button>
                   </li>
                   <li>
-                    <button
-                      className="btn btn-xs btn-ghost"
-                      onClick={() => window.deleteQuizModal.showModal()}
-                    >
-                      Delete
-                    </button>
-
-                    <dialog id="deleteQuizModal" className="modal">
+                    <dialog id={`deleteQuizModal${index}`} className="modal">
                       <form method="dialog" className="modal-box">
                         <button
                           className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -172,6 +152,14 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                         </button>
                       </form>
                     </dialog>
+                    <button
+                      className="btn btn-xs btn-ghost"
+                      onClick={() =>
+                        window[`deleteQuizModal${index}`].showModal()
+                      }
+                    >
+                      Delete
+                    </button>
                   </li>
                 </ul>
               </div>
