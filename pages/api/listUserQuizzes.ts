@@ -1,7 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getDB, getUser } from "../../util/DB";
-import type { QuizCol } from "../../util/DB";
-import { uuid } from "uuidv4";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 
