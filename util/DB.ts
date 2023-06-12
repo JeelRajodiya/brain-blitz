@@ -14,7 +14,7 @@ export type QuizCol = {
   code: string;
 };
 
-type UserCol = {
+export type UserCol = {
   email: string;
   id: string;
   name: string;
