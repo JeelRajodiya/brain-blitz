@@ -10,52 +10,20 @@ import type { Question } from "../components/Option";
 import Option from "../components/Option";
 
 // type for each question:
-async function postQuestions(
-  questions: Question[],
-  quizId: string,
-  router: any,
-  code: string
-) {
-  questions.map((q) => {
-    q.quizId = quizId;
-  });
-  questions = questions.filter((q) => q.question !== "");
-  console.log(questions);
-  const res = fetch("/api/createQuestions", {
-    method: "POST",
+async function fetchQuiz(code: string) {
+  const res = await fetch(`/api/joinQuiz?code=${code}`, {
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(questions),
   });
-  res.then((res) => {
-    if (res.status != 200) {
-      alert("Error in creating quiz");
-      return;
-    }
-    router.push({
-      pathname: "/NewQuiz/QuizCode",
-      query: {
-        code,
-      },
-    });
-  });
+  const json = await res.json();
+  return json;
 }
-
 export default function Questions() {
   const router = useRouter();
 
-  const {
-    title,
-    difficultyTags,
-    isPolls,
-    jumpQuestions,
-    timeForAQuestion,
-    markForCorrect,
-    markForIncorrect,
-    quizId,
-    code,
-  } = router.query;
+  const { code } = router.query;
 
   const emptyQuestion = {
     question: "",
@@ -67,10 +35,29 @@ export default function Questions() {
   const [question, setQuestion] = useState<Question>(emptyQuestion);
   const [activeQuestion, setActiveQuestion] = useState(1);
 
+  const [isPolls, setIsPolls] = useState(false);
+  const [difficultyTags, setDifficultyTags] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!code) return;
+    fetchQuiz(code as string).then((res) => {
+      console.log(res);
+      setQuestions(res.questions);
+      setQuestion(res.questions[1]);
+      setActiveQuestion(1);
+      setIsPolls(res.isPolls);
+      setDifficultyTags(res.difficultyTags);
+      setIsLoading(false);
+    });
+  }, [code]);
+
   React.useEffect(() => {
     setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
-
+  if (isLoading) {
+    return <>Loading</>;
+  }
   return (
     <>
       {/* @ts-ignore */}
@@ -121,14 +108,7 @@ export default function Questions() {
             </table>
             <button
               className="btn btn-success mt-4 mb-4  btn-wide w-full text-center"
-              onClick={() => {
-                postQuestions(
-                  questions,
-                  quizId as string,
-                  router,
-                  code as string
-                );
-              }}
+              onClick={() => {}}
             >
               Save Quiz
             </button>
@@ -198,14 +178,14 @@ export default function Questions() {
                         index={i - 1}
                         question={question}
                         setQuestion={setQuestion}
-                        isPoll={isPolls == "true" ? true : false}
+                        isPoll={isPolls ? true : false}
                       />
                     );
                   })}
                 </tbody>
               </table>
 
-              {difficultyTags == "true" ? (
+              {difficultyTags ? (
                 <DifficultyTags
                   difficulty={question.difficulty}
                   setDifficulty={(d) => {
