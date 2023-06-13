@@ -57,7 +57,12 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   const [quizListState, setQuizListState] =
     React.useState<QuizList[]>(quizList);
 
-  const entries = quizListState.filter((quiz) => !quiz.isDeleted).length;
+  let entries = 0;
+  quizListState.map((quiz, index) => {
+    if (!quiz.isDeleted) {
+      entries++;
+    }
+  });
   // console.log(entries); // it works
 
   React.useEffect(() => {
