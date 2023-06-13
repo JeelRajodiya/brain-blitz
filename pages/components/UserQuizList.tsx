@@ -56,7 +56,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   const [tooltipText, setTooltipText] = React.useState("Click to copy");
   const [quizListState, setQuizListState] = React.useState(quizList);
 
-  const entries = quizListState.filter((quiz) => !quiz.isDeleted).length;
+  const entries:number = quizListState.filter((quiz) => !quiz.isDeleted).length;
   // console.log(entries); // it works
 
   React.useEffect(() => {
@@ -67,18 +67,19 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
 
   if (entries === 0) {
     return (
-      <div className="m-10 ">
-        <div className="card w-96 ml-6 shadow-xl image-full">
-          <figure>
-            <img src="/icons/doodle.png" />
-          </figure>
-          <div className="card-body">
-            <h3 className="card-title pt-14 justify-center">
-              You have not created any quiz!
-            </h3>
-          </div>
-        </div>
-      </div>
+      <div className="m-10">
+  <div className="card w-96 ml-6 shadow-xl image-full">
+    <figure>
+      <img src="/icons/doodle.png" style={{ opacity: '1' }} />
+    </figure>
+    <div className="card-body">
+      <h3 className="card-title pt-14 justify-center">
+        You have not created any quiz!
+      </h3>
+    </div>
+  </div>
+</div>
+
     );
   }
 
