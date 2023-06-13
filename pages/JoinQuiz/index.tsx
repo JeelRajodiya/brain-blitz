@@ -1,8 +1,8 @@
 import * as React from "react";
-import Layout from "./../Layout";
+import Layout from "../Layout";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import styles from "./Questions.module.css";
+import styles from "./JoinQuiz.module.css";
 import classnames from "classnames";
 import DifficultyTags from "../components/DifficultyTags";
 import QuestionsIndexEntry from "../components/QuestionsIndexEntry";

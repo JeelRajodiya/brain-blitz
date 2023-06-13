@@ -1,0 +1,71 @@
+/* ------------------------------- QUESTION FORM---------------------------------------------------- */
+
+@media (min-width: 768px) {
+  .questionForm {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    flex-direction: row;
+    /* padding: 10px; */
+  }
+
+  .questionForm > * {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px;
+  }
+}
+
+/* to make children of this class */
+.questionForm > * {
+  flex: 1;
+  margin: 0 10px; /* Add margin for gap */
+}
+
+.questionForm > :nth-child(1) {
+  flex: 0.4;
+}
+
+.questionForm > :nth-child(2) {
+  flex: 0;
+}
+
+.questionForm > :nth-child(3) {
+  flex: 2;
+}
+
+@media (min-width: 1920px) {
+  .mobileFonts {
+    font-size: 1em;
+  }
+
+  .questionForm > * {
+    flex: 1;
+    margin: 0;
+  }
+
+  .questionForm > :nth-child(1){
+    flex: 0.7;
+    margin: 0 10px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 850px) {
+  .mobileFonts {
+    font-size: 1em;
+  }
+
+  .questionForm > * {
+    flex: 1;
+    margin: 0;
+  }
+
+  .questionForm > :nth-child(1){
+    flex: 0.7;
+    margin: 0 10px;
+    max-width: 100%;
+  }
+}

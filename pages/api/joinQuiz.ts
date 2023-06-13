@@ -35,10 +35,20 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
 
   const questions = await db
     .collection<QuestionCol>("questions")
-    .find({
-      quizId: quiz.id,
-    })
+    .find(
+      {
+        quizId: quiz.id,
+      },
+      {
+        projection: {
+          correctOption: 0,
+          quizId: 0,
+          _id: 0,
+        },
+      }
+    )
     .toArray();
+
   //   console.log(questions);
   const quizData = {
     title: quiz.title,
