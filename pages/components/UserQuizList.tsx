@@ -58,11 +58,14 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
     React.useState<QuizList[]>(quizList);
 
   let entries = 0;
-  quizListState.map((quiz, index) => {
-    if (!quiz.isDeleted) {
-      entries++;
-    }
-  });
+  if (quizListState !== undefined) {
+    quizListState.map((quiz, index) => {
+      if (!quiz.isDeleted) {
+        entries++;
+      }
+    });
+  }
+
   // console.log(entries); // it works
 
   React.useEffect(() => {
