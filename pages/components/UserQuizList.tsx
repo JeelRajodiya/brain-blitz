@@ -49,7 +49,7 @@ async function deleteQuiz(
   }
 }
 
-// add no entries part
+// // add no entries part
 // add a show more button
 
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
