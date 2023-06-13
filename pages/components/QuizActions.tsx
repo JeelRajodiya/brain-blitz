@@ -26,7 +26,7 @@ function QuizForm() {
   const joinQuiz = () => {
     console.log("join quiz");
   };
- 
+
   const router = useRouter();
 
   const [quizCode, setQuizCode] = React.useState("");
@@ -44,7 +44,7 @@ function QuizForm() {
         console.error(err);
       });
   }, []);
-  
+
   React.useEffect(() => {
     if (router.query.quizCode) {
       setQuizCode(router.query.quizCode as string);
@@ -120,6 +120,14 @@ function QuizForm() {
               <button
                 className="btn join-item rounded-full"
                 style={{ borderRadius: "0 1rem 1rem 0", borderColor: "white" }}
+                onClick={() => {
+                  router.push({
+                    pathname: "/JoinQuiz",
+                    query: {
+                      code: quizCode,
+                    },
+                  });
+                }}
               >
                 Join!
               </button>
