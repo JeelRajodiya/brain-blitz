@@ -44,7 +44,7 @@ export default function Questions() {
     fetchQuiz(code as string).then((res) => {
       console.log(res);
       setQuestions(res.questions);
-      setQuestion(res.questions[1]);
+      setQuestion(res.questions[0]);
       setActiveQuestion(1);
       setIsPolls(res.isPolls);
       setDifficultyTags(res.difficultyTags);
