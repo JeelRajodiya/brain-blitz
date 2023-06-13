@@ -19,9 +19,8 @@ async function postQuestions(
   questions.map((q) => {
     q.quizId = quizId;
   });
-  questions.filter((q) => {
-    q.question != "";
-  });
+  questions = questions.filter((q) => q.question !== "");
+  console.log(questions);
   const res = fetch("/api/createQuestions", {
     method: "POST",
     headers: {
@@ -82,7 +81,9 @@ export default function Questions() {
           {/* Question Panel Div */}
           <div className="w-2/5">
             <div className="flex flex-row mt-4 justify-between">
-              <h1 className={classnames("flex ml-2 text-2xl", styles.mobileFonts)}>
+              <h1
+                className={classnames("flex ml-2 text-2xl", styles.mobileFonts)}
+              >
                 Question panel
               </h1>
               {/* removed the not used add question button */}
