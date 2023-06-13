@@ -6,6 +6,8 @@ import { link } from "fs";
 export default function QuizCode() {
   const router = useRouter();
   const { code } = router.query;
+  const [tooltip, setTooltip] = React.useState("Click to copy");
+
   // let text: string = {code};
 
   const linkTxt: string =
@@ -15,7 +17,11 @@ export default function QuizCode() {
     navigator.clipboard
       .writeText(code as string)
       .then(() => {
-        alert("Code copied to clipboard");
+        setTooltip("Copied");
+
+        setTimeout(() => {
+          setTooltip("Click to copy");
+        }, 1000);
       })
       .catch((err) => {
         console.log(err);
@@ -26,7 +32,11 @@ export default function QuizCode() {
     navigator.clipboard
       .writeText(linkTxt)
       .then(() => {
-        alert("Link copied to clipboard");
+        setTooltip("Copied");
+
+        setTimeout(() => {
+          setTooltip("Click to copy");
+        }, 1000);
       })
       .catch((err) => {
         console.log(err);
@@ -52,7 +62,7 @@ export default function QuizCode() {
             <div className="card-actions justify-end">
               <button
                 className="btn btn-md btn-primary tooltip tooltip-bottom tooltip-info"
-                data-tip="Copy code to clipboard"
+                data-tip={tooltip + " Code"}
                 onClick={copyCode}
                 style={{ scale: "0.8" }}
               >
@@ -74,7 +84,7 @@ export default function QuizCode() {
               </button>
               <button
                 className="btn btn-accent tooltip tooltip-bottom btn-md tooltip-info"
-                data-tip="Copy link to clipboard"
+                data-tip={tooltip + " Link"}
                 onClick={copyLink}
                 style={{ scale: "0.8" }}
               >
