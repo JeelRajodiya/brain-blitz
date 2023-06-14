@@ -206,7 +206,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
         );
       })}
 
-      {visibleEntries >= 5 && (
+      {entries > 5 && (
         <button
           className="btn mt-3 btn-primary"
           onClick={() => setVisibleEntries(visibleEntries + 5)}
