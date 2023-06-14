@@ -50,8 +50,9 @@ async function deleteQuiz(
   }
 }
 
+// todo:
 // // add no entries part
-// add a show more button
+// // add a show more button
 
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   const [tooltipText, setTooltipText] = React.useState("Click to copy");
