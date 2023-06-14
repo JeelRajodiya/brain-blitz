@@ -1,10 +1,8 @@
 import React from "react";
+import styles from "./DeleteButton.module.css";
 
 const DeleteButton = ({ onClick }) => (
-  <button
-    className="btn hover:bg-red-600 bg-base-100 rounded-md"
-    onClick={onClick}
-  >
+  <button className={styles.deleteButton} onClick={onClick}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="h-4 w-4 text-white"
