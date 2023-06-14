@@ -10,7 +10,7 @@ export default function QuestionsIndexEntry({
 }) {
   return (
     <div
-      className={`flex  justify-center rounded-lg select-none ${
+      className={`flex  justify-center rounded-lg select-none  ${
         activeQuestion === index + 1 ? "bg-base-200" : ""
       }`}
     >
