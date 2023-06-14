@@ -18,6 +18,12 @@ export default function Option({
   setQuestion: Function;
   index: number;
 }) {
+  const aToI = {
+    0: "A",
+    1: "B",
+    2: "C",
+    3: "D",
+  };
   const checkBox = (
     <td className="checkBox ">
       <label>
@@ -45,8 +51,8 @@ export default function Option({
       <td className="OptionBox w-full">
         <input
           type="text"
-          placeholder="Type option here"
-          className="input input-bordered input-primary w-full"
+          placeholder={aToI[index]}
+          className="input  w-full"
           value={question?.options[index] ? question.options[index] : ""}
           onChange={(e) => {
             const newQuestion = structuredClone(question);

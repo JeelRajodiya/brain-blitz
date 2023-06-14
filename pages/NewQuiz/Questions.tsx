@@ -163,7 +163,7 @@ export default function Questions() {
             <div>
               <input
                 placeholder="Who is the president of UK?"
-                className="input input-bordered input-primary w-full resize-y max-h-36"
+                className="input input-bordered w-full resize-y max-h-36 m-1"
                 value={question.question}
                 onChange={(e) => {
                   const newQuestion = structuredClone(question);
