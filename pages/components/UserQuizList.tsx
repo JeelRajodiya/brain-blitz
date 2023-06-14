@@ -1,10 +1,11 @@
 import * as React from "react";
 import styles from "./UserQuizList.module.css";
 import classNames from "classnames";
-import DeleteButton from "./DeleteButton";
-import EditButton from "./EditButton";
+// import DeleteButton from "./DeleteButton";
+// import EditButton from "./EditButton";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 type QuizList = {
   id: string;
@@ -91,6 +92,8 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
     );
   }
 
+  const [visibleEntries, setVisibleEntries] = React.useState(5);
+
   return (
     <div className="flex  items-center flex-col mt-10 ">
       <div className="self-center text-xl p-5">Your Quizzes</div>
@@ -102,7 +105,8 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
         <div className="p-2 ">Action</div>
       </div>
 
-      {quizListState?.map((quiz, index) => {
+      {quizListState?.slice(0, visibleEntries).map((quiz, index) => {
+        // {quizListState?.map((quiz, index) => {
         if (quiz.isDeleted) {
           return null;
         }
@@ -115,7 +119,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                 styles.displayTable
               )}
             >
-              <div className="p-2">{quiz.title}</div>
+              <div className="p-2 truncate">{quiz.title}</div>
               <div
                 className="p-2 tooltip tooltip-top tooltip-info cursor-pointer"
                 data-tip={tooltipText}
@@ -201,6 +205,15 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
           </React.Fragment>
         );
       })}
+
+      {visibleEntries >= 5 && (
+        <button
+          className="btn mt-3 btn-primary"
+          onClick={() => setVisibleEntries(visibleEntries + 5)}
+        >
+          Show More
+        </button>
+      )}
     </div>
   );
 }
