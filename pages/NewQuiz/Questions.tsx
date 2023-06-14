@@ -177,19 +177,6 @@ export default function Questions() {
             {/* MCQ details table */}
             <div className="overflow-x-auto">
               <table className="table break-all w-full ">
-                <thead>
-                  <tr>
-                    <th
-                      className={classnames(
-                        "whitespace-nowrap max-w-xs min-w-0 break-words truncate",
-                        styles.heading
-                      )}
-                    >
-                      Correct Option
-                    </th>
-                    {isPolls && <th>Options</th>}
-                  </tr>
-                </thead>
                 <tbody>
                   {[1, 2, 3, 4].map((i) => {
                     return (

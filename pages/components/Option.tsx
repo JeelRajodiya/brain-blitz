@@ -19,7 +19,7 @@ export default function Option({
   index: number;
 }) {
   const checkBox = (
-    <td className="checkBox">
+    <td className="checkBox ">
       <label>
         <input
           type="checkbox"
@@ -39,10 +39,10 @@ export default function Option({
     </td>
   );
   return (
-    <tr>
+    <tr className="flex justify-center items-center">
       {!isPoll ? checkBox : null}
 
-      <td className="OptionBox">
+      <td className="OptionBox w-full">
         <input
           type="text"
           placeholder="Type option here"
