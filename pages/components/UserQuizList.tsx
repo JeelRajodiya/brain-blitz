@@ -207,12 +207,21 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
       })}
 
       {entries > 5 && (
-        <button
-          className="btn mt-3 btn-primary"
-          onClick={() => setVisibleEntries(visibleEntries + 5)}
-        >
-          Show More
-        </button>
+        <div className="join">
+          <button
+            className="btn join-item mt-3 btn-primary"
+            onClick={() => setVisibleEntries(visibleEntries + 5)}
+          >
+            Show More
+          </button>
+
+          <button
+            className="btn join-item mt-3 btn-primary"
+            onClick={() => setVisibleEntries(5)}
+          >
+            Hide All
+          </button>
+        </div>
       )}
     </div>
   );
