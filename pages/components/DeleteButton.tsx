@@ -2,7 +2,7 @@ import React from "react";
 
 const DeleteButton = ({ onClick }) => (
   <button
-    className="btn hover:bg-red-600 rounded-md"
+    className="btn hover:bg-red-600 bg-base-100 rounded-md"
     onClick={onClick}
   >
     <svg

@@ -90,35 +90,26 @@ export default function Questions() {
             </div>
 
             {/* Question Panel Table */}
-            <table className="table mt-4">
-              <thead>
-                <tr className="grid grid-cols-2 mb-2">
-                  <th className="justify-self-start ">Name</th>
-                  <th className="justify-self-end">Action</th>
-                </tr>
-              </thead>
+            <div className="table mt-4">
+              {questions.map((i, n) => (
+                <QuestionsIndexEntry
+                  activeQuestion={activeQuestion}
+                  setActiveQuestion={setActiveQuestion}
+                  name={`Question ${n + 1}`}
+                  index={n}
+                  key={n}
+                  deleteFunction={(index, setActiveQuestion) => {
+                    const newQuestions = structuredClone(questions);
+                    let newQuestion = structuredClone(question);
+                    newQuestions.splice(index + 1, 1);
 
-              <tbody>
-                {questions.map((i, n) => (
-                  <QuestionsIndexEntry
-                    activeQuestion={activeQuestion}
-                    setActiveQuestion={setActiveQuestion}
-                    name={`Question ${n + 1}`}
-                    index={n}
-                    key={n}
-                    deleteFunction={(index, setActiveQuestion) => {
-                      const newQuestions = structuredClone(questions);
-                      let newQuestion = structuredClone(question);
-                      newQuestions.splice(index + 1, 1);
-
-                      newQuestion = newQuestions[index];
-                      setActiveQuestion(index !== 0 ? index : 1);
-                      setQuestions(newQuestions);
-                    }}
-                  />
-                ))}
-              </tbody>
-            </table>
+                    newQuestion = newQuestions[index];
+                    setActiveQuestion(index !== 0 ? index : 1);
+                    setQuestions(newQuestions);
+                  }}
+                />
+              ))}
+            </div>
             <button
               className="btn btn-success mt-4 mb-4  btn-wide w-full text-center"
               onClick={() => {

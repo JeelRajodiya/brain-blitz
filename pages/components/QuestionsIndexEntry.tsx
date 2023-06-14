@@ -9,23 +9,19 @@ export default function QuestionsIndexEntry({
   deleteFunction,
 }) {
   return (
-    <tr
-      className={`flex items-center rounded-lg select-none ${
+    <div
+      className={`flex  justify-center rounded-lg select-none ${
         activeQuestion === index + 1 ? "bg-base-200" : ""
       }`}
     >
-      <td
-        className="ml-2 cursor-pointer hover:bg-primary hover:text-white border-white rounded-lg flex-grow m-0 hover:font-semibold ${
-        "
+      <span
+        className=" cursor-pointer items-center p-2 rounded-lg hover:bg-primary flex w-full justify-center hover:text-white  hover:font-semibold "
         onClick={() => setActiveQuestion(index + 1)}
       >
-        <span className="">{name}</span>
-      </td>
-      <td className="">
-        <DeleteButton
-          onClick={() => deleteFunction(index, setActiveQuestion)}
-        />
-      </td>
-    </tr>
+        {name}
+      </span>
+
+      <DeleteButton onClick={() => deleteFunction(index, setActiveQuestion)} />
+    </div>
   );
 }
