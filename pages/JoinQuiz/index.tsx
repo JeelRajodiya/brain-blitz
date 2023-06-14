@@ -38,6 +38,7 @@ export default function Questions() {
   const [isPolls, setIsPolls] = useState(false);
   const [difficultyTags, setDifficultyTags] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [jumpQuestions, setJumpQuestions] = useState(false);
 
   useEffect(() => {
     if (!code) return;
@@ -48,6 +49,7 @@ export default function Questions() {
       setActiveQuestion(1);
       setIsPolls(res.isPolls);
       setDifficultyTags(res.difficultyTags);
+      setJumpQuestions(res.jumpQuestions);
       setIsLoading(false);
     });
   }, [code]);
