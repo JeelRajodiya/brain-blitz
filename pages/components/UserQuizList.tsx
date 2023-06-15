@@ -103,11 +103,11 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
 
   return (
     <div className="flex  items-center flex-col mt-10 ">
-      <div className="self-center text-xl p-5">Your Quizzes</div>
+      <div className="self-center text-xl m-2 ">Your Quizzes</div>
 
-      <div className="tabs tabs-boxed m-2">
+      <div className="tabs tabs-boxed  mb-2">
         <a
-          className={`tab tab-lg ${
+          className={`tab tab-md ${
             SelectedTab === 'made' ? 'tab-active' : ''
           }`}
           onClick={() => handleTabClick('made')}
@@ -115,7 +115,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
           Made
         </a>
         <a
-          className={`tab tab-lg ${
+          className={`tab tab-md ${
             SelectedTab === 'participated' ? 'tab-active' : ''
           }`}
           onClick={() => handleTabClick('participated')}
