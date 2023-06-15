@@ -95,9 +95,34 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
 
   const [visibleEntries, setVisibleEntries] = React.useState(5);
 
+  // Added tabs!
+  const [SelectedTab, setSelectedTab] = React.useState("made");
+  const handleTabClick = (tab: string) => {
+    setSelectedTab(tab);
+  };
+
   return (
     <div className="flex  items-center flex-col mt-10 ">
       <div className="self-center text-xl p-5">Your Quizzes</div>
+
+      <div className="tabs tabs-boxed m-2">
+        <a
+          className={`tab tab-lg ${
+            SelectedTab === 'made' ? 'tab-active' : ''
+          }`}
+          onClick={() => handleTabClick('made')}
+        >
+          Made
+        </a>
+        <a
+          className={`tab tab-lg ${
+            SelectedTab === 'participated' ? 'tab-active' : ''
+          }`}
+          onClick={() => handleTabClick('participated')}
+        >
+          Participated
+        </a>
+      </div>
 
       <div className={styles.tableHeading}>
         <div className="p-2 ">Title</div>

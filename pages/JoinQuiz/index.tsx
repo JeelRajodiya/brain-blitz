@@ -67,11 +67,39 @@ export default function Questions() {
 
   //! PROBLEM: the drawer is not fitting properly
 
+  const [ShowSidebar, setShowSidebar] = useState(false);
+
+  const toggleSidebar = () => {
+    setShowSidebar(!ShowSidebar);
+  };
+  
   return (
     <>
       {/* @ts-ignore */}
       <Layout>
-        
+      <div className="flex h-screen">
+      {ShowSidebar && (
+        <div className="fixed inset-y-0 left-0 z-50 bg-gray-200 w-64 p-4 overflow-y-auto">
+          {/* Sidebar Content */}
+        </div>
+      )}
+      <div className="flex-1 bg-gray-100 p-4">
+        {/* Main Content */}
+        <div className="bg-white rounded-lg p-4 mb-4">
+          {/* Card with some text */}
+          <p>Enter your text here.</p>
+        </div>
+        <div className="bg-white rounded-lg p-4">
+          {/* Another Card */}
+        </div>
+      </div>
+      <button
+        className="fixed bottom-4 right-4 bg-blue-500 text-white p-2 rounded-md"
+        onClick={toggleSidebar}
+      >
+        Toggle Sidebar
+      </button>
+    </div>
       </Layout>
     </>
   );
