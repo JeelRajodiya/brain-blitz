@@ -4,7 +4,15 @@ import classNames from "classnames";
 export default function UserQuizListSkeleton() {
   return (
     <div className="flex mt-20 items-center flex-col">
-      <div className={classNames(`self-center text-2xl mb-4`)}>Your Quizzes </div>
+      <div
+        className={classNames(`self-center text-2xl m-4`, styles.skeletonText)}
+      ></div>
+
+      <div className={`tabs w-1/2 m-2 ${styles.skeleton}`}>
+        <a className="tabs tabs-md">{""}</a>
+        <a className="tabs tabs-md">{""}</a>
+      </div>
+
       <div
         className={classNames(
           `flex justify-between `,
