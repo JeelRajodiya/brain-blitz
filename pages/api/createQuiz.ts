@@ -30,6 +30,7 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
   const quiz: QuizCol = req.body;
   const session = await getServerSession(req, res, authOptions);
   const client = new MongoClient(uri);
+  await client.connect();
   const db = await client.db("brain-blitz");
   const user = await db
     .collection<UserCol>("users")
@@ -43,13 +44,14 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
   quiz.code = generateUID();
   quiz.createdAt = new Date();
   await db.collection<QuizCol>("quizzes").insertOne(quiz);
-  client.close();
+  await client.close();
   return res.json({ quizId: quiz.id, code: quiz.code });
 }
 
 async function DELETE(req: NextApiRequest, res: NextApiResponse) {
   const session = await getServerSession(req, res, authOptions);
   const client = new MongoClient(uri);
+  await client.connect();
   const db = await client.db("brain-blitz");
   const user = await db
     .collection<UserCol>("users")
@@ -66,7 +68,7 @@ async function DELETE(req: NextApiRequest, res: NextApiResponse) {
   const QueDel = await db
     .collection<QuestionCol>("questions")
     .deleteMany({ quizId: quizId });
-  client.close();
+  await client.close();
 
   if (QuizDel.acknowledged && QueDel.acknowledged) {
     return res.status(200).send("Done");

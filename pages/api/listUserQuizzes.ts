@@ -18,6 +18,7 @@ export default async function createQuiz(
 async function GET(req: NextApiRequest, res: NextApiResponse) {
   const session = await getServerSession(req, res, authOptions);
   const client = new MongoClient(uri);
+  await client.connect();
   const db = await client.db("brain-blitz");
   const user = await db
     .collection<UserCol>("users")
@@ -47,6 +48,8 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
     quizData = { id, title, code, createdAt };
     return quizData;
   });
-  client.close();
-  return res.json(await quizzes.toArray());
+  const finalData = await quizzes.toArray();
+  await client.close();
+
+  return res.json(finalData);
 }

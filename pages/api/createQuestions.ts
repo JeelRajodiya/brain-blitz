@@ -20,6 +20,7 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
   const questions = req.body as QuestionCol[];
   const session = await getServerSession(req, res, authOptions);
   const client = new MongoClient(uri);
+  await client.connect();
   const db = await client.db("brain-blitz");
   const user = await db
     .collection("users")
@@ -35,6 +36,6 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
   });
 
   await db.collection<QuestionCol>("questions").insertMany(questions);
-  client.close();
+  await client.close();
   return res.send("Done");
 }
