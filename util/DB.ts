@@ -34,14 +34,4 @@ export type QuestionCol = {
   difficultyTag?: "easy" | "medium" | "hard";
 };
 
-export function getDB() {
-  const uri = process.env.MONGO_URI;
-  const client = new MongoClient(uri);
-  return client.db("brain-blitz");
-}
-
-export async function getUser(email: string) {
-  const db = await getDB();
-  const user = await db.collection<UserCol>("users").findOne({ email });
-  return user;
-}
+export const uri = process.env.MONGO_URI;
