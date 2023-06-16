@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { QuizCol, UserCol, getDB, getUser, QuestionCol } from "../../util/DB";
-import { getServerSession } from "next-auth";
+import { QuizCol, UserCol, QuestionCol, uri } from "../../util/DB";
+import { User, getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
+import { MongoClient } from "mongodb";
 
 export default async function joinQuiz(
   req: NextApiRequest,
@@ -15,8 +16,13 @@ export default async function joinQuiz(
 
 async function GET(req: NextApiRequest, res: NextApiResponse) {
   const session = await getServerSession(req, res, authOptions);
-  const db = await getDB();
-  const user = getUser(session.user.email);
+  const client = new MongoClient(uri);
+  await client.connect();
+  const db = await client.db("brain-blitz");
+  const user = await db
+    .collection<UserCol>("users")
+    .findOne({ email: session.user.email });
+
   const quizCode = req.query.code as string;
 
   if (!user) {
@@ -63,6 +69,7 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
     code: quiz.code,
     questions,
   };
+  await client.close();
 
   return res.json(quizData);
 }

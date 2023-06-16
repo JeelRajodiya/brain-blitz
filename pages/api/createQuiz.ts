@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { QuestionCol, getDB, getUser } from "../../util/DB";
+import { QuestionCol, UserCol, uri } from "../../util/DB";
 import type { QuizCol } from "../../util/DB";
 import { uuid } from "uuidv4";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
+import { MongoClient } from "mongodb";
 function generateUID() {
   // I generate the UID from two parts here
   // to ensure the random number provide enough bits.
@@ -28,7 +29,13 @@ export default async function createQuiz(
 async function POST(req: NextApiRequest, res: NextApiResponse) {
   const quiz: QuizCol = req.body;
   const session = await getServerSession(req, res, authOptions);
-  const user = getUser(session.user.email);
+  const client = new MongoClient(uri);
+  await client.connect();
+  const db = await client.db("brain-blitz");
+  const user = await db
+    .collection<UserCol>("users")
+    .findOne({ email: session.user.email });
+
   if (!user) {
     return res.status(401).send("Unauthorized");
   }
@@ -36,18 +43,24 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
   quiz.id = uuid();
   quiz.code = generateUID();
   quiz.createdAt = new Date();
-  const db = await getDB();
   await db.collection<QuizCol>("quizzes").insertOne(quiz);
+  await client.close();
   return res.json({ quizId: quiz.id, code: quiz.code });
 }
 
 async function DELETE(req: NextApiRequest, res: NextApiResponse) {
   const session = await getServerSession(req, res, authOptions);
-  const user = getUser(session.user.email);
+  const client = new MongoClient(uri);
+  await client.connect();
+  const db = await client.db("brain-blitz");
+  const user = await db
+    .collection<UserCol>("users")
+    .findOne({ email: session.user.email });
+
   if (!user) {
     return res.status(401).send("Unauthorized");
   }
-  const db = await getDB();
+
   const quizId = req.headers.id;
   const QuizDel = await db
     .collection<QuizCol>("quizzes")
@@ -55,6 +68,7 @@ async function DELETE(req: NextApiRequest, res: NextApiResponse) {
   const QueDel = await db
     .collection<QuestionCol>("questions")
     .deleteMany({ quizId: quizId });
+  await client.close();
 
   if (QuizDel.acknowledged && QueDel.acknowledged) {
     return res.status(200).send("Done");
