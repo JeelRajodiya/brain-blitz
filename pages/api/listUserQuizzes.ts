@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getDB, getUser } from "../../util/DB";
+import { uri } from "../../util/DB";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
+import { MongoClient } from "mongodb";
+import { UserCol } from "../../util/DB";
 
 export default async function createQuiz(
   req: NextApiRequest,
@@ -15,8 +17,12 @@ export default async function createQuiz(
 
 async function GET(req: NextApiRequest, res: NextApiResponse) {
   const session = await getServerSession(req, res, authOptions);
-  const db = await getDB();
-  const user = getUser(session.user.email);
+  const client = new MongoClient(uri);
+  const db = await client.db("brain-blitz");
+  const user = await db
+    .collection<UserCol>("users")
+    .findOne({ email: session.user.email });
+
   if (!user) {
     return res.status(401).send("Unauthorized");
   }
@@ -41,6 +47,6 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
     quizData = { id, title, code, createdAt };
     return quizData;
   });
-
+  client.close();
   return res.json(await quizzes.toArray());
 }

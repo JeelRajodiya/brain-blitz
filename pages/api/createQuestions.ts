@@ -35,5 +35,6 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
   });
 
   await db.collection<QuestionCol>("questions").insertMany(questions);
+  client.close();
   return res.send("Done");
 }
