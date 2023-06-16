@@ -92,13 +92,13 @@ export default function Questions() {
               </div>
 
               <div>
-                <div className="flex flex-col p-1 bg-neutral rounded-box text-neutral-content">
+                <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
                   <span className="countdown font-mono text-5xl">
                     <span style={{ "--value": 24 }}></span>
                   </span>
                   min
                 </div>
-                <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+                <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
                   <span className="countdown font-mono text-5xl">
                     <span style={{ "--value": 50 }}></span>
                   </span>
