@@ -82,11 +82,13 @@ export default function Questions() {
             <div className="navbar rounded-lg m-1 bg-neutral flex-row justify-between">
               <div
                 className="radial-progress"
-                style={{
-                  "--value": "70",
-                  "--size": "5rem",
-                  "--thickness": "7px",
-                }}
+                style={
+                  {
+                    "--value": "70",
+                    "--size": "5rem",
+                    "--thickness": "7px",
+                  } as React.CSSProperties
+                }
               >
                 70%
               </div>
@@ -94,13 +96,17 @@ export default function Questions() {
               <div>
                 <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
                   <span className="countdown font-mono text-5xl">
-                    <span style={{ "--value": 24 }}></span>
+                    <span
+                      style={{ "--value": 24 } as React.CSSProperties}
+                    ></span>
                   </span>
                   min
                 </div>
                 <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
                   <span className="countdown font-mono text-5xl">
-                    <span style={{ "--value": 50 }}></span>
+                    <span
+                      style={{ "--value": 50 } as React.CSSProperties}
+                    ></span>
                   </span>
                   sec
                 </div>
