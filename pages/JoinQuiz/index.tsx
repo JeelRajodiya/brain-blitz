@@ -71,13 +71,27 @@ export default function Questions() {
   const toggleSidebar = () => {
     setShowSidebar(!ShowSidebar);
   };
+  const questionsBoxes = [];
+  for (let i = 0; i < questions.length; i++) {
+    if (i == activeQuestion - 1) {
+      questionsBoxes.push(
+        <div
+          className={classnames(styles.questionBoxActive, styles.questionBox)}
+        >
+          {i + 1}
+        </div>
+      );
+      continue;
+    }
+    questionsBoxes.push(<div className={styles.questionBox}>{i + 1}</div>);
+  }
 
   return (
     <>
       {/* @ts-ignore */}
       <Layout>
         <div className={styles.wrapper}>
-          <div className={styles.sideBar}>Side Bar</div>
+          <div className={styles.sideBar}>{questionsBoxes}</div>
           <div className={styles.mainWindow}>Main window</div>
         </div>
       </Layout>
