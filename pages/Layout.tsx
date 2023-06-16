@@ -25,7 +25,7 @@ export default function Layout({ children, pageTitle }) {
   };
 
   return (
-    <div className="flex justify-center flex-col center">
+    <div className="flex px-2 py-4  flex-col " style={{ height: "100%" }}>
       <div
         className="navbar bg-base-200 rounded-lg p-3 shadow-md mb-4"
         style={{ zIndex: "999" }}
@@ -60,13 +60,13 @@ export default function Layout({ children, pageTitle }) {
                 tabIndex={0}
                 className="dropdown-content menu p-2 bg-base-200  shadow rounded-box mt-5"
               >
-                <button className = "btn btn-sm">
+                <button className="btn btn-sm">
                   <a>profile</a>
                 </button>
-                <button className = "btn btn-sm">
+                <button className="btn btn-sm">
                   <a>settings</a>
                 </button>
-                <button className = "btn btn-sm">
+                <button className="btn btn-sm">
                   <a onClick={performSignOut}>logout</a>
                 </button>
               </ul>
