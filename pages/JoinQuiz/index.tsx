@@ -95,7 +95,7 @@ export default function Questions() {
 
               <div className="flex space-x-1">
                 <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
-                  <span className="countdown font-mono text-5xl">
+                  <span className="countdown font-mono text-md">
                     <span
                       style={{ "--value": 24 } as React.CSSProperties}
                     ></span>
@@ -103,7 +103,7 @@ export default function Questions() {
                   min
                 </div>
                 <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
-                  <span className="countdown font-mono text-5xl">
+                  <span className="countdown font-mono text-md">
                     <span
                       style={{ "--value": 50 } as React.CSSProperties}
                     ></span>
