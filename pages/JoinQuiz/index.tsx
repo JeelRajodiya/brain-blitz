@@ -79,10 +79,36 @@ export default function Questions() {
           {/* main window */}
           <div className={styles.mainWindow}>
             {/* progress bar here */}
-            <div className="navbar rounded-lg m-1 bg-neutral"></div>
+            <div className="navbar rounded-lg m-1 bg-neutral flex-row justify-between">
+              <div
+                className="radial-progress"
+                style={{
+                  "--value": "70",
+                  "--size": "5rem",
+                  "--thickness": "7px",
+                }}
+              >
+                70%
+              </div>
+
+              <div>
+                <div className="flex flex-col p-1 bg-neutral rounded-box text-neutral-content">
+                  <span className="countdown font-mono text-5xl">
+                    <span style={{ "--value": 24 }}></span>
+                  </span>
+                  min
+                </div>
+                <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+                  <span className="countdown font-mono text-5xl">
+                    <span style={{ "--value": 50 }}></span>
+                  </span>
+                  sec
+                </div>
+              </div>
+            </div>
             {/* question body here */}
-            <div className="navbar rounded-lg m-1 bg-neutral">{/*  */}</div>
-            <div className="divider"></div> 
+            <div className="navbar rounded-lg m-1 bg-neutral"></div>
+            <div className="divider"></div>
             {/* options here: */}
             <div className="navbar rounded-lg m-1 bg-neutral">{/*  */}</div>
           </div>
