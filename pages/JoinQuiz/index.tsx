@@ -93,7 +93,7 @@ export default function Questions() {
                 70%
               </div>
 
-              <div>
+              <div className="flex space-x-1">
                 <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
                   <span className="countdown font-mono text-5xl">
                     <span
@@ -111,6 +111,7 @@ export default function Questions() {
                   sec
                 </div>
               </div>
+
             </div>
             {/* question body here */}
             <div className="navbar rounded-lg m-1 bg-neutral"></div>
