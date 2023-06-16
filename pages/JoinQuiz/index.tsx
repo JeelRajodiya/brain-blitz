@@ -93,6 +93,8 @@ export default function Questions() {
                 70%
               </div>
 
+              <div>{/* Question number will go here */}</div>
+
               <div className="flex space-x-1">
                 <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
                   <span className="countdown font-mono text-md">
@@ -111,12 +113,22 @@ export default function Questions() {
                   sec
                 </div>
               </div>
-
             </div>
-            {/* question body here */}
-            <div className="navbar rounded-lg m-1 bg-neutral"></div>
+
+            {/* question body: */}
+            <div className="navbar rounded-lg m-1 bg-neutral">
+              <p>{/* put question content here */}</p>
+              {/* Question content will go here */}
+              {difficultyTags && (
+                <div className="badge badge-outline">Easy</div>
+              )}
+            </div>
+
             <div className="divider"></div>
             {/* options here: */}
+            <div className="styles.options">
+              
+            </div>
             <div className="navbar rounded-lg m-1 bg-neutral">{/*  */}</div>
           </div>
         </div>
