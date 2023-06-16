@@ -46,10 +46,7 @@ export default function QuizCode() {
   return (
     // @ts-ignore
     <Layout>
-      <div
-        className="flex justify-center items-center transform translate-y-1/2"
-        style={{ scale: "1.2" }}
-      >
+      <div className="flex justify-center items-center h-full  ">
         <div className="card w-96 bg-neutral text-neutral-content">
           <div className="card-body items-center text-center">
             <h1 className="card-title text-xl">Invite folks to your Quiz</h1>
