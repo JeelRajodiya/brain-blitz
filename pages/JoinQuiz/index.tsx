@@ -86,7 +86,7 @@ export default function Questions() {
                   {
                     "--value": "70",
                     "--size": "5rem",
-                    "--thickness": "7px",
+                    "--thickness": "5px",
                   } as React.CSSProperties
                 }
               >
@@ -95,22 +95,33 @@ export default function Questions() {
 
               <div>{/* Question number will go here */}</div>
 
-              <div className="flex space-x-1">
+              {/* timer */}
+              <div className="flex space-x-1 text-center">
+                <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
+                  <span className="countdown font-mono text-md">
+                    <span
+                      style={{ "--value": 0 } as React.CSSProperties}
+                    ></span>
+                  </span>
+                  H
+                </div>
+
                 <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
                   <span className="countdown font-mono text-md">
                     <span
                       style={{ "--value": 24 } as React.CSSProperties}
                     ></span>
                   </span>
-                  min
+                  M
                 </div>
+
                 <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
                   <span className="countdown font-mono text-md">
                     <span
                       style={{ "--value": 50 } as React.CSSProperties}
                     ></span>
                   </span>
-                  sec
+                  S
                 </div>
               </div>
             </div>
@@ -119,6 +130,8 @@ export default function Questions() {
             <div className="navbar rounded-lg m-1 bg-neutral">
               <p>{/* put question content here */}</p>
               {/* Question content will go here */}
+              <p className="p-2 text-lg">{question.question}</p>
+              {/* Difficulty tag if it is enabled */}
               {difficultyTags && (
                 <div className="badge badge-outline">Easy</div>
               )}
@@ -126,9 +139,7 @@ export default function Questions() {
 
             <div className="divider"></div>
             {/* options here: */}
-            <div className="styles.options">
-              
-            </div>
+            <div className="styles.options"></div>
             <div className="navbar rounded-lg m-1 bg-neutral">{/*  */}</div>
           </div>
         </div>
