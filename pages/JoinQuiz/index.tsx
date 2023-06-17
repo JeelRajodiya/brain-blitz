@@ -39,7 +39,7 @@ export default function Questions() {
   const [difficultyTags, setDifficultyTags] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [jumpQuestions, setJumpQuestions] = useState(false);
-  const [ShowSidebar, setShowSidebar] = useState(false);
+  const [ShowSidebar, setShowSidebar] = useState(jumpQuestions);
 
   useEffect(() => {
     if (!code) return;
@@ -75,13 +75,32 @@ export default function Questions() {
   let complete: number = activeQuestion / totalQuestions;
   complete *= 100;
 
+  let questionContent: string = question ? question.question : "";
+
+  const nextQuestion = () => {
+    if (activeQuestion < totalQuestions) {
+      setActiveQuestion(activeQuestion + 1);
+    }
+  };
+
+  const prevQuestion = () => {
+    if (activeQuestion > 1) {
+      setActiveQuestion(activeQuestion - 1);
+    }
+  };
+
+  let optionA: string = question ? question.options[0] : "";
+  let optionB: string = question ? question.options[1] : "";
+  let optionC: string = question ? question.options[2] : "";
+  let optionD: string = question ? question.options[3] : "";
+
   return (
     <>
       {/* @ts-ignore */}
       <Layout>
         {/* sidebar if enabled */}
         <div className={styles.wrapper}>
-          {jumpQuestions && <div className={styles.sideBar}>Side Bar</div>}
+          {ShowSidebar && <div className={styles.sideBar}>Side Bar</div>}
 
           {/* main window */}
           {/* progress bar here */}
@@ -99,13 +118,31 @@ export default function Questions() {
                 }
                 onClick={toggleSidebar}
               >
-                <p className="text-xl font-bold">{complete}%</p>
+                <p className="text-lg font-bold">{complete}%</p>
               </div>
 
               <div>
+                {!ShowSidebar && (
+                  <button
+                    className="btn bg-base-100 m-1 btn-sm text-lg rounded-btn"
+                    onClick={prevQuestion}
+                  >
+                    {"<"}
+                  </button>
+                )}
+
                 <h1 className="text-4xl font-bold bg-base-100 p-3 rounded-md">
                   Question - {activeQuestion}
                 </h1>
+
+                {!ShowSidebar && (
+                  <button
+                    className="btn bg-base-100 m-1 btn-sm text-lg rounded-btn"
+                    onClick={nextQuestion}
+                  >
+                    {">"}
+                  </button>
+                )}
               </div>
 
               {/* timer */}
@@ -142,9 +179,8 @@ export default function Questions() {
 
             {/* question body: */}
             <div className="navbar rounded-lg m-1 bg-neutral">
-              <p>{/* put question content here */}</p>
-              {/* Question content will go here */}
-              <p className="p-2 text-lg">{question.question}</p>
+              <p className="p-2 text-lg">{questionContent}</p>
+
               {/* Difficulty tag if it is enabled */}
               {difficultyTags && (
                 <div className="badge badge-outline">Easy</div>
@@ -153,7 +189,9 @@ export default function Questions() {
 
             <div className="divider"></div>
             {/* options here: */}
-            <div className="styles.options"></div>
+            <div className="styles.options">
+              
+            </div>
             <div className="navbar rounded-lg m-1 bg-neutral">{/*  */}</div>
           </div>
         </div>
