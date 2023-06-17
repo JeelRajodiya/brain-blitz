@@ -158,7 +158,7 @@ export default function NewQuiz() {
           </div>
         </div>
 
-        <div className="justify-end items-end flex">
+        <div className="justify-end items-end mr-5 mt-1 flex">
           <button
             className="btn btn-primary w-48 h-20 "
             disabled={!quizName}
