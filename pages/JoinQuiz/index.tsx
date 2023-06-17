@@ -70,6 +70,11 @@ export default function Questions() {
     setShowSidebar(!ShowSidebar);
   };
 
+  // total questions is given by questions.length
+  let totalQuestions: number = questions.length;
+  let complete: number = activeQuestion / totalQuestions;
+  complete *= 100;
+
   return (
     <>
       {/* @ts-ignore */}
@@ -86,16 +91,22 @@ export default function Questions() {
                 className="radial-progress"
                 style={
                   {
-                    "--value": "70",
+                    "--value": `${complete}`,
                     "--size": "5rem",
                     "--thickness": "5px",
+                    cursor: "pointer",
                   } as React.CSSProperties
                 }
+                onClick={toggleSidebar}
               >
-                70%
+                <p className="text-xl font-bold">{complete}%</p>
               </div>
 
-              <div>{/* Question number will go here */}</div>
+              <div>
+                <h1 className="text-4xl font-bold bg-base-100 p-3 rounded-md">
+                  Question - {activeQuestion}
+                </h1>
+              </div>
 
               {/* timer */}
               <div className="grid grid-flow-col gap-2 text-center auto-cols-max">
