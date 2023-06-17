@@ -74,11 +74,13 @@ export default function Questions() {
     <>
       {/* @ts-ignore */}
       <Layout>
+        {/* sidebar if enabled */}
         <div className={styles.wrapper}>
           {jumpQuestions && <div className={styles.sideBar}>Side Bar</div>}
+
           {/* main window */}
+          {/* progress bar here */}
           <div className={styles.mainWindow}>
-            {/* progress bar here */}
             <div className="navbar rounded-lg m-1 bg-neutral flex-row justify-between">
               <div
                 className="radial-progress"
@@ -96,32 +98,33 @@ export default function Questions() {
               <div>{/* Question number will go here */}</div>
 
               {/* timer */}
-              <div className="flex space-x-1 text-center">
-                <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
-                  <span className="countdown font-mono text-md">
+              <div className="grid grid-flow-col gap-2 text-center auto-cols-max">
+                {/* hours */}
+                <div className="flex bg-base-100 flex-col p-2 rounded-box text-neutral-content">
+                  <span className="countdown font-mono text-4xl">
                     <span
                       style={{ "--value": 0 } as React.CSSProperties}
                     ></span>
                   </span>
-                  H
+                  hours
                 </div>
-
-                <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
-                  <span className="countdown font-mono text-md">
+                {/* minutes */}
+                <div className="flex bg-base-100 flex-col p-2 rounded-box text-neutral-content">
+                  <span className="countdown font-mono text-4xl">
                     <span
                       style={{ "--value": 24 } as React.CSSProperties}
                     ></span>
                   </span>
-                  M
+                  min
                 </div>
-
-                <div className="flex flex-col p-3 bg-base-100 rounded-box text-neutral-content">
-                  <span className="countdown font-mono text-md">
+                {/* seconds */}
+                <div className="flex bg-base-100 flex-col p-2 rounded-box text-neutral-content">
+                  <span className="countdown font-mono text-4xl">
                     <span
-                      style={{ "--value": 50 } as React.CSSProperties}
+                      style={{ "--value": 41 } as React.CSSProperties}
                     ></span>
                   </span>
-                  S
+                  sec
                 </div>
               </div>
             </div>
