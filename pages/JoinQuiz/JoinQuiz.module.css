@@ -35,16 +35,17 @@
 }
 .questionBox {
   text-align: center;
-  border: 1px white solid;
+  border: 1px rgba(255, 255, 255, 0.514) solid;
   padding: 10px;
   border-radius: 10px;
   transform: background-color 0.5s ease;
 }
 
 .questionBox:hover {
-  background-color: hsl(var(--b3));
+  background-color: hsl(var(--b2));
   transition: background-color 0.3s ease;
   cursor: pointer;
+  border: none;
 }
 
 .mainWindow {
@@ -55,7 +56,7 @@
   border-radius: 10px;
   padding: 10px;
   margin: 0 10px;
-
+  position: relative;
   border: 1px dashed white;
 
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
@@ -71,6 +72,7 @@
 .questionBoxActive {
   background-color: hsl(var(--p));
   transition: background-color 0.5s ease;
+  border: none;
 }
 .activeQuestionNumber {
   border: 2px solid rgba(255, 255, 255, 0.726);
@@ -112,4 +114,38 @@
   overflow: break-word;
   word-wrap: break-word;
   word-break: break-word;
+}
+.drawerBtn {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  background-color: transparent;
+  background-color: hsl(var(--b2));
+  outline: none;
+  cursor: pointer;
+  padding: 0.5em;
+  border-top-right-radius: 2em;
+  border-bottom-right-radius: 2em;
+  transition: padding 0.3s ease;
+  z-index: 1;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.drawerBtn:hover {
+  padding-left: 2.5em;
+}
+
+.drawerBtn:hover > p {
+  transform: rotate(180deg) translateY(-10%);
+}
+.drawerBtn > p {
+  transition: transform 0.3s ease;
+  font-size: 1.5em;
+  font-weight: bold;
+  transform: translateY(-10%);
+}
+.drawerBtnOpen > p {
+  transform: rotate(180deg) translateY(-10%);
 }

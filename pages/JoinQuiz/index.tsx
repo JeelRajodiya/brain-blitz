@@ -167,6 +167,15 @@ export default function Questions() {
           {/* main window */}
           {/* progress bar here */}
           <div className={styles.mainWindow}>
+            <div
+              onClick={toggleSidebar}
+              className={classnames(
+                styles.drawerBtn,
+                ShowSidebar && styles.drawerBtnOpen
+              )}
+            >
+              <p>{">"}</p>
+            </div>
             <div className="navbar rounded-lg m-1 bg-neutral flex flex-row items-center justify-between w-full">
               <div
                 className="radial-progress"
@@ -182,13 +191,11 @@ export default function Questions() {
               >
                 <p className="text-xs">{complete}%</p>
               </div>
-
               <div>
                 <h1 className="text font-bold bg-base-100 p-2 rounded-md">
                   Question {activeQuestion}
                 </h1>
               </div>
-
               {/* timer */}
               <div className="grid grid-flow-col gap-2 text-center">
                 {/* minutes */}
