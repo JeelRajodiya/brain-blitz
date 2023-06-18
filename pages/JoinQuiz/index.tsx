@@ -7,7 +7,6 @@ import classnames from "classnames";
 import DifficultyTags from "../components/DifficultyTags";
 import QuestionsIndexEntry from "../components/QuestionsIndexEntry";
 import type { Question } from "../components/Option";
-import Option from "../components/Option";
 
 // type for each question:
 async function fetchQuiz(code: string) {
@@ -20,6 +19,39 @@ async function fetchQuiz(code: string) {
   const json = await res.json();
   return json;
 }
+
+function Option({
+  text,
+  isSelected,
+  index,
+  setQuestion,
+}: {
+  text: string;
+  isSelected: boolean;
+  index: number;
+  setQuestion: React.Dispatch<React.SetStateAction<Question>>;
+}) {
+  const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  return (
+    <div
+      className={classnames(styles.option, isSelected && styles.selectedOption)}
+      onClick={() => {
+        setQuestion((prev) => {
+          return {
+            ...prev,
+            correctOption: index,
+          };
+        });
+      }}
+    >
+      {alphabets[index]}
+      <div className="divider divider-horizontal"></div>
+      {text}
+    </div>
+  );
+}
+
 export default function Questions() {
   const router = useRouter();
 
@@ -74,6 +106,7 @@ export default function Questions() {
   let totalQuestions: number = questions.length;
   let complete: number = activeQuestion / totalQuestions;
   complete *= 100;
+  complete = Math.round(complete);
 
   const nextQuestion = () => {
     if (activeQuestion < totalQuestions) {
@@ -88,14 +121,11 @@ export default function Questions() {
   };
 
   // ! This temporarily fixed the error but it still does not work
-  let questionContent: string = question ? question.question : "";
-  let optionA: string = question ? question.options[0] : "";
-  let optionB: string = question ? question.options[1] : "";
-  let optionC: string = question ? question.options[2] : "";
-  let optionD: string = question ? question.options[3] : "";
+
   const questionsBoxes = [];
   for (let i = 0; i < questions.length; i++) {
     if (i == activeQuestion - 1) {
+      console.log(question);
       questionsBoxes.push(
         <div
           className={classnames(styles.questionBoxActive, styles.questionBox)}
@@ -105,7 +135,16 @@ export default function Questions() {
       );
       continue;
     }
-    questionsBoxes.push(<div className={styles.questionBox}>{i + 1}</div>);
+    questionsBoxes.push(
+      <div
+        className={styles.questionBox}
+        onClick={() => {
+          setActiveQuestion(i + 1);
+        }}
+      >
+        {i + 1}
+      </div>
+    );
   }
 
   return (
@@ -114,9 +153,14 @@ export default function Questions() {
       <Layout>
         {/* sidebar if enabled */}
         <div className={styles.wrapper}>
-          {ShowSidebar && (
-            <div className={styles.sideBar}>{questionsBoxes}</div>
-          )}
+          <div
+            className={classnames(
+              styles.sideBar,
+              ShowSidebar && styles.showSideBar
+            )}
+          >
+            {questionsBoxes}
+          </div>
 
           {/* main window */}
           {/* progress bar here */}
@@ -127,54 +171,27 @@ export default function Questions() {
                 style={
                   {
                     "--value": `${complete}`,
-                    "--size": "5rem",
-                    "--thickness": "5px",
+                    "--size": "3rem",
+                    "--thickness": "4px",
                     cursor: "pointer",
                   } as React.CSSProperties
                 }
                 onClick={toggleSidebar}
               >
-                <p className="text-lg font-bold">{complete}%</p>
+                <p className="text-xs ">{complete}%</p>
               </div>
 
               <div>
-                {!ShowSidebar && (
-                  <button
-                    className="btn bg-base-100 m-1 btn-sm text-lg rounded-btn"
-                    onClick={prevQuestion}
-                  >
-                    {"<"}
-                  </button>
-                )}
-
-                <h1 className="text-4xl font-bold bg-base-100 p-3 rounded-md">
+                <h1 className="text-xl font-bold bg-base-100 p-3 rounded-md">
                   Question - {activeQuestion}
                 </h1>
-
-                {!ShowSidebar && (
-                  <button
-                    className="btn bg-base-100 m-1 btn-sm text-lg rounded-btn"
-                    onClick={nextQuestion}
-                  >
-                    {">"}
-                  </button>
-                )}
               </div>
 
               {/* timer */}
               <div className="grid grid-flow-col gap-2 text-center auto-cols-max">
-                {/* hours */}
-                <div className="flex bg-base-100 flex-col p-2 rounded-box text-neutral-content">
-                  <span className="countdown font-mono text-4xl">
-                    <span
-                      style={{ "--value": 0 } as React.CSSProperties}
-                    ></span>
-                  </span>
-                  hours
-                </div>
                 {/* minutes */}
                 <div className="flex bg-base-100 flex-col p-2 rounded-box text-neutral-content">
-                  <span className="countdown font-mono text-4xl">
+                  <span className="countdown font-mono text-xl">
                     <span
                       style={{ "--value": 24 } as React.CSSProperties}
                     ></span>
@@ -183,7 +200,7 @@ export default function Questions() {
                 </div>
                 {/* seconds */}
                 <div className="flex bg-base-100 flex-col p-2 rounded-box text-neutral-content">
-                  <span className="countdown font-mono text-4xl">
+                  <span className="countdown font-mono text-2xl">
                     <span
                       style={{ "--value": 41 } as React.CSSProperties}
                     ></span>
@@ -192,20 +209,38 @@ export default function Questions() {
                 </div>
               </div>
             </div>
-
             {/* question body: */}
             <div className="navbar rounded-lg m-1 bg-neutral">
-              <p className="p-2 text-lg">{questionContent}</p>
+              <p className="p-2 text-lg">
+                <span className={styles.activeQuestionNumber}>
+                  {activeQuestion}
+                  {". "}
+                </span>
+
+                {question.question}
+              </p>
 
               {/* Difficulty tag if it is enabled */}
               {difficultyTags && (
                 <div className="badge badge-outline">Easy</div>
               )}
             </div>
-
             <div className="divider"></div>
             {/* options here: */}
-            <div className="styles.options"></div>
+            <div className={styles.optionsWrapper}>
+              {question.options.map((option, index) => {
+                console.log(option);
+                return (
+                  <Option
+                    text={option}
+                    index={index}
+                    isSelected={index === question.correctOption}
+                    setQuestion={setQuestion}
+                  />
+                );
+              })}
+            </div>
+
             <div className="navbar rounded-lg m-1 bg-neutral">{/*  */}</div>
           </div>
         </div>

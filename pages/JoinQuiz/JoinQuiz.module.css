@@ -1,18 +1,25 @@
 .sideBar {
-  width: 100%;
   height: 100%;
   border-radius: 10px;
   padding: 10px;
   margin: 0 10px;
   border: 1px dashed white;
-  flex: 1;
+  flex: 0;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
   grid-auto-rows: 3em;
   gap: 10px;
   overflow-y: scroll;
+  position: absolute;
 }
+
+.showSideBar {
+  display: grid;
+  position: relative;
+  flex: 1;
+}
+
 .sideBar::-webkit-scrollbar {
   width: 4px;
 }
@@ -25,6 +32,13 @@
   border: 1px white solid;
   padding: 10px;
   border-radius: 10px;
+  transform: background-color 0.5s ease;
+}
+
+.questionBox:hover {
+  background-color: hsl(var(--b3));
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .mainWindow {
@@ -47,6 +61,45 @@
   flex-direction: row;
 }
 
-.options{
-  
+.options {
+}
+
+.questionBoxActive {
+  background-color: hsl(var(--p));
+  transition: background-color 0.5s ease;
+}
+.activeQuestionNumber {
+  border: 2px solid rgba(255, 255, 255, 0.726);
+  padding: 6px;
+  border-radius: 5px;
+  margin-right: 15px;
+  background-color: hsl(var(--s));
+  color: white;
+  font-weight: bold;
+}
+.optionsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  padding: 6px;
+}
+.option {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 1em;
+  margin: 6px;
+  border-radius: 1em;
+  border: 1px solid rgba(255, 255, 255, 0.533);
+
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.selectedOption {
+  background-color: hsl(var(--p));
+  transition: background-color 0.1s ease;
+  border: none;
 }
