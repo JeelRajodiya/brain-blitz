@@ -212,7 +212,9 @@ export default function Questions() {
             {/* question body: */}
             <div className="card w-full rounded-lg m-1 bg-neutral flex flex-column justify-between">
               <div className="flex justify-start">
-                <p className="p-2 text-lg font-semibold">{question?.question}</p>
+                <p className="p-2 text-lg font-semibold">
+                  {question?.question}
+                </p>
               </div>
               <div className="flex justify-end items-end p-2">
                 {/* Difficulty tag if it is enabled */}
@@ -238,7 +240,12 @@ export default function Questions() {
               })}
             </div>
 
-            <div className="navbar rounded-lg m-1 bg-neutral">{/*  */}</div>
+            <div className="card rounded-lg m-1">
+              <div className="flex flex-row justify-center join gap-1">
+                <button className="btn  join-item">Save and Next</button>
+                <button className="btn  join-item">Skip and Next</button>
+              </div>
+            </div>
           </div>
         </div>
       </Layout>
