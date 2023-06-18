@@ -237,16 +237,8 @@ export default function Questions() {
                 );
               })}
             </div>
- 
-            <div className="card w-full rounded-lg mt-1 flex flex-column justify-between">
-              <div className="join gap-1 justify-end">
-              <button className="btn btn-lg join-item">
-                Save and Next
-              </button><button className="btn btn-lg join-item">
-                Skip and Next
-              </button>
-              </div>
-            </div>
+
+            <div className="navbar rounded-lg m-1 bg-neutral">{/*  */}</div>
           </div>
         </div>
       </Layout>
