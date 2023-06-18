@@ -1,0 +1,652 @@
+[
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In the hexadecimal system, what number comes after 9?",
+        "id": "Inthehexadecimalsystem,whatnumbercomesafter9?",
+        "options": [
+            "The Letter A",
+            "10",
+            "The Number 0",
+            "16"
+        ],
+        "correctOption": 0,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Which character is from \"Splatoon\"?",
+        "id": "Whichcharacterisfrom&quot;Splatoon&quot;?",
+        "options": [
+            "Marie",
+            "Shulk",
+            "Cyrus",
+            "Palutena"
+        ],
+        "correctOption": 0,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Which American family band had a 1986 top 10 hit with the song 'Crush On You'?",
+        "id": "WhichAmericanfamilybandhada1986top10hitwiththesong&#039;CrushOnYou&#039;?",
+        "options": [
+            "The Cover Girls",
+            "The Jacksons",
+            "DeBarge",
+            "The Jets"
+        ],
+        "correctOption": 3,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "How many members are there in the band Nirvana?",
+        "id": "HowmanymembersarethereinthebandNirvana?",
+        "options": [
+            "Four",
+            "Five",
+            "Three",
+            "Two"
+        ],
+        "correctOption": 2,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "On a standard Monopoly board, which square is diagonally opposite 'Go'? ",
+        "id": "OnastandardMonopolyboard,whichsquareisdiagonallyopposite&#039;Go&#039;?",
+        "options": [
+            "The Electric Company",
+            "Jail",
+            "Free Parking",
+            "Go to Jail"
+        ],
+        "correctOption": 2,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
+        "id": "IntheprogramminglanguageJava,whichofthesekeywordswouldyouputonavariabletomakesureitdoesn&#039;tgetmodified?",
+        "options": [
+            "Final",
+            "Private",
+            "Public",
+            "Static"
+        ],
+        "correctOption": 0,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What year did Albrecht D\u00fcrer create the painting \"The Young Hare\"?",
+        "id": "WhatyeardidAlbrechtD&uuml;rercreatethepainting&quot;TheYoungHare&quot;?",
+        "options": [
+            "1602",
+            "1702",
+            "1502",
+            "1402"
+        ],
+        "correctOption": 2,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Which of these is NOT a team available in the game Pok\u00e9mon Go?",
+        "id": "WhichoftheseisNOTateamavailableinthegamePok&eacute;monGo?",
+        "options": [
+            "Team Instinct",
+            "Team Rocket",
+            "Team Mystic",
+            "Team Valor"
+        ],
+        "correctOption": 1,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "When was the first \"Half-Life\" released?",
+        "id": "Whenwasthefirst&quot;Half-Life&quot;released?",
+        "options": [
+            "2004",
+            "1999",
+            "1997",
+            "1998"
+        ],
+        "correctOption": 3,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Sciophobia is the fear of what?",
+        "id": "Sciophobiaisthefearofwhat?",
+        "options": [
+            "Transportation",
+            "Eating",
+            "Shadows",
+            "Bright lights"
+        ],
+        "correctOption": 2,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What scientific family does the Aardwolf belong to?",
+        "id": "WhatscientificfamilydoestheAardwolfbelongto?",
+        "options": [
+            "Eupleridae",
+            "Hyaenidae",
+            "Felidae",
+            "Canidae"
+        ],
+        "correctOption": 1,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In the anime, Full Metal Panic!, who is Kaname's best friend?",
+        "id": "Intheanime,FullMetalPanic!,whoisKaname&#039;sbestfriend?",
+        "options": [
+            "Melissa Mao",
+            "Ren Mikihara",
+            "Kyoko Tokiwa",
+            "Teletha &quot;Tessa&quot; Testarossa"
+        ],
+        "correctOption": 2,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Which band name isn't a Stand in \"JoJo's Bizzare Adventure\"?",
+        "id": "Whichbandnameisn&#039;taStandin&quot;JoJo&#039;sBizzareAdventure&quot;?",
+        "options": [
+            "Red Hot Chili Peppers",
+            "Green Day",
+            "Survivor",
+            "AC/DC"
+        ],
+        "correctOption": 3,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What is the nickname of the US state of California?",
+        "id": "WhatisthenicknameoftheUSstateofCalifornia?",
+        "options": [
+            "Bay State",
+            "Sunshine State",
+            "Golden State",
+            "Treasure State"
+        ],
+        "correctOption": 2,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In the Portal series, Aperture Science was founded under what name in the early 1940s?",
+        "id": "InthePortalseries,ApertureSciencewasfoundedunderwhatnameintheearly1940s?",
+        "options": [
+            "Aperture Lavatories",
+            "Wheatley Laboratories",
+            "Aperture Fixtures",
+            "Aperture Science Innovators"
+        ],
+        "correctOption": 2,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Which of the following is NOT a real song from the band Thousand Foot Krutch?",
+        "id": "WhichofthefollowingisNOTarealsongfromthebandThousandFootKrutch?",
+        "options": [
+            "Limitless Fury",
+            "Let The Sparks Fly",
+            "Give Up The Ghost",
+            "Down"
+        ],
+        "correctOption": 0,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In \"It's Always Sunny in Philadelphia\" what was the name of Frank's wrestling persona?",
+        "id": "In&quot;It&#039;sAlwaysSunnyinPhiladelphia&quot;whatwasthenameofFrank&#039;swrestlingpersona?",
+        "options": [
+            "The Maniac",
+            "Day Man",
+            "Bird of War",
+            "The Trash Man"
+        ],
+        "correctOption": 3,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In the 2015 RPG \"Undertale\", which character do you first encounter after falling down into the underground?",
+        "id": "Inthe2015RPG&quot;Undertale&quot;,whichcharacterdoyoufirstencounterafterfallingdownintotheunderground?",
+        "options": [
+            "Flowey",
+            "Papyrus",
+            "Toriel",
+            "Sans"
+        ],
+        "correctOption": 0,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Which of the following is NOT a summon in the game \"South Park: The Stick of Truth\"?",
+        "id": "WhichofthefollowingisNOTasummoninthegame&quot;SouthPark:TheStickofTruth&quot;?",
+        "options": [
+            "Towelie",
+            "Mr. Slave",
+            "Mr. Hankey",
+            "Jesus"
+        ],
+        "correctOption": 0,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In the game Battleblock Theater, what was the name of the voice actor who voiced the narrator?",
+        "id": "InthegameBattleblockTheater,whatwasthenameofthevoiceactorwhovoicedthenarrator?",
+        "options": [
+            "Steve Blum",
+            "Will Stamper",
+            "Yuri Lowenthal",
+            "Richard Epcar"
+        ],
+        "correctOption": 1,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In CSS, which of these values CANNOT be used with the \"position\" property?",
+        "id": "InCSS,whichofthesevaluesCANNOTbeusedwiththe&quot;position&quot;property?",
+        "options": [
+            "static",
+            "relative",
+            "absolute",
+            "center"
+        ],
+        "correctOption": 3,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Who created the pump \"F.L.U.D.D.\" Mario uses in Super Mario Sunshine?",
+        "id": "Whocreatedthepump&quot;F.L.U.D.D.&quot;MariousesinSuperMarioSunshine?",
+        "options": [
+            "Crygor",
+            "Robert Fludd",
+            "Elvin Gadd",
+            "Nirona"
+        ],
+        "correctOption": 2,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Who wrote the Batman comic series \"The Killing Joke\"?",
+        "id": "WhowrotetheBatmancomicseries&quot;TheKillingJoke&quot;?",
+        "options": [
+            "Jerry Siegel",
+            "Alan Moore",
+            "Bill Finger",
+            "Frank Miller"
+        ],
+        "correctOption": 1,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Deuterium is an isotope of which element?",
+        "id": "Deuteriumisanisotopeofwhichelement?",
+        "options": [
+            "Hydrogen",
+            "Nitrogen",
+            "Helium",
+            "Neon"
+        ],
+        "correctOption": 0,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Which Animal Crossing game was for the Nintendo Wii?",
+        "id": "WhichAnimalCrossinggamewasfortheNintendoWii?",
+        "options": [
+            "Animal Crossing: City Folk",
+            "Animal Crossing: Population Growing!",
+            "Animal Crossing: Wild World",
+            "Animal Crossing: New Leaf"
+        ],
+        "correctOption": 0,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What is lost in Hawaiian and is also the name of a little girl in a 2002 film which features a alien named \"Stitch\"?",
+        "id": "WhatislostinHawaiianandisalsothenameofalittlegirlina2002filmwhichfeaturesaaliennamed&quot;Stitch&quot;?",
+        "options": [
+            "Lucy",
+            "Lilo",
+            "Lolo",
+            "Lulu"
+        ],
+        "correctOption": 1,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What was the name of the protagonist of Metal Gear Solid V: The Phantom Pain?",
+        "id": "WhatwasthenameoftheprotagonistofMetalGearSolidV:ThePhantomPain?",
+        "options": [
+            "Solid Snake",
+            "Punished &quot;Venom&quot; Snake",
+            "Miller",
+            "Ocelot"
+        ],
+        "correctOption": 1,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What is the name of New Zealand's indigenous people?",
+        "id": "WhatisthenameofNewZealand&#039;sindigenouspeople?",
+        "options": [
+            "Samoans",
+            "Vikings",
+            "Polynesians",
+            "Maori"
+        ],
+        "correctOption": 3,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In season one of the Netflix political drama \"House of Cards\", what government position does Frank Underwood hold?",
+        "id": "InseasononeoftheNetflixpoliticaldrama&quot;HouseofCards&quot;,whatgovernmentpositiondoesFrankUnderwoodhold?",
+        "options": [
+            "House Majority Whip",
+            "Attorney General",
+            "President",
+            "Chief of Staff"
+        ],
+        "correctOption": 0,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What is the name of Nissan's most popular electric car?",
+        "id": "WhatisthenameofNissan&#039;smostpopularelectriccar?",
+        "options": [
+            "Roots",
+            "Leaf",
+            "Tree",
+            "Deer"
+        ],
+        "correctOption": 1,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What's the first National Park designated in the United States?",
+        "id": "What&#039;sthefirstNationalParkdesignatedintheUnitedStates?",
+        "options": [
+            "Rocky Mountain",
+            "Yosemite",
+            "Sequoia ",
+            "Yellowstone"
+        ],
+        "correctOption": 3,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What does the Latin phrase \"Veni, vidi, vici\" translate into English?",
+        "id": "WhatdoestheLatinphrase&quot;Veni,vidi,vici&quot;translateintoEnglish?",
+        "options": [
+            "Life, liberty, and happiness",
+            "I came, I saw, I conquered",
+            "Past, present, and future",
+            "See no evil, hear no evil, speak no evil"
+        ],
+        "correctOption": 1,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In \"Call Of Duty: Zombies\", which map's opening cutscene shows \"Richtofen\" killing another version of himself?",
+        "id": "In&quot;CallOfDuty:Zombies&quot;,whichmap&#039;sopeningcutsceneshows&quot;Richtofen&quot;killinganotherversionofhimself?",
+        "options": [
+            "The Giant",
+            "Moon",
+            "Shadows Of Evil",
+            "Der Eisendrache"
+        ],
+        "correctOption": 0,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In the \"PAYDAY\" series, what is the real name of the character known as \"Dallas\"?",
+        "id": "Inthe&quot;PAYDAY&quot;series,whatistherealnameofthecharacterknownas&quot;Dallas&quot;?",
+        "options": [
+            "Nathan Steele",
+            "Nick Stamos",
+            "Nolan Stuhlinger",
+            "Nate Siemens"
+        ],
+        "correctOption": 0,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Which actress portrayed Dr. Grace Augustine in the James Cameron movie \"Avatar\"?",
+        "id": "WhichactressportrayedDr.GraceAugustineintheJamesCameronmovie&quot;Avatar&quot;?",
+        "options": [
+            "Jessica Chastain",
+            "Melissa Beckett",
+            "Alyssa Monroe ",
+            "Sigourney Weaver"
+        ],
+        "correctOption": 3,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In \"Resident Evil 2\", what is Leon Kennedy's middle name?",
+        "id": "In&quot;ResidentEvil2&quot;,whatisLeonKennedy&#039;smiddlename?",
+        "options": [
+            "Scott",
+            "Shaun",
+            "Simon",
+            "Sam"
+        ],
+        "correctOption": 0,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Which sport is NOT traditionally played during the Mongolian Naadam festival?",
+        "id": "WhichsportisNOTtraditionallyplayedduringtheMongolianNaadamfestival?",
+        "options": [
+            "American Football",
+            "Horse-Racing",
+            "Wrestling",
+            "Archery"
+        ],
+        "correctOption": 0,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What immense structure is referred to in Norse Mythology as the Yggdrasil.",
+        "id": "WhatimmensestructureisreferredtoinNorseMythologyastheYggdrasil.",
+        "options": [
+            "Temple",
+            "Mountain",
+            "Castle",
+            "Tree"
+        ],
+        "correctOption": 3,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "How many sides does a trapezium have?",
+        "id": "Howmanysidesdoesatrapeziumhave?",
+        "options": [
+            "5",
+            "6",
+            "3",
+            "4"
+        ],
+        "correctOption": 3,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What car manufacturer gave away their patent for the seat-belt in the interest of saving lives?",
+        "id": "Whatcarmanufacturergaveawaytheirpatentfortheseat-beltintheinterestofsavinglives?",
+        "options": [
+            "Renault",
+            "Ferrari",
+            "Volvo",
+            "Ford"
+        ],
+        "correctOption": 2,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What physics principle relates the net electric flux out of a closed surface to the charge enclosed by that surface?",
+        "id": "Whatphysicsprinciplerelatesthenetelectricfluxoutofaclosedsurfacetothechargeenclosedbythatsurface?",
+        "options": [
+            "Biot-Savart Law",
+            "Gauss&#039;s Law",
+            "Faraday&#039;s Law",
+            "Ampere&#039;s Law"
+        ],
+        "correctOption": 1,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Which of these 1900s tanks were designed and built BEFORE the others?",
+        "id": "Whichofthese1900stanksweredesignedandbuiltBEFOREtheothers?",
+        "options": [
+            "M4 Sherman",
+            "Renault FT",
+            " Panzer IV",
+            "Cromwell "
+        ],
+        "correctOption": 1,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Who is Manchester United's top premier league goal scorer?",
+        "id": "WhoisManchesterUnited&#039;stoppremierleaguegoalscorer?",
+        "options": [
+            "Wayne Rooney",
+            "David Beckham",
+            "Sir Bobby Charlton",
+            "Ryan Giggs"
+        ],
+        "correctOption": 0,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "Which of these numbers is closest to the total number of possible states for an army standard Enigma Machine?",
+        "id": "WhichofthesenumbersisclosesttothetotalnumberofpossiblestatesforanarmystandardEnigmaMachine?",
+        "options": [
+            "1.58 x  10^18",
+            "1.58 x 10^20",
+            "1.58 x 10^24",
+            "1.58 x 10^22"
+        ],
+        "correctOption": 1,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "\"Stadium of Light\" is the home stadium for which soccer team?",
+        "id": "&quot;StadiumofLight&quot;isthehomestadiumforwhichsoccerteam?",
+        "options": [
+            "Manchester United",
+            "Barcelona FC",
+            "Paris Saints-Germain",
+            "Sunderland FC"
+        ],
+        "correctOption": 3,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "\"Strangereal\" is a fictitious Earth-like world for which game series?",
+        "id": "&quot;Strangereal&quot;isafictitiousEarth-likeworldforwhichgameseries?",
+        "options": [
+            "Deus Ex",
+            "Ace Combat",
+            "Jet Set Radio",
+            "Crimson Skies"
+        ],
+        "correctOption": 1,
+        "difficulty": 3
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "When did the Crisis of the Third Century begin?",
+        "id": "WhendidtheCrisisoftheThirdCenturybegin?",
+        "options": [
+            "235 AD",
+            "210 AD",
+            "235 BC",
+            "242 AD"
+        ],
+        "correctOption": 0,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In the game \"Fire Emblem: Shadow Dragon\", what is the central protagonist's name?",
+        "id": "Inthegame&quot;FireEmblem:ShadowDragon&quot;,whatisthecentralprotagonist&#039;sname?",
+        "options": [
+            "Marth",
+            "Robin",
+            "Roy",
+            "Eliwood"
+        ],
+        "correctOption": 0,
+        "difficulty": 1
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "What animal did Queen Pasipahe sleep with before she gave birth to the Minotaur in Greek Mythology?",
+        "id": "WhatanimaldidQueenPasipahesleepwithbeforeshegavebirthtotheMinotaurinGreekMythology?",
+        "options": [
+            "Horse",
+            "Ox",
+            "Pig",
+            "Bull"
+        ],
+        "correctOption": 3,
+        "difficulty": 2
+    },
+    {
+        "quizId": "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d",
+        "question": "In the video game DOTA 2, which of these is NOT a hero?",
+        "id": "InthevideogameDOTA2,whichoftheseisNOTahero?",
+        "options": [
+            "Dark Seer",
+            "Dragon Champion",
+            "Mirana",
+            "Keeper of the Light"
+        ],
+        "correctOption": 1,
+        "difficulty": 2
+    }
+]

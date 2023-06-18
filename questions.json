@@ -1,0 +1,333 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "difficulty": "medium",
+      "question": "In the hexadecimal system, what number comes after 9?",
+      "correct_answer": "The Letter A",
+      "incorrect_answers": ["10", "The Number 0", "16"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "Which character is from &quot;Splatoon&quot;?",
+      "correct_answer": "Marie",
+      "incorrect_answers": ["Cyrus", "Palutena", "Shulk"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "Which American family band had a 1986 top 10 hit with the song &#039;Crush On You&#039;?",
+      "correct_answer": "The Jets",
+      "incorrect_answers": ["DeBarge", "The Jacksons", "The Cover Girls"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "How many members are there in the band Nirvana?",
+      "correct_answer": "Three",
+      "incorrect_answers": ["Two", "Four", "Five"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "On a standard Monopoly board, which square is diagonally opposite &#039;Go&#039;? ",
+      "correct_answer": "Free Parking",
+      "incorrect_answers": ["Go to Jail", "Jail", "The Electric Company"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+      "correct_answer": "Final",
+      "incorrect_answers": ["Static", "Private", "Public"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "What year did Albrecht D&uuml;rer create the painting &quot;The Young Hare&quot;?",
+      "correct_answer": "1502",
+      "incorrect_answers": ["1702", "1402", "1602"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "Which of these is NOT a team available in the game Pok&eacute;mon Go?",
+      "correct_answer": "Team Rocket",
+      "incorrect_answers": ["Team Instinct", "Team Valor", "Team Mystic"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "When was the first &quot;Half-Life&quot; released?",
+      "correct_answer": "1998",
+      "incorrect_answers": ["2004", "1999", "1997"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "Sciophobia is the fear of what?",
+      "correct_answer": "Shadows",
+      "incorrect_answers": ["Eating", "Bright lights", "Transportation"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "What scientific family does the Aardwolf belong to?",
+      "correct_answer": "Hyaenidae",
+      "incorrect_answers": ["Canidae", "Felidae", "Eupleridae"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "In the anime, Full Metal Panic!, who is Kaname&#039;s best friend?",
+      "correct_answer": "Kyoko Tokiwa",
+      "incorrect_answers": [
+        "Melissa Mao",
+        "Ren Mikihara",
+        "Teletha &quot;Tessa&quot; Testarossa"
+      ]
+    },
+    {
+      "difficulty": "medium",
+      "question": "Which band name isn&#039;t a Stand in &quot;JoJo&#039;s Bizzare Adventure&quot;?",
+      "correct_answer": "AC/DC",
+      "incorrect_answers": ["Green Day", "Survivor", "Red Hot Chili Peppers"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "What is the nickname of the US state of California?",
+      "correct_answer": "Golden State",
+      "incorrect_answers": ["Sunshine State", "Bay State", "Treasure State"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "In the Portal series, Aperture Science was founded under what name in the early 1940s?",
+      "correct_answer": "Aperture Fixtures",
+      "incorrect_answers": [
+        "Aperture Lavatories",
+        "Aperture Science Innovators",
+        "Wheatley Laboratories"
+      ]
+    },
+    {
+      "difficulty": "hard",
+      "question": "Which of the following is NOT a real song from the band Thousand Foot Krutch?",
+      "correct_answer": "Limitless Fury",
+      "incorrect_answers": ["Let The Sparks Fly", "Down", "Give Up The Ghost"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "In &quot;It&#039;s Always Sunny in Philadelphia&quot; what was the name of Frank&#039;s wrestling persona?",
+      "correct_answer": "The Trash Man",
+      "incorrect_answers": ["Bird of War", "Day Man", "The Maniac"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "In the 2015 RPG &quot;Undertale&quot;, which character do you first encounter after falling down into the underground?",
+      "correct_answer": "Flowey",
+      "incorrect_answers": ["Toriel", "Sans", "Papyrus"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "Which of the following is NOT a summon in the game &quot;South Park: The Stick of Truth&quot;?",
+      "correct_answer": "Towelie",
+      "incorrect_answers": ["Jesus", "Mr. Hankey", "Mr. Slave"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "In the game Battleblock Theater, what was the name of the voice actor who voiced the narrator?",
+      "correct_answer": "Will Stamper",
+      "incorrect_answers": ["Steve Blum", "Richard Epcar", "Yuri Lowenthal"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "In CSS, which of these values CANNOT be used with the &quot;position&quot; property?",
+      "correct_answer": "center",
+      "incorrect_answers": ["static", "absolute", "relative"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "Who created the pump &quot;F.L.U.D.D.&quot; Mario uses in Super Mario Sunshine?",
+      "correct_answer": "Elvin Gadd",
+      "incorrect_answers": ["Robert Fludd", "Nirona", "Crygor"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "Who wrote the Batman comic series &quot;The Killing Joke&quot;?",
+      "correct_answer": "Alan Moore",
+      "incorrect_answers": ["Bill Finger", "Frank Miller", "Jerry Siegel"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "Deuterium is an isotope of which element?",
+      "correct_answer": "Hydrogen",
+      "incorrect_answers": ["Nitrogen", "Helium", "Neon"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "Which Animal Crossing game was for the Nintendo Wii?",
+      "correct_answer": "Animal Crossing: City Folk",
+      "incorrect_answers": [
+        "Animal Crossing: New Leaf",
+        "Animal Crossing: Wild World",
+        "Animal Crossing: Population Growing!"
+      ]
+    },
+    {
+      "difficulty": "easy",
+      "question": "What is lost in Hawaiian and is also the name of a little girl in a 2002 film which features a alien named &quot;Stitch&quot;?",
+      "correct_answer": "Lilo",
+      "incorrect_answers": ["Lolo", "Lucy", "Lulu"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "What was the name of the protagonist of Metal Gear Solid V: The Phantom Pain?",
+      "correct_answer": "Punished &quot;Venom&quot; Snake",
+      "incorrect_answers": ["Miller", "Solid Snake", "Ocelot"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "What is the name of New Zealand&#039;s indigenous people?",
+      "correct_answer": "Maori",
+      "incorrect_answers": ["Vikings", "Polynesians", "Samoans"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "In season one of the Netflix political drama &quot;House of Cards&quot;, what government position does Frank Underwood hold?",
+      "correct_answer": "House Majority Whip",
+      "incorrect_answers": ["Attorney General", "President", "Chief of Staff"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "What is the name of Nissan&#039;s most popular electric car?",
+      "correct_answer": "Leaf",
+      "incorrect_answers": ["Tree", "Deer", "Roots"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "What&#039;s the first National Park designated in the United States?",
+      "correct_answer": "Yellowstone",
+      "incorrect_answers": ["Sequoia ", "Yosemite", "Rocky Mountain"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "What does the Latin phrase &quot;Veni, vidi, vici&quot; translate into English?",
+      "correct_answer": "I came, I saw, I conquered",
+      "incorrect_answers": [
+        "See no evil, hear no evil, speak no evil",
+        "Life, liberty, and happiness",
+        "Past, present, and future"
+      ]
+    },
+    {
+      "difficulty": "hard",
+      "question": "In &quot;Call Of Duty: Zombies&quot;, which map&#039;s opening cutscene shows &quot;Richtofen&quot; killing another version of himself?",
+      "correct_answer": "The Giant",
+      "incorrect_answers": ["Shadows Of Evil", "Der Eisendrache", "Moon"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "In the &quot;PAYDAY&quot; series, what is the real name of the character known as &quot;Dallas&quot;?",
+      "correct_answer": "Nathan Steele",
+      "incorrect_answers": ["Nate Siemens", "Nick Stamos", "Nolan Stuhlinger"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "Which actress portrayed Dr. Grace Augustine in the James Cameron movie &quot;Avatar&quot;?",
+      "correct_answer": "Sigourney Weaver",
+      "incorrect_answers": [
+        "Jessica Chastain",
+        "Melissa Beckett",
+        "Alyssa Monroe "
+      ]
+    },
+    {
+      "difficulty": "medium",
+      "question": "In &quot;Resident Evil 2&quot;, what is Leon Kennedy&#039;s middle name?",
+      "correct_answer": "Scott",
+      "incorrect_answers": ["Shaun", "Simon", "Sam"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "Which sport is NOT traditionally played during the Mongolian Naadam festival?",
+      "correct_answer": "American Football",
+      "incorrect_answers": ["Wrestling", "Archery", "Horse-Racing"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "What immense structure is referred to in Norse Mythology as the Yggdrasil.",
+      "correct_answer": "Tree",
+      "incorrect_answers": ["Mountain", "Temple", "Castle"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "How many sides does a trapezium have?",
+      "correct_answer": "4",
+      "incorrect_answers": ["3", "5", "6"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "What car manufacturer gave away their patent for the seat-belt in the interest of saving lives?",
+      "correct_answer": "Volvo",
+      "incorrect_answers": ["Ferrari", "Ford", "Renault"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "What physics principle relates the net electric flux out of a closed surface to the charge enclosed by that surface?",
+      "correct_answer": "Gauss&#039;s Law",
+      "incorrect_answers": [
+        "Faraday&#039;s Law",
+        "Ampere&#039;s Law",
+        "Biot-Savart Law"
+      ]
+    },
+    {
+      "difficulty": "medium",
+      "question": "Which of these 1900s tanks were designed and built BEFORE the others?",
+      "correct_answer": "Renault FT",
+      "incorrect_answers": ["M4 Sherman", " Panzer IV", "Cromwell "]
+    },
+    {
+      "difficulty": "medium",
+      "question": "Who is Manchester United&#039;s top premier league goal scorer?",
+      "correct_answer": "Wayne Rooney",
+      "incorrect_answers": ["Sir Bobby Charlton", "Ryan Giggs", "David Beckham"]
+    },
+    {
+      "difficulty": "hard",
+      "question": "Which of these numbers is closest to the total number of possible states for an army standard Enigma Machine?",
+      "correct_answer": "1.58 x 10^20",
+      "incorrect_answers": ["1.58 x 10^22", "1.58 x  10^18", "1.58 x 10^24"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "&quot;Stadium of Light&quot; is the home stadium for which soccer team?",
+      "correct_answer": "Sunderland FC",
+      "incorrect_answers": [
+        "Barcelona FC",
+        "Paris Saints-Germain",
+        "Manchester United"
+      ]
+    },
+    {
+      "difficulty": "hard",
+      "question": "&quot;Strangereal&quot; is a fictitious Earth-like world for which game series?",
+      "correct_answer": "Ace Combat",
+      "incorrect_answers": ["Jet Set Radio", "Deus Ex", "Crimson Skies"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "When did the Crisis of the Third Century begin?",
+      "correct_answer": "235 AD",
+      "incorrect_answers": ["235 BC", "242 AD", "210 AD"]
+    },
+    {
+      "difficulty": "easy",
+      "question": "In the game &quot;Fire Emblem: Shadow Dragon&quot;, what is the central protagonist&#039;s name?",
+      "correct_answer": "Marth",
+      "incorrect_answers": ["Roy", "Eliwood", "Robin"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "What animal did Queen Pasipahe sleep with before she gave birth to the Minotaur in Greek Mythology?",
+      "correct_answer": "Bull",
+      "incorrect_answers": ["Pig", "Ox", "Horse"]
+    },
+    {
+      "difficulty": "medium",
+      "question": "In the video game DOTA 2, which of these is NOT a hero?",
+      "correct_answer": "Dragon Champion",
+      "incorrect_answers": ["Dark Seer", "Keeper of the Light", "Mirana"]
+    }
+  ]
+}
