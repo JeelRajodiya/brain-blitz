@@ -210,21 +210,18 @@ export default function Questions() {
               </div>
             </div>
             {/* question body: */}
-            <div className="navbar rounded-lg m-1 bg-neutral">
-              <p className="p-2 text-lg">
-                {/* <span className={styles.activeQuestionNumber}>
-                  {activeQuestion}
-                  {". "}
-                </span> */}
-                {question?.question}
-              </p>
-              <div>
+            <div className="card w-full rounded-lg m-1 bg-neutral flex flex-column justify-between">
+              <div className="flex justify-start">
+                <p className="p-2 text-lg font-semibold">{question?.question}</p>
+              </div>
+              <div className="flex justify-end items-end p-2">
                 {/* Difficulty tag if it is enabled */}
                 {difficultyTags && (
                   <div className="badge badge-outline">Easy</div>
                 )}
               </div>
             </div>
+
             <div className="divider"></div>
             {/* options here: */}
             <div className={styles.optionsWrapper}>
