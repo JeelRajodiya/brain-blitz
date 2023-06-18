@@ -182,7 +182,7 @@ export default function Questions() {
               </div>
 
               <div>
-                <h1 className="text-xl font-bold bg-base-100 p-3 rounded-md">
+                <h1 className="text-lg font-bold bg-base-100 p-2 rounded-md">
                   Question - {activeQuestion}
                 </h1>
               </div>
@@ -212,12 +212,12 @@ export default function Questions() {
             {/* question body: */}
             <div className="navbar rounded-lg m-1 bg-neutral">
               <p className="p-2 text-lg">
-                <span className={styles.activeQuestionNumber}>
+                {/* <span className={styles.activeQuestionNumber}>
                   {activeQuestion}
                   {". "}
-                </span>
+                </span> */}
 
-                {question.question}
+                {question?.question}
               </p>
 
               {/* Difficulty tag if it is enabled */}
@@ -228,7 +228,7 @@ export default function Questions() {
             <div className="divider"></div>
             {/* options here: */}
             <div className={styles.optionsWrapper}>
-              {question.options.map((option, index) => {
+              {question?.options.map((option, index) => {
                 console.log(option);
                 return (
                   <Option

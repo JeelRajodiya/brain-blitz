@@ -12,6 +12,8 @@
   gap: 10px;
   overflow-y: scroll;
   position: absolute;
+  display: none;
+
 }
 
 .showSideBar {
@@ -61,8 +63,6 @@
   flex-direction: row;
 }
 
-.options {
-}
 
 .questionBoxActive {
   background-color: hsl(var(--p));
