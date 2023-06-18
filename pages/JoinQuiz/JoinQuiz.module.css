@@ -1,9 +1,7 @@
 .sideBar {
   height: 100%;
   border-radius: 10px;
-  padding: 10px;
-  margin: 0 10px;
-  border: 1px dashed white;
+
   /* flex: 0; */
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   display: grid;
@@ -11,19 +9,21 @@
   grid-auto-rows: 3em;
   gap: 10px;
   overflow-y: scroll;
-  position: absolute;
+  /* position: absolute; */
   width: 0%;
   /* display: none; */
-transition: width 0.5s ease;
-  
+  transition: width 300ms ease-out;
 }
 
 .showSideBar {
   position: relative;
-  width: 100%;
   display: grid;
-  /* flex: 1; */
-  width:2cm;
+  width: 20%;
+  padding: 10px;
+  margin: 0 10px;
+  border: 1px dashed white;
+
+  /* width: 0; */
 }
 
 .sideBar::-webkit-scrollbar {
@@ -48,9 +48,10 @@ transition: width 0.5s ease;
 }
 
 .mainWindow {
-  flex: 3;
+  /* flex: 3; */
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  height: max-content;
   border-radius: 10px;
   padding: 10px;
   margin: 0 10px;
@@ -66,7 +67,6 @@ transition: width 0.5s ease;
   display: flex;
   flex-direction: row;
 }
-
 
 .questionBoxActive {
   background-color: hsl(var(--p));
@@ -108,7 +108,7 @@ transition: width 0.5s ease;
   border: none;
 }
 
-.wrap{
+.wrap {
   overflow: break-word;
   word-wrap: break-word;
   word-break: break-word;

@@ -166,7 +166,7 @@ export default function Questions() {
           {/* main window */}
           {/* progress bar here */}
           <div className={styles.mainWindow}>
-            <div className="navbar rounded-lg m-1 bg-neutral flex flex-col md:flex-row items-center justify-between w-full">
+            <div className="navbar rounded-lg m-1 bg-neutral flex flex-row items-center justify-between w-full">
               <div
                 className="radial-progress"
                 style={
@@ -191,19 +191,12 @@ export default function Questions() {
               {/* timer */}
               <div className="grid grid-flow-col gap-2 text-center">
                 {/* minutes */}
-                <div className="flex bg-base-100 flex-col p-2 rounded-box text-neutral-content">
-                  <span className="countdown font-mono text-xl">
-                    <span
-                      style={{ "--value": 24 } as React.CSSProperties}
-                    ></span>
-                  </span>
-                  min
-                </div>
+
                 {/* seconds */}
-                <div className="flex bg-base-100 flex-col p-2 rounded-box text-neutral-content">
-                  <span className="countdown font-mono text-2xl">
+                <div className="flex bg-base-100 flex-col text-md p-2 rounded-box text-neutral-content">
+                  <span className="countdown font-mono ">
                     <span
-                      style={{ "--value": 41 } as React.CSSProperties}
+                      style={{ "--value": 99 } as React.CSSProperties}
                     ></span>
                   </span>
                   sec
@@ -221,7 +214,7 @@ export default function Questions() {
               <div className="flex justify-end items-end p-2">
                 {/* Difficulty tag if it is enabled */}
                 {difficultyTags && (
-                  <div className="badge badge-outline">Easy</div>
+                  <div className="badge badge-outline">Very Hard</div>
                 )}
               </div>
             </div>
