@@ -165,7 +165,7 @@ export default function Questions() {
           {/* main window */}
           {/* progress bar here */}
           <div className={styles.mainWindow}>
-            <div className="navbar rounded-lg m-1 bg-neutral flex-row justify-between">
+            <div className="navbar rounded-lg m-1 bg-neutral flex-row justify-between w-full">
               <div
                 className="radial-progress"
                 style={
@@ -182,7 +182,7 @@ export default function Questions() {
               </div>
 
               <div>
-                <h1 className="text-lg font-bold bg-base-100 p-2 rounded-md">
+                <h1 className="text font-bold bg-base-100 p-2 rounded-md">
                   Question - {activeQuestion}
                 </h1>
               </div>
@@ -209,6 +209,7 @@ export default function Questions() {
                 </div>
               </div>
             </div>
+
             {/* question body: */}
             <div className="card w-full rounded-lg m-1 bg-neutral flex flex-column justify-between">
               <div className="flex justify-start">
@@ -240,10 +241,12 @@ export default function Questions() {
               })}
             </div>
 
-            <div className="card rounded-lg m-1">
-              <div className="flex flex-row justify-center join gap-1">
-                <button className="btn  join-item">Save and Next</button>
-                <button className="btn  join-item">Skip and Next</button>
+            <div className="card w-full rounded-lg m-1 flex flex-column">
+              <div className="flex flex-col sm:flex-row justify-center sm:justify-end">
+                <button className="btn mb-2 sm:mr-2 sm:mb-0">
+                  Save and Next
+                </button>
+                <button className="btn">Skip and Next</button>
               </div>
             </div>
           </div>
