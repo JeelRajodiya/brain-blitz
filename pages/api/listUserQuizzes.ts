@@ -50,6 +50,5 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
   });
   const finalData = await quizzes.toArray();
   await client.close();
-
-  return res.json(finalData);
+  return res.json(finalData.reverse());
 }
