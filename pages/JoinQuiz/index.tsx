@@ -18,7 +18,6 @@ async function fetchQuiz(code: string) {
     },
   });
   const json = await res.json();
-  console.log(json);
   return json;
 }
 
@@ -40,10 +39,9 @@ function Option({
       className={classnames(styles.option, isSelected && styles.selectedOption)}
       onClick={() => {
         setQuestion((prev) => {
-          return {
-            ...prev,
-            correctOption: index,
-          };
+          const newQue = structuredClone(prev);
+          newQue.correctOption = index;
+          return newQue;
         });
       }}
     >
@@ -78,7 +76,6 @@ export default function Questions() {
   useEffect(() => {
     if (!code) return;
     fetchQuiz(code as string).then((res) => {
-      console.log(res);
       setQuestions(res.questions);
       setQuestion(res.questions[0]);
       setActiveQuestion(1);
@@ -90,7 +87,9 @@ export default function Questions() {
   }, [code]);
 
   React.useEffect(() => {
-    setQuestion(questions[activeQuestion] || emptyQuestion);
+    setQuestion(questions[activeQuestion - 1] || emptyQuestion);
+    console.log(questions);
+    console.log(question);
   }, [activeQuestion]);
   if (isLoading) {
     return (
@@ -127,7 +126,6 @@ export default function Questions() {
   const questionsBoxes = [];
   for (let i = 0; i < questions.length; i++) {
     if (i == activeQuestion - 1) {
-      console.log(question);
       questionsBoxes.push(
         <div
           key={i}
@@ -187,7 +185,7 @@ export default function Questions() {
 
               <div>
                 <h1 className="text font-bold bg-base-100 p-2 rounded-md">
-                  Question - {activeQuestion}
+                  Question {activeQuestion}
                 </h1>
               </div>
 
