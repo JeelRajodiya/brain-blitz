@@ -216,14 +216,14 @@ export default function Questions() {
                   {activeQuestion}
                   {". "}
                 </span> */}
-
                 {question?.question}
               </p>
-
-              {/* Difficulty tag if it is enabled */}
-              {difficultyTags && (
-                <div className="badge badge-outline">Easy</div>
-              )}
+              <div>
+                {/* Difficulty tag if it is enabled */}
+                {difficultyTags && (
+                  <div className="badge badge-outline">Easy</div>
+                )}
+              </div>
             </div>
             <div className="divider"></div>
             {/* options here: */}

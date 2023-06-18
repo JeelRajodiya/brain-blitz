@@ -12,15 +12,18 @@
   gap: 10px;
   overflow-y: scroll;
   position: absolute;
-  display: none;
-transform: width 0.5s ease;
+  width: 0%;
+  /* display: none; */
+transition: width 0.5s ease;
   
 }
 
 .showSideBar {
-  display: grid;
   position: relative;
-  flex: 1;
+  width: 100%;
+  display: grid;
+  /* flex: 1; */
+  width:2cm;
 }
 
 .sideBar::-webkit-scrollbar {
