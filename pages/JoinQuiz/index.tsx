@@ -75,25 +75,38 @@ export default function Questions() {
   let complete: number = activeQuestion / totalQuestions;
   complete *= 100;
 
-  
   const nextQuestion = () => {
     if (activeQuestion < totalQuestions) {
       setActiveQuestion(activeQuestion + 1);
     }
   };
-  
+
   const prevQuestion = () => {
     if (activeQuestion > 1) {
       setActiveQuestion(activeQuestion - 1);
     }
   };
-  
+
   // ! This temporarily fixed the error but it still does not work
   let questionContent: string = question ? question.question : "";
   let optionA: string = question ? question.options[0] : "";
   let optionB: string = question ? question.options[1] : "";
   let optionC: string = question ? question.options[2] : "";
   let optionD: string = question ? question.options[3] : "";
+  const questionsBoxes = [];
+  for (let i = 0; i < questions.length; i++) {
+    if (i == activeQuestion - 1) {
+      questionsBoxes.push(
+        <div
+          className={classnames(styles.questionBoxActive, styles.questionBox)}
+        >
+          {i + 1}
+        </div>
+      );
+      continue;
+    }
+    questionsBoxes.push(<div className={styles.questionBox}>{i + 1}</div>);
+  }
 
   return (
     <>
@@ -101,7 +114,9 @@ export default function Questions() {
       <Layout>
         {/* sidebar if enabled */}
         <div className={styles.wrapper}>
-          {ShowSidebar && <div className={styles.sideBar}>Side Bar</div>}
+          {ShowSidebar && (
+            <div className={styles.sideBar}>{questionsBoxes}</div>
+          )}
 
           {/* main window */}
           {/* progress bar here */}
@@ -190,9 +205,7 @@ export default function Questions() {
 
             <div className="divider"></div>
             {/* options here: */}
-            <div className="styles.options">
-              
-            </div>
+            <div className="styles.options"></div>
             <div className="navbar rounded-lg m-1 bg-neutral">{/*  */}</div>
           </div>
         </div>
