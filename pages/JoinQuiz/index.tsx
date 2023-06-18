@@ -18,6 +18,7 @@ async function fetchQuiz(code: string) {
     },
   });
   const json = await res.json();
+  console.log(json);
   return json;
 }
 
@@ -129,6 +130,7 @@ export default function Questions() {
       console.log(question);
       questionsBoxes.push(
         <div
+          key={i}
           className={classnames(styles.questionBoxActive, styles.questionBox)}
         >
           {i + 1}
@@ -142,6 +144,7 @@ export default function Questions() {
         onClick={() => {
           setActiveQuestion(i + 1);
         }}
+        key={i}
       >
         {i + 1}
       </div>
@@ -226,6 +229,7 @@ export default function Questions() {
                 console.log(option);
                 return (
                   <Option
+                    key={index}
                     text={option}
                     index={index}
                     isSelected={index === question.correctOption}
