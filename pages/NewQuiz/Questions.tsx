@@ -57,10 +57,11 @@ export default function Questions() {
     code,
   } = router.query;
 
-  const emptyQuestion = {
+  const emptyQuestion: Question = {
     question: "",
     options: [],
     correctOption: 0,
+    difficulty: 1,
   };
 
   const [questions, setQuestions] = useState<Question[]>([emptyQuestion]);
@@ -69,6 +70,7 @@ export default function Questions() {
 
   React.useEffect(() => {
     setQuestion(questions[activeQuestion] || emptyQuestion);
+    console.log(questions);
   }, [activeQuestion]);
 
   return (

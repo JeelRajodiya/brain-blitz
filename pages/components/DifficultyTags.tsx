@@ -9,8 +9,10 @@ export default function DifficultyTags({
 }) {
   const toggleDifficultyRating = (n) => {
     setDifficulty(n);
+    setDifficultyRating(n);
   };
-
+  console.log(difficulty);
+  const [difficultyRating, setDifficultyRating] = useState(1); // Default difficulty rating is 1
   return (
     <>
       {/* Divider */}
@@ -33,8 +35,8 @@ export default function DifficultyTags({
               type="radio"
               name="options"
               aria-label="Easy"
-              onClick={() => toggleDifficultyRating(1)}
-              defaultChecked={difficulty === 1} // Set the "Easy" radio button as defaultChecked
+              checked={difficultyRating === 1}
+              onChange={() => toggleDifficultyRating(1)}
             />
             <input
               className={`tooltip tooltip-warning tooltip-top join-item w-16 h-10 radio ${
@@ -44,19 +46,19 @@ export default function DifficultyTags({
               type="radio"
               name="options"
               aria-label="Moderate"
-              onClick={() => toggleDifficultyRating(2)}
-              defaultChecked={difficulty === 2} // Set the "Moderate" radio button as defaultChecked
+              onChange={() => toggleDifficultyRating(2)}
+              checked={difficultyRating === 2}
             />
             <input
               className={`tooltip tooltip-error tooltip-top join-item w-16 h-10 radio ${
-                difficulty === 3 ? "checked:bg-red-500" : ""
+                difficultyRating === 3 ? "checked:bg-red-500" : ""
               }`}
               data-tip="Hard"
               type="radio"
               name="options"
               aria-label="Hard"
-              onClick={() => toggleDifficultyRating(3)}
-              defaultChecked={difficulty === 3} // Set the "Hard" radio button as defaultChecked
+              onChange={() => toggleDifficultyRating(3)}
+              checked={difficulty === 3}
             />
           </div>
         </div>

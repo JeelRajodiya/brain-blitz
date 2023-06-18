@@ -52,6 +52,22 @@ function Option({
   );
 }
 
+function DifficultyTag({ difficulty }: { difficulty: number }) {
+  const difficultyTags = ["Easy", "Medium", "Hard"];
+  let badgeClass;
+  if (difficulty == 1) {
+    badgeClass = "badge badge-success";
+  } else if (difficulty == 2) {
+    badgeClass = "badge badge-warning";
+  } else {
+    badgeClass = "badge badge-error";
+  }
+  return (
+    <div className={classnames(badgeClass, "p-3 ml-5")}>
+      {difficultyTags[difficulty - 1]}
+    </div>
+  );
+}
 export default function Questions() {
   const router = useRouter();
 
@@ -213,18 +229,12 @@ export default function Questions() {
             </div>
 
             {/* question body: */}
-            <div className="navbar w-full rounded-lg m-1 bg-neutral flex flex-column justify-between">
-              <div className="flex justify-start">
-                <p className="p-2 text-lg font-semibold">
-                  {question?.question}
-                </p>
-              </div>
-              <div className="flex justify-end items-end p-2">
-                {/* Difficulty tag if it is enabled */}
-                {difficultyTags && (
-                  <div className="badge badge-outline">Very Hard</div>
-                )}
-              </div>
+            <div className="navbar w-full rounded-lg m-1 bg-neutral flex flex-column ">
+              <p className="p-2 text-lg font-semibold">{question?.question}</p>
+              {/* Difficulty tag if it is enabled */}
+              {difficultyTags && (
+                <DifficultyTag difficulty={question.difficulty} />
+              )}
             </div>
 
             <div className="divider"></div>
