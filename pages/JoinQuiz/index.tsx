@@ -7,6 +7,7 @@ import classnames from "classnames";
 import DifficultyTags from "../components/DifficultyTags";
 import QuestionsIndexEntry from "../components/QuestionsIndexEntry";
 import type { Question } from "../components/Option";
+import classNames from "classnames";
 
 // type for each question:
 async function fetchQuiz(code: string) {
@@ -108,17 +109,17 @@ export default function Questions() {
   complete *= 100;
   complete = Math.round(complete);
 
-  const nextQuestion = () => {
-    if (activeQuestion < totalQuestions) {
-      setActiveQuestion(activeQuestion + 1);
-    }
-  };
+  // const nextQuestion = () => {
+  //   if (activeQuestion < totalQuestions) {
+  //     setActiveQuestion(activeQuestion + 1);
+  //   }
+  // };
 
-  const prevQuestion = () => {
-    if (activeQuestion > 1) {
-      setActiveQuestion(activeQuestion - 1);
-    }
-  };
+  // const prevQuestion = () => {
+  //   if (activeQuestion > 1) {
+  //     setActiveQuestion(activeQuestion - 1);
+  //   }
+  // };
 
   // ! This temporarily fixed the error but it still does not work
 
@@ -165,7 +166,7 @@ export default function Questions() {
           {/* main window */}
           {/* progress bar here */}
           <div className={styles.mainWindow}>
-            <div className="navbar rounded-lg m-1 bg-neutral flex-row justify-between w-full">
+            <div className="navbar rounded-lg m-1 bg-neutral flex flex-col md:flex-row items-center justify-between w-full">
               <div
                 className="radial-progress"
                 style={
@@ -178,7 +179,7 @@ export default function Questions() {
                 }
                 onClick={toggleSidebar}
               >
-                <p className="text-xs ">{complete}%</p>
+                <p className="text-xs">{complete}%</p>
               </div>
 
               <div>
@@ -188,7 +189,7 @@ export default function Questions() {
               </div>
 
               {/* timer */}
-              <div className="grid grid-flow-col gap-2 text-center auto-cols-max">
+              <div className="grid grid-flow-col gap-2 text-center">
                 {/* minutes */}
                 <div className="flex bg-base-100 flex-col p-2 rounded-box text-neutral-content">
                   <span className="countdown font-mono text-xl">
@@ -211,7 +212,7 @@ export default function Questions() {
             </div>
 
             {/* question body: */}
-            <div className="card w-full rounded-lg m-1 bg-neutral flex flex-column justify-between">
+            <div className="navbar w-full rounded-lg m-1 bg-neutral flex flex-column justify-between">
               <div className="flex justify-start">
                 <p className="p-2 text-lg font-semibold">
                   {question?.question}
@@ -241,12 +242,25 @@ export default function Questions() {
               })}
             </div>
 
-            <div className="card w-full rounded-lg m-1 flex flex-column">
-              <div className="flex flex-col sm:flex-row justify-center sm:justify-end">
-                <button className="btn mb-2 sm:mr-2 sm:mb-0">
+            <div className="navbar rounded-lg m-1 bg-neutral flex flex-row">
+              <div className="flex">
+                <button
+                  className={classNames(
+                    `btn btn-outline btn-accent`,
+                    styles.wrap
+                  )}
+                >
                   Save and Next
                 </button>
-                <button className="btn">Skip and Next</button>
+
+                <button
+                  className={classNames(
+                    `btn btn-outline btn-accent`,
+                    styles.wrap
+                  )}
+                >
+                  Skip and Next
+                </button>
               </div>
             </div>
           </div>

@@ -107,3 +107,9 @@ transition: width 0.5s ease;
   transition: background-color 0.1s ease;
   border: none;
 }
+
+.wrap{
+  overflow: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
