@@ -75,20 +75,21 @@ export default function Questions() {
   let complete: number = activeQuestion / totalQuestions;
   complete *= 100;
 
-  let questionContent: string = question ? question.question : "";
-
+  
   const nextQuestion = () => {
     if (activeQuestion < totalQuestions) {
       setActiveQuestion(activeQuestion + 1);
     }
   };
-
+  
   const prevQuestion = () => {
     if (activeQuestion > 1) {
       setActiveQuestion(activeQuestion - 1);
     }
   };
-
+  
+  // ! This temporarily fixed the error but it still does not work
+  let questionContent: string = question ? question.question : "";
   let optionA: string = question ? question.options[0] : "";
   let optionB: string = question ? question.options[1] : "";
   let optionC: string = question ? question.options[2] : "";
