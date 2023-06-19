@@ -210,7 +210,7 @@ export default function Questions() {
             {/* progress bar*/}
             <div className="navbar rounded-lg m-1 bg-neutral flex flex-row items-center justify-between w-full">
               <div
-                className="radial-progress"
+                className="radial-progress ml-3"
                 style={
                   {
                     "--value": `${complete}`,
@@ -248,7 +248,7 @@ export default function Questions() {
             </div>
 
             {/* question body: */}
-            <div className="navbar w-full rounded-lg m-1 bg-neutral flex flex-column ">
+            <div className="navbar w-full rounded-lg m-1 bg-neutral flex flex-column">
               <p className="p-2 text-lg font-semibold">{question?.question}</p>
               {/* Difficulty tag if it is enabled */}
               {difficultyTags && (
@@ -273,11 +273,19 @@ export default function Questions() {
               })}
             </div>
 
-            <div className={classNames(`navbar rounded-lg m-1`, styles.quizActions)}>
-              <button className="btn btn-accent btn-outline">Save and Next</button>
-              <button className="btn btn-accent btn-outline">Skip and Next</button>
+            <div
+              className={classNames(
+                `navbar rounded-lg m-1`,
+                styles.quizActions
+              )}
+            >
+              <button className="btn btn-accent btn-outline">
+                Save and Next
+              </button>
+              <button className="btn btn-accent btn-outline">
+                Skip and Next
+              </button>
             </div>
-            
           </div>
         </div>
       </Layout>
