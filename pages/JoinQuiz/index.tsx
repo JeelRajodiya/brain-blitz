@@ -144,12 +144,6 @@ export default function Questions() {
     }
   };
 
-  const prevQuestion = () => {
-    if (activeQuestion > 1) {
-      setActiveQuestion(activeQuestion - 1);
-    }
-  };
-
   // ! This temporarily fixed the error but it still does not work
 
   const questionsBoxes = [];
@@ -177,6 +171,8 @@ export default function Questions() {
       </div>
     );
   }
+
+  let isLastQuestion: boolean = activeQuestion == totalQuestions;
 
   return (
     <>
@@ -234,7 +230,7 @@ export default function Questions() {
               {/* timer */}
               <div className="grid grid-flow-col bg-base-100 rounded-xl p-2 gap-2 text-center">
                 <div className="flex justify-center items-center h-full">
-                  <div className="text-lg">999</div>
+                  <div className="text-lg">{timeForAQuestion}</div>
                   <p>s</p>
                 </div>
               </div>
@@ -272,11 +268,17 @@ export default function Questions() {
                 styles.quizActions
               )}
             >
-              <button className="btn btn-accent btn-outline">
-                Save and Next
+              <button
+                className="btn btn-accent btn-outline"
+                onClick={nextQuestion}
+              >
+                {isLastQuestion ? "Save and Submit" : "Save and Next"}
               </button>
-              <button className="btn btn-accent btn-outline">
-                Skip and Next
+              <button
+                className="btn btn-accent btn-outline"
+                onClick={nextQuestion}
+              >
+                {isLastQuestion ? "Skip and Submit" : "Skip and Next"}
               </button>
             </div>
           </div>
