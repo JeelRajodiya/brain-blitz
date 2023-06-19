@@ -150,3 +150,19 @@
 .drawerBtnOpen > p {
   transform: rotate(180deg) translateY(-10%);
 }
+
+.quizActions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* for large devices the quizActions will be as follows: */
+@media only screen and (min-width: 768px) {
+  .quizActions {
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+  }
+}

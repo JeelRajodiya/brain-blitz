@@ -196,6 +196,7 @@ export default function Questions() {
           {/* main window */}
           {/* progress bar here */}
           <div className={styles.mainWindow}>
+            {/* toggle to show Sidebar: */}
             <div
               onClick={toggleSidebar}
               className={classnames(
@@ -205,6 +206,8 @@ export default function Questions() {
             >
               <p>{">"}</p>
             </div>
+
+            {/* progress bar*/}
             <div className="navbar rounded-lg m-1 bg-neutral flex flex-row items-center justify-between w-full">
               <div
                 className="radial-progress"
@@ -220,11 +223,14 @@ export default function Questions() {
               >
                 <p className="text-xs">{complete}%</p>
               </div>
+
+              {/* question number */}
               <div>
                 <h1 className="text font-bold bg-base-100 p-2 rounded-md">
                   Question {activeQuestion}
                 </h1>
               </div>
+
               {/* timer */}
               <div className="grid grid-flow-col gap-2 text-center">
                 {/* minutes */}
@@ -267,27 +273,11 @@ export default function Questions() {
               })}
             </div>
 
-            <div className="navbar rounded-lg m-1 bg-neutral flex flex-row">
-              <div className="flex">
-                <button
-                  className={classNames(
-                    `btn btn-outline btn-accent`,
-                    styles.wrap
-                  )}
-                >
-                  Save and Next
-                </button>
-
-                <button
-                  className={classNames(
-                    `btn btn-outline btn-accent`,
-                    styles.wrap
-                  )}
-                >
-                  Skip and Next
-                </button>
-              </div>
+            <div className={classNames(`navbar rounded-lg m-1 flex flex-row items-center justify-center`, styles.quizActions)}>
+              <button className="btn btn-accent btn-outline">Save and Next</button>
+              <button className="btn btn-accent btn-outline">Skip and Next</button>
             </div>
+            
           </div>
         </div>
       </Layout>
