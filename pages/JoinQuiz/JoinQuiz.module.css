@@ -166,3 +166,9 @@
     gap: 5px;
   }
 }
+
+.questionContent{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

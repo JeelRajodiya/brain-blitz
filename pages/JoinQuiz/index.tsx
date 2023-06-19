@@ -237,7 +237,7 @@ export default function Questions() {
             </div>
 
             {/* question body: */}
-            <div className="navbar w-full rounded-lg m-1 bg-neutral flex flex-column">
+            <div className={classNames(`navbar w-full rounded-lg m-1 bg-neutral `,styles.questionContent)}>
               <p className="p-2 text-lg font-semibold">{question?.question}</p>
               {/* Difficulty tag if it is enabled */}
               {difficultyTags && (
