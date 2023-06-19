@@ -138,17 +138,17 @@ export default function Questions() {
   complete *= 100;
   complete = Math.round(complete);
 
-  // const nextQuestion = () => {
-  //   if (activeQuestion < totalQuestions) {
-  //     setActiveQuestion(activeQuestion + 1);
-  //   }
-  // };
+  const nextQuestion = () => {
+    if (activeQuestion < totalQuestions) {
+      setActiveQuestion(activeQuestion + 1);
+    }
+  };
 
-  // const prevQuestion = () => {
-  //   if (activeQuestion > 1) {
-  //     setActiveQuestion(activeQuestion - 1);
-  //   }
-  // };
+  const prevQuestion = () => {
+    if (activeQuestion > 1) {
+      setActiveQuestion(activeQuestion - 1);
+    }
+  };
 
   // ! This temporarily fixed the error but it still does not work
 
@@ -226,23 +226,16 @@ export default function Questions() {
 
               {/* question number */}
               <div>
-                <h1 className="text font-bold bg-base-100 p-2 rounded-md">
+                <h1 className="text-lg font-bold bg-base-100 p-2 rounded-md">
                   Question {activeQuestion}
                 </h1>
               </div>
 
               {/* timer */}
-              <div className="grid grid-flow-col gap-2 text-center">
-                {/* minutes */}
-
-                {/* seconds */}
-                <div className="flex bg-base-100 flex-col text-md p-2 rounded-box text-neutral-content">
-                  <span className="countdown font-mono ">
-                    <span
-                      style={{ "--value": timer } as React.CSSProperties}
-                    ></span>
-                  </span>
-                  sec
+              <div className="grid grid-flow-col bg-base-100 rounded-xl p-2 gap-2 text-center">
+                <div className="flex justify-center items-center h-full">
+                  <div className="text-lg">999</div>
+                  <p>s</p>
                 </div>
               </div>
             </div>
