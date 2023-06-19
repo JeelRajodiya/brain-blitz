@@ -31,7 +31,7 @@ export type QuestionCol = {
   question: string;
   options: string[]; // [A,B,C,D]
   correctOption: number; // 1,2,3,4
-  difficultyTag?: "easy" | "medium" | "hard";
+  difficultyTag?: number; // 0,1,2
 };
 
 export const uri = process.env.MONGO_URI;

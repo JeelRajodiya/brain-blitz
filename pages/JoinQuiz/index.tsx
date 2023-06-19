@@ -8,16 +8,20 @@ import DifficultyTags from "../components/DifficultyTags";
 import QuestionsIndexEntry from "../components/QuestionsIndexEntry";
 import type { Question } from "../components/Option";
 import classNames from "classnames";
+import { QuestionCol, QuizCol } from "../../util/DB";
 
 // type for each question:
 async function fetchQuiz(code: string) {
+  type Res = QuizCol & {
+    questions: QuestionCol[];
+  };
   const res = await fetch(`/api/joinQuiz?code=${code}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
-  const json = await res.json();
+  const json: Res = await res.json();
   return json;
 }
 
@@ -68,6 +72,7 @@ function DifficultyTag({ difficulty }: { difficulty: number }) {
     </div>
   );
 }
+
 export default function Questions() {
   const router = useRouter();
 
@@ -84,10 +89,12 @@ export default function Questions() {
   const [activeQuestion, setActiveQuestion] = useState(1);
 
   const [isPolls, setIsPolls] = useState(false);
-  const [difficultyTags, setDifficultyTags] = useState<string[]>([]);
+  const [difficultyTags, setDifficultyTags] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const [jumpQuestions, setJumpQuestions] = useState(false);
   const [ShowSidebar, setShowSidebar] = useState(jumpQuestions);
+  const [timeForAQuestion, setTimeForAQuestion] = useState(0);
+  const [timer, setTimer] = useState(0);
 
   useEffect(() => {
     if (!code) return;
@@ -95,17 +102,23 @@ export default function Questions() {
       setQuestions(res.questions);
       setQuestion(res.questions[0]);
       setActiveQuestion(1);
-      setIsPolls(res.isPolls);
+      setIsPolls(res.isPoll);
       setDifficultyTags(res.difficultyTags);
       setJumpQuestions(res.jumpQuestions);
+
+      setTimeForAQuestion(res.timeForAQuestion);
+
       setIsLoading(false);
     });
   }, [code]);
+  useEffect(() => {
+    // setInterval(() => setTimer((t) => t - 1));
+  }, [timeForAQuestion]);
 
   React.useEffect(() => {
     setQuestion(questions[activeQuestion - 1] || emptyQuestion);
-    console.log(questions);
-    console.log(question);
+    setTimer(timeForAQuestion);
+    console.log(activeQuestion);
   }, [activeQuestion]);
   if (isLoading) {
     return (
@@ -220,7 +233,7 @@ export default function Questions() {
                 <div className="flex bg-base-100 flex-col text-md p-2 rounded-box text-neutral-content">
                   <span className="countdown font-mono ">
                     <span
-                      style={{ "--value": 99 } as React.CSSProperties}
+                      style={{ "--value": timer } as React.CSSProperties}
                     ></span>
                   </span>
                   sec
