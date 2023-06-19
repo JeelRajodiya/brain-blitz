@@ -100,6 +100,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   const handleTabClick = (tab: string) => {
     setSelectedTab(tab);
   };
+  //   console.log(quizListState.length, visibleEntries);
 
   return (
     <div className="flex  items-center flex-col mt-10 ">
@@ -107,18 +108,16 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
 
       <div className="tabs tabs-boxed  mb-2">
         <a
-          className={`tab tab-md ${
-            SelectedTab === 'made' ? 'tab-active' : ''
-          }`}
-          onClick={() => handleTabClick('made')}
+          className={`tab tab-md ${SelectedTab === "made" ? "tab-active" : ""}`}
+          onClick={() => handleTabClick("made")}
         >
           Made
         </a>
         <a
           className={`tab tab-md ${
-            SelectedTab === 'participated' ? 'tab-active' : ''
+            SelectedTab === "participated" ? "tab-active" : ""
           }`}
-          onClick={() => handleTabClick('participated')}
+          onClick={() => handleTabClick("participated")}
         >
           Participated
         </a>
@@ -232,22 +231,13 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
         );
       })}
 
-      {entries > 5 && (
-        <div className="join">
-          <button
-            className="btn join-item mt-3 btn-primary"
-            onClick={() => setVisibleEntries(visibleEntries + 5)}
-          >
-            Show More
-          </button>
-
-          <button
-            className="btn join-item mt-3 btn-primary"
-            onClick={() => setVisibleEntries(5)}
-          >
-            Hide All
-          </button>
-        </div>
+      {entries > 5 && quizListState.length > visibleEntries && (
+        <button
+          className="btn w-4/5 join-item m-5 btn-outline btn-accent"
+          onClick={() => setVisibleEntries(visibleEntries + 5)}
+        >
+          Show More
+        </button>
       )}
     </div>
   );
