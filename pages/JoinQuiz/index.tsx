@@ -273,7 +273,7 @@ export default function Questions() {
               })}
             </div>
 
-            <div className={classNames(`navbar rounded-lg m-1 flex flex-row items-center justify-center`, styles.quizActions)}>
+            <div className={classNames(`navbar rounded-lg m-1`, styles.quizActions)}>
               <button className="btn btn-accent btn-outline">Save and Next</button>
               <button className="btn btn-accent btn-outline">Skip and Next</button>
             </div>
