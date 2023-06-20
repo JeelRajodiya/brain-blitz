@@ -56,6 +56,7 @@ function Option({
   );
 }
 
+// difficulty tag:
 function DifficultyTag({ difficulty }: { difficulty: number }) {
   const difficultyTags = ["Easy", "Medium", "Hard"];
   let badgeClass;
@@ -144,7 +145,25 @@ export default function Questions() {
     }
   };
 
-  // ! This temporarily fixed the error but it still does not work
+  // radial progress:
+  function RadialProgress({ complete }: { complete: number }) {
+    return (
+      <div
+        className="radial-progress ml-3"
+        style={
+          {
+            "--value": `${complete}`,
+            "--size": "3rem",
+            "--thickness": "4px",
+            cursor: "pointer",
+          } as React.CSSProperties
+        }
+        onClick={toggleSidebar}
+      >
+        <p className="text-xs">{complete}%</p>
+      </div>
+    );
+  }
 
   const questionsBoxes = [];
   for (let i = 0; i < questions.length; i++) {
@@ -205,20 +224,7 @@ export default function Questions() {
 
             {/* progress bar*/}
             <div className="navbar rounded-lg m-1 bg-neutral flex flex-row items-center justify-between w-full">
-              <div
-                className="radial-progress ml-3"
-                style={
-                  {
-                    "--value": `${complete}`,
-                    "--size": "3rem",
-                    "--thickness": "4px",
-                    cursor: "pointer",
-                  } as React.CSSProperties
-                }
-                onClick={toggleSidebar}
-              >
-                <p className="text-xs">{complete}%</p>
-              </div>
+              <RadialProgress complete={complete} />
 
               {/* question number */}
               <div>
