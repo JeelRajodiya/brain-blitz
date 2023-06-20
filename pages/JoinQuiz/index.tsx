@@ -67,7 +67,7 @@ function DifficultyTag({ difficulty }: { difficulty: number }) {
     badgeClass = "badge badge-error";
   }
   return (
-    <div className={classnames(badgeClass, "p-3 ml-5")}>
+    <div className={classnames(badgeClass, "p-3 m-1")}>
       {difficultyTags[difficulty - 1]}
     </div>
   );
@@ -237,15 +237,28 @@ export default function Questions() {
             </div>
 
             {/* question body: */}
-            <div className={classNames(`navbar w-full rounded-lg m-1 bg-neutral `,styles.questionContent)}>
-              <p className="p-2 text-lg font-semibold">{question?.question}</p>
-              {/* Difficulty tag if it is enabled */}
-              {difficultyTags && (
-                <DifficultyTag difficulty={question.difficulty} />
+            <div
+              className={classNames(
+                `navbar w-full rounded-lg m-1 bg-neutral `,
+                styles.questionContent
               )}
+            >
+              <div>
+                <p className="p-2 text-lg font-semibold">
+                  {question?.question}
+                </p>
+              </div>
+
+              {/* Difficulty tag if it is enabled */}
+              <div>
+                {difficultyTags && (
+                  <DifficultyTag difficulty={question.difficulty} />
+                )}
+              </div>
             </div>
 
             <div className="divider"></div>
+
             {/* options here: */}
             <div className={styles.optionsWrapper}>
               {question?.options.map((option, index) => {

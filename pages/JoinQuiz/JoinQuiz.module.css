@@ -167,8 +167,23 @@
   }
 }
 
-.questionContent{
+.questionContent {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* first child of questionContent => the question contnet */
+.questionContent > *:first-child {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+/* second child of questionContent => the difficulty tag*/
+.questionContent > *:nth-child(2) {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
