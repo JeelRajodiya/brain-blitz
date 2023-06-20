@@ -49,7 +49,11 @@ function Option({
       onClick={() => {
         setQuestion((prev) => {
           const newQue = structuredClone(prev);
-          newQue.correctOption = index;
+          if (newQue.correctOption == index) {
+            newQue.correctOption = -1;
+          } else {
+            newQue.correctOption = index;
+          }
           return newQue;
         });
       }}
