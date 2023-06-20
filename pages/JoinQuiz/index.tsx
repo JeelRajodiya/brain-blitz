@@ -97,6 +97,7 @@ export default function Questions() {
   const [ShowSidebar, setShowSidebar] = useState(jumpQuestions);
   const [timeForAQuestion, setTimeForAQuestion] = useState(0);
   const [timer, setTimer] = useState(0);
+  let timeInterval: NodeJS.Timer;
 
   useEffect(() => {
     if (!code) return;
@@ -109,19 +110,34 @@ export default function Questions() {
       setJumpQuestions(res.jumpQuestions);
 
       setTimeForAQuestion(res.timeForAQuestion);
+      setTimer(res.timeForAQuestion);
 
       setIsLoading(false);
     });
   }, [code]);
   useEffect(() => {
-    // setInterval(() => setTimer((t) => t - 1));
+    timeInterval = setInterval(() => setTimer((t) => t - 1), 1000);
   }, [timeForAQuestion]);
 
   React.useEffect(() => {
     setQuestion(questions[activeQuestion - 1] || emptyQuestion);
     setTimer(timeForAQuestion);
     console.log(activeQuestion);
+    clearInterval(timeInterval);
   }, [activeQuestion]);
+  useEffect(() => {
+    if (timer == 0) {
+      nextQuestion();
+    }
+  }, [timer]);
+  const nextQuestion = () => {
+    if (activeQuestion < totalQuestions) {
+      setActiveQuestion(activeQuestion + 1);
+    }
+  };
+  const toggleSidebar = () => {
+    setShowSidebar(!ShowSidebar);
+  };
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -130,21 +146,11 @@ export default function Questions() {
     );
   }
 
-  const toggleSidebar = () => {
-    setShowSidebar(!ShowSidebar);
-  };
-
   // total questions is given by questions.length
   let totalQuestions: number = questions.length;
   let complete: number = activeQuestion / totalQuestions;
   complete *= 100;
   complete = Math.round(complete);
-
-  const nextQuestion = () => {
-    if (activeQuestion < totalQuestions) {
-      setActiveQuestion(activeQuestion + 1);
-    }
-  };
 
   // radial progress:
   function RadialProgress({ complete }: { complete: number }) {
@@ -250,7 +256,9 @@ export default function Questions() {
               {/* timer */}
               <div className="grid grid-flow-col bg-base-100 rounded-xl p-2 gap-2 text-center">
                 <div className="flex justify-center items-center h-full">
-                  <div className="text-lg">{timeForAQuestion}</div>
+                  <span className="countdown font-mono text-sm">
+                    <span style={{ "--value": timer }}></span>
+                  </span>
                   <p>s</p>
                 </div>
               </div>
