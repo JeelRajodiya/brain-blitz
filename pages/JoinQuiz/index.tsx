@@ -9,6 +9,7 @@ import QuestionsIndexEntry from "../components/QuestionsIndexEntry";
 import type { Question } from "../components/Option";
 import classNames from "classnames";
 import { QuestionCol, QuizCol } from "../../util/DB";
+import { text } from "stream/consumers";
 
 // type for each question:
 async function fetchQuiz(code: string) {
@@ -147,9 +148,22 @@ export default function Questions() {
 
   // radial progress:
   function RadialProgress({ complete }: { complete: number }) {
+    let textColor: string;
+    if (complete < 25) {
+      textColor = "text-red-500";
+    } else if (complete < 50) {
+      textColor = "text-yellow-500";
+    } else if (complete < 75) {
+      textColor = "text-green-500";
+    } else if (complete < 100) {
+      textColor = "text-primary";
+    } else {
+      textColor = "text-accent";
+    }
+
     return (
       <div
-        className="radial-progress ml-3"
+        className={`radial-progress ml-3 ${textColor}`}
         style={
           {
             "--value": `${complete}`,
