@@ -2,16 +2,14 @@
   height: 100%;
   border-radius: 10px;
 
-  /* flex: 0; */
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
   grid-auto-rows: 3em;
   gap: 10px;
   overflow-y: scroll;
-  /* position: absolute; */
+  overflow-x: hidden;
   width: 0%;
-  /* display: none; */
   transition: width 300ms ease-out;
 }
 
@@ -20,7 +18,7 @@
   display: grid;
   width: 20%;
   padding: 10px;
-  margin: 0 10px;
+  margin: 0 5px;
   border: 1px dashed white;
 
   /* width: 0; */
@@ -55,10 +53,9 @@
   height: max-content;
   border-radius: 10px;
   padding: 10px;
-  margin: 0 10px;
+  margin: 0 5px;
   position: relative;
   border: 1px dashed white;
-
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -134,13 +131,7 @@
   justify-content: center;
   align-items: center;
 }
-.drawerBtn:hover {
-  padding-left: 2.5em;
-}
 
-.drawerBtn:hover > p {
-  transform: rotate(180deg) translateY(-10%);
-}
 .drawerBtn > p {
   transition: transform 0.3s ease;
   font-size: 1.5em;
@@ -152,19 +143,9 @@
 }
 
 .quizActions {
-  display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   gap: 5px;
-}
-
-/* for large devices the quizActions will be as follows: */
-@media only screen and (min-width: 768px) {
-  .quizActions {
-    flex-direction: row;
-    justify-content: center;
-    gap: 5px;
-  }
 }
 
 .questionContent {
@@ -186,4 +167,31 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+}
+/* Mobile specific styles  */
+@media only screen and (max-width: 35em) {
+  .quizActions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+  }
+  .drawerBtn:active {
+    color: hsl(var(--s));
+  }
+  .sideBar::-webkit-scrollbar {
+    width: 2px;
+  }
+}
+
+/* Desktop specific styles */
+@media only screen and (min-width: 35em) {
+  .drawerBtn:hover {
+    padding-left: 2.5em;
+    color: hsl(var(--s));
+  }
+
+  .drawerBtn:hover > p {
+    transform: rotate(180deg) translateY(-10%);
+  }
 }
