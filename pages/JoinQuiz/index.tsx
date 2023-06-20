@@ -25,7 +25,11 @@ async function fetchQuiz(code: string) {
   const json: Res = await res.json();
   return json;
 }
-
+function secondsToMandS(seconds: number) {
+  let minutes = Math.floor(seconds / 60);
+  let secondsLeft = seconds % 60;
+  return { minutes, secondsLeft };
+}
 function Option({
   text,
   isSelected,
@@ -98,6 +102,7 @@ export default function Questions() {
   const [timeForAQuestion, setTimeForAQuestion] = useState(0);
   const [timer, setTimer] = useState(0);
   let timeInterval: NodeJS.Timer;
+  let { minutes, secondsLeft } = secondsToMandS(timer);
 
   useEffect(() => {
     if (!code) return;
@@ -255,12 +260,10 @@ export default function Questions() {
 
               {/* timer */}
               <div className="grid grid-flow-col bg-base-100 rounded-xl p-2 gap-2 text-center">
-                <div className="flex justify-center items-center h-full">
-                  <span className="countdown font-mono text-sm">
-                    <span style={{ "--value": timer }}></span>
-                  </span>
-                  <p>s</p>
-                </div>
+                <span className="countdown font-mono text-2xl">
+                  <span style={{ "--value": minutes }}></span>m
+                  <span style={{ "--value": secondsLeft }}></span>s
+                </span>
               </div>
             </div>
 
