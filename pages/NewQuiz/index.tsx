@@ -52,9 +52,9 @@ export default function NewQuiz() {
   }
   return (
     // @ts-ignore
-    <Layout pageTitle={"New Quiz"}>
-      <div className="flex flex-col">
-        <div className="flex flex-col ">
+    <Layout>
+      <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col max-w-lg">
           <div className="flex justify-between">
             <label className="label m-5">
               <span className=" text-lg label-text">Quiz Name</span>
@@ -99,7 +99,7 @@ export default function NewQuiz() {
             <label className="label m-5">
               <span className=" text-lg label-text">Jump Questions </span>
             </label>
-            <input 
+            <input
               type="checkbox"
               className="toggle toggle-md toggle-accent m-5"
               onChange={(e) => {
