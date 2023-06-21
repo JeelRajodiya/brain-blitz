@@ -129,7 +129,7 @@ export default function Questions() {
   // the options backend goes here:
   const [answerSheet, setAnswerSheet] = useState<ansSheet[]>([]);
 
-  const handleSave = () => {
+  const handleSaveAndNext = () => {
     let reply = currentOption;
     let currQuestion = question.id;
 
@@ -145,7 +145,7 @@ export default function Questions() {
     console.log(answerSheet);
   };
 
-  const handleSkip = () => {
+  const handleSkipAndNext = () => {
     let reply = 0;
     let currQuestion = question.id;
 
@@ -382,13 +382,13 @@ export default function Questions() {
             >
               <button
                 className="btn btn-accent btn-outline"
-                onClick={handleSave}
+                onClick={handleSaveAndNext}
               >
                 {isLastQuestion ? "Save and Submit" : "Save and Next"}
               </button>
               <button
                 className="btn btn-accent btn-outline"
-                onClick={handleSkip}
+                onClick={handleSkipAndNext}
               >
                 {isLastQuestion ? "Skip and Submit" : "Skip and Next"}
               </button>
