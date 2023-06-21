@@ -85,6 +85,9 @@ function DifficultyTag({ difficulty }: { difficulty: number }) {
   );
 }
 
+// // accounting for the option selected:
+// const [currentOption, setCurrentOption] = useState<number>(0);
+
 export default function Questions() {
   const router = useRouter();
   const { code } = router.query;
@@ -117,18 +120,28 @@ export default function Questions() {
 
   // accounting for the option selected:
   const [currentOption, setCurrentOption] = useState<number>(0);
-  const handleOption = (ans: number) => {
+
+  // handling the option
+  function handleOption(ans: number) {
     setCurrentOption(ans);
-  };
+  }
 
   // the options backend goes here:
   const [answerSheet, setAnswerSheet] = useState<ansSheet[]>([]);
 
   const handleSave = () => {
     let reply = currentOption;
-    let currQuestion = question;
-  };
+    let currQuestion = question.id;
 
+    // structured clone of answerSheet
+    let newAnswerSheet = structuredClone(answerSheet);
+    // map the reply to the current question
+    newAnswerSheet[currQuestion] = reply;
+    // set the answerSheet
+    setAnswerSheet(newAnswerSheet);
+    // debug the entire map:
+    console.log(answerSheet);
+  };
 
   useEffect(() => {
     if (!code) return;
@@ -352,7 +365,7 @@ export default function Questions() {
             >
               <button
                 className="btn btn-accent btn-outline"
-                onClick={nextQuestion}
+                onClick={handleSave}
               >
                 {isLastQuestion ? "Save and Submit" : "Save and Next"}
               </button>
