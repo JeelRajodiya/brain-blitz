@@ -139,6 +139,24 @@ export default function Questions() {
     newAnswerSheet[currQuestion] = reply;
     // set the answerSheet
     setAnswerSheet(newAnswerSheet);
+    // move to next question
+    nextQuestion();
+    // debug the entire map:
+    console.log(answerSheet);
+  };
+
+  const handleSkip = () => {
+    let reply = 0;
+    let currQuestion = question.id;
+
+    // structured clone of answerSheet
+    let newAnswerSheet = structuredClone(answerSheet);
+    // map the reply to the current question
+    newAnswerSheet[currQuestion] = reply;
+    // set the answerSheet
+    setAnswerSheet(newAnswerSheet);
+    // move to next question
+    nextQuestion();
     // debug the entire map:
     console.log(answerSheet);
   };
@@ -224,7 +242,12 @@ export default function Questions() {
         }
         onClick={toggleSidebar}
       >
-        <p className="text-xs tooltip tooltip-info tooltip-right" data-tip = {complete+"% attempted"} >{complete}%</p>
+        <p
+          className="text-xs tooltip tooltip-info tooltip-right"
+          data-tip={complete + "% attempted"}
+        >
+          {complete}%
+        </p>
       </div>
     );
   }
@@ -365,7 +388,7 @@ export default function Questions() {
               </button>
               <button
                 className="btn btn-accent btn-outline"
-                onClick={nextQuestion}
+                onClick={handleSkip}
               >
                 {isLastQuestion ? "Skip and Submit" : "Skip and Next"}
               </button>
