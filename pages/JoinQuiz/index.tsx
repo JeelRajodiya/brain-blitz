@@ -30,6 +30,8 @@ function secondsToMandS(seconds: number) {
   let secondsLeft = seconds % 60;
   return { minutes, secondsLeft };
 }
+
+// Option component:
 function Option({
   text,
   isSelected,
@@ -85,7 +87,6 @@ function DifficultyTag({ difficulty }: { difficulty: number }) {
 
 export default function Questions() {
   const router = useRouter();
-
   const { code } = router.query;
 
   const emptyQuestion = {
@@ -107,6 +108,27 @@ export default function Questions() {
   const [timer, setTimer] = useState(0);
   let timeInterval: NodeJS.Timer;
   let { minutes, secondsLeft } = secondsToMandS(timer);
+
+  // make a state of list of maps to store responses
+  interface ansSheet {
+    questionId: string;
+    selectedOption: number;
+  }
+
+  // accounting for the option selected:
+  const [currentOption, setCurrentOption] = useState<number>(0);
+  const handleOption = (ans: number) => {
+    setCurrentOption(ans);
+  };
+
+  // the options backend goes here:
+  const [answerSheet, setAnswerSheet] = useState<ansSheet[]>([]);
+
+  const handleSave = () => {
+    let reply = currentOption;
+    let currQuestion = question;
+  };
+
 
   useEffect(() => {
     if (!code) return;
