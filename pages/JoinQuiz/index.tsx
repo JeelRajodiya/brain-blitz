@@ -155,7 +155,6 @@ export default function Questions() {
     setTimer(timeForAQuestion);
     console.log(activeQuestion);
     clearInterval(timeInterval);
-    console.log(question.id);
   }, [activeQuestion]);
   useEffect(() => {
     if (timer == 0) {
@@ -212,12 +211,7 @@ export default function Questions() {
         }
         onClick={toggleSidebar}
       >
-        <p
-          className="text-xs tooltip tooltip-info tooltip-right"
-          data-tip={complete + "% attempted"}
-        >
-          {complete}%
-        </p>
+        <p className="text-xs tooltip tooltip-info tooltip-right" data-tip = {complete+"% attempted"} >{complete}%</p>
       </div>
     );
   }
