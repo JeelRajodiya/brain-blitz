@@ -20,7 +20,7 @@ async function postQuestions(
     q.quizId = quizId;
   });
   questions = questions.filter((q) => q.question !== "");
-  console.log(questions);
+  //   console.log(questions);
   const res = fetch("/api/createQuestions", {
     method: "POST",
     headers: {
