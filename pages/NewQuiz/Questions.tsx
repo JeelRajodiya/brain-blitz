@@ -67,10 +67,14 @@ export default function Questions() {
   const [questions, setQuestions] = useState<Question[]>([emptyQuestion]);
   const [question, setQuestion] = useState<Question>(emptyQuestion);
   const [activeQuestion, setActiveQuestion] = useState(1);
-
+  const [prevActiveQuestion, setPrevActiveQuestion] = useState(1);
   React.useEffect(() => {
+    const newQuestions = structuredClone(questions);
+    newQuestions[prevActiveQuestion] = question;
+    setQuestions(newQuestions);
+    if (activeQuestion == questions.length) {
+    }
     setQuestion(questions[activeQuestion] || emptyQuestion);
-    console.log(questions);
   }, [activeQuestion]);
 
   return (
@@ -115,6 +119,13 @@ export default function Questions() {
             <button
               className="btn btn-success mt-4 mb-4  btn-wide w-full text-center"
               onClick={() => {
+                if (questions.length === activeQuestion) {
+                  const newQuestions = structuredClone(questions);
+                  newQuestions.push(question);
+                  setQuestions(newQuestions);
+                  alert("Quiz Created Successfully");
+                }
+
                 postQuestions(
                   questions,
                   quizId as string,
@@ -138,6 +149,10 @@ export default function Questions() {
                 className="btn mb-4 btn-outline btn-success btn-sm"
                 onClick={() => {
                   const newQuestions = structuredClone(questions);
+                  // activeQuestion is one based index
+                  // questions.length is the total number of questions
+                  // if activeQuestion is equal to questions.length, then we are adding a new question
+                  console.log(activeQuestion, questions.length);
                   if (activeQuestion == questions.length) {
                     newQuestions.push(question);
                   } else {
