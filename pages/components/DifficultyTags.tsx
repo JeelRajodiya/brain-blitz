@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Difficulty = 0 | 1 | 2 | 3;
 export default function DifficultyTags({
@@ -12,7 +12,12 @@ export default function DifficultyTags({
     setDifficulty(n);
     setDifficultyRating(n);
   };
+  console.log(difficulty);
   const [difficultyRating, setDifficultyRating] = useState<Difficulty>(1); // Default difficulty rating is 1 -> easy
+
+  useEffect(() => {
+    setDifficultyRating(difficulty);
+  }, [difficulty]);
   return (
     <>
       {/* Divider */}
@@ -37,7 +42,10 @@ export default function DifficultyTags({
               name="options"
               aria-label="Easy"
               checked={difficultyRating === 1}
-              onChange={() => toggleDifficultyRating(1)}
+              onChange={(e) =>
+                toggleDifficultyRating(Number(e.target.value) as Difficulty)
+              }
+              value={1}
             />
             <input
               className={`tooltip tooltip-warning tooltip-top join-item w-16 h-10 radio ${
@@ -47,8 +55,11 @@ export default function DifficultyTags({
               type="radio"
               name="options"
               aria-label="Moderate"
-              onChange={() => toggleDifficultyRating(2)}
+              onChange={(e) =>
+                toggleDifficultyRating(Number(e.target.value) as Difficulty)
+              }
               checked={difficultyRating === 2}
+              value={2}
             />
             <input
               className={`tooltip tooltip-error tooltip-top join-item w-16 h-10 radio ${
@@ -58,7 +69,10 @@ export default function DifficultyTags({
               type="radio"
               name="options"
               aria-label="Hard"
-              onChange={() => toggleDifficultyRating(3)}
+              value={3}
+              onChange={(e) =>
+                toggleDifficultyRating(Number(e.target.value) as Difficulty)
+              }
               checked={difficulty === 3}
             />
           </div>

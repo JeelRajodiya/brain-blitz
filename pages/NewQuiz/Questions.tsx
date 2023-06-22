@@ -72,7 +72,6 @@ export default function Questions() {
 
   React.useEffect(() => {
     setQuestion(questions[activeQuestion] || emptyQuestion);
-    console.log(questions);
   }, [activeQuestion]);
   return (
     <>
@@ -191,7 +190,7 @@ export default function Questions() {
 
               {difficultyTags == "true" ? (
                 <DifficultyTags
-                  difficulty={question.difficulty as 0 | 1 | 2 | 3}
+                  difficulty={question.difficulty as Difficultly}
                   setDifficulty={(d: Difficultly) => {
                     const newQuestion = structuredClone(question);
                     newQuestion.difficulty = d;
