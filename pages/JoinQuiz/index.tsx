@@ -52,9 +52,9 @@ function Option({
         setQuestion((prev) => {
           const newQue = structuredClone(prev);
           if (newQue.correctOption == index) {
-            newQue.correctOption = -1;
+            newQue.correctOption = 0;
           } else {
-            newQue.correctOption = index;
+            newQue.correctOption = index as 0 | 1 | 2 | 3;
           }
           return newQue;
         });
@@ -96,7 +96,7 @@ export default function Questions() {
     question: "",
     options: [],
     correctOption: 0,
-  };
+  } as Question;
 
   const [questions, setQuestions] = useState<Question[]>([emptyQuestion]);
   const [question, setQuestion] = useState<Question>(emptyQuestion);
@@ -351,7 +351,7 @@ export default function Questions() {
               {/* Difficulty tag if it is enabled */}
               <div>
                 {difficultyTags && (
-                  <DifficultyTag difficulty={question.difficulty} />
+                  <DifficultyTag difficulty={question.difficulty as number} />
                 )}
               </div>
             </div>

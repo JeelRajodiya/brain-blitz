@@ -1,17 +1,18 @@
 import { useState } from "react";
-import { Question } from "./Option";
+
+type Difficulty = 0 | 1 | 2 | 3;
 export default function DifficultyTags({
   difficulty,
   setDifficulty,
 }: {
-  difficulty: number;
+  difficulty: Difficulty;
   setDifficulty: any;
 }) {
-  const toggleDifficultyRating = (n: number) => {
+  const toggleDifficultyRating = (n: Difficulty) => {
     setDifficulty(n);
     setDifficultyRating(n);
   };
-  const [difficultyRating, setDifficultyRating] = useState(1); // Default difficulty rating is 1 -> easy
+  const [difficultyRating, setDifficultyRating] = useState<Difficulty>(1); // Default difficulty rating is 1 -> easy
   return (
     <>
       {/* Divider */}

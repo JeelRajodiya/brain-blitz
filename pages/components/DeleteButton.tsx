@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./DeleteButton.module.css";
 
-const DeleteButton = ({ onClick }) => (
+const DeleteButton = ({ onClick }: { onClick: () => void }) => (
   <button className={styles.deleteButton} onClick={onClick}>
     <svg
       xmlns="http://www.w3.org/2000/svg"

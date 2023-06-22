@@ -8,6 +8,8 @@ import DifficultyTags from "../components/DifficultyTags";
 import QuestionsIndexEntry from "../components/QuestionsIndexEntry";
 import type { Question } from "../components/Option";
 import Option from "../components/Option";
+type Difficultly = 0 | 1 | 2 | 3;
+type OptionsIndex = 1 | 2 | 3 | 0;
 
 // type for each question:
 async function postQuestions(
@@ -72,7 +74,6 @@ export default function Questions() {
     setQuestion(questions[activeQuestion] || emptyQuestion);
     console.log(questions);
   }, [activeQuestion]);
-  type OptionsIndex = 1 | 2 | 3 | 0;
   return (
     <>
       {/* @ts-ignore */}
@@ -190,8 +191,8 @@ export default function Questions() {
 
               {difficultyTags == "true" ? (
                 <DifficultyTags
-                  difficulty={question.difficulty as number}
-                  setDifficulty={(d: 0 | 1 | 2) => {
+                  difficulty={question.difficulty as 0 | 1 | 2 | 3}
+                  setDifficulty={(d: Difficultly) => {
                     const newQuestion = structuredClone(question);
                     newQuestion.difficulty = d;
                     setQuestion(newQuestion);

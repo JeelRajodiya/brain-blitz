@@ -2,8 +2,8 @@
 export type Question = {
   question: string;
   options: string[];
-  correctOption: number;
-  difficulty?: number;
+  correctOption: 0 | 1 | 2 | 3;
+  difficulty?: 0 | 1 | 2 | 3;
   quizId?: string;
   id?: string;
 };
@@ -38,7 +38,7 @@ export default function Option({
             if (e.target.checked) {
               newQuestion.correctOption = index;
             } else {
-              newQuestion.correctOption = -1;
+              newQuestion.correctOption = 0;
             }
             setQuestion(newQuestion);
           }}
