@@ -72,7 +72,7 @@ export default function Questions() {
     setQuestion(questions[activeQuestion] || emptyQuestion);
     console.log(questions);
   }, [activeQuestion]);
-
+  // test
   return (
     <>
       {/* @ts-ignore */}
