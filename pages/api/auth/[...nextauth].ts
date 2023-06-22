@@ -2,8 +2,9 @@ import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { MongoClient } from "mongodb";
 import { uri } from "../../../util/DB";
+import { UserCol } from "../../../util/DB";
 
-async function storeInDB(user) {
+async function storeInDB(user: UserCol) {
   const client = new MongoClient(uri);
   try {
     await await client.connect();
