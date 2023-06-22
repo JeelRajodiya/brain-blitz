@@ -4,7 +4,7 @@ import UserQuizList from "./UserQuizList";
 import UserQuizListSkeleton from "./UserQuizListSkeleton";
 import styles from "./QuizActions.module.css";
 import classNames from "classnames";
-
+import { QuizList } from "./UserQuizList";
 async function fetchQuizList() {
   const res = await fetch("/api/listUserQuizzes", {
     method: "GET",
@@ -30,7 +30,7 @@ function QuizForm() {
   const router = useRouter();
 
   const [quizCode, setQuizCode] = React.useState("");
-  const [quizList, setQuizList] = React.useState();
+  const [quizList, setQuizList] = React.useState<QuizList[]>([]);
   const [isListLoading, setIsListLoading] = React.useState(true);
 
   React.useEffect(() => {

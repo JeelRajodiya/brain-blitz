@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-type QuizList = {
+export type QuizList = {
   id: string;
   code: string;
   title: string;
@@ -217,6 +217,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                     <button
                       className="btn btn-xs btn-ghost"
                       onClick={() =>
+                        // @ts-ignore
                         window[`deleteQuizModal${index}`].showModal()
                       }
                     >

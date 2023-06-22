@@ -72,7 +72,7 @@ export default function Questions() {
     setQuestion(questions[activeQuestion] || emptyQuestion);
     console.log(questions);
   }, [activeQuestion]);
-
+  type OptionsIndex = 1 | 2 | 3 | 0;
   return (
     <>
       {/* @ts-ignore */}
@@ -100,7 +100,10 @@ export default function Questions() {
                   name={`Question ${n + 1}`}
                   index={n}
                   key={n}
-                  deleteFunction={(index, setActiveQuestion) => {
+                  deleteFunction={(
+                    index: number,
+                    setActiveQuestion: Function
+                  ) => {
                     const newQuestions = structuredClone(questions);
                     let newQuestion = structuredClone(question);
                     newQuestions.splice(index + 1, 1);
@@ -175,7 +178,7 @@ export default function Questions() {
                     return (
                       <Option
                         key={i}
-                        index={i - 1}
+                        index={(i - 1) as OptionsIndex}
                         question={question}
                         setQuestion={setQuestion}
                         isPoll={isPolls == "true" ? true : false}
@@ -187,8 +190,8 @@ export default function Questions() {
 
               {difficultyTags == "true" ? (
                 <DifficultyTags
-                  difficulty={question.difficulty}
-                  setDifficulty={(d) => {
+                  difficulty={question.difficulty as number}
+                  setDifficulty={(d: 0 | 1 | 2) => {
                     const newQuestion = structuredClone(question);
                     newQuestion.difficulty = d;
                     setQuestion(newQuestion);

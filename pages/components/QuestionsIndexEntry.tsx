@@ -7,6 +7,12 @@ export default function QuestionsIndexEntry({
   activeQuestion,
   index,
   deleteFunction,
+}: {
+  name: string;
+  setActiveQuestion: Function;
+  activeQuestion: number;
+  index: number;
+  deleteFunction: Function;
 }) {
   return (
     <div

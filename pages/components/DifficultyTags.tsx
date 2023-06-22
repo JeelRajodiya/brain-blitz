@@ -7,18 +7,18 @@ export default function DifficultyTags({
   difficulty: number;
   setDifficulty: any;
 }) {
-  const toggleDifficultyRating = (n) => {
+  const toggleDifficultyRating = (n: number) => {
     setDifficulty(n);
     setDifficultyRating(n);
   };
-  console.log(difficulty);
-  const [difficultyRating, setDifficultyRating] = useState(1); // Default difficulty rating is 1
+  const [difficultyRating, setDifficultyRating] = useState(1); // Default difficulty rating is 1 -> easy
   return (
     <>
       {/* Divider */}
       <div className="divider"></div>
 
       <h1 className="text-2xl mb-4">Question Settings:</h1>
+
       <div>
         {/* -----------Difficulty tag------------------ */}
         <div className="flex flex-row justify-between m-5">

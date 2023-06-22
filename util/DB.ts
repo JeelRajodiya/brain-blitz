@@ -30,8 +30,8 @@ export type QuestionCol = {
   id: string;
   question: string;
   options: string[]; // [A,B,C,D]
-  correctOption: number; // 1,2,3,4
-  difficultyTag?: number; // 0,1,2
+  correctOption: 0 | 1 | 2 | 3;
+  difficultyTag?: 0 | 1 | 2;
 };
 
 export const uri = process.env.MONGO_URI;

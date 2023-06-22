@@ -131,7 +131,7 @@ export default function Questions() {
 
   const handleSaveAndNext = () => {
     let reply = currentOption;
-    let currQuestion = question.id;
+    let currQuestion = question.id as string;
 
     // structured clone of answerSheet
     let newAnswerSheet = structuredClone(answerSheet);

@@ -3,7 +3,7 @@ import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function Layout({ children, pageTitle }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   const session = useSession();
   const router = useRouter();
 
@@ -47,6 +47,7 @@ export default function Layout({ children, pageTitle }) {
               onClick={toggleDropdown}
               tabIndex={0}
               className="btn-circle tooltip tooltip-left  flex justify-center items-center cursor-pointer"
+              // @ts-ignore
               data-tip={session.data ? session.data.user.name : ""}
             >
               <div className="w-12 mask mask-squircle">

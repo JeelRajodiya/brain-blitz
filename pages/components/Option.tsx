@@ -17,7 +17,7 @@ export default function Option({
   isPoll: boolean;
   question: Question;
   setQuestion: Function;
-  index: number;
+  index: 0 | 1 | 2 | 3;
 }) {
   const aToI = {
     0: "A",
@@ -33,6 +33,7 @@ export default function Option({
           className="checkbox "
           checked={question?.correctOption === index}
           onChange={(e) => {
+            console.log(index);
             const newQuestion = structuredClone(question);
             if (e.target.checked) {
               newQuestion.correctOption = index;

@@ -1,6 +1,6 @@
 import React from "react";
 
-const EditButton = ({ onClick }) => (
+const EditButton = ({ onClick }: { onClick: () => void }) => (
   <button className="btn rounded-md hover:bg-green-600">
     <svg
       xmlns="http://www.w3.org/2000/svg"
