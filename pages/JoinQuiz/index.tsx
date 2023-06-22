@@ -10,6 +10,7 @@ import type { Question } from "../components/Option";
 import classNames from "classnames";
 import { QuestionCol, QuizCol } from "../../util/DB";
 import { text } from "stream/consumers";
+import next from "next/types";
 
 // type for each question:
 async function fetchQuiz(code: string) {
@@ -135,31 +136,45 @@ export default function Questions() {
 
     // structured clone of answerSheet
     let newAnswerSheet = structuredClone(answerSheet);
-    // map the reply to the current question
-    newAnswerSheet[currQuestion] = reply;
-    // set the answerSheet
+
+    // find the index of the current question in answerSheet
+    let index = newAnswerSheet.findIndex(
+      (item) => item.questionId === currQuestion
+    );
+
+    if (index !== -1) {
+      // if the current question is already answered, update the selected option
+      newAnswerSheet[index] = {
+        questionId: currQuestion,
+        selectedOption: reply,
+      };
+    } else {
+      // if the current question is not answered, add a new entry to answerSheet
+      newAnswerSheet.push({ questionId: currQuestion, selectedOption: reply });
+    }
+
+    // update the answerSheet state
     setAnswerSheet(newAnswerSheet);
-    // move to next question
     nextQuestion();
-    // debug the entire map:
+
     console.log(answerSheet);
   };
 
-  const handleSkipAndNext = () => {
-    let reply = 0;
-    let currQuestion = question.id;
+  // const handleSkipAndNext = () => {
+  //   let reply = 0;
+  //   let currQuestion = question.id;
 
-    // structured clone of answerSheet
-    let newAnswerSheet = structuredClone(answerSheet);
-    // map the reply to the current question
-    newAnswerSheet[currQuestion] = reply;
-    // set the answerSheet
-    setAnswerSheet(newAnswerSheet);
-    // move to next question
-    nextQuestion();
-    // debug the entire map:
-    console.log(answerSheet);
-  };
+  //   // structured clone of answerSheet
+  //   let newAnswerSheet = structuredClone(answerSheet);
+  //   // map the reply to the current question
+  //   newAnswerSheet[currQuestion] = reply;
+  //   // set the answerSheet
+  //   setAnswerSheet(newAnswerSheet);
+  //   // move to next question
+  //   nextQuestion();
+  //   // debug the entire map:
+  //   console.log(answerSheet);
+  // };
 
   useEffect(() => {
     if (!code) return;
@@ -386,12 +401,12 @@ export default function Questions() {
               >
                 {isLastQuestion ? "Save and Submit" : "Save and Next"}
               </button>
-              <button
+              {/* <button
                 className="btn btn-accent btn-outline"
                 onClick={handleSkipAndNext}
               >
                 {isLastQuestion ? "Skip and Submit" : "Skip and Next"}
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
