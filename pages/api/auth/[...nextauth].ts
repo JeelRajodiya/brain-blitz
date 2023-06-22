@@ -2,8 +2,9 @@ import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { MongoClient } from "mongodb";
 import { uri } from "../../../util/DB";
+import { UserCol } from "../../../util/DB";
 
-async function storeInDB(user) {
+async function storeInDB(user: UserCol) {
   const client = new MongoClient(uri);
   try {
     await await client.connect();
@@ -41,7 +42,19 @@ export const authOptions = {
   ],
   secret: process.env.SECRET,
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
+    async signIn({
+      user,
+      account,
+      profile,
+      email,
+      credentials,
+    }: {
+      user: UserCol;
+      account: any;
+      profile: string;
+      email: string;
+      credentials: any;
+    }) {
       // console.log(account);
       const access_token = account.access_token;
       const id_token = account.id_token;
@@ -49,8 +62,8 @@ export const authOptions = {
       user.accessToken = access_token;
       user.idToken = id_token;
       try {
-        await storeInDB(user);
-        console.log("User stored in the database:", user);
+        await storeInDB(user as UserCol);
+        // console.log("User stored in the database:", user);
       } catch (error) {
         console.error("Error storing user in the database:", error);
       }
@@ -59,4 +72,4 @@ export const authOptions = {
   },
 };
 
-export default NextAuth(authOptions as AuthOptions);
+export default NextAuth(authOptions as any);
