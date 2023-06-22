@@ -1,4 +1,6 @@
 // Function for the poll:
+
+import * as React from "react";
 export type Question = {
   question: string;
   options: string[];

@@ -1,4 +1,5 @@
 import DeleteButton from "./DeleteButton";
+import * as React from "react";
 
 // The following are the entries of the Question Panel Table:
 export default function QuestionsIndexEntry({
