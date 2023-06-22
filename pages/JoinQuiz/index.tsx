@@ -32,41 +32,41 @@ function secondsToMandS(seconds: number) {
   return { minutes, secondsLeft };
 }
 
-// Option component:
-function Option({
-  text,
-  isSelected,
-  index,
-  setQuestion,
-}: {
-  text: string;
-  isSelected: boolean;
-  index: number;
-  setQuestion: React.Dispatch<React.SetStateAction<Question>>;
-}) {
-  const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  // Option component:
+  function Option({
+    text,
+    isSelected,
+    index,
+    setQuestion,
+  }: {
+    text: string;
+    isSelected: boolean;
+    index: number;
+    setQuestion: React.Dispatch<React.SetStateAction<Question>>;
+  }) {
+    const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-  return (
-    <div
-      className={classnames(styles.option, isSelected && styles.selectedOption)}
-      onClick={() => {
-        setQuestion((prev) => {
-          const newQue = structuredClone(prev);
-          if (newQue.correctOption == index) {
-            newQue.correctOption = 0;
-          } else {
-            newQue.correctOption = index as 0 | 1 | 2 | 3;
-          }
-          return newQue;
-        });
-      }}
-    >
-      {alphabets[index]}
-      <div className="divider divider-horizontal"></div>
-      {text}
-    </div>
-  );
-}
+    return (
+      <div
+        className={classnames(styles.option, isSelected && styles.selectedOption)}
+        onClick={() => {
+          setQuestion((prev) => {
+            const newQue = structuredClone(prev);
+            if (newQue.correctOption == index) {
+              newQue.correctOption = 0;
+            } else {
+              newQue.correctOption = index as 0 | 1 | 2 | 3;
+            }
+            return newQue;
+          });
+        }}
+      >
+        {alphabets[index]}
+        <div className="divider divider-horizontal"></div>
+        {text}
+      </div>
+    );
+  }
 
 // difficulty tag:
 function DifficultyTag({ difficulty }: { difficulty: number }) {
@@ -86,8 +86,6 @@ function DifficultyTag({ difficulty }: { difficulty: number }) {
   );
 }
 
-// // accounting for the option selected:
-// const [currentOption, setCurrentOption] = useState<number>(0);
 
 export default function Questions() {
   const router = useRouter();
