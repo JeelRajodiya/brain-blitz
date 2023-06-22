@@ -1,8 +1,7 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { MongoClient } from "mongodb";
-
-const uri = process.env.MONGO_URI;
+import { uri } from "../../../util/DB";
 
 async function storeInDB(user) {
   const client = new MongoClient(uri);
@@ -24,6 +23,12 @@ async function storeInDB(user) {
     await client.close();
   }
   return true;
+}
+
+if (!process.env.GOOGLE_CLIENT_ID) {
+  throw new Error("Missing env.GOOGLE_CLIENT_ID");
+} else if (!process.env.GOOGLE_CLIENT_SECRET) {
+  throw new Error("Missing env.GOOGLE_CLIENT_SECRET");
 }
 
 export const authOptions = {
@@ -54,4 +59,4 @@ export const authOptions = {
   },
 };
 
-export default NextAuth(authOptions);
+export default NextAuth(authOptions as AuthOptions);
