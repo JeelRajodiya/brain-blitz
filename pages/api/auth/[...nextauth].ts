@@ -50,8 +50,8 @@ export const authOptions = {
       user.accessToken = access_token;
       user.idToken = id_token;
       try {
-        await storeInDB(user);
-        console.log("User stored in the database:", user);
+        await storeInDB(user as UserCol);
+        // console.log("User stored in the database:", user);
       } catch (error) {
         console.error("Error storing user in the database:", error);
       }
