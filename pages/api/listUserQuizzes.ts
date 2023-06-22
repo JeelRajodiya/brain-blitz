@@ -12,7 +12,6 @@ export default async function createQuiz(
   if (req.method === "GET") {
     return GET(req, res);
   }
-  // return res.send("Hello");
 }
 
 async function GET(req: NextApiRequest, res: NextApiResponse) {
@@ -24,10 +23,12 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
     .collection<UserCol>("users")
     .findOne({ email: session.user.email });
 
+  // check if the user is authenticated
   if (!user) {
     return res.status(401).send("Unauthorized");
   }
 
+  // get all the quizzes created by the user
   const quizzes = await db.collection("users").aggregate([
     { $match: { email: session.user.email } }, // Match the user by email
     {
@@ -42,6 +43,7 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
     { $project: { _id: 0, quizData: 1 } }, // Project only the desired fields
   ]);
 
+  // remove the unnecessary, keep only the id, title, code and createdAt fields
   quizzes.map((quiz) => {
     let quizData = quiz.quizData;
     let { id, title, code, createdAt } = quizData;
@@ -50,5 +52,7 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
   });
   const finalData = await quizzes.toArray();
   await client.close();
+
+  // return the quizzes in reverse order, so that the latest quiz is shown first
   return res.json(finalData.reverse());
 }

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { uri } from "../../util/DB";
-import type { QuizCol, QuestionCol } from "../../util/DB";
+import type { QuestionCol } from "../../util/DB";
 import { uuid } from "uuidv4";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
@@ -13,7 +13,6 @@ export default async function createQuiz(
   if (req.method === "POST") {
     return POST(req, res);
   }
-  // return res.send("Hello");
 }
 
 async function POST(req: NextApiRequest, res: NextApiResponse) {
@@ -26,15 +25,16 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
     .collection("users")
     .findOne({ email: session.user.email });
 
+  // check if the user is authenticated
   if (!user) {
     return res.status(401).send("Unauthorized");
   }
-  // const userId = (await user).id;
-  console.log(typeof questions);
+  // generate a unique id for each question
   questions.forEach((question) => {
     question.id = uuid();
   });
 
+  // insert the questions into the database
   await db.collection<QuestionCol>("questions").insertMany(questions);
   await client.close();
   return res.send("Done");

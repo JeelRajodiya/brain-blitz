@@ -11,7 +11,6 @@ export default async function joinQuiz(
   if (req.method === "GET") {
     return GET(req, res);
   }
-  // return res.send("Hello");
 }
 
 async function GET(req: NextApiRequest, res: NextApiResponse) {
@@ -25,20 +24,27 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
 
   const quizCode = req.query.code as string;
 
+  // This is under construction, because we want the user to be able to join quiz without logging in
   if (!user) {
     // user is not authenticated
     // do something
   }
+
   const quiz = await db
     .collection<QuizCol>("quizzes")
     .findOne({ code: quizCode });
+
+  // check if the quiz exists
   if (!quiz) {
     res.status(404).send("Quiz not found");
   }
+
+  // get the name of the creator of the quiz
   const creatorName = (
     await db.collection<UserCol>("users").findOne({ id: quiz.userId })
   ).name;
 
+  // get the questions of the quiz, but without the correctOption, quizId and _id fields
   const questions = await db
     .collection<QuestionCol>("questions")
     .find(
@@ -55,7 +61,7 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
     )
     .toArray();
 
-  //   console.log(questions);
+  // adding some extra fields such as creatorName and questions to the quiz object
   const quizData = {
     title: quiz.title,
     creatorName,
