@@ -42,7 +42,19 @@ export const authOptions = {
   ],
   secret: process.env.SECRET,
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
+    async signIn({
+      user,
+      account,
+      profile,
+      email,
+      credentials,
+    }: {
+      user: UserCol;
+      account: any;
+      profile: string;
+      email: string;
+      credentials: any;
+    }) {
       // console.log(account);
       const access_token = account.access_token;
       const id_token = account.id_token;
