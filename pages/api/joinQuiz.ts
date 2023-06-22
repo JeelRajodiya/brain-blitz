@@ -18,9 +18,12 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
   const client = new MongoClient(uri);
   await client.connect();
   const db = await client.db("brain-blitz");
+  if (!session?.user) {
+    return res.status(401).send("Unauthorized");
+  }
   const user = await db
     .collection<UserCol>("users")
-    .findOne({ email: session.user.email });
+    .findOne({ email: session.user.email as string });
 
   const quizCode = req.query.code as string;
 
@@ -36,13 +39,13 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
 
   // check if the quiz exists
   if (!quiz) {
-    res.status(404).send("Quiz not found");
+    return res.status(404).send("Quiz not found");
   }
 
   // get the name of the creator of the quiz
   const creatorName = (
     await db.collection<UserCol>("users").findOne({ id: quiz.userId })
-  ).name;
+  )?.name;
 
   // get the questions of the quiz, but without the correctOption, quizId and _id fields
   const questions = await db

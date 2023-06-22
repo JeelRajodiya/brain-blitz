@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import * as React from "react";
 type Difficulty = 0 | 1 | 2 | 3;
 export default function DifficultyTags({
   difficulty,

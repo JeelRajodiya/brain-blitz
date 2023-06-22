@@ -265,7 +265,7 @@ export default function Questions() {
     );
   }
 
-  const questionsBoxes = [];
+  const questionsBoxes: React.ReactNode[] = [];
   for (let i = 0; i < questions.length; i++) {
     if (i == activeQuestion - 1) {
       questionsBoxes.push(
