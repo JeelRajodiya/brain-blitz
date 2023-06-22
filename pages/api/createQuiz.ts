@@ -34,9 +34,12 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
   const client = new MongoClient(uri);
   await client.connect();
   const db = await client.db("brain-blitz");
+  if (!session?.user) {
+    return res.status(401).send("Unauthorized");
+  }
   const user = await db
     .collection<UserCol>("users")
-    .findOne({ email: session.user.email });
+    .findOne({ email: session.user.email as string });
 
   // check if the user is authenticated
   if (!user) {
@@ -63,10 +66,12 @@ async function DELETE(req: NextApiRequest, res: NextApiResponse) {
   const client = new MongoClient(uri);
   await client.connect();
   const db = await client.db("brain-blitz");
-
+  if (!session?.user) {
+    return res.status(401).send("Unauthorized");
+  }
   const user = await db
     .collection<UserCol>("users")
-    .findOne({ email: session.user.email });
+    .findOne({ email: session.user.email as string });
 
   // check if the user is authenticated
   if (!user) {

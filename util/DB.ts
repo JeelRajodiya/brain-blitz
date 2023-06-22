@@ -34,4 +34,7 @@ export type QuestionCol = {
   difficultyTag?: 0 | 1 | 2 | 3; // 0 means not tagged, 1 means easy, 2 means medium, 3 means hard
 };
 
-export const uri = process.env.MONGO_URI;
+export const uri = process.env.MONGO_URI as string;
+if (!uri) {
+  throw new Error("MONGO_URI is not defined");
+}
