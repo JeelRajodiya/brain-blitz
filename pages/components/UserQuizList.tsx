@@ -182,13 +182,13 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                   className="dropdown-content shadow  bg-base-200 rounded-box z-50 p-2"
                 >
                   <li>
-                    <button className="btn btn-xs btn-ghost"> Edit</button>
+                    <button className="btn btn-xs"> Edit</button>
                   </li>
                   <li>
                     <dialog id={`deleteQuizModal${index}`} className="modal">
                       <form method="dialog" className="modal-box">
                         <button
-                          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                          className="btn btn-sm btn-circle absolute right-2 top-2"
                           style={{ color: "white", fontWeight: "bold" }}
                         >
                           ✕
@@ -215,7 +215,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                       </form>
                     </dialog>
                     <button
-                      className="btn btn-xs btn-ghost"
+                      className="btn btn-xs"
                       onClick={() =>
                         // @ts-ignore
                         window[`deleteQuizModal${index}`].showModal()
