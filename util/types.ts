@@ -1,4 +1,4 @@
-import { QuestionCol } from "./DB";
+import { QuestionCol, QuizResponseCol } from "./DB";
 
 export type Difficulty = "Easy" | "Medium" | "Hard";
 export type SelectedOption = "A" | "B" | "C" | "D" | null; // this type is used when the user is attempting the quiz
@@ -12,3 +12,4 @@ export const ItoA: { [key: number]: QuestionOption } = {
 
 export type JoinQuizQuestion = Omit<QuestionCol, "quizId">;
 export type CreateQuizQuestion = Omit<QuestionCol, "id">;
+export type JoinQuizResponse = Omit<QuizResponseCol, "marks">;
