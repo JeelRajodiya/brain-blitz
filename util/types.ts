@@ -10,6 +10,9 @@ export const ItoA: { [key: number]: QuestionOption } = {
   3: "D",
 };
 
-export type JoinQuizQuestion = Omit<QuestionCol, "quizId">;
+export type JoinQuizQuestion = Omit<QuestionCol, "quizId" | "correctOption">;
 export type CreateQuizQuestion = Omit<QuestionCol, "id">;
 export type JoinQuizResponse = Omit<QuizResponseCol, "marks">;
+export type AnswerSheet = {
+  [key: string]: SelectedOption;
+};

@@ -7,7 +7,7 @@ import classnames from "classnames";
 import { Difficulty, ItoA, SelectedOption } from "../../util/types";
 import classNames from "classnames";
 import { QuizCol } from "../../util/DB";
-import { JoinQuizQuestion } from "../../util/types";
+import { JoinQuizQuestion, AnswerSheet } from "../../util/types";
 // type for each question:
 async function fetchQuiz(code: string) {
   type Res = QuizCol & {
@@ -33,12 +33,14 @@ function Option({
   text,
   isSelected,
   index,
-  setQuestion,
+  setAnswerSheet,
+  questionId,
 }: {
   text: string;
   isSelected: boolean;
   index: number;
-  setQuestion: React.Dispatch<React.SetStateAction<JoinQuizQuestion>>;
+  setAnswerSheet: React.Dispatch<React.SetStateAction<AnswerSheet>>;
+  questionId: string;
 }) {
   const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -46,14 +48,14 @@ function Option({
     <div
       className={classnames(styles.option, isSelected && styles.selectedOption)}
       onClick={() => {
-        setQuestion((prev) => {
-          const newQue = structuredClone(prev);
-          if (newQue.correctOption == ItoA[index]) {
-            newQue.correctOption = null;
+        setAnswerSheet((prev) => {
+          const newSheet = structuredClone(prev);
+          if (newSheet[questionId] == ItoA[index]) {
+            newSheet[questionId] = null;
           } else {
-            newQue.correctOption = ItoA[index];
+            newSheet[questionId] = ItoA[index];
           }
-          return newQue;
+          return newSheet;
         });
       }}
     >
@@ -110,51 +112,21 @@ export default function Questions() {
   let { minutes, secondsLeft } = secondsToMandS(timer);
 
   // make a state of list of maps to store responses
-  interface ansSheet {
-    questionId: string;
-    selectedOption: SelectedOption;
-  }
-
-  // accounting for the option selected:
-  const [response, setResponse] = useState<SelectedOption>(null);
 
   // the options backend goes here:
-  const [answerSheet, setAnswerSheet] = useState<ansSheet[]>([]);
-
-  const handleSaveAndNext = () => {
-    let reply = response;
-    let currQuestion = question.id as string;
-
-    // structured clone of answerSheet
-    let newAnswerSheet = structuredClone(answerSheet);
-
-    // find the index of the current question in answerSheet
-    let index = newAnswerSheet.findIndex(
-      (item) => item.questionId === currQuestion
-    );
-
-    if (index !== -1) {
-      // if the current question is already answered, update the selected option
-      newAnswerSheet[index] = {
-        questionId: currQuestion,
-        selectedOption: reply,
-      };
-    } else {
-      // if the current question is not answered, add a new entry to answerSheet
-      newAnswerSheet.push({ questionId: currQuestion, selectedOption: reply });
-    }
-
-    // update the answerSheet state
-    setAnswerSheet(newAnswerSheet);
-    nextQuestion();
-
-    console.log(answerSheet);
-  };
+  const [answerSheet, setAnswerSheet] = useState<AnswerSheet>({});
 
   useEffect(() => {
     if (!code) return;
     fetchQuiz(code as string).then((res) => {
       setQuestions(res.questions);
+      setAnswerSheet((prev) => {
+        const newAnswerSheet = structuredClone(prev);
+        res.questions.forEach((q) => {
+          newAnswerSheet[q.id] = null;
+        });
+        return newAnswerSheet;
+      });
       setQuestion(res.questions[0]);
       setActiveQuestion(1);
       setIsPolls(res.isPoll);
@@ -176,16 +148,19 @@ export default function Questions() {
     setTimer(timeForAQuestion);
     clearInterval(timeInterval);
   }, [activeQuestion]);
+
   useEffect(() => {
     if (timer == 0) {
       nextQuestion();
     }
   }, [timer]);
+
   const nextQuestion = () => {
     if (activeQuestion < totalQuestions) {
       setActiveQuestion(activeQuestion + 1);
     }
   };
+
   const toggleSidebar = () => {
     setShowSidebar(!ShowSidebar);
   };
@@ -358,8 +333,9 @@ export default function Questions() {
                     key={index}
                     text={option}
                     index={index}
-                    isSelected={ItoA[index] === question.correctOption}
-                    setQuestion={setQuestion}
+                    isSelected={ItoA[index] === answerSheet[question.id]}
+                    setAnswerSheet={setAnswerSheet}
+                    questionId={question.id}
                   />
                 );
               })}
@@ -373,7 +349,7 @@ export default function Questions() {
             >
               <button
                 className="btn btn-accent btn-outline"
-                onClick={handleSaveAndNext}
+                onClick={nextQuestion}
               >
                 {isLastQuestion ? "Save and Submit" : "Save and Next"}
               </button>
