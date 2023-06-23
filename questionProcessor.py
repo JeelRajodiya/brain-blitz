@@ -23,6 +23,7 @@ questions = json.load(open('questions.json'))
 
 newJson = []
 quizId = "d04814aa-dabc-4633-8d3e-33fa7f4d0d5d"
+ItoA = {0: "A", 1: "B", 2: "C", 3: "D"}
 for question in questions['results']:
     newQuestion = {}
     newQuestion['quizId'] = quizId
@@ -32,15 +33,9 @@ for question in questions['results']:
         question['correct_answer']
     ]
     random.shuffle(newQuestion['options'])
-    newQuestion['correctOption'] = newQuestion['options'].index(
-        question["correct_answer"])
-    difficulty = question['difficulty']
-    if difficulty == "easy":
-        newQuestion['difficulty'] = 1
-    elif difficulty == "medium":
-        newQuestion['difficulty'] = 2
-    elif difficulty == "hard":
-        newQuestion['difficulty'] = 3
+    newQuestion['correctOption'] = ItoA[newQuestion['options'].index(
+        question["correct_answer"])]
+    newQuestion['difficulty'] = question['difficulty'].capitalize()
     newJson.append(newQuestion)
 
 json.dump(newJson, open("questionsModified.json", "+w"), indent=4)
