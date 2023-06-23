@@ -50,6 +50,19 @@ async function deleteQuiz(
   }
 }
 
+// component for the toast message when quiz is deleted
+const toastMsg = () => {
+  return (
+    <div className="toast toast-end">
+      <div className="alert alert-success">
+        <span>Quiz is successfully deleted!</span>
+      </div>
+      <div className="alert alert-error">
+        <span>Error in deleting the quiz!</span>
+      </div>
+    </div>
+  );
+};
 
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   const [tooltipText, setTooltipText] = React.useState("Click to copy");
