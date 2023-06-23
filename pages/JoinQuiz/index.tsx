@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import styles from "./JoinQuiz.module.css";
 import classnames from "classnames";
-import { Difficulty, ItoA } from "../../util/types";
+import { Difficulty, ItoA, SelectedOption } from "../../util/types";
 import classNames from "classnames";
 import { QuizCol } from "../../util/DB";
 import { JoinQuizQuestion } from "../../util/types";
@@ -112,17 +112,17 @@ export default function Questions() {
   // make a state of list of maps to store responses
   interface ansSheet {
     questionId: string;
-    selectedOption: number;
+    selectedOption: SelectedOption;
   }
 
   // accounting for the option selected:
-  const [currentOption, setCurrentOption] = useState<number>(0);
+  const [response, setResponse] = useState<SelectedOption>(null);
 
   // the options backend goes here:
   const [answerSheet, setAnswerSheet] = useState<ansSheet[]>([]);
 
   const handleSaveAndNext = () => {
-    let reply = currentOption;
+    let reply = response;
     let currQuestion = question.id as string;
 
     // structured clone of answerSheet
@@ -358,7 +358,7 @@ export default function Questions() {
                     key={index}
                     text={option}
                     index={index}
-                    isSelected={ ItoA[index] === question.correctOption}
+                    isSelected={ItoA[index] === question.correctOption}
                     setQuestion={setQuestion}
                   />
                 );
