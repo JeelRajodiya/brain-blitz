@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as React from "react";
-type Difficulty = 0 | 1 | 2 | 3;
+import { Difficulty } from "../../util/types";
 export default function DifficultyTags({
   difficulty,
   setDifficulty,
@@ -13,7 +13,7 @@ export default function DifficultyTags({
     setDifficultyRating(n);
   };
   console.log(difficulty);
-  const [difficultyRating, setDifficultyRating] = useState<Difficulty>(1); // Default difficulty rating is 1 -> easy
+  const [difficultyRating, setDifficultyRating] = useState<Difficulty>("Easy"); // Default difficulty rating is 1 -> easy
 
   useEffect(() => {
     setDifficultyRating(difficulty);
@@ -35,45 +35,45 @@ export default function DifficultyTags({
           <div className="join m-5 mt-6">
             <input
               className={`tooltip tooltip-success tooltip-top join-item w-16 h-10 radio ${
-                difficulty === 1 ? "checked:bg-green-500" : ""
+                difficulty === "Easy" ? "checked:bg-green-500" : ""
               }`}
               data-tip="Easy"
               type="radio"
               name="options"
               aria-label="Easy"
-              checked={difficultyRating === 1}
+              checked={difficultyRating === "Easy"}
               onChange={(e) =>
-                toggleDifficultyRating(Number(e.target.value) as Difficulty)
+                toggleDifficultyRating(e.target.value as Difficulty)
               }
-              value={1}
+              value={"Easy"}
             />
             <input
               className={`tooltip tooltip-warning tooltip-top join-item w-16 h-10 radio ${
-                difficulty === 2 ? "checked:bg-yellow-500" : ""
+                difficulty === "Medium" ? "checked:bg-yellow-500" : ""
               }`}
               data-tip="Moderate"
               type="radio"
               name="options"
               aria-label="Moderate"
               onChange={(e) =>
-                toggleDifficultyRating(Number(e.target.value) as Difficulty)
+                toggleDifficultyRating(e.target.value as Difficulty)
               }
-              checked={difficultyRating === 2}
-              value={2}
+              checked={difficultyRating === "Medium"}
+              value={"Medium"}
             />
             <input
               className={`tooltip tooltip-error tooltip-top join-item w-16 h-10 radio ${
-                difficultyRating === 3 ? "checked:bg-red-500" : ""
+                difficultyRating === "Hard" ? "checked:bg-red-500" : ""
               }`}
               data-tip="Hard"
               type="radio"
               name="options"
               aria-label="Hard"
-              value={3}
+              value={"Hard"}
               onChange={(e) =>
-                toggleDifficultyRating(Number(e.target.value) as Difficulty)
+                toggleDifficultyRating(e.target.value as Difficulty)
               }
-              checked={difficulty === 3}
+              checked={difficulty === "Hard"}
             />
           </div>
         </div>

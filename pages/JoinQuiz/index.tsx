@@ -4,18 +4,14 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import styles from "./JoinQuiz.module.css";
 import classnames from "classnames";
-import DifficultyTags from "../components/DifficultyTags";
-import QuestionsIndexEntry from "../components/QuestionsIndexEntry";
-import type { Question } from "../components/Option";
+import { Difficulty, ItoA } from "../../util/types";
 import classNames from "classnames";
-import { QuestionCol, QuizCol } from "../../util/DB";
-import { text } from "stream/consumers";
-import next from "next/types";
-
+import { QuizCol } from "../../util/DB";
+import { JoinQuizQuestion } from "../../util/types";
 // type for each question:
 async function fetchQuiz(code: string) {
   type Res = QuizCol & {
-    questions: QuestionCol[];
+    questions: JoinQuizQuestion[];
   };
   const res = await fetch(`/api/joinQuiz?code=${code}`, {
     method: "GET",
@@ -32,60 +28,59 @@ function secondsToMandS(seconds: number) {
   return { minutes, secondsLeft };
 }
 
-  // Option component:
-  function Option({
-    text,
-    isSelected,
-    index,
-    setQuestion,
-  }: {
-    text: string;
-    isSelected: boolean;
-    index: number;
-    setQuestion: React.Dispatch<React.SetStateAction<Question>>;
-  }) {
-    const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// Option component:
+function Option({
+  text,
+  isSelected,
+  index,
+  setQuestion,
+}: {
+  text: string;
+  isSelected: boolean;
+  index: number;
+  setQuestion: React.Dispatch<React.SetStateAction<JoinQuizQuestion>>;
+}) {
+  const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    return (
-      <div
-        className={classnames(styles.option, isSelected && styles.selectedOption)}
-        onClick={() => {
-          setQuestion((prev) => {
-            const newQue = structuredClone(prev);
-            if (newQue.correctOption == index) {
-              newQue.correctOption = 0;
-            } else {
-              newQue.correctOption = index as 0 | 1 | 2 | 3;
-            }
-            return newQue;
-          });
-        }}
-      >
-        {alphabets[index]}
-        <div className="divider divider-horizontal"></div>
-        {text}
-      </div>
-    );
-  }
-
-// difficulty tag:
-function DifficultyTag({ difficulty }: { difficulty: number }) {
-  const difficultyTags = ["Easy", "Medium", "Hard"];
-  let badgeClass;
-  if (difficulty == 1) {
-    badgeClass = "badge badge-success";
-  } else if (difficulty == 2) {
-    badgeClass = "badge badge-warning";
-  } else {
-    badgeClass = "badge badge-error";
-  }
   return (
-    <div className={classnames(badgeClass, "p-3 m-1")}>
-      {difficultyTags[difficulty - 1]}
+    <div
+      className={classnames(styles.option, isSelected && styles.selectedOption)}
+      onClick={() => {
+        setQuestion((prev) => {
+          const newQue = structuredClone(prev);
+          if (newQue.correctOption == ItoA[index]) {
+            newQue.correctOption = null;
+          } else {
+            newQue.correctOption = ItoA[index];
+          }
+          return newQue;
+        });
+      }}
+    >
+      {alphabets[index]}
+      <div className="divider divider-horizontal"></div>
+      {text}
     </div>
   );
 }
 
+// difficulty tag:
+function DifficultyTag({ difficulty }: { difficulty: Difficulty }) {
+  const difficultyTags = ["Easy", "Medium", "Hard"];
+  let badgeClass;
+  if (difficulty == "Easy") {
+    badgeClass = "badge badge-success";
+  } else if (difficulty == "Medium") {
+    badgeClass = "badge badge-warning";
+  } else if (difficulty == "Hard") {
+    badgeClass = "badge badge-error";
+  } else {
+    throw new Error(
+      `Expected a difficulty in only "Easy", "Medium", "Hard" got ${difficulty}`
+    );
+  }
+  return <div className={classnames(badgeClass, "p-3 m-1")}>{difficulty}</div>;
+}
 
 export default function Questions() {
   const router = useRouter();
@@ -93,12 +88,15 @@ export default function Questions() {
 
   const emptyQuestion = {
     question: "",
+    id: "",
     options: [],
-    correctOption: 0,
-  } as Question;
+    correctOption: null,
+  } as JoinQuizQuestion;
 
-  const [questions, setQuestions] = useState<Question[]>([emptyQuestion]);
-  const [question, setQuestion] = useState<Question>(emptyQuestion);
+  const [questions, setQuestions] = useState<JoinQuizQuestion[]>([
+    emptyQuestion,
+  ]);
+  const [question, setQuestion] = useState<JoinQuizQuestion>(emptyQuestion);
   const [activeQuestion, setActiveQuestion] = useState(1);
 
   const [isPolls, setIsPolls] = useState(false);
@@ -119,11 +117,6 @@ export default function Questions() {
 
   // accounting for the option selected:
   const [currentOption, setCurrentOption] = useState<number>(0);
-
-  // handling the option
-  function handleOption(ans: number) {
-    setCurrentOption(ans);
-  }
 
   // the options backend goes here:
   const [answerSheet, setAnswerSheet] = useState<ansSheet[]>([]);
@@ -158,22 +151,6 @@ export default function Questions() {
     console.log(answerSheet);
   };
 
-  // const handleSkipAndNext = () => {
-  //   let reply = 0;
-  //   let currQuestion = question.id;
-
-  //   // structured clone of answerSheet
-  //   let newAnswerSheet = structuredClone(answerSheet);
-  //   // map the reply to the current question
-  //   newAnswerSheet[currQuestion] = reply;
-  //   // set the answerSheet
-  //   setAnswerSheet(newAnswerSheet);
-  //   // move to next question
-  //   nextQuestion();
-  //   // debug the entire map:
-  //   console.log(answerSheet);
-  // };
-
   useEffect(() => {
     if (!code) return;
     fetchQuiz(code as string).then((res) => {
@@ -197,7 +174,6 @@ export default function Questions() {
   React.useEffect(() => {
     setQuestion(questions[activeQuestion - 1] || emptyQuestion);
     setTimer(timeForAQuestion);
-    console.log(activeQuestion);
     clearInterval(timeInterval);
   }, [activeQuestion]);
   useEffect(() => {
@@ -364,7 +340,9 @@ export default function Questions() {
               {/* Difficulty tag if it is enabled */}
               <div>
                 {difficultyTags && (
-                  <DifficultyTag difficulty={question.difficulty as number} />
+                  <DifficultyTag
+                    difficulty={question.difficulty as Difficulty}
+                  />
                 )}
               </div>
             </div>
@@ -380,7 +358,7 @@ export default function Questions() {
                     key={index}
                     text={option}
                     index={index}
-                    isSelected={index === question.correctOption}
+                    isSelected={ ItoA[index] === question.correctOption}
                     setQuestion={setQuestion}
                   />
                 );

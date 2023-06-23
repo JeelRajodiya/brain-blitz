@@ -1,5 +1,5 @@
-import { MongoClient } from "mongodb";
-import { User } from "next-auth";
+import { QuestionOption, Difficulty, SelectedOption } from "./types";
+
 export type QuizCol = {
   title: string;
   userId: string; // the user's id who created the quiz
@@ -30,8 +30,10 @@ export type QuestionCol = {
   id: string;
   question: string;
   options: string[]; // [A,B,C,D]
-  correctOption: 0 | 1 | 2 | 3; // 0 means A, 1 means B, 2 means C, 3 means D
-  difficultyTag?: 0 | 1 | 2 | 3; // 0 means not tagged, 1 means easy, 2 means medium, 3 means hard
+  correctOption: SelectedOption | QuestionOption; // SelectedOption is used when the user is attempting the quiz, QuestionOption is used when the user is creating the quiz
+  // main difference is that SelectedOption can be null, but QuestionOption cannot be null
+
+  difficulty?: Difficulty; // 0 means not tagged, 1 means easy, 2 means medium, 3 means hard
 };
 
 export const uri = process.env.MONGO_URI as string;

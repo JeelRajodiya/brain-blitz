@@ -6,14 +6,13 @@ import styles from "./Questions.module.css";
 import classnames from "classnames";
 import DifficultyTags from "../components/DifficultyTags";
 import QuestionsIndexEntry from "../components/QuestionsIndexEntry";
-import type { Question } from "../components/Option";
+import type { QuestionCol } from "../../util/DB";
 import Option from "../components/Option";
-type Difficultly = 0 | 1 | 2 | 3;
-type OptionsIndex = 1 | 2 | 3 | 0;
+import { CreateQuizQuestion, Difficulty } from "../../util/types";
 
 // type for each question:
 async function postQuestions(
-  questions: Question[],
+  questions: CreateQuizQuestion[],
   quizId: string,
   router: any,
   code: string
@@ -59,15 +58,18 @@ export default function Questions() {
     code,
   } = router.query;
 
-  const emptyQuestion: Question = {
+  const emptyQuestion: CreateQuizQuestion = {
     question: "",
     options: [],
-    correctOption: 0,
-    difficulty: 1,
+    correctOption: null,
+    difficulty: "Easy",
+    quizId: "",
   };
 
-  const [questions, setQuestions] = useState<Question[]>([emptyQuestion]);
-  const [question, setQuestion] = useState<Question>(emptyQuestion);
+  const [questions, setQuestions] = useState<CreateQuizQuestion[]>([
+    emptyQuestion,
+  ]);
+  const [question, setQuestion] = useState<CreateQuizQuestion>(emptyQuestion);
   const [activeQuestion, setActiveQuestion] = useState(1);
 
   React.useEffect(() => {
@@ -178,7 +180,7 @@ export default function Questions() {
                     return (
                       <Option
                         key={i}
-                        index={(i - 1) as OptionsIndex}
+                        index={i - 1}
                         question={question}
                         setQuestion={setQuestion}
                         isPoll={isPolls == "true" ? true : false}
@@ -190,8 +192,8 @@ export default function Questions() {
 
               {difficultyTags == "true" ? (
                 <DifficultyTags
-                  difficulty={question.difficulty as Difficultly}
-                  setDifficulty={(d: Difficultly) => {
+                  difficulty={question.difficulty as Difficulty}
+                  setDifficulty={(d: Difficulty) => {
                     const newQuestion = structuredClone(question);
                     newQuestion.difficulty = d;
                     setQuestion(newQuestion);
