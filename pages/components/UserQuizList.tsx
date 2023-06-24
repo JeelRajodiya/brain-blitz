@@ -4,17 +4,8 @@ import classNames from "classnames";
 // import DeleteButton from "./DeleteButton";
 // import EditButton from "./EditButton";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { useState } from "react";
-
-export type QuizList = {
-  id: string;
-  code: string;
-  title: string;
-  createdAt: string;
-  isDeleted: boolean;
-};
-
+import { deleteQuiz } from "../../util/functions";
+import { QuizList } from "../../util/types";
 declare const window: Window &
   typeof globalThis & {
     deleteQuizModal: {
@@ -23,32 +14,6 @@ declare const window: Window &
       open: boolean;
     };
   };
-
-// function to delete the quiz
-async function deleteQuiz(
-  quizId: string,
-  setQuizListState: React.Dispatch<React.SetStateAction<QuizList[]>>
-) {
-  console.log(quizId);
-  const res = await fetch("/api/createQuiz", {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      id: quizId,
-    },
-  });
-
-  if (res.status === 200) {
-    setQuizListState((prev) =>
-      prev.map((quiz) => {
-        if (quiz.id === quizId) {
-          quiz.isDeleted = true;
-        }
-        return quiz;
-      })
-    );
-  }
-}
 
 // component for the toast message when quiz is deleted
 const toastMsg = () => {

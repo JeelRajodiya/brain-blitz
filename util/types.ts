@@ -16,3 +16,11 @@ export type JoinQuizResponse = Omit<QuizResponseCol, "marks">;
 export type AnswerSheet = {
   [key: string]: SelectedOption;
 };
+
+export type QuizList = {
+  id: string;
+  code: string;
+  title: string;
+  createdAt: string;
+  isDeleted: boolean;
+};

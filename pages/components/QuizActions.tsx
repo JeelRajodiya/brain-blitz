@@ -5,14 +5,7 @@ import UserQuizListSkeleton from "./UserQuizListSkeleton";
 import styles from "./QuizActions.module.css";
 import classNames from "classnames";
 import { QuizList } from "./UserQuizList";
-async function fetchQuizList() {
-  const res = await fetch("/api/listUserQuizzes", {
-    method: "GET",
-  });
-  const json = await res.json();
-  return json;
-}
-
+import { fetchQuizList } from "../../util/functions";
 declare const window: Window &
   typeof globalThis & {
     joinQuizModal: {

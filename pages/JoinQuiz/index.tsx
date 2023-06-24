@@ -131,7 +131,7 @@ export default function Questions() {
           </div>
 
           {/* main window */}
-          {/* progress bar here */}
+
           <div className={styles.mainWindow}>
             {/* toggle to show Sidebar: */}
             <div
