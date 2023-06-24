@@ -60,15 +60,10 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   };
   if (entries === 0) {
     return (
-      <div className="m-10">
-        <div className="card w-96 ml-6 shadow-xl image-full">
-          <figure>
-            <img src="/icons/doodle.png" style={{ opacity: "1" }} />
-          </figure>
+      <div className="flex justify-center items-center mt-5">
+        <div className="card mx-10 lg:w-100 bg-base-200 shadow-xl">
           <div className="card-body">
-            <h3 className="card-title pt-14 justify-center">
-              You have not created any quiz!
-            </h3>
+              <p>You have not creaated any quiz yet!</p>
           </div>
         </div>
       </div>
