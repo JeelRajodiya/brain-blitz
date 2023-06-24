@@ -51,6 +51,13 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
     });
   }, []);
 
+  const [visibleEntries, setVisibleEntries] = React.useState(5);
+
+  // Added tabs!
+  const [SelectedTab, setSelectedTab] = React.useState("made");
+  const handleTabClick = (tab: string) => {
+    setSelectedTab(tab);
+  };
   if (entries === 0) {
     return (
       <div className="m-10">
@@ -68,13 +75,6 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
     );
   }
 
-  const [visibleEntries, setVisibleEntries] = React.useState(5);
-
-  // Added tabs!
-  const [SelectedTab, setSelectedTab] = React.useState("made");
-  const handleTabClick = (tab: string) => {
-    setSelectedTab(tab);
-  };
   //   console.log(quizListState.length, visibleEntries);
 
   return (
