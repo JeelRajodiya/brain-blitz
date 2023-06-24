@@ -4,7 +4,7 @@ import UserQuizList from "./UserQuizList";
 import UserQuizListSkeleton from "./UserQuizListSkeleton";
 import styles from "./QuizActions.module.css";
 import classNames from "classnames";
-import { QuizList } from "./UserQuizList";
+import { QuizList } from "../../util/types";
 import { fetchQuizList } from "../../util/functions";
 declare const window: Window &
   typeof globalThis & {
