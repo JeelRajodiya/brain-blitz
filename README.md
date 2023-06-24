@@ -1,6 +1,6 @@
 
 ### ![Brain-blitz](https://github.com/JeelRajodiya/brain-blitz/assets/63534268/d13f1f65-5635-43e5-b40d-db4915e4b78b)
-Live Demo is available on https://brain-blitz-three.vercel.app/
+Live Demo is available on https://brain-blitz-three.vercel.app
 
 # Quiz App
 
