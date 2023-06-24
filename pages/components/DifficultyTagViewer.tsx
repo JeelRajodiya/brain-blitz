@@ -5,7 +5,9 @@ export default function DifficultyTag({
 }: {
   difficulty: Difficulty;
 }) {
-  const difficultyTags = ["Easy", "Medium", "Hard"];
+  if (!difficulty) {
+    throw new Error("Difficulty can not be " + difficulty);
+  }
   let badgeClass;
   if (difficulty == "Easy") {
     badgeClass = "badge badge-success";
