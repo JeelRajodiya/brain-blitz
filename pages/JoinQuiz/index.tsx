@@ -11,7 +11,8 @@ import { secondsToMandS, fetchQuiz } from "../../util/functions";
 import RadicalProgress from "../components/RadicalProgress";
 import JoinQuizOption from "../components/JoinQuizOption";
 import DifficultyTagViewer from "../components/DifficultyTagViewer";
-
+import QuestionBoxes from "../components/QuestionBoxes";
+import Timer from "../components/Timer";
 export default function Questions() {
   const router = useRouter();
   const { code } = router.query;
@@ -106,32 +107,6 @@ export default function Questions() {
   complete *= 100;
   complete = Math.round(complete);
 
-  const questionsBoxes: React.ReactNode[] = [];
-  for (let i = 0; i < questions.length; i++) {
-    if (i == activeQuestion - 1) {
-      questionsBoxes.push(
-        <div
-          key={i}
-          className={classnames(styles.questionBoxActive, styles.questionBox)}
-        >
-          {i + 1}
-        </div>
-      );
-      continue;
-    }
-    questionsBoxes.push(
-      <div
-        className={styles.questionBox}
-        onClick={() => {
-          setActiveQuestion(i + 1);
-        }}
-        key={i}
-      >
-        {i + 1}
-      </div>
-    );
-  }
-
   let isLastQuestion: boolean = activeQuestion == totalQuestions;
 
   return (
@@ -146,7 +121,13 @@ export default function Questions() {
               ShowSidebar && styles.showSideBar
             )}
           >
-            {questionsBoxes}
+            {
+              <QuestionBoxes
+                activeQuestion={activeQuestion}
+                numberOfQuestions={questions.length}
+                setActiveQuestion={setActiveQuestion}
+              />
+            }
           </div>
 
           {/* main window */}
@@ -177,19 +158,7 @@ export default function Questions() {
                 </h1>
               </div>
 
-              {/* timer */}
-              <div className="grid grid-flow-col bg-base-100 rounded-xl p-2 gap-2 text-center">
-                <span className="countdown font-mono text-2xl">
-                  <span
-                    style={{ "--value": minutes } as React.CSSProperties}
-                  ></span>
-                  m
-                  <span
-                    style={{ "--value": secondsLeft } as React.CSSProperties}
-                  ></span>
-                  s
-                </span>
-              </div>
+              <Timer minutes={minutes} secondsLeft={secondsLeft} />
             </div>
 
             {/* question body: */}
@@ -246,12 +215,6 @@ export default function Questions() {
               >
                 {isLastQuestion ? "Save and Submit" : "Save and Next"}
               </button>
-              {/* <button
-                className="btn btn-accent btn-outline"
-                onClick={handleSkipAndNext}
-              >
-                {isLastQuestion ? "Skip and Submit" : "Skip and Next"}
-              </button> */}
             </div>
           </div>
         </div>

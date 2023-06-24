@@ -1,0 +1,19 @@
+.questionBox {
+  text-align: center;
+  border: 1px rgba(255, 255, 255, 0.514) solid;
+  padding: 10px;
+  border-radius: 10px;
+  transform: background-color 0.5s ease;
+}
+
+.questionBox:hover {
+  background-color: hsl(var(--b2));
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+.questionBoxActive {
+  background-color: hsl(var(--p));
+  transition: background-color 0.5s ease;
+  border: none;
+}
