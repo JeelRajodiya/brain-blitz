@@ -4,10 +4,10 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import styles from "./Questions.module.css";
 import classnames from "classnames";
-import DifficultyTags from "../components/DifficultyTags";
+import DifficultyTags from "../components/DifficultyTagSelector";
 import QuestionsIndexEntry from "../components/QuestionsIndexEntry";
 import type { QuestionCol } from "../../util/DB";
-import Option from "../components/Option";
+import Option from "../components/CreateQuizOption";
 import { CreateQuizQuestion, Difficulty } from "../../util/types";
 
 // type for each question:

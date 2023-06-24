@@ -1,0 +1,25 @@
+.option {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 1em;
+  margin: 6px;
+  border-radius: 1em;
+  border: 1px solid rgba(255, 255, 255, 0.533);
+
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.option:hover:not(.selectedOption) {
+  background-color: hsl(var(--b2));
+  transition: background-color 0.1s ease;
+  border: transparent;
+}
+.selectedOption {
+  background-color: hsl(var(--p));
+  transition: background-color 0.1s ease;
+  border: none;
+}

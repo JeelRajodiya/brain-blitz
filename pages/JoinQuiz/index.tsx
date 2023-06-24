@@ -6,83 +6,11 @@ import styles from "./JoinQuiz.module.css";
 import classnames from "classnames";
 import { Difficulty, ItoA, SelectedOption } from "../../util/types";
 import classNames from "classnames";
-import { QuizCol } from "../../util/DB";
 import { JoinQuizQuestion, AnswerSheet } from "../../util/types";
-// type for each question:
-async function fetchQuiz(code: string) {
-  type Res = QuizCol & {
-    questions: JoinQuizQuestion[];
-  };
-  const res = await fetch(`/api/joinQuiz?code=${code}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const json: Res = await res.json();
-  return json;
-}
-function secondsToMandS(seconds: number) {
-  let minutes = Math.floor(seconds / 60);
-  let secondsLeft = seconds % 60;
-  return { minutes, secondsLeft };
-}
-
-// Option component:
-function Option({
-  text,
-  isSelected,
-  index,
-  setAnswerSheet,
-  questionId,
-}: {
-  text: string;
-  isSelected: boolean;
-  index: number;
-  setAnswerSheet: React.Dispatch<React.SetStateAction<AnswerSheet>>;
-  questionId: string;
-}) {
-  const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-  return (
-    <div
-      className={classnames(styles.option, isSelected && styles.selectedOption)}
-      onClick={() => {
-        setAnswerSheet((prev) => {
-          const newSheet = structuredClone(prev);
-          if (newSheet[questionId] == ItoA[index]) {
-            newSheet[questionId] = null;
-          } else {
-            newSheet[questionId] = ItoA[index];
-          }
-          return newSheet;
-        });
-      }}
-    >
-      {alphabets[index]}
-      <div className="divider divider-horizontal"></div>
-      {text}
-    </div>
-  );
-}
-
-// difficulty tag:
-function DifficultyTag({ difficulty }: { difficulty: Difficulty }) {
-  const difficultyTags = ["Easy", "Medium", "Hard"];
-  let badgeClass;
-  if (difficulty == "Easy") {
-    badgeClass = "badge badge-success";
-  } else if (difficulty == "Medium") {
-    badgeClass = "badge badge-warning";
-  } else if (difficulty == "Hard") {
-    badgeClass = "badge badge-error";
-  } else {
-    throw new Error(
-      `Expected a difficulty in only "Easy", "Medium", "Hard" got ${difficulty}`
-    );
-  }
-  return <div className={classnames(badgeClass, "p-3 m-1")}>{difficulty}</div>;
-}
+import { secondsToMandS, fetchQuiz } from "../../util/functions";
+import RadicalProgress from "../components/RadicalProgress";
+import JoinQuizOption from "../components/JoinQuizOption";
+import DifficultyTagViewer from "../components/DifficultyTagViewer";
 
 export default function Questions() {
   const router = useRouter();
@@ -178,44 +106,6 @@ export default function Questions() {
   complete *= 100;
   complete = Math.round(complete);
 
-  // radial progress:
-  function RadialProgress({ complete }: { complete: number }) {
-    let textColor: string;
-    if (complete < 25) {
-      textColor = "text-red-500";
-    } else if (complete < 50) {
-      textColor = "text-yellow-500";
-    } else if (complete < 75) {
-      textColor = "text-green-500";
-    } else if (complete < 100) {
-      textColor = "text-primary";
-    } else {
-      textColor = "text-accent";
-    }
-
-    return (
-      <div
-        className={`radial-progress ml-3 ${textColor}`}
-        style={
-          {
-            "--value": `${complete}`,
-            "--size": "3rem",
-            "--thickness": "4px",
-            cursor: "pointer",
-          } as React.CSSProperties
-        }
-        onClick={toggleSidebar}
-      >
-        <p
-          className="text-xs tooltip tooltip-info tooltip-right"
-          data-tip={complete + "% attempted"}
-        >
-          {complete}%
-        </p>
-      </div>
-    );
-  }
-
   const questionsBoxes: React.ReactNode[] = [];
   for (let i = 0; i < questions.length; i++) {
     if (i == activeQuestion - 1) {
@@ -275,7 +165,10 @@ export default function Questions() {
 
             {/* progress bar*/}
             <div className="navbar rounded-lg m-1 bg-neutral flex flex-row items-center justify-between w-full">
-              <RadialProgress complete={complete} />
+              <RadicalProgress
+                complete={complete}
+                toggleSidebar={toggleSidebar}
+              />
 
               {/* question number */}
               <div>
@@ -315,7 +208,7 @@ export default function Questions() {
               {/* Difficulty tag if it is enabled */}
               <div>
                 {difficultyTags && (
-                  <DifficultyTag
+                  <DifficultyTagViewer
                     difficulty={question.difficulty as Difficulty}
                   />
                 )}
@@ -329,7 +222,7 @@ export default function Questions() {
               {question?.options.map((option, index) => {
                 console.log(option);
                 return (
-                  <Option
+                  <JoinQuizOption
                     key={index}
                     text={option}
                     index={index}
