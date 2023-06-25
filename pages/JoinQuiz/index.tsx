@@ -48,6 +48,7 @@ export default function Questions() {
   const [timer, setTimer] = useState(0);
   let timeInterval: NodeJS.Timer;
   let { minutes, secondsLeft } = secondsToMandS(timer);
+  const [markForCorrect, setMarkForCorrect] = useState(1);
 
   // make a state of list of maps to store responses
 
@@ -73,7 +74,7 @@ export default function Questions() {
 
       setTimeForAQuestion(res.timeForAQuestion);
       setTimer(res.timeForAQuestion);
-
+      setMarkForCorrect(res.markForCorrect);
       setIsLoading(false);
     });
   }, [code]);
@@ -110,7 +111,11 @@ export default function Questions() {
       responses: answerSheet,
     };
     const marks = await submitResponse(dataToSend);
-    alert(`Your score is ${marks}`);
+    const totalMarks = questions.length * markForCorrect;
+    router.push({
+      pathname: "/JoinQuiz/Result",
+      query: { marks: marks, totalMarks: totalMarks },
+    });
   }
   if (isLoading) {
     return (
