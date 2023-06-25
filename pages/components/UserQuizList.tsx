@@ -16,7 +16,7 @@ declare const window: Window &
   };
 
 // component for the toast message when quiz is deleted
-function NotifToast() {
+function NotifToast({ isLoaded, statusCode }: { isLoaded: boolean; statusCode: number }) {
   return (
     <div className="toast toast-end">
       {/* toast for successful delete */}
@@ -37,7 +37,7 @@ function NotifToast() {
 }
 
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
-  
+
   // states for the toast message
   const [isLoaded, setIsLoading] = React.useState(false);
   const [statusCode, setStatusCode] = React.useState(0);
