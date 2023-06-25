@@ -30,9 +30,15 @@ export async function fetchQuizList() {
 
 export async function deleteQuiz(
   quizId: string,
-  setQuizListState: React.Dispatch<React.SetStateAction<QuizList[]>>
+  setQuizListState: React.Dispatch<React.SetStateAction<QuizList[]>>,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setErrorMsg: React.Dispatch<React.SetStateAction<string>>,
+  setStatusCode: React.Dispatch<React.SetStateAction<number>>
 ) {
   console.log(quizId);
+
+  // start loading
+  setIsLoading(true);
   const res = await fetch("/api/createQuiz", {
     method: "DELETE",
     headers: {
@@ -40,6 +46,11 @@ export async function deleteQuiz(
       id: quizId,
     },
   });
+
+  // stop loading
+  setIsLoading(false);
+  setStatusCode(res.status);
+  setErrorMsg(await res.text());
 
   if (res.status === 200) {
     setQuizListState((prev) =>
@@ -51,6 +62,12 @@ export async function deleteQuiz(
       })
     );
   }
+
+  // hide the toast after 2 seconds
+  setTimeout(() => {
+    setErrorMsg("");
+    setStatusCode(0);
+  }, 2000);
 }
 
 export async function submitResponse(data: JoinQuizResponse): Promise<number> {

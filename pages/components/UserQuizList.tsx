@@ -28,17 +28,16 @@ function NotifToast({
   return (
     <div className="toast toast-end">
       {/* toast for successful delete */}
-      {isLoading && statusCode === 200 && (
+      {statusCode === 200 && (
         <div className="alert alert-success">
           <span>Quiz is successfully deleted!</span>
         </div>
       )}
 
       {/* toast for error in deleting */}
-      {isLoading && statusCode !== 200 && (
+      { statusCode >= 200 && (
         <div className="alert alert-error">
           <span>Error in deleting the quiz!</span>
-          <span>Error: {errorMsg}</span>
         </div>
       )}
     </div>
@@ -202,10 +201,10 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                           onClick={() =>
                             deleteQuiz(
                               quiz.id,
-                              setQuizListState
-                              // setStatusCode,
-                              // setErrorMsg,
-                              // setIsLoading
+                              setQuizListState,
+                              setIsLoading,
+                              setErrorMsg,
+                              setStatusCode
                             )
                           }
                         >
@@ -236,7 +235,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
         statusCode={statusCode}
         isLoading={isLoading}
         errorMsg={errorMsg}
-      />  
+      />
 
       {entries > 5 && quizListState.length > visibleEntries && (
         <button
