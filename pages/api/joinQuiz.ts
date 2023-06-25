@@ -161,6 +161,8 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
 
   const responseDoc = body as QuizResponseCol;
   responseDoc.marks = marks;
+  responseDoc.createdAt = new Date();
+
   await db.collection<QuizResponseCol>("quizResponses").insertOne(responseDoc);
   await client.close();
   return res.status(200).send(marks);

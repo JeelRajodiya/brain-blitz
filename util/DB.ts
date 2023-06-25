@@ -47,6 +47,7 @@ export type QuizResponseCol = {
   respondentId: string;
   responses: AnswerSheet; // key is the question id, value is the response answer (A, B , C , D)
   marks: number;
+  createdAt: Date;
 };
 
 export const uri = process.env.MONGO_URI as string;
