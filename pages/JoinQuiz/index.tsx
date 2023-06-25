@@ -113,7 +113,7 @@ export default function Questions() {
     const marks = await submitResponse(dataToSend);
     const totalMarks = questions.length * markForCorrect;
     router.push({
-      pathname: "/JoinQuiz/Result",
+      pathname: "/JoinQuiz/QuizResult",
       query: { marks: marks, totalMarks: totalMarks },
     });
   }
@@ -236,10 +236,10 @@ export default function Questions() {
             >
               {isLastQuestion ? (
                 <button
-                  className="btn btn-accent btn-outline"
+                  className="btn btn-error btn-outline"
                   onClick={submitQuiz}
                 >
-                  "Final Submit"
+                  Final Submit
                 </button>
               ) : (
                 <button
@@ -247,7 +247,7 @@ export default function Questions() {
                   onClick={nextQuestion}
                 >
                   {" "}
-                  "Save and Next"
+                  Save and Next
                 </button>
               )}
             </div>
