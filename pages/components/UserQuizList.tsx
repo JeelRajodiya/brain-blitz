@@ -1,8 +1,7 @@
 import * as React from "react";
 import styles from "./UserQuizList.module.css";
 import classNames from "classnames";
-// import DeleteButton from "./DeleteButton";
-// import EditButton from "./EditButton";
+
 import Image from "next/image";
 import { deleteQuiz } from "../../util/functions";
 import { QuizList } from "../../util/types";
@@ -14,43 +13,7 @@ declare const window: Window &
       open: boolean;
     };
   };
-
-// component for the toast message when quiz is deleted
-function NotifToast({
-  isLoading,
-  statusCode,
-  errorMsg,
-}: {
-  isLoading: boolean;
-  statusCode: number;
-  errorMsg: string;
-}) {
-  return (
-    <div className="toast toast-end">
-      {/* toast for successful delete */}
-      {statusCode === 200 && (
-        <div className="alert alert-success">
-          <span>Quiz is successfully deleted!</span>
-        </div>
-      )}
-
-      {isLoading && (
-        <div className="alert alert-warning">
-          <span>Deleting the quiz...</span>
-          <span className="loading loading-infinity loading-md"></span>
-        </div>
-      )}
-
-      {/* toast for error in deleting */}
-      {statusCode !== 0 && statusCode !== 200 && (
-        <div className="alert alert-error">
-          <span>{errorMsg}</span>
-        </div>
-      )}
-    </div>
-  );
-}
-
+import DeleteQuizToast from "./DeleteQuizToast";
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   // states for the toast message
   const [isLoading, setIsLoading] = React.useState(false);
@@ -238,7 +201,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
       })}
 
       {/* for the notification when required using the component made*/}
-      <NotifToast
+      <DeleteQuizToast
         statusCode={statusCode}
         isLoading={isLoading}
         errorMsg={errorMsg}
