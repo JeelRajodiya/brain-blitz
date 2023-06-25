@@ -16,20 +16,29 @@ declare const window: Window &
   };
 
 // component for the toast message when quiz is deleted
-function NotifToast({ isLoaded, statusCode }: { isLoaded: boolean; statusCode: number }) {
+function NotifToast({
+  isLoading,
+  statusCode,
+  errorMsg,
+}: {
+  isLoading: boolean;
+  statusCode: number;
+  errorMsg: string;
+}) {
   return (
     <div className="toast toast-end">
       {/* toast for successful delete */}
-      {isLoaded && statusCode === 200 && (
+      {isLoading && statusCode === 200 && (
         <div className="alert alert-success">
           <span>Quiz is successfully deleted!</span>
         </div>
       )}
 
       {/* toast for error in deleting */}
-      {isLoaded && statusCode !== 200 && (
+      {isLoading && statusCode !== 200 && (
         <div className="alert alert-error">
           <span>Error in deleting the quiz!</span>
+          <span>Error: {errorMsg}</span>
         </div>
       )}
     </div>
@@ -37,9 +46,8 @@ function NotifToast({ isLoaded, statusCode }: { isLoaded: boolean; statusCode: n
 }
 
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
-
   // states for the toast message
-  const [isLoaded, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [statusCode, setStatusCode] = React.useState(0);
   const [errorMsg, setErrorMsg] = React.useState("");
 
@@ -222,6 +230,13 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
           </React.Fragment>
         );
       })}
+
+      {/* for the notification when required using the component made*/}
+      <NotifToast
+        statusCode={statusCode}
+        isLoading={isLoading}
+        errorMsg={errorMsg}
+      />  
 
       {entries > 5 && quizListState.length > visibleEntries && (
         <button
