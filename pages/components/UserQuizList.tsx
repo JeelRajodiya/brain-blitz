@@ -34,6 +34,13 @@ function NotifToast({
         </div>
       )}
 
+      {isLoading && (
+        <div className="alert alert-warning">
+          <span>Deleting the quiz...</span>
+          <span className="loading loading-infinity loading-md"></span>
+        </div>
+      )}
+
       {/* toast for error in deleting */}
       {/* { statusCode >= 200 && (
         <div className="alert alert-error">
