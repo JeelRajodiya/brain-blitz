@@ -61,6 +61,6 @@ export async function submitResponse(data: JoinQuizResponse): Promise<number> {
     },
     body: JSON.stringify(data),
   });
-  const json = await res.json();
-  return Number(json.marks as string);
+  const marks = await res.text();
+  return Number(marks as string);
 }

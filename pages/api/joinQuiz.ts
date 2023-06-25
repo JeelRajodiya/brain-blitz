@@ -104,7 +104,7 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
     .collection<UserCol>("users")
     .findOne({ email: session.user.email as string });
 
-  const body = JSON.parse(req.body) as JoinQuizResponse;
+  const body = req.body as JoinQuizResponse;
   if (!body.code || !body.responses) {
     return res
       .status(400)
@@ -165,5 +165,6 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
 
   await db.collection<QuizResponseCol>("quizResponses").insertOne(responseDoc);
   await client.close();
-  return res.status(200).send(marks);
+  console.log(marks);
+  return res.status(200).send(String(marks));
 }
