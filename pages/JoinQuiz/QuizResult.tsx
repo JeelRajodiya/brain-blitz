@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import Layout from "../Layout";
 import styles from "./QuizResult.module.css";
-   import classNames from "classnames";
+import classNames from "classnames";
 
 // for total:
 let correctQuestions;
@@ -58,15 +58,9 @@ export default function QuizResult() {
                   }
                 >
                   <h1 className={styles.marks}>
-                    <div className={styles.firstNumber}>
-                      {marks}
-                    </div>
-                    <div className={styles.middleSlash}>
-                      /
-                    </div>
-                    <div className={styles.lastNumber}>
-                      {totalMarks}
-                    </div>
+                    <div className={styles.firstNumber}>{marks}</div>
+                    <div className={styles.middleSlash}>/</div>
+                    <div className={styles.lastNumber}>{totalMarks}</div>
                   </h1>
                 </div>
               </div>
@@ -76,7 +70,36 @@ export default function QuizResult() {
             </div>
           </div>
           {/* child 2 */}
-          <div>There</div>
+          <div>
+            {/* Grand total */}
+            <div>
+              <div className="stats shadow">
+                <div className="stat">
+                  <div className="stat-figure text-secondary">
+                    {/* insert svg from icons folder here */}
+                  </div>
+                  <div className="stat-title">Correct</div>
+                  <div className="stat-value">31K</div>
+                </div>
+
+                <div className="stat">
+                  <div className="stat-figure text-secondary">
+                    {/* insert svg from icons folder here */}
+                  </div>
+                  <div className="stat-title">Incorrect</div>
+                  <div className="stat-value">4,200</div>
+                </div>
+
+                <div className="stat">
+                  <div className="stat-figure text-secondary">
+                    {/* insert svg from icons folder here */}
+                  </div>
+                  <div className="stat-title">Skipped</div>
+                  <div className="stat-value">1,200</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>

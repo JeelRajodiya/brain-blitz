@@ -28,6 +28,7 @@ and the ratio of their width is 1:2 */
   flex: 2;
 }
 
+
 /* Media query for larger devices */
 @media (min-width: 768px) {
   .container {
