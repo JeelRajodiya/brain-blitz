@@ -208,7 +208,8 @@ export default function Questions() {
             {/* options here: */}
             <div className={styles.optionsWrapper}>
               {question?.options.map((option, index) => {
-                console.log(option);
+                //  Critical bug here: Options is re rendered on every state change
+                // console.log(option);
                 return (
                   <JoinQuizOption
                     key={index}
