@@ -86,7 +86,7 @@ function QuizForm() {
               className="font-bold text-2xl text-center"
               style={{ color: "white" }}
             >
-              ⚡Join Quiz⚡
+              Join Quiz
             </h3>
 
             <div className="join m-5 flex justify-center">
