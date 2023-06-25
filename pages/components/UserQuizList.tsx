@@ -16,13 +16,7 @@ declare const window: Window &
   };
 
 // component for the toast message when quiz is deleted
-const [isLoaded, setIsLoading] = React.useState(false);
-const [statusCode, setStatusCode] = React.useState(0);
-const [errorMsg, setErrorMsg] = React.useState("");
-
-
 function NotifToast() {
-  
   return (
     <div className="toast toast-end">
       {/* toast for successful delete */}
@@ -40,9 +34,15 @@ function NotifToast() {
       )}
     </div>
   );
-};
+}
 
 export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
+  
+  // states for the toast message
+  const [isLoaded, setIsLoading] = React.useState(false);
+  const [statusCode, setStatusCode] = React.useState(0);
+  const [errorMsg, setErrorMsg] = React.useState("");
+
   const [tooltipText, setTooltipText] = React.useState("Click to copy");
   const [quizListState, setQuizListState] =
     React.useState<QuizList[]>(quizList);
@@ -194,7 +194,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                           onClick={() =>
                             deleteQuiz(
                               quiz.id,
-                              setQuizListState,
+                              setQuizListState
                               // setStatusCode,
                               // setErrorMsg,
                               // setIsLoading
