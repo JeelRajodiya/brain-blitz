@@ -35,11 +35,11 @@ function NotifToast({
       )}
 
       {/* toast for error in deleting */}
-      { statusCode >= 200 && (
+      {/* { statusCode >= 200 && (
         <div className="alert alert-error">
           <span>Error in deleting the quiz!</span>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
