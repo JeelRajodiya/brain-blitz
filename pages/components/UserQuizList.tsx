@@ -16,15 +16,28 @@ declare const window: Window &
   };
 
 // component for the toast message when quiz is deleted
-const toastMsg = () => {
+const [isLoaded, setIsLoading] = React.useState(false);
+const [statusCode, setStatusCode] = React.useState(0);
+const [errorMsg, setErrorMsg] = React.useState("");
+
+
+function NotifToast() {
+  
   return (
     <div className="toast toast-end">
-      <div className="alert alert-success">
-        <span>Quiz is successfully deleted!</span>
-      </div>
-      <div className="alert alert-error">
-        <span>Error in deleting the quiz!</span>
-      </div>
+      {/* toast for successful delete */}
+      {isLoaded && statusCode === 200 && (
+        <div className="alert alert-success">
+          <span>Quiz is successfully deleted!</span>
+        </div>
+      )}
+
+      {/* toast for error in deleting */}
+      {isLoaded && statusCode !== 200 && (
+        <div className="alert alert-error">
+          <span>Error in deleting the quiz!</span>
+        </div>
+      )}
     </div>
   );
 };
@@ -63,7 +76,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
       <div className="flex justify-center items-center mt-5">
         <div className="card mx-10 lg:w-100 bg-base-200 shadow-xl">
           <div className="card-body">
-              <p>You have not creaated any quiz yet!</p>
+            <p>You have not creaated any quiz yet!</p>
           </div>
         </div>
       </div>
@@ -167,7 +180,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                           className="font-bold text-lg"
                           style={{ color: "white" }}
                         >
-                          ⚠️ Delete ⚠️
+                          Delete
                         </h1>
                         <p
                           className="py-4"
@@ -178,7 +191,15 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                         </p>
                         <button
                           className="btn bg-red-500 hover:bg-red-600 text-white"
-                          onClick={() => deleteQuiz(quiz.id, setQuizListState)}
+                          onClick={() =>
+                            deleteQuiz(
+                              quiz.id,
+                              setQuizListState,
+                              // setStatusCode,
+                              // setErrorMsg,
+                              // setIsLoading
+                            )
+                          }
                         >
                           Delete
                         </button>
