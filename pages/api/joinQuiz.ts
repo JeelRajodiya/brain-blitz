@@ -105,33 +105,27 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
     .findOne({ email: session.user.email as string });
 
   const body = JSON.parse(req.body) as JoinQuizResponse;
-  if (
-    !body.creatorId ||
-    !body.quizId ||
-    !body.responses ||
-    !body.respondentId
-  ) {
+  if (!body.code || !body.responses) {
     return res
       .status(400)
-      .send(
-        "Bad Request, missing fields [creatorId, quizId, responses, respondentId] in the body"
-      );
+      .send("Bad Request, missing fields [code, responses] in the body");
   }
   // This is under construction, because we want the user to be able to join quiz without logging in
   if (!user) {
     // user is not authenticated
     // do something
   }
-  const questions = await db
-    .collection<QuestionCol>("questions")
-    .find({ quizId: body.quizId })
-    .toArray();
   const quiz = await db
     .collection<QuizCol>("quizzes")
-    .findOne({ id: body.quizId });
+    .findOne({ code: body.code });
+
   if (!quiz) {
     return res.status(404).send("Quiz not found");
   }
+  const questions = await db
+    .collection<QuestionCol>("questions")
+    .find({ quizId: quiz?.id })
+    .toArray();
 
   const correctMark = quiz.markForCorrect;
   const incorrectMark = quiz.markForIncorrect;
@@ -159,9 +153,15 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
     }
   }
 
-  const responseDoc = body as QuizResponseCol;
+  const responseDoc: QuizResponseCol = {
+    creatorId: quiz.userId,
+    respondentId: user?.id as string,
+    quizId: quiz.id,
+    marks: 0,
+    createdAt: new Date(),
+    responses: body.responses,
+  };
   responseDoc.marks = marks;
-  responseDoc.createdAt = new Date();
 
   await db.collection<QuizResponseCol>("quizResponses").insertOne(responseDoc);
   await client.close();

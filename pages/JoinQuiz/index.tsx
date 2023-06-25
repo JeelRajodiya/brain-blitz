@@ -4,10 +4,19 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import styles from "./JoinQuiz.module.css";
 import classnames from "classnames";
-import { Difficulty, ItoA, SelectedOption } from "../../util/types";
+import {
+  Difficulty,
+  ItoA,
+  JoinQuizResponse,
+  SelectedOption,
+} from "../../util/types";
 import classNames from "classnames";
 import { JoinQuizQuestion, AnswerSheet } from "../../util/types";
-import { secondsToMandS, fetchQuiz } from "../../util/functions";
+import {
+  secondsToMandS,
+  fetchQuiz,
+  submitResponse,
+} from "../../util/functions";
 import RadicalProgress from "../components/RadicalProgress";
 import JoinQuizOption from "../components/JoinQuizOption";
 import DifficultyTagViewer from "../components/DifficultyTagViewer";
@@ -15,7 +24,7 @@ import QuestionBoxes from "../components/QuestionBoxes";
 import Timer from "../components/Timer";
 export default function Questions() {
   const router = useRouter();
-  const { code } = router.query;
+  let code: string = router.query.code as string;
 
   const emptyQuestion = {
     question: "",
@@ -93,6 +102,16 @@ export default function Questions() {
   const toggleSidebar = () => {
     setShowSidebar(!ShowSidebar);
   };
+
+  async function submitQuiz() {
+    // submit the quiz
+    let dataToSend: JoinQuizResponse = {
+      code: code,
+      responses: answerSheet,
+    };
+    const marks = await submitResponse(dataToSend);
+    alert(`Your score is ${marks}`);
+  }
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -209,12 +228,22 @@ export default function Questions() {
                 styles.quizActions
               )}
             >
-              <button
-                className="btn btn-accent btn-outline"
-                onClick={nextQuestion}
-              >
-                {isLastQuestion ? "Save and Submit" : "Save and Next"}
-              </button>
+              {isLastQuestion ? (
+                <button
+                  className="btn btn-accent btn-outline"
+                  onClick={submitQuiz}
+                >
+                  "Final Submit"
+                </button>
+              ) : (
+                <button
+                  className="btn btn-accent btn-outline"
+                  onClick={nextQuestion}
+                >
+                  {" "}
+                  "Save and Next"
+                </button>
+              )}
             </div>
           </div>
         </div>

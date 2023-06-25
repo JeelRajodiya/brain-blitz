@@ -12,9 +12,12 @@ export const ItoA: { [key: number]: QuestionOption } = {
 
 export type JoinQuizQuestion = Omit<QuestionCol, "quizId" | "correctOption">;
 export type CreateQuizQuestion = Omit<QuestionCol, "id">;
-export type JoinQuizResponse = Omit<QuizResponseCol, "marks">;
 export type AnswerSheet = {
   [key: string]: SelectedOption;
+};
+export type JoinQuizResponse = {
+  code: string;
+  responses: AnswerSheet;
 };
 
 export type QuizList = {
