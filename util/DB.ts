@@ -1,4 +1,9 @@
-import { QuestionOption, Difficulty, SelectedOption } from "./types";
+import {
+  QuestionOption,
+  Difficulty,
+  SelectedOption,
+  AnswerSheet,
+} from "./types";
 
 export type QuizCol = {
   title: string;
@@ -40,8 +45,9 @@ export type QuizResponseCol = {
   quizId: string;
   creatorId: string;
   respondentId: string;
-  responses: { [key: string]: SelectedOption }; // key is the question id, value is the response answer (A, B , C , D)
+  responses: AnswerSheet; // key is the question id, value is the response answer (A, B , C , D)
   marks: number;
+  createdAt: Date;
 };
 
 export const uri = process.env.MONGO_URI as string;
