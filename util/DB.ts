@@ -46,7 +46,28 @@ export type QuizResponseCol = {
   creatorId: string;
   respondentId: string;
   responses: AnswerSheet; // key is the question id, value is the response answer (A, B , C , D)
-  marks: number;
+  correctQuestions: number;
+  incorrectQuestions: number;
+  skippedQuestions: number;
+  positiveMarks: number;
+  negativeMarks: number;
+  totalMarks: number;
+  hasDifficulty: boolean;
+  Easy?: {
+    correctQuestions: number;
+    incorrectQuestions: number;
+    skippedQuestions: number;
+  };
+  Medium?: {
+    correctQuestions: number;
+    incorrectQuestions: number;
+    skippedQuestions: number;
+  };
+  Hard?: {
+    correctQuestions: number;
+    incorrectQuestions: number;
+    skippedQuestions: number;
+  };
   createdAt: Date;
 };
 

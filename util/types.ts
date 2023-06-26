@@ -27,3 +27,10 @@ export type QuizList = {
   createdAt: string;
   isDeleted: boolean;
 };
+export type QuizResult = Omit<
+  QuizResponseCol,
+  "responses" | "respondentId" | "creatorId"
+> & {
+  quizTitle: string;
+  creatorName: string;
+};

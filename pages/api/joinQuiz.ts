@@ -9,7 +9,7 @@ import {
 import { User, getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 import { MongoClient } from "mongodb";
-import { JoinQuizResponse } from "../../util/types";
+import { JoinQuizResponse, QuizResult } from "../../util/types";
 
 export default async function joinQuiz(
   req: NextApiRequest,
@@ -139,32 +139,102 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
         }, got ${Object.keys(body.responses).length}`
       );
   }
-  let marks = 0;
-  for (let i = 0; i < questions.length; i++) {
-    const question = questions[i];
-    const response = body.responses[question.id];
-    if (response === null) {
-      continue;
-    }
-    if (question.correctOption === response) {
-      marks += correctMark;
-    } else {
-      marks -= incorrectMark;
-    }
-  }
 
   const responseDoc: QuizResponseCol = {
     creatorId: quiz.userId,
     respondentId: user?.id as string,
     quizId: quiz.id,
-    marks: 0,
     createdAt: new Date(),
     responses: body.responses,
+    correctQuestions: 0,
+    incorrectQuestions: 0,
+    skippedQuestions: 0,
+    positiveMarks: 0,
+    negativeMarks: 0,
+    totalMarks: 0,
+    hasDifficulty: quiz.difficultyTags,
   };
-  responseDoc.marks = marks;
+
+  if (quiz.difficultyTags) {
+    responseDoc.Easy = {
+      correctQuestions: 0,
+      incorrectQuestions: 0,
+      skippedQuestions: 0,
+    };
+    responseDoc.Medium = {
+      correctQuestions: 0,
+      incorrectQuestions: 0,
+      skippedQuestions: 0,
+    };
+    responseDoc.Hard = {
+      correctQuestions: 0,
+      incorrectQuestions: 0,
+      skippedQuestions: 0,
+    };
+  }
+  // Remember: incorrect marks are negative
+  for (let i = 0; i < questions.length; i++) {
+    const question = questions[i];
+    const userResponse = body.responses[question.id];
+    if (userResponse === null) {
+      responseDoc.skippedQuestions += 1;
+    } else if (question.correctOption === userResponse) {
+      responseDoc.totalMarks += correctMark;
+      responseDoc.correctQuestions += 1;
+      responseDoc.positiveMarks += correctMark;
+    } else {
+      responseDoc.totalMarks += incorrectMark;
+      responseDoc.incorrectQuestions += 1;
+      responseDoc.negativeMarks += incorrectMark;
+    }
+
+    if (
+      responseDoc.hasDifficulty &&
+      responseDoc.Easy &&
+      responseDoc.Medium &&
+      responseDoc.Hard
+    ) {
+      let questionDifficulty = question.difficulty!;
+
+      if (userResponse === null) {
+        if (questionDifficulty == "Easy") {
+          responseDoc.Easy.skippedQuestions += 1;
+        } else if (questionDifficulty == "Medium") {
+          responseDoc.Medium.skippedQuestions += 1;
+        } else if (questionDifficulty == "Hard") {
+          responseDoc.Hard.skippedQuestions += 1;
+        }
+      } else if (question.correctOption === userResponse) {
+        if (questionDifficulty == "Easy") {
+          console.log(questionDifficulty);
+          responseDoc.Easy.correctQuestions += 1;
+        } else if (questionDifficulty == "Medium") {
+          responseDoc.Medium.correctQuestions += 1;
+        } else if (questionDifficulty == "Hard") {
+          responseDoc.Hard.correctQuestions += 1;
+        }
+      } else {
+        if (questionDifficulty == "Easy") {
+          responseDoc.Easy.incorrectQuestions += 1;
+        } else if (questionDifficulty == "Medium") {
+          responseDoc.Medium.incorrectQuestions += 1;
+        } else if (questionDifficulty == "Hard") {
+          responseDoc.Hard.incorrectQuestions += 1;
+        }
+      }
+      console.log(responseDoc[questionDifficulty]);
+    }
+  }
 
   await db.collection<QuizResponseCol>("quizResponses").insertOne(responseDoc);
+  // remove the responses field from the responseDoc
+  const { responses, creatorId, respondentId, ...result }: QuizResponseCol =
+    responseDoc;
+  const quizResult: QuizResult = result as QuizResult;
+  quizResult.creatorName = (
+    await db.collection<UserCol>("users").findOne({ id: quiz.userId })
+  )?.name!;
+  quizResult.quizTitle = quiz.title;
   await client.close();
-  console.log(marks);
-  return res.status(200).send(String(marks));
+  return res.json(quizResult);
 }

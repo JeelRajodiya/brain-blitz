@@ -110,12 +110,13 @@ export default function Questions() {
       code: code,
       responses: answerSheet,
     };
-    const marks = await submitResponse(dataToSend);
+    const quizResult = await submitResponse(dataToSend);
+    console.log(quizResult);
     const totalMarks = questions.length * markForCorrect;
-    router.push({
-      pathname: "/JoinQuiz/QuizResult",
-      query: { marks: marks, totalMarks: totalMarks },
-    });
+    // router.push({
+    //   pathname: "/JoinQuiz/QuizResult",
+    //   query: { marks: marks, totalMarks: totalMarks },
+    // });
   }
   if (isLoading) {
     return (

@@ -1,5 +1,5 @@
 import { QuizCol } from "./DB";
-import { JoinQuizQuestion, JoinQuizResponse } from "./types";
+import { JoinQuizQuestion, JoinQuizResponse, QuizResult } from "./types";
 import { QuizList } from "./types";
 export function secondsToMandS(seconds: number) {
   let minutes = Math.floor(seconds / 60);
@@ -70,7 +70,9 @@ export async function deleteQuiz(
   }, 2000);
 }
 
-export async function submitResponse(data: JoinQuizResponse): Promise<number> {
+export async function submitResponse(
+  data: JoinQuizResponse
+): Promise<QuizResult> {
   const res = await fetch("/api/joinQuiz", {
     method: "POST",
     headers: {
@@ -78,6 +80,6 @@ export async function submitResponse(data: JoinQuizResponse): Promise<number> {
     },
     body: JSON.stringify(data),
   });
-  const marks = await res.text();
-  return Number(marks as string);
+  const quizResult: QuizResult = await res.json();
+  return quizResult;
 }
