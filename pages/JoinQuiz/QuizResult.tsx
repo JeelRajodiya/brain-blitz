@@ -32,6 +32,8 @@ let hardIncorrectQuestions;
 let hardSkippedQuestions;
 let hardMarksScored;
 
+let difficultyEnabled = false;
+
 export default function QuizResult() {
   const router = useRouter();
   const marks = router.query.marks;
@@ -72,33 +74,78 @@ export default function QuizResult() {
           {/* child 2 */}
           <div>
             {/* Grand total */}
-            <div>
-              <div className="stats shadow">
-                <div className="stat">
-                  <div className="stat-figure text-secondary">
-                    {/* insert svg from icons folder here */}
-                  </div>
-                  <div className="stat-title">Correct</div>
-                  <div className="stat-value">31K</div>
-                </div>
+            <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+              <div className="stat">
+                <div className="stat-title">Correct Attempt</div>
+                <div className="stat-value">31K</div>
+              </div>
 
-                <div className="stat">
-                  <div className="stat-figure text-secondary">
-                    {/* insert svg from icons folder here */}
-                  </div>
-                  <div className="stat-title">Incorrect</div>
-                  <div className="stat-value">4,200</div>
-                </div>
+              <div className="stat">
+                <div className="stat-title">Incorrect Attempt</div>
+                <div className="stat-value">4,200</div>
+              </div>
 
-                <div className="stat">
-                  <div className="stat-figure text-secondary">
-                    {/* insert svg from icons folder here */}
-                  </div>
-                  <div className="stat-title">Skipped</div>
-                  <div className="stat-value">1,200</div>
-                </div>
+              <div className="stat">
+                <div className="stat-title">Skipped Questions</div>
+                <div className="stat-value">1,200</div>
               </div>
             </div>
+
+            {!difficultyEnabled && (
+              <div>
+                {/* Easy */}
+                <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+                  <div className="stat">
+                    <div className="stat-title">Correct Attempt</div>
+                    <div className="stat-value">31K</div>
+                  </div>
+
+                  <div className="stat">
+                    <div className="stat-title">Incorrect Attempt</div>
+                    <div className="stat-value">4,200</div>
+                  </div>
+
+                  <div className="stat">
+                    <div className="stat-title">Skipped Questions</div>
+                    <div className="stat-value">1,200</div>
+                  </div>
+                </div>
+                {/* Medium */}
+                <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+                  <div className="stat">
+                    <div className="stat-title">Correct Attempt</div>
+                    <div className="stat-value">31K</div>
+                  </div>
+
+                  <div className="stat">
+                    <div className="stat-title">Incorrect Attempt</div>
+                    <div className="stat-value">4,200</div>
+                  </div>
+
+                  <div className="stat">
+                    <div className="stat-title">Skipped Questions</div>
+                    <div className="stat-value">1,200</div>
+                  </div>
+                </div>
+                {/* hard */}
+                <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+                  <div className="stat">
+                    <div className="stat-title">Correct Attempt</div>
+                    <div className="stat-value">31K</div>
+                  </div>
+
+                  <div className="stat">
+                    <div className="stat-title">Incorrect Attempt</div>
+                    <div className="stat-value">4,200</div>
+                  </div>
+
+                  <div className="stat">
+                    <div className="stat-title">Skipped Questions</div>
+                    <div className="stat-value">1,200</div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
