@@ -152,7 +152,7 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
     positiveMarks: 0,
     negativeMarks: 0,
     totalMarks: 0,
-    hasDifficulty: quiz.difficultyTags,
+    hasDifficultyTags: quiz.difficultyTags,
   };
 
   if (quiz.difficultyTags) {
@@ -189,7 +189,7 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
     }
 
     if (
-      responseDoc.hasDifficulty &&
+      responseDoc.hasDifficultyTags &&
       responseDoc.Easy &&
       responseDoc.Medium &&
       responseDoc.Hard

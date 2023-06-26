@@ -52,7 +52,7 @@ export type QuizResponseCol = {
   positiveMarks: number;
   negativeMarks: number;
   totalMarks: number;
-  hasDifficulty: boolean;
+  hasDifficultyTags: boolean;
   Easy?: {
     correctQuestions: number;
     incorrectQuestions: number;
