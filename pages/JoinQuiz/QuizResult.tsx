@@ -9,7 +9,7 @@ let difficultyEnabled = false;
 
 export default function QuizResult() {
   const result = useSelector((state: RootState) => state.quizResult.value);
-  useEffect(() => console.log(result), []);
+
   return (
     //@ts-ignore
     <Layout>
