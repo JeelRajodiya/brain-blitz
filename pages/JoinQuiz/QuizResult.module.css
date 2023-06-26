@@ -32,6 +32,19 @@ and the ratio of their width is 1:2 */
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   width: 100%;
+  overflow: auto;
+}
+
+.statMainTitle {
+  /* word wrap and set it so that it occupies minimum width possible */
+  word-wrap: break-word;
+  min-width: 0;
+  padding: 2px;
+  padding-bottom: 0px;
+  /* center it */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .containerTwo > :nth-child(4) {
