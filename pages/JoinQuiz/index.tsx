@@ -1,3 +1,4 @@
+import { useDispatch } from "react-redux";
 import * as React from "react";
 import Layout from "../Layout";
 import { useRouter } from "next/router";
@@ -22,6 +23,8 @@ import JoinQuizOption from "../components/JoinQuizOption";
 import DifficultyTagViewer from "../components/DifficultyTagViewer";
 import QuestionBoxes from "../components/QuestionBoxes";
 import Timer from "../components/Timer";
+import { store } from "../../util/store";
+import { updateResult } from "../../util/slices/resultSlice";
 export default function Questions() {
   const router = useRouter();
   let code: string = router.query.code as string;
@@ -49,6 +52,7 @@ export default function Questions() {
   let timeInterval: NodeJS.Timer;
   let { minutes, secondsLeft } = secondsToMandS(timer);
   const [markForCorrect, setMarkForCorrect] = useState(1);
+  const dispatch = useDispatch();
 
   // make a state of list of maps to store responses
 
@@ -112,11 +116,11 @@ export default function Questions() {
     };
     const quizResult = await submitResponse(dataToSend);
     console.log(quizResult);
-    const totalMarks = questions.length * markForCorrect;
-    // router.push({
-    //   pathname: "/JoinQuiz/QuizResult",
-    //   query: { marks: marks, totalMarks: totalMarks },
-    // });
+    dispatch(updateResult(quizResult));
+
+    router.push({
+      pathname: "/JoinQuiz/QuizResult",
+    });
   }
   if (isLoading) {
     return (

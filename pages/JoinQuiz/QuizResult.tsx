@@ -2,43 +2,14 @@ import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import Layout from "../Layout";
 import styles from "./QuizResult.module.css";
-import classNames from "classnames";
-
-// for total:
-let correctQuestions;
-let incorrectQuestions;
-let skippedQuestions;
-
-// grand total for marks
-let totalMarks;
-let marks;
-let percentageScore;
-
-// for easy:
-let easyCorrectQuestions;
-let easyIncorrectQuestions;
-let easySkippedQuestions;
-let easyMarksScored;
-
-// for medium:
-let mediumCorrectQuestions;
-let mediumIncorrectQuestions;
-let mediumSkippedQuestions;
-let mediumMarksScored;
-
-// for hard:
-let hardCorrectQuestions;
-let hardIncorrectQuestions;
-let hardSkippedQuestions;
-let hardMarksScored;
+import { useSelector } from "react-redux";
+import { RootState } from "../../util/store";
 
 let difficultyEnabled = false;
 
 export default function QuizResult() {
-  const router = useRouter();
-  const marks = router.query.marks;
-  const totalMarks = router.query.totalMarks;
-
+  const result = useSelector((state: RootState) => state.quizResult.value);
+  useEffect(() => console.log(result), []);
   return (
     //@ts-ignore
     <Layout>
@@ -60,14 +31,16 @@ export default function QuizResult() {
                   }
                 >
                   <h1 className={styles.marks}>
-                    <div className={styles.firstNumber}>{marks}</div>
+                    <div className={styles.firstNumber}>
+                      {result.totalMarks}
+                    </div>
                     <div className={styles.middleSlash}>/</div>
-                    <div className={styles.lastNumber}>{totalMarks}</div>
+                    <div className={styles.lastNumber}>{result.maxMarks}</div>
                   </h1>
                 </div>
               </div>
               <div className={styles.bottomPart}>
-                {marks}/{totalMarks}
+                {result.totalMarks}/{result.maxMarks}
               </div>
             </div>
           </div>

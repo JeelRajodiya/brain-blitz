@@ -152,6 +152,7 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
     positiveMarks: 0,
     negativeMarks: 0,
     totalMarks: 0,
+    maxMarks: questions.length * quiz.markForCorrect,
     hasDifficultyTags: quiz.difficultyTags,
   };
 
@@ -225,7 +226,6 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
       console.log(responseDoc[questionDifficulty]);
     }
   }
-
   await db.collection<QuizResponseCol>("quizResponses").insertOne(responseDoc);
   // remove the responses field from the responseDoc
   const { responses, creatorId, respondentId, ...result }: QuizResponseCol =
