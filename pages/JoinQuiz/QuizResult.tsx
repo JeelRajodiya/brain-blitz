@@ -45,7 +45,7 @@ export default function QuizResult() {
             </div>
           </div>
           {/* child 2 */}
-          <div>
+          <div className={styles.containerTwo}>
             {/* Grand total */}
             <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
               <div className="stat">
@@ -64,58 +64,62 @@ export default function QuizResult() {
               </div>
             </div>
 
+            {/* for easy */}
             {!difficultyEnabled && (
-              <div>
-                {/* Easy */}
-                <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
-                  <div className="stat">
-                    <div className="stat-title">Correct Attempt</div>
-                    <div className="stat-value">31K</div>
-                  </div>
-
-                  <div className="stat">
-                    <div className="stat-title">Incorrect Attempt</div>
-                    <div className="stat-value">4,200</div>
-                  </div>
-
-                  <div className="stat">
-                    <div className="stat-title">Skipped Questions</div>
-                    <div className="stat-value">1,200</div>
-                  </div>
+              <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+                <div className="stat">
+                  <div className="stat-title">Correct Attempt</div>
+                  <div className="stat-value">31K</div>
                 </div>
-                {/* Medium */}
-                <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
-                  <div className="stat">
-                    <div className="stat-title">Correct Attempt</div>
-                    <div className="stat-value">31K</div>
-                  </div>
 
-                  <div className="stat">
-                    <div className="stat-title">Incorrect Attempt</div>
-                    <div className="stat-value">4,200</div>
-                  </div>
-
-                  <div className="stat">
-                    <div className="stat-title">Skipped Questions</div>
-                    <div className="stat-value">1,200</div>
-                  </div>
+                <div className="stat">
+                  <div className="stat-title">Incorrect Attempt</div>
+                  <div className="stat-value">4,200</div>
                 </div>
-                {/* hard */}
-                <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
-                  <div className="stat">
-                    <div className="stat-title">Correct Attempt</div>
-                    <div className="stat-value">31K</div>
-                  </div>
 
-                  <div className="stat">
-                    <div className="stat-title">Incorrect Attempt</div>
-                    <div className="stat-value">4,200</div>
-                  </div>
+                <div className="stat">
+                  <div className="stat-title">Skipped Questions</div>
+                  <div className="stat-value">1,200</div>
+                </div>
+              </div>
+            )}
 
-                  <div className="stat">
-                    <div className="stat-title">Skipped Questions</div>
-                    <div className="stat-value">1,200</div>
-                  </div>
+            {/* for easy */}
+            {!difficultyEnabled && (
+              <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+                <div className="stat">
+                  <div className="stat-title">Correct Attempt</div>
+                  <div className="stat-value">31K</div>
+                </div>
+
+                <div className="stat">
+                  <div className="stat-title">Incorrect Attempt</div>
+                  <div className="stat-value">4,200</div>
+                </div>
+
+                <div className="stat">
+                  <div className="stat-title">Skipped Questions</div>
+                  <div className="stat-value">1,200</div>
+                </div>
+              </div>
+            )}
+
+            {/* for easy */}
+            {!difficultyEnabled && (
+              <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+                <div className="stat">
+                  <div className="stat-title">Correct Attempt</div>
+                  <div className="stat-value">31K</div>
+                </div>
+
+                <div className="stat">
+                  <div className="stat-title">Incorrect Attempt</div>
+                  <div className="stat-value">4,200</div>
+                </div>
+
+                <div className="stat">
+                  <div className="stat-title">Skipped Questions</div>
+                  <div className="stat-value">1,200</div>
                 </div>
               </div>
             )}
