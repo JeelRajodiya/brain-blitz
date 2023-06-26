@@ -48,6 +48,7 @@ export default function QuizResult() {
           <div className={styles.containerTwo}>
             {/* Grand total */}
             <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+            <div className="stat-title p-2 pb-0">Grand Total</div>
               <div className="stat">
                 <div className="stat-title">Correct Attempt</div>
                 <div className="stat-value">31K</div>
@@ -67,6 +68,7 @@ export default function QuizResult() {
             {/* for easy */}
             {!difficultyEnabled && (
               <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+                <div className="stat-title p-2 pb-0">Easy Questions</div>
                 <div className="stat">
                   <div className="stat-title">Correct Attempt</div>
                   <div className="stat-value">31K</div>
@@ -87,6 +89,7 @@ export default function QuizResult() {
             {/* for easy */}
             {!difficultyEnabled && (
               <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+                <div className="stat-title p-2 pb-0">Moderate Questions</div>
                 <div className="stat">
                   <div className="stat-title">Correct Attempt</div>
                   <div className="stat-value">31K</div>
@@ -107,6 +110,7 @@ export default function QuizResult() {
             {/* for easy */}
             {!difficultyEnabled && (
               <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+                <div className="stat-title p-2 pb-0">Hard Questions</div>
                 <div className="stat">
                   <div className="stat-title">Correct Attempt</div>
                   <div className="stat-value">31K</div>
