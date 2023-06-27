@@ -11,30 +11,6 @@
   }
 }
 
-/* make the container so that its two children are vertically separated,
-and the ratio of their width is 1:2 */
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  margin: 1px;
-  gap: 10px;
-}
-
-/* child 2 */
-.containerTwo {
-  flex: 2;
-  flex-direction: row; /* Default: columns for smaller devices */
-  gap: 10px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  width: 100%;
-  overflow: auto;
-}
-
 .statMainTitle {
   /* word wrap and set it so that it occupies minimum width possible */
   word-wrap: break-word;
@@ -47,34 +23,93 @@ and the ratio of their width is 1:2 */
   align-items: center;
 }
 
-.containerTwo > :nth-child(4) {
+/* make the container so that its two children are vertically separated,
+and the ratio of their width is 1:2 */
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 1px;
+  gap: 20px;
+  width: 100%; /* Added */
+}
+
+.subHeading{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.subContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 1px;
+  gap: 20px;
+  width: 100%; /* Added */
+}
+
+/* for the grand total */
+.grandTotal {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1px;
+  padding: 5px;
+  gap: 10px;
+}
+
+.diffCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1px;
+  padding: 5px;
+  gap: 10px;
+}
+
+.diffCards > :nth-child(3) {
   /* rgb for red */
   background-color: rgba(255, 0, 0, 0.1);
 }
 
-.containerTwo > :nth-child(3) {
+.diffCards > :nth-child(2) {
   /* rgb for yellow */
   background-color: rgba(255, 255, 0, 0.1);
 }
 
-.containerTwo > :nth-child(2) {
+.diffCards > :nth-child(1) {
   /* rgb for green */
   background-color: rgba(0, 255, 0, 0.1);
 }
 
-/* Media query for larger devices */
-@media (min-width: 768px) {
-  .containerTwo {
-    flex-direction: column; /* Switch to rows for larger devices */
-    gap: 10px;
-  }
+.statMainTitle {
+  /* word wrap and set it so that it occupies minimum width possible */
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Media query for larger devices */
-@media (min-width: 768px) {
-  .container {
-    flex-direction: row;
-    align-items: stretch;
+/* Media Query for smaller devices */
+@media (max-width: 767px) {
+  .mainContainer {
+    gap: 10px; /* Adjust gap for smaller devices */
+  }
+
+  .subContainer {
+    gap: 10px; /* Adjust gap for smaller devices */
+  }
+
+  .grandTotal,
+  .diffCards {
+    flex-direction: column; /* Change flex-direction to stack vertically */
+    align-items: flex-start; /* Adjust alignment for stacked elements */
   }
 }
 
