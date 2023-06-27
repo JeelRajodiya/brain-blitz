@@ -51,6 +51,20 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   const handleTabClick = (tab: string) => {
     setSelectedTab(tab);
   };
+  const [areRefsDefined, setAreRefsDefined] = React.useState(
+    madeTabRef.current && participatedTabRef.current && tabsContainerRef.current
+  );
+  React.useEffect(() => {
+    setAreRefsDefined(
+      madeTabRef.current &&
+        participatedTabRef.current &&
+        tabsContainerRef.current
+    );
+  }, [
+    madeTabRef.current &&
+      participatedTabRef.current &&
+      tabsContainerRef.current,
+  ]);
 
   if (entries === 0) {
     return (
@@ -73,22 +87,25 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
         className={classNames("tabs tabs-boxed  mb-2", styles.tabsContainer)}
         ref={tabsContainerRef}
       >
-        <div
-          className={styles.tabBox}
-          style={{
-            width:
-              SelectedTab == "made"
-                ? madeTabRef.current?.offsetWidth! - 10
-                : participatedTabRef.current?.offsetWidth! - 10,
-            height: madeTabRef.current?.offsetHeight! - 1,
-            translate:
-              SelectedTab == "made"
-                ? madeTabRef.current?.getBoundingClientRect().left! -
-                  tabsContainerRef.current?.getBoundingClientRect().left!
-                : participatedTabRef.current?.getBoundingClientRect().left! -
-                  tabsContainerRef.current?.getBoundingClientRect().left!,
-          }}
-        ></div>
+        {areRefsDefined && (
+          <div
+            className={styles.tabBox}
+            style={{
+              width:
+                SelectedTab == "made"
+                  ? madeTabRef.current?.offsetWidth! - 10
+                  : participatedTabRef.current?.offsetWidth! - 10,
+              height: madeTabRef.current?.offsetHeight! - 1,
+              translate:
+                SelectedTab == "made"
+                  ? madeTabRef.current?.getBoundingClientRect().left! -
+                    tabsContainerRef.current?.getBoundingClientRect().left!
+                  : participatedTabRef.current?.getBoundingClientRect().left! -
+                    tabsContainerRef.current?.getBoundingClientRect().left!,
+            }}
+          ></div>
+        )}
+
         <a
           className={`tab tab-md ${
             SelectedTab === "made" ? "text-primary-content" : ""
