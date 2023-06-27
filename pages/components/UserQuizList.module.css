@@ -93,3 +93,14 @@
   flex: 1;
   margin: 0 10px;
 }
+.tabsContainer {
+  position: relative;
+}
+.tabBox {
+  width: 1cm;
+  height: 1cm;
+  background-color: hsl(var(--p));
+  position: absolute;
+  transition: width, translate 100ms ease;
+  border-radius: 0.5em;
+}

@@ -45,9 +45,13 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
 
   // Added tabs!
   const [SelectedTab, setSelectedTab] = React.useState("made");
+  const madeTabRef = React.useRef<HTMLAnchorElement>(null);
+  const participatedTabRef = React.useRef<HTMLAnchorElement>(null);
+  const tabsContainerRef = React.useRef<HTMLDivElement>(null);
   const handleTabClick = (tab: string) => {
     setSelectedTab(tab);
   };
+
   if (entries === 0) {
     return (
       <div className="flex justify-center items-center mt-5">
@@ -61,23 +65,45 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
   }
 
   //   console.log(quizListState.length, visibleEntries);
-
   return (
     <div className="flex  items-center flex-col mt-10 ">
       <div className="self-center text-xl m-2 ">Your Quizzes</div>
 
-      <div className="tabs tabs-boxed  mb-2">
+      <div
+        className={classNames("tabs tabs-boxed  mb-2", styles.tabsContainer)}
+        ref={tabsContainerRef}
+      >
+        <div
+          className={styles.tabBox}
+          style={{
+            width:
+              SelectedTab == "made"
+                ? madeTabRef.current?.offsetWidth! - 10
+                : participatedTabRef.current?.offsetWidth! - 10,
+            height: madeTabRef.current?.offsetHeight! - 1,
+            translate:
+              SelectedTab == "made"
+                ? madeTabRef.current?.getBoundingClientRect().left! -
+                  tabsContainerRef.current?.getBoundingClientRect().left!
+                : participatedTabRef.current?.getBoundingClientRect().left! -
+                  tabsContainerRef.current?.getBoundingClientRect().left!,
+          }}
+        ></div>
         <a
-          className={`tab tab-md ${SelectedTab === "made" ? "tab-active" : ""}`}
+          className={`tab tab-md ${
+            SelectedTab === "made" ? "text-primary-content" : ""
+          }`}
           onClick={() => handleTabClick("made")}
+          ref={madeTabRef}
         >
           Made
         </a>
         <a
           className={`tab tab-md ${
-            SelectedTab === "participated" ? "tab-active" : ""
+            SelectedTab === "participated" ? "text-primary-content" : ""
           }`}
           onClick={() => handleTabClick("participated")}
+          ref={participatedTabRef}
         >
           Participated
         </a>
