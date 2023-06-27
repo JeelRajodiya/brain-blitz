@@ -101,6 +101,6 @@
   height: 1cm;
   background-color: hsl(var(--p));
   position: absolute;
-  transition: width, translate 100ms ease;
+  transition: width, translate 150ms ease;
   border-radius: 0.5em;
 }
