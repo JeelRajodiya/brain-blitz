@@ -4,6 +4,7 @@ import Layout from "../Layout";
 import styles from "./QuizResult.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../util/store";
+import classNames from "classnames";
 
 let difficultyEnabled = false;
 
@@ -15,7 +16,7 @@ export default function QuizResult() {
     <Layout>
       <div>
         <h1 className={styles.heading}>ScoreBoard</h1>
-        <div className={styles.container}>
+        <div className={styles.mainContainer}>
           {/* child 1 */}
           <div>
             <div className={styles.scoreCard}>
@@ -45,9 +46,10 @@ export default function QuizResult() {
             </div>
           </div>
           {/* child 2 */}
-          <div>
-            {/* Grand total */}
-            <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+          <div className={styles.subContainer}>
+            {/* child 1 */}
+            <h1 className={styles.subHeading}>Grand Total</h1>
+            <div className="stats stats-vertical  md:stats-horizontal shadow-xl bg-base-200 w-full text-center ">
               <div className="stat">
                 <div className="stat-title">Correct Attempt</div>
                 <div className="stat-value">31K</div>
@@ -63,11 +65,15 @@ export default function QuizResult() {
                 <div className="stat-value">1,200</div>
               </div>
             </div>
+            {/* child 2 */}
 
             {!difficultyEnabled && (
-              <div>
-                {/* Easy */}
-                <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+              <div className={styles.subHeading}>Difficulty Wise</div>
+            )}
+            {!difficultyEnabled && (
+              <div className={styles.diffCards}>
+                <div className="stats stats-vertical shadow-xl bg-base-200 w-full text-center">
+                  <div className={styles.statMainTitle}>Easy Questions</div>
                   <div className="stat">
                     <div className="stat-title">Correct Attempt</div>
                     <div className="stat-value">31K</div>
@@ -83,8 +89,9 @@ export default function QuizResult() {
                     <div className="stat-value">1,200</div>
                   </div>
                 </div>
-                {/* Medium */}
-                <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+
+                <div className="stats stats-vertical shadow-xl bg-base-200 w-full text-center">
+                  <div className={styles.statMainTitle}>Moderate Questions</div>
                   <div className="stat">
                     <div className="stat-title">Correct Attempt</div>
                     <div className="stat-value">31K</div>
@@ -100,8 +107,9 @@ export default function QuizResult() {
                     <div className="stat-value">1,200</div>
                   </div>
                 </div>
-                {/* hard */}
-                <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200 w-full text-center">
+
+                <div className="stats stats-vertical shadow-xl bg-base-200 w-full text-center">
+                  <div className={styles.statMainTitle}>Hard Questions</div>
                   <div className="stat">
                     <div className="stat-title">Correct Attempt</div>
                     <div className="stat-value">31K</div>
