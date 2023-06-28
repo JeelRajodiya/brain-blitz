@@ -31,6 +31,12 @@ export type QuizResult = Omit<
   QuizResponseCol,
   "responses" | "respondentId" | "creatorId"
 > & {
-  quizTitle: string;
   creatorName: string;
+};
+
+export type ParticipatedQuizzes = {
+  quizTitle: string;
+  createdAt: Date;
+  maxMarks: number;
+  totalMarks: number;
 };

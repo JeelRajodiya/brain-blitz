@@ -152,6 +152,7 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
     positiveMarks: 0,
     negativeMarks: 0,
     totalMarks: 0,
+    quizTitle: quiz.title,
     maxMarks: questions.length * quiz.markForCorrect,
     hasDifficultyTags: quiz.difficultyTags,
   };
@@ -234,7 +235,7 @@ async function POST(req: NextApiRequest, res: NextApiResponse) {
   quizResult.creatorName = (
     await db.collection<UserCol>("users").findOne({ id: quiz.userId })
   )?.name!;
-  quizResult.quizTitle = quiz.title;
+
   await client.close();
   return res.json(quizResult);
 }
