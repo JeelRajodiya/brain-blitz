@@ -13,7 +13,7 @@ export default function ParticipatedQuizList({
         <div>Marks</div>
         <div>Created At</div>
       </div>
-      {participatedQuizList.map((quiz) => {
+      {participatedQuizList?.map((quiz) => {
         return (
           <div className={styles.tableElement}>
             <div>{quiz.quizTitle}</div>
