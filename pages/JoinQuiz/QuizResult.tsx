@@ -6,12 +6,21 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../util/store";
 import classNames from "classnames";
 
-
 export default function QuizResult() {
   const result = useSelector((state: RootState) => state.quizResult.value);
 
   // set it to true if easy medium and hard are available
   let difficultyEnabled = result.hasDifficultyTags;
+
+  let positiveScore = result.positiveMarks;
+  let negativeScore = result.negativeMarks;
+  let totalScore = result.totalMarks;
+  let maxScore = result.maxMarks;
+
+  let creator = result.creatorName;
+  let quizName = result.quizTitle;
+
+  let percentage = (totalScore / maxScore) * 100;
 
   return (
     //@ts-ignore
@@ -20,7 +29,7 @@ export default function QuizResult() {
         <h1 className={styles.heading}>ScoreBoard</h1>
         <div className={styles.mainContainer}>
           {/* child 1 */}
-          <div>
+          <div className={styles.mainHeader}>
             <div className={styles.scoreCard}>
               <div className={styles.topPart}>
                 <div
@@ -43,7 +52,19 @@ export default function QuizResult() {
                 </div>
               </div>
               <div className={styles.bottomPart}>
-                {result.totalMarks}/{result.maxMarks}
+                <p> Positive score: {positiveScore}</p>
+                <p> Negative score: {negativeScore}</p>
+                <p> Percentage score: {percentage}%</p>
+              </div>
+            </div>
+
+            <div className={styles.infoCard}>
+              <div className={styles.title}>Quiz Information</div>
+              <div className={styles.details}>
+                <p className={styles.label}>Quiz Name:</p>
+                <p className={styles.value}>{quizName}</p>
+                <p className={styles.label}>Quiz Creator:</p>
+                <p className={styles.value}>{creator}</p>
               </div>
             </div>
           </div>
