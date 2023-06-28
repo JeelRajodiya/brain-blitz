@@ -1,50 +1,58 @@
 /* ---------------- DASHBOARD TABLE------------------ */
-.displayTable {
+.tableContainer {
+  background-color: hsl(var(--b2));
+  border-radius: 1em;
+  padding: 2em 1em;
+  border: 1px solid rgba(255, 255, 255, 0.285);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: clamp(200px, 100%, 750px);
+}
+
+.tableElement {
   display: flex;
   flex-direction: row;
   padding: 5px;
   text-align: center;
-  /* border-radius: 10px; */
   justify-content: space-between;
-  width: 85%;
-  /* border-bottom: 1px solid #e2e8f02d; */
+  border-bottom: 1px solid hsl(var(--n));
+  width: 100%;
 }
 
-/* to make children of this class */
-.displayTable > * {
+.tableElement:nth-last-child(1) {
+  border-bottom: none;
+}
+.tableElement:hover {
+  background-color: hsl(var(--b2));
+}
+
+.tableElement > * {
+  text-align: left;
   flex: 1;
-  margin: 0 10px;
+  /* margin: 0 10px; */
 }
 
 .tableHeading {
   display: flex;
+  width: 100%;
+  padding: 5px;
+
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #e2e8f02d;
-  padding: 5px;
-  text-align: center;
-  border-radius: 10px;
-  width: 85%;
-  transition: border-color 200ms ease-in-out;
-  margin-bottom: 2px;
-}
-.tableHeading:hover {
-  border: 1px solid #e2e8f06e;
-}
-.tableHeading > * {
-  flex: 1;
-  margin: 0 10px; /* Add margin for gap */
-}
-.line {
-  border-bottom: 1px solid #e2e8f02d;
-  width: 5%;
-  transition: width 200ms ease-in-out;
+  text-align: left;
+
+  color: hsl(var(--bc) / 50%);
+  border-bottom: 1px solid hsl(var(--n));
 }
 
-.displayTable:hover + .line {
-  width: 80%;
+.tableHeading > * {
+  flex: 1;
+  text-align: left;
 }
+
 .moreIcon {
   filter: invert();
 }
@@ -95,6 +103,8 @@
 }
 .tabsContainer {
   position: relative;
+  width: max-content;
+  background-color: hsl(var(--b3));
 }
 .tabBox {
   width: 1cm;
