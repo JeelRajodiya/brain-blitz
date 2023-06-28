@@ -6,12 +6,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../util/store";
 import classNames from "classnames";
 
-let difficultyEnabled = false;
 
 export default function QuizResult() {
   const result = useSelector((state: RootState) => state.quizResult.value);
 
   // set it to true if easy medium and hard are available
+  let difficultyEnabled = result.hasDifficultyTags;
 
   return (
     //@ts-ignore
@@ -69,10 +69,10 @@ export default function QuizResult() {
             </div>
             {/* child 2 */}
 
-            {!difficultyEnabled && (
+            {difficultyEnabled && (
               <div className={styles.subHeading}>Difficulty Wise</div>
             )}
-            {!difficultyEnabled && (
+            {difficultyEnabled && (
               <div className={styles.diffCards}>
                 <div className="stats stats-vertical shadow-xl bg-base-200 w-full text-center">
                   <div className={styles.statMainTitle}>Easy Questions</div>
