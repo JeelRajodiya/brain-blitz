@@ -18,7 +18,7 @@ export default function DeleteQuizToast({
       )}
 
       {isLoading && (
-        <div className="alert alert-warning">
+        <div className="alert alert-warning flex ">
           <span>Deleting the quiz...</span>
           <span className="loading loading-infinity loading-md"></span>
         </div>

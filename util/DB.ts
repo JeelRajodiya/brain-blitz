@@ -55,6 +55,7 @@ export type QuizResponseCol = {
   hasDifficultyTags: boolean;
   maxMarks: number;
   quizTitle: string;
+  _id?: string;
 
   Easy?: {
     correctQuestions: number;

@@ -158,7 +158,7 @@
   }
 }
 
-.submittingToast {
+.toast {
   position: fixed;
   width: max-content;
   height: min-content;

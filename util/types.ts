@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { QuestionCol, QuizResponseCol } from "./DB";
 
 export type Difficulty = "Easy" | "Medium" | "Hard";
@@ -39,4 +40,5 @@ export type ParticipatedQuizzes = {
   createdAt: Date;
   maxMarks: number;
   totalMarks: number;
+  _id: ObjectId;
 };

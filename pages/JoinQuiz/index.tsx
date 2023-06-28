@@ -236,10 +236,7 @@ export default function Questions() {
             </div>
 
             <div
-              className={classNames(
-                `navbar rounded-lg `,
-                styles.quizActions
-              )}
+              className={classNames(`navbar rounded-lg `, styles.quizActions)}
             >
               {isLastQuestion ? (
                 <button
@@ -259,12 +256,7 @@ export default function Questions() {
               )}
             </div>
             {isSubmitting && (
-              <div
-                className={classnames(
-                  "alert alert-warning",
-                  styles.submittingToast
-                )}
-              >
+              <div className={classnames("alert alert-warning", styles.toast)}>
                 <span>Submitting ... </span>
                 <span className="loading loading-infinity loading-md"></span>
               </div>
