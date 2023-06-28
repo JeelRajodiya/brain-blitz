@@ -118,8 +118,6 @@ export default function Questions() {
     console.log(quizResult);
     dispatch(updateResult(quizResult));
 
-    setShowLoad(true);
-
     router.push({
       pathname: "/JoinQuiz/QuizResult",
     });
@@ -127,7 +125,9 @@ export default function Questions() {
 
   function LoadingComponent() {
     return (
-      <div className="alert">
+      <div className="alert text-center">
+        {" "}
+        {/* Added text-center class */}
         <span>Submitting the quiz...</span>
         <span className="loading loading-infinity loading-md"></span>
       </div>
@@ -141,8 +141,6 @@ export default function Questions() {
   complete = Math.round(complete);
 
   let isLastQuestion: boolean = activeQuestion == totalQuestions;
-
-  const [showLoad, setShowLoad] = useState(false);
 
   return (
     <>
@@ -246,27 +244,24 @@ export default function Questions() {
               )}
             >
               {isLastQuestion ? (
-                showLoad ? (
-                  <LoadingComponent />
-                ) : (
-                  <button
-                    className="btn btn-error btn-outline"
-                    onClick={submitQuiz}
-                  >
-                    Final Submit
-                  </button>
-                )
+                <button
+                  className="btn btn-error btn-outline"
+                  onClick={submitQuiz}
+                >
+                  Final Submit
+                </button>
               ) : (
                 <button
                   className="btn btn-accent btn-outline"
                   onClick={nextQuestion}
                 >
+                  {" "}
                   Save and Next
                 </button>
               )}
             </div>
             {/* loading on final submit */}
-            {/* {!isLoading && <LoadingComponent />} */}
+            {!isLoading && <LoadingComponent />}
           </div>
         </div>
       </Layout>
