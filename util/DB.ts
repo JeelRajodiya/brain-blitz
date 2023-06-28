@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import {
   QuestionOption,
   Difficulty,
@@ -55,7 +56,7 @@ export type QuizResponseCol = {
   hasDifficultyTags: boolean;
   maxMarks: number;
   quizTitle: string;
-  _id?: string;
+  _id?: ObjectId;
 
   Easy?: {
     correctQuestions: number;
