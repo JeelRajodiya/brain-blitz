@@ -176,7 +176,7 @@ export default function Questions() {
             </div>
 
             {/* progress bar*/}
-            <div className="navbar rounded-lg m-1 bg-neutral flex flex-row items-center justify-between w-full">
+            <div className="navbar rounded-lg mb-1 bg-neutral flex flex-row items-center justify-between w-full">
               <RadicalProgress
                 complete={complete}
                 toggleSidebar={toggleSidebar}
@@ -195,7 +195,7 @@ export default function Questions() {
             {/* question body: */}
             <div
               className={classNames(
-                `navbar w-full rounded-lg m-1 bg-neutral `,
+                `navbar w-full rounded-lg  bg-neutral `,
                 styles.questionContent
               )}
             >
@@ -237,7 +237,7 @@ export default function Questions() {
 
             <div
               className={classNames(
-                `navbar rounded-lg m-1`,
+                `navbar rounded-lg `,
                 styles.quizActions
               )}
             >
