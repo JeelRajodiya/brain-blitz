@@ -6,7 +6,7 @@ export default function ParticipatedQuizList({
 }: {
   participatedQuizList: ParticipatedQuizzes[];
 }) {
-  const entries = participatedQuizList.length;
+  const entries = participatedQuizList?.length;
   const [visibleEntries, setVisibleEntries] = React.useState(5);
 
   return (
