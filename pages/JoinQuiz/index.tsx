@@ -122,14 +122,10 @@ export default function Questions() {
       pathname: "/JoinQuiz/QuizResult",
     });
   }
-
-  function LoadingComponent() {
+  if (isLoading) {
     return (
-      <div className="alert text-center">
-        {" "}
-        {/* Added text-center class */}
-        <span>Submitting the quiz...</span>
-        <span className="loading loading-infinity loading-md"></span>
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner text-slate-100 "></span>
       </div>
     );
   }
@@ -178,7 +174,7 @@ export default function Questions() {
             </div>
 
             {/* progress bar*/}
-            <div className="navbar rounded-lg bg-neutral flex flex-row items-center justify-between w-full mb-1">
+            <div className="navbar rounded-lg m-1 bg-neutral flex flex-row items-center justify-between w-full">
               <RadicalProgress
                 complete={complete}
                 toggleSidebar={toggleSidebar}
@@ -197,7 +193,7 @@ export default function Questions() {
             {/* question body: */}
             <div
               className={classNames(
-                `navbar w-full rounded-lg bg-neutral `,
+                `navbar w-full rounded-lg m-1 bg-neutral `,
                 styles.questionContent
               )}
             >
@@ -239,7 +235,7 @@ export default function Questions() {
 
             <div
               className={classNames(
-                `navbar rounded-lg mt-1`,
+                `navbar rounded-lg m-1`,
                 styles.quizActions
               )}
             >
@@ -260,8 +256,6 @@ export default function Questions() {
                 </button>
               )}
             </div>
-            {/* loading on final submit */}
-            {!isLoading && <LoadingComponent />}
           </div>
         </div>
       </Layout>
