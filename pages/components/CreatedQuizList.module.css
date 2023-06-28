@@ -8,7 +8,7 @@
   width: 100%;
 }
 
-.tableElement:nth-last-of-type(2) {
+.tableElement:nth-last-child(2) {
   border-bottom: none;
 }
 .tableElement:hover {
