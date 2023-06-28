@@ -180,7 +180,7 @@ export default function UserQuizList({ quizList }: { quizList: QuizList[] }) {
                   </label>
                   <ul
                     tabIndex={0}
-                    className="dropdown-content shadow p-2 bg-base-300 rounded-box z-50 p-2"
+                    className="dropdown-content shadow  bg-base-300 rounded-box z-50 p-2"
                   >
                     <li>
                       <button className="btn btn-xs"> Edit</button>
