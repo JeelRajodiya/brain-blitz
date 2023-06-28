@@ -157,3 +157,13 @@
     transform: rotate(180deg) translateY(-10%);
   }
 }
+
+.submittingToast {
+  position: fixed;
+  width: max-content;
+  height: min-content;
+  display: flex;
+  justify-content: center;
+  right: 1em;
+  bottom: 1em;
+}

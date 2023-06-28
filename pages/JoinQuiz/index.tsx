@@ -107,9 +107,11 @@ export default function Questions() {
   const toggleSidebar = () => {
     setShowSidebar(!ShowSidebar);
   };
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function submitQuiz() {
     // submit the quiz
+    setIsSubmitting(true);
     let dataToSend: JoinQuizResponse = {
       code: code,
       responses: answerSheet,
@@ -117,7 +119,7 @@ export default function Questions() {
     const quizResult = await submitResponse(dataToSend);
     console.log(quizResult);
     dispatch(updateResult(quizResult));
-
+    setIsSubmitting(false);
     router.push({
       pathname: "/JoinQuiz/QuizResult",
     });
@@ -256,6 +258,17 @@ export default function Questions() {
                 </button>
               )}
             </div>
+            {isSubmitting && (
+              <div
+                className={classnames(
+                  "alert alert-warning",
+                  styles.submittingToast
+                )}
+              >
+                <span>Submitting ... </span>
+                <span className="loading loading-infinity loading-md"></span>
+              </div>
+            )}
           </div>
         </div>
       </Layout>
