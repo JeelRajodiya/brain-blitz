@@ -1,0 +1,45 @@
+.tableElement {
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  text-align: center;
+  justify-content: space-between;
+  border-bottom: 1px solid hsl(var(--n));
+  width: 100%;
+}
+
+.tableElement:nth-last-child(1) {
+  border-bottom: none;
+}
+.tableElement:hover {
+  background-color: hsl(var(--b1));
+}
+
+.tableElement > * {
+  text-align: left;
+  flex: 1;
+  /* margin: 0 10px; */
+}
+
+.tableHeading {
+  display: flex;
+  width: 100%;
+  padding: 1em;
+
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+
+  color: hsl(var(--bc) / 50%);
+  border-bottom: 1px solid hsl(var(--n));
+}
+
+.tableHeading > * {
+  flex: 1;
+  text-align: left;
+}
+
+.moreIcon {
+  filter: invert();
+}

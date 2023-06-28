@@ -21,10 +21,18 @@ export async function fetchQuiz(code: string) {
   return json;
 }
 export async function fetchQuizList() {
-  const res = await fetch("/api/listUserQuizzes", {
+  const resCreated = await fetch("/api/listUserQuizzes", {
     method: "GET",
   });
-  const json = await res.json();
+  const resParticipated = await fetch("/api/listParticipatedQuizzes", {
+    method: "GET",
+  });
+  const jsonCreated = await resCreated.json();
+  const jsonParticipated = await resParticipated.json();
+  const json = {
+    created: jsonCreated,
+    participated: jsonParticipated,
+  };
   return json;
 }
 

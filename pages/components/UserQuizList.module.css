@@ -1,61 +1,4 @@
 /* ---------------- DASHBOARD TABLE------------------ */
-.tableContainer {
-  background-color: hsl(var(--b2));
-  border-radius: 1em;
-  padding: 2em 1em;
-  border: 1px solid rgba(255, 255, 255, 0.285);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: clamp(200px, 100%, 750px);
-}
-
-.tableElement {
-  display: flex;
-  flex-direction: row;
-  padding: 5px;
-  text-align: center;
-  justify-content: space-between;
-  border-bottom: 1px solid hsl(var(--n));
-  width: 100%;
-}
-
-.tableElement:nth-last-child(1) {
-  border-bottom: none;
-}
-.tableElement:hover {
-  background-color: hsl(var(--b1));
-}
-
-.tableElement > * {
-  text-align: left;
-  flex: 1;
-  /* margin: 0 10px; */
-}
-
-.tableHeading {
-  display: flex;
-  width: 100%;
-  padding: 5px;
-
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  text-align: left;
-
-  color: hsl(var(--bc) / 50%);
-  border-bottom: 1px solid hsl(var(--n));
-}
-
-.tableHeading > * {
-  flex: 1;
-  text-align: left;
-}
-
-.moreIcon {
-  filter: invert();
-}
 
 /* ----------------SKELETON LOADING CSS ADDED------------ */
 
@@ -113,4 +56,15 @@
   position: absolute;
   transition: width, translate 150ms ease;
   border-radius: 0.5em;
+}
+.tableContainer {
+  background-color: hsl(var(--b2));
+  border-radius: 1em;
+  padding: 2em 1em;
+  border: 1px solid rgba(255, 255, 255, 0.285);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: clamp(200px, 100%, 750px);
 }

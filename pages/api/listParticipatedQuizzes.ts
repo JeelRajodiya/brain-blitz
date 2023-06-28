@@ -42,5 +42,5 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
       quizTitle: 1,
     })
     .toArray()) as ParticipatedQuizzes[];
-  return res.status(200).json(responses);
+  return res.status(200).json(responses.reverse());
 }

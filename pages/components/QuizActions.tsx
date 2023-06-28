@@ -4,7 +4,7 @@ import UserQuizList from "./UserQuizList";
 import UserQuizListSkeleton from "./UserQuizListSkeleton";
 import styles from "./QuizActions.module.css";
 import classNames from "classnames";
-import { QuizList } from "../../util/types";
+import { ParticipatedQuizzes, QuizList } from "../../util/types";
 import { fetchQuizList } from "../../util/functions";
 declare const window: Window &
   typeof globalThis & {
@@ -24,13 +24,17 @@ function QuizForm() {
 
   const [quizCode, setQuizCode] = React.useState("");
   const [quizList, setQuizList] = React.useState<QuizList[]>([]);
+  const [participatedQuizList, setParticipatedQuizList] = React.useState<
+    ParticipatedQuizzes[]
+  >([]);
   const [isListLoading, setIsListLoading] = React.useState(true);
 
   React.useEffect(() => {
     fetchQuizList()
       .then((res) => {
-        setQuizList(res);
+        setQuizList(res.created);
         setIsListLoading(false);
+        setParticipatedQuizList(res.participated);
         console.log("done");
       })
       .catch((err) => {
@@ -136,7 +140,10 @@ function QuizForm() {
         </button>
       </div>
       {!isListLoading ? (
-        <UserQuizList quizList={quizList} />
+        <UserQuizList
+          quizList={quizList}
+          participatedQuizList={participatedQuizList}
+        />
       ) : (
         <UserQuizListSkeleton />
       )}
