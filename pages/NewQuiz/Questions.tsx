@@ -158,7 +158,7 @@ export default function Questions() {
                   code as string
                 );
               }}
-              disabled={questions.length == 0}
+              disabled={questions.length -1 == 0}
             >
               Save Quiz
             </button>
