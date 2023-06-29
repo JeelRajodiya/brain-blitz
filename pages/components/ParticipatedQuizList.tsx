@@ -64,7 +64,7 @@ export default function ParticipatedQuizList({
       })}
       {entries > 5 && entries > visibleEntries && (
         <button
-          className="btn w-4/5 join-item m-5 btn-outline btn-accent"
+          className="btn w-4/5 join-item m-1 mt-2 btn-outline btn-accent"
           onClick={() => setVisibleEntries(visibleEntries + 5)}
         >
           Show More
