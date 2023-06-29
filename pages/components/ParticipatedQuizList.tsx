@@ -39,7 +39,7 @@ function TableElements({
 }) {
   return (
     <>
-      {participatedQuizList.slice(0, visibleEntries).map((quiz) => {
+      {participatedQuizList?.slice(0, visibleEntries).map((quiz) => {
         return (
           <div
             key={quiz._id.toString()}
