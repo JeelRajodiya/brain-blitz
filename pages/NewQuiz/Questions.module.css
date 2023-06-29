@@ -46,7 +46,7 @@
     margin: 0;
   }
 
-  .questionForm > :nth-child(1){
+  .questionForm > :nth-child(1) {
     flex: 0.7;
     margin: 0 10px;
     max-width: 100%;
@@ -63,9 +63,15 @@
     margin: 0;
   }
 
-  .questionForm > :nth-child(1){
+  .questionForm > :nth-child(1) {
     flex: 0.7;
     margin: 0 10px;
     max-width: 100%;
   }
+}
+
+.darken:hover {
+  background-color: rgb(0, 0, 0, 0.1);
+  color: greenyellow;
+  border: greenyellow 1px solid;
 }

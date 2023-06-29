@@ -44,6 +44,34 @@ async function postQuestions(
 }
 
 export default function Questions() {
+  // for individual question to account all entries filled or not
+  function allEntriesFilled() {
+    if (question.question.trim() === "") {
+      return false;
+    }
+    if (question.options.length === 0) {
+      return false;
+    }
+    if (question.correctOption === null) {
+      return false;
+    }
+
+    // all options
+    for (let i = 0; i < question.options.length; i++) {
+      if (question.options[i].trim() === "") {
+        return false;
+      }
+    }
+
+    // all options unique
+    const optionsSet = new Set(question.options);
+    if (optionsSet.size !== question.options.length) {
+      return false; // Duplicate options found
+    }
+
+    return true;
+  }
+
   const router = useRouter();
 
   const {
@@ -118,7 +146,10 @@ export default function Questions() {
               ))}
             </div>
             <button
-              className="btn btn-success mt-4 mb-4  btn-wide w-full text-center"
+              className={classnames(
+                `btn btn-success mt-4 mb-4 btn-wide w-full text-center`,
+                styles.darken
+              )}
               onClick={() => {
                 postQuestions(
                   questions,
@@ -127,6 +158,7 @@ export default function Questions() {
                   code as string
                 );
               }}
+              disabled={questions.length == 0}
             >
               Save Quiz
             </button>
@@ -152,6 +184,7 @@ export default function Questions() {
                   setQuestions(newQuestions);
                   setQuestion(emptyQuestion);
                 }}
+                disabled={allEntriesFilled() == false}
               >
                 Save Question
               </button>
