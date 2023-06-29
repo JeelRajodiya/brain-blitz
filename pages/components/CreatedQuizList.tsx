@@ -77,7 +77,8 @@ export default function CreatedQuizList({
                 })}
               </div>
               {/* Add a button here */}
-              <div className="dropdown dropdown-hover  dropdown-bottom">
+              
+              <div className="dropdown dropdown-hover dropdown-bottom">
                 <label tabIndex={0} className="hover:bg-base-200  rounded-md">
                   <Image
                     src="/icons/more_vert.png"
@@ -89,7 +90,7 @@ export default function CreatedQuizList({
                 </label>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content shadow  bg-base-300 rounded-box z-50 p-2"
+                  className="dropdown-content shadow bg-base-300 rounded-box z-50 p-2"
                 >
                   <li>
                     <button className="btn btn-xs"> Edit</button>
