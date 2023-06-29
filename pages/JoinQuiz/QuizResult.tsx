@@ -66,7 +66,7 @@ export default function QuizResult() {
               <div className={styles.bottomPart}>
                 <p> Positive score: {positiveScore}</p>
                 <p> Negative score: {negativeScore}</p>
-                <p> Percentage score: {percentage.toFixed(3)}%</p>
+                <p> Percentage score: {percentage.toFixed(2)}%</p>
               </div>
             </div>
 
