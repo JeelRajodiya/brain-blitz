@@ -55,7 +55,7 @@ export default function UserQuizList({
 
       <div className={styles.tableContainer}>
         <div
-          className={classNames("tabs tabs-boxed  mb-2", styles.tabsContainer)}
+          className={classNames("tabs tabs-boxed  mb-1", styles.tabsContainer)}
           ref={tabsContainerRef}
         >
           {areRefsDefined && (
@@ -66,7 +66,6 @@ export default function UserQuizList({
                   SelectedTab == "made"
                     ? madeTabRef.current?.offsetWidth! - 10
                     : participatedTabRef.current?.offsetWidth! - 10,
-                height: madeTabRef.current?.offsetHeight! - 1,
                 translate:
                   SelectedTab == "made"
                     ? madeTabRef.current?.getBoundingClientRect().left! -
@@ -79,7 +78,7 @@ export default function UserQuizList({
           )}
 
           <a
-            className={`tab tab-md ${
+            className={`tab tab-md m-1 ${
               SelectedTab === "made" ? "text-primary-content" : ""
             }`}
             onClick={() => handleTabClick("made")}
@@ -88,7 +87,7 @@ export default function UserQuizList({
             Made
           </a>
           <a
-            className={`tab tab-md ${
+            className={`tab tab-md m-1 ${
               SelectedTab === "participated" ? "text-primary-content" : ""
             }`}
             onClick={() => handleTabClick("participated")}

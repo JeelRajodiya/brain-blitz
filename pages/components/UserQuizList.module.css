@@ -39,13 +39,13 @@
   flex: 1;
   margin: 0 10px;
 }
+
+/* ------------------------------------------------------------------------------ */
 .tabsContainer {
   position: relative;
   width: max-content;
   background-color: hsl(var(--b3));
 }
-/* ------------------------------------------------------------------------------ */
-
 .tabBox {
   width: 1cm;
   height: 1cm;
