@@ -32,24 +32,36 @@ export default function QuizResult() {
           <div className={styles.mainHeader}>
             <div className={styles.scoreCard}>
               <div className={styles.topPart}>
-                <div
-                  className="radial-progress text-primary"
-                  style={
-                    {
-                      "--value": "70",
-                      "--size": "12rem",
-                      "--thickness": "8px",
-                    } as React.CSSProperties
-                  }
-                >
-                  <h1 className={styles.marks}>
-                    <div className={styles.firstNumber}>
-                      {result.totalMarks}
-                    </div>
-                    <div className={styles.middleSlash}>/</div>
-                    <div className={styles.lastNumber}>{result.maxMarks}</div>
-                  </h1>
-                </div>
+                {percentage > 0 ? (
+                  <div
+                    className="radial-progress text-primary"
+                    style={
+                      {
+                        "--value": `${percentage}`,
+                        "--size": "12rem",
+                        "--thickness": "8px",
+                      } as React.CSSProperties
+                    }
+                  >
+                    <h1 className={styles.marks}>
+                      <div className={styles.firstNumber}>
+                        {result.totalMarks}
+                      </div>
+                      <div className={styles.middleSlash}>/</div>
+                      <div className={styles.lastNumber}>{result.maxMarks}</div>
+                    </h1>
+                  </div>
+                ) : (
+                  <div className="text-error">
+                    <h1 className={styles.marks}>
+                      <div className={styles.firstNumber}>
+                        {result.totalMarks}
+                      </div>
+                      <div className={styles.middleSlash}>/</div>
+                      <div className={styles.lastNumber}>{result.maxMarks}</div>
+                    </h1>
+                  </div>
+                )}
               </div>
               <div className={styles.bottomPart}>
                 <p> Positive score: {positiveScore}</p>
