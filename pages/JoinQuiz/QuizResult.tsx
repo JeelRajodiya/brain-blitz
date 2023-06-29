@@ -20,7 +20,7 @@ export default function QuizResult() {
   let creator = result.creatorName;
   let quizName = result.quizTitle;
 
-  let percentage = (totalScore / maxScore) * 100;
+  let percentage: number = (totalScore / maxScore) * 100;
 
   return (
     //@ts-ignore
@@ -66,7 +66,7 @@ export default function QuizResult() {
               <div className={styles.bottomPart}>
                 <p> Positive score: {positiveScore}</p>
                 <p> Negative score: {negativeScore}</p>
-                <p> Percentage score: {percentage}%</p>
+                <p> Percentage score: {percentage.toFixed(3)}%</p>
               </div>
             </div>
 
