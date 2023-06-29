@@ -36,6 +36,11 @@
   text-shadow: 0 0 20px rgba(255, 87, 34, 0.15),
     0 0 20px rgba(255, 193, 7, 0.15), 0 0 20px rgba(255, 87, 34, 0.15);
 }
+
+.bbSpecial{
+  letter-spacing: -1px;
+}
+
 html {
   height: 100%;
 }

@@ -21,21 +21,21 @@ export default function LandingPage() {
       <div className="hero-content flex-col lg:flex-row">
         <div className="text-center lg:text-left lg:w-1/2">
           <h1 className="text-7xl font-bold">
-            <span className="animate-fire">Brain</span>
-            <span className="animate-fire">Blitz</span>
+            <span className="animate-fire bbSpecial">Brain</span>
+            <span className="animate-fire bbSpecial">Blitz</span>
           </h1>
           <br></br>
           <h1 className="text-4xl font-bold">Login now!</h1>
           <br></br>
           <p className="py-6 text-2xl font-bold leading-8">
             <span
-              className={classNames("animate-pulse", styles["text-blue-400"])}
+              className={classNames("animate-pulse bbSpecial", styles["text-blue-400"])}
             >
               Unleash Your Mind's Potential
             </span>{" "}
             with Brain Blitz: The
             <span
-              className={classNames("animate-pulse", styles["text-red-400"])}
+              className={classNames("animate-pulse bbSpecial", styles["text-red-400"])}
             >
               {" "}
               Ultimate

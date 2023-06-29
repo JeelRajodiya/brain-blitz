@@ -36,8 +36,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               className="text-3xl font-bold cursor-pointer"
               onClick={toDashboard}
             >
-              <span className="animate-fire glow">Brain</span>
-              <span className="animate-fire glow">Blitz</span>
+              <span className="animate-fire glow bbSpecial">Brain</span>
+              <span className="animate-fire glow bbSpecial">Blitz</span>
             </h1>
           </div>
         </div>
