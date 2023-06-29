@@ -8,7 +8,7 @@ import { ObjectId } from "mongodb";
 import { NextRouter, useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { AnyAction, Dispatch } from "redux";
-
+import Skeleton from "./Skeleton";
 async function fetchResult(
   id: ObjectId,
   setIsLoading: Function,
@@ -23,31 +23,29 @@ async function fetchResult(
   setIsLoading(false);
   router.push("/JoinQuiz/QuizResult");
 }
-export default function ParticipatedQuizList({
+
+function TableElements({
   participatedQuizList,
+  visibleEntries,
+  setIsResultLoading,
+  router,
+  dispatch,
 }: {
   participatedQuizList: ParticipatedQuizzes[];
+  visibleEntries: number;
+  setIsResultLoading: Function;
+  router: NextRouter;
+  dispatch: Dispatch<AnyAction>;
 }) {
-  const entries = participatedQuizList?.length;
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [visibleEntries, setVisibleEntries] = React.useState(5);
-  const router = useRouter();
-  const dispatch = useDispatch();
-
   return (
     <>
-      <div className={styles.tableHeading}>
-        <div>Title</div>
-        <div>Marks</div>
-        <div>Created At</div>
-      </div>
-      {participatedQuizList?.slice(0, visibleEntries).map((quiz) => {
+      {participatedQuizList.slice(0, visibleEntries).map((quiz) => {
         return (
           <div
             key={quiz._id.toString()}
             className={styles.tableElement}
             onClick={() =>
-              fetchResult(quiz._id, setIsLoading, router, dispatch)
+              fetchResult(quiz._id, setIsResultLoading, router, dispatch)
             }
           >
             <div>{quiz.quizTitle}</div>
@@ -62,6 +60,41 @@ export default function ParticipatedQuizList({
           </div>
         );
       })}
+    </>
+  );
+}
+
+export default function ParticipatedQuizList({
+  participatedQuizList,
+  isLoading,
+}: {
+  participatedQuizList: ParticipatedQuizzes[];
+  isLoading: boolean;
+}) {
+  const entries = participatedQuizList?.length;
+  const [isResultLoading, setIsResultLoading] = React.useState(false);
+  const [visibleEntries, setVisibleEntries] = React.useState(5);
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      <div className={styles.tableHeading}>
+        <div>Title</div>
+        <div>Marks</div>
+        <div>Created At</div>
+      </div>
+      {isLoading ? (
+        <Skeleton columns={4} />
+      ) : (
+        <TableElements
+          participatedQuizList={participatedQuizList}
+          visibleEntries={visibleEntries}
+          setIsResultLoading={setIsResultLoading}
+          router={router}
+          dispatch={dispatch}
+        />
+      )}
       {entries > 5 && entries > visibleEntries && (
         <button
           className="btn w-4/5 join-item m-1 mt-2 btn-outline btn-accent"
@@ -70,7 +103,7 @@ export default function ParticipatedQuizList({
           Show More
         </button>
       )}
-      {isLoading && (
+      {isResultLoading && (
         <div
           className={classNames("alert alert-warning ", joinQuizStyles.toast)}
         >

@@ -19,13 +19,16 @@ import ParticipatedQuizList from "./ParticipatedQuizList";
 export default function UserQuizList({
   quizList,
   participatedQuizList,
+  isLoading,
 }: {
   quizList: QuizList[];
   participatedQuizList: ParticipatedQuizzes[];
+  isLoading: boolean;
 }) {
   // states for the toast message
 
   // Added tabs!
+
   const [SelectedTab, setSelectedTab] = React.useState("made");
   const madeTabRef = React.useRef<HTMLAnchorElement>(null);
   const participatedTabRef = React.useRef<HTMLAnchorElement>(null);
@@ -97,9 +100,12 @@ export default function UserQuizList({
           </a>
         </div>
         {SelectedTab === "made" ? (
-          <CreatedQuizList quizList={quizList} />
+          <CreatedQuizList quizList={quizList} isLoading={isLoading} />
         ) : (
-          <ParticipatedQuizList participatedQuizList={participatedQuizList} />
+          <ParticipatedQuizList
+            participatedQuizList={participatedQuizList}
+            isLoading={isLoading}
+          />
         )}
       </div>
     </div>
