@@ -62,7 +62,7 @@ export default function Questions() {
 
   const emptyQuestion: CreateQuizQuestion = {
     question: "",
-    options: [],
+    options: ["", "", "", ""], //! haivng 4 options by default
     correctOption: null,
     difficulty: "Easy",
     quizId: "",
