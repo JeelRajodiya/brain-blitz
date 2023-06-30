@@ -170,7 +170,7 @@ export default function CreatedQuizList({
 
   return (
     <>
-      {(quizListState?.length != 0 || isLoading) && (
+      {(quizListState!.length != 0 || isLoading) && (
         <div className={styles.tableHeading}>
           <div>Title</div>
           <div>Code</div>
@@ -183,7 +183,7 @@ export default function CreatedQuizList({
         <>
           <Skeleton columns={4} />
         </>
-      ) : quizListState?.length ? (
+      ) : quizListState!.length ? (
         <TableElements
           quizListState={quizListState}
           visibleEntries={visibleEntries}
