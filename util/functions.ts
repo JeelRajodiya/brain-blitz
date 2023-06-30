@@ -39,14 +39,14 @@ export async function fetchQuizList() {
 export async function deleteQuiz(
   quizId: string,
   setQuizListState: React.Dispatch<React.SetStateAction<QuizList[]>>,
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsDeleting: React.Dispatch<React.SetStateAction<boolean>>,
   setErrorMsg: React.Dispatch<React.SetStateAction<string>>,
   setStatusCode: React.Dispatch<React.SetStateAction<number>>
 ) {
   console.log(quizId);
 
   // start loading
-  setIsLoading(true);
+  setIsDeleting(true);
   const res = await fetch("/api/createQuiz", {
     method: "DELETE",
     headers: {
@@ -56,7 +56,7 @@ export async function deleteQuiz(
   });
 
   // stop loading
-  setIsLoading(false);
+  setIsDeleting(false);
   setStatusCode(res.status);
   setErrorMsg(await res.text());
 
