@@ -100,8 +100,7 @@ export default function ParticipatedQuizList({
           <br />
           <div className="p-2">
             {" "}
-            Click on <span className={styles.smJoinBtn}>Join Quiz</span> to to
-            join
+            Click on <span className={styles.smJoinBtn}>Join Quiz</span> to join
           </div>
           <div className="py-1">
             Enter <span className={styles.dummyCode}>49gs6w</span> to get
