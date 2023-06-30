@@ -170,17 +170,20 @@ export default function CreatedQuizList({
 
   return (
     <>
-      <div className={styles.tableHeading}>
-        <div>Title</div>
-        <div>Code</div>
-        <div>Created At</div>
-        <div>Action</div>
-      </div>
+      {(quizListState.length != 0 || isLoading) && (
+        <div className={styles.tableHeading}>
+          <div>Title</div>
+          <div>Code</div>
+          <div>Created At</div>
+          <div>Action</div>
+        </div>
+      )}
+
       {isLoading ? (
         <>
           <Skeleton columns={4} />
         </>
-      ) : (
+      ) : quizListState.length ? (
         <TableElements
           quizListState={quizListState}
           visibleEntries={visibleEntries}
@@ -189,6 +192,16 @@ export default function CreatedQuizList({
           setErrorMsg={setErrorMsg}
           setStatusCode={setStatusCode}
         />
+      ) : (
+        <div className={styles.noEntriesBox}>
+          You have not created any quizzes.
+          <br />
+          <div className="p-2">
+            {" "}
+            Click on <span className={styles.smCreateBtn}>Create Quiz</span> to
+            Create one.
+          </div>
+        </div>
       )}
       {entries > 5 && quizListState.length > visibleEntries && (
         <button

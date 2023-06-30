@@ -86,7 +86,7 @@ export default function ParticipatedQuizList({
       </div>
       {isLoading ? (
         <Skeleton columns={4} />
-      ) : (
+      ) : participatedQuizList.length ? (
         <TableElements
           participatedQuizList={participatedQuizList}
           visibleEntries={visibleEntries}
@@ -94,6 +94,20 @@ export default function ParticipatedQuizList({
           router={router}
           dispatch={dispatch}
         />
+      ) : (
+        <div className={styles.noEntriesBox}>
+          You have not participated any quizzes.
+          <br />
+          <div className="p-2">
+            {" "}
+            Click on <span className={styles.smJoinBtn}>Join Quiz</span> to to
+            join
+          </div>
+          <div className="py-1">
+            Enter <span className={styles.dummyCode}>49gs6w</span> to get
+            started
+          </div>
+        </div>
       )}
       {entries > 5 && entries > visibleEntries && (
         <button
