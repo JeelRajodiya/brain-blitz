@@ -79,14 +79,16 @@ export default function ParticipatedQuizList({
 
   return (
     <>
-      <div className={styles.tableHeading}>
-        <div>Title</div>
-        <div>Marks</div>
-        <div>Created At</div>
-      </div>
+      {(participatedQuizList?.length != 0 || isLoading) && (
+        <div className={styles.tableHeading}>
+          <div>Title</div>
+          <div>Marks</div>
+          <div>Created At</div>
+        </div>
+      )}
       {isLoading ? (
         <Skeleton columns={4} />
-      ) : (
+      ) : participatedQuizList?.length ? (
         <TableElements
           participatedQuizList={participatedQuizList}
           visibleEntries={visibleEntries}
@@ -94,6 +96,19 @@ export default function ParticipatedQuizList({
           router={router}
           dispatch={dispatch}
         />
+      ) : (
+        <div className={styles.noEntriesBox}>
+          You have not participated any quizzes.
+          <br />
+          <div className="p-2">
+            {" "}
+            Click on <span className={styles.smJoinBtn}>Join Quiz</span> to join
+          </div>
+          <div className="py-1">
+            Enter <span className={styles.dummyCode}>49gs6w</span> to get
+            started
+          </div>
+        </div>
       )}
       {entries > 5 && entries > visibleEntries && (
         <button
