@@ -79,14 +79,16 @@ export default function ParticipatedQuizList({
 
   return (
     <>
-      <div className={styles.tableHeading}>
-        <div>Title</div>
-        <div>Marks</div>
-        <div>Created At</div>
-      </div>
+      {(participatedQuizList?.length != 0 || isLoading) && (
+        <div className={styles.tableHeading}>
+          <div>Title</div>
+          <div>Marks</div>
+          <div>Created At</div>
+        </div>
+      )}
       {isLoading ? (
         <Skeleton columns={4} />
-      ) : participatedQuizList.length ? (
+      ) : participatedQuizList?.length ? (
         <TableElements
           participatedQuizList={participatedQuizList}
           visibleEntries={visibleEntries}
