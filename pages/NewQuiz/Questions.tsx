@@ -64,7 +64,7 @@ export default function Questions() {
     question: "",
     options: ["", "", "", ""], //! haivng 4 options by default
     correctOption: null,
-    difficulty: "Easy",
+    difficulty: "Medium",
     quizId: "",
   };
 
