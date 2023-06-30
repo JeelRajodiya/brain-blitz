@@ -20,7 +20,7 @@ export default function QuizResult() {
   let creator = result.creatorName;
   let quizName = result.quizTitle;
 
-  let percentage = (totalScore / maxScore) * 100;
+  let percentage: number = (totalScore / maxScore) * 100;
 
   return (
     //@ts-ignore
@@ -32,29 +32,41 @@ export default function QuizResult() {
           <div className={styles.mainHeader}>
             <div className={styles.scoreCard}>
               <div className={styles.topPart}>
-                <div
-                  className="radial-progress text-primary"
-                  style={
-                    {
-                      "--value": "70",
-                      "--size": "12rem",
-                      "--thickness": "8px",
-                    } as React.CSSProperties
-                  }
-                >
-                  <h1 className={styles.marks}>
-                    <div className={styles.firstNumber}>
-                      {result.totalMarks}
-                    </div>
-                    <div className={styles.middleSlash}>/</div>
-                    <div className={styles.lastNumber}>{result.maxMarks}</div>
-                  </h1>
-                </div>
+                {percentage > 0 ? (
+                  <div
+                    className="radial-progress text-primary"
+                    style={
+                      {
+                        "--value": `${percentage}`,
+                        "--size": "12rem",
+                        "--thickness": "8px",
+                      } as React.CSSProperties
+                    }
+                  >
+                    <h1 className={styles.marks}>
+                      <div className={styles.firstNumber}>
+                        {result.totalMarks}
+                      </div>
+                      <div className={styles.middleSlash}>/</div>
+                      <div className={styles.lastNumber}>{result.maxMarks}</div>
+                    </h1>
+                  </div>
+                ) : (
+                  <div className="text-error">
+                    <h1 className={styles.marks}>
+                      <div className={styles.firstNumber}>
+                        {result.totalMarks}
+                      </div>
+                      <div className={styles.middleSlash}>/</div>
+                      <div className={styles.lastNumber}>{result.maxMarks}</div>
+                    </h1>
+                  </div>
+                )}
               </div>
               <div className={styles.bottomPart}>
                 <p> Positive score: {positiveScore}</p>
                 <p> Negative score: {negativeScore}</p>
-                <p> Percentage score: {percentage}%</p>
+                <p> Percentage score: {percentage.toFixed(2)}%</p>
               </div>
             </div>
 
