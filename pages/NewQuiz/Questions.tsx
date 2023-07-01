@@ -44,6 +44,8 @@ async function postQuestions(
 }
 
 export default function Questions() {
+  
+
   const router = useRouter();
 
   const {
@@ -76,6 +78,7 @@ export default function Questions() {
     setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
 
+
   // for individual question to account all entries filled or not
   function allEntriesFilled() {
     if (
@@ -103,38 +106,30 @@ export default function Questions() {
   // for message to be shown when the warning button is clicked
   function warningMessage() {
     if (question.question.trim() === "") {
-      <div className="toast toast-end">
-        <div className="alert alert-warning">"Question is empty";</div>
-      </div>;
+      return "Question is empty";
     }
     if (question.options.length === 0) {
-      <div className="toast toast-end">
-        <div className="alert alert-warning">"No options added";</div>
-      </div>;
+      return "No options added";
     }
     if (question.correctOption === null) {
-      <div className="toast toast-end">
-        <div className="alert alert-warning">"No correct option selected";</div>
-      </div>;
+      return "No correct option selected";
     }
 
     for (let i = 0; i < question.options.length; i++) {
       if (question.options[i].trim() === "") {
-        <div className="toast toast-end">
-          <div className="alert alert-warning">"Empty option found";</div>
-        </div>;
+        return "Empty option found";
       }
     }
 
     const optionsSet = new Set(question.options);
     if (optionsSet.size !== question.options.length) {
-      <div className="toast toast-end">
-        <div className="alert alert-warning">"Duplicate options found";</div>
-      </div>;
+      return "Duplicate options found";
     }
 
     return "";
   }
+
+
 
   return (
     <>
@@ -227,7 +222,7 @@ export default function Questions() {
                   className="btn mb-4 btn-outline btn-warning btn-sm"
                   // show the warning message when the warning button is clicked
                   onClick={() => {
-                    warningMessage;
+                    alert(warningMessage());
                   }}
                 >
                   Warning!
