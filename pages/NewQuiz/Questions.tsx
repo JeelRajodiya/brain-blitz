@@ -106,7 +106,7 @@ export default function Questions() {
   let message: string;
   function warningMessage() {
     let message: string | null = null;
-  
+
     if (question.question.trim() === "") {
       message = "Question cannot be empty";
     } else if (question.options.length === 0) {
@@ -120,16 +120,17 @@ export default function Questions() {
           break;
         }
       }
-  
+
       const optionsSet = new Set(question.options);
       if (optionsSet.size !== question.options.length) {
         message = "Options cannot be repeated";
       }
     }
-  
-    return message || ""; // Return an empty string if message is null
+
+    // return message || "";
+    // return to close the warning button when the message is empty
+    return message;
   }
-  
 
   return (
     <>
