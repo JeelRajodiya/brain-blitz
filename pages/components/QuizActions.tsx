@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 import UserQuizList from "./UserQuizList";
-import UserQuizListSkeleton from "./UserQuizListSkeleton";
+import UserQuizListSkeleton from "./Skeleton";
 import styles from "./QuizActions.module.css";
 import classNames from "classnames";
 import { ParticipatedQuizzes, QuizList } from "../../util/types";
@@ -139,14 +139,12 @@ function QuizForm() {
           Create Quiz
         </button>
       </div>
-      {!isListLoading ? (
-        <UserQuizList
-          quizList={quizList}
-          participatedQuizList={participatedQuizList}
-        />
-      ) : (
-        <UserQuizListSkeleton />
-      )}
+
+      <UserQuizList
+        quizList={quizList}
+        participatedQuizList={participatedQuizList}
+        isLoading={isListLoading}
+      />
     </div>
   );
 }

@@ -1,48 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DeleteQuizToast from "./DeleteQuizToast";
 import styles from "./CreatedQuizList.module.css";
 import { QuizList } from "../../util/types";
 import Image from "next/image";
 import classNames from "classnames";
 import { deleteQuiz } from "../../util/functions";
-export default function CreatedQuizList({
-  quizList,
+import Skeleton from "./Skeleton";
+
+function TableElements({
+  quizListState,
+  visibleEntries,
+  setIsDeleting,
+  setQuizListState,
+  setErrorMsg,
+  setStatusCode,
 }: {
-  quizList: QuizList[];
+  quizListState: QuizList[];
+  visibleEntries: number;
+  setIsDeleting: React.Dispatch<React.SetStateAction<boolean>>;
+  setQuizListState: React.Dispatch<React.SetStateAction<QuizList[]>>;
+  setErrorMsg: React.Dispatch<React.SetStateAction<string>>;
+  setStatusCode: React.Dispatch<React.SetStateAction<number>>;
 }) {
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [statusCode, setStatusCode] = React.useState(0);
-  const [errorMsg, setErrorMsg] = React.useState("");
-  const [visibleEntries, setVisibleEntries] = React.useState(5);
-
   const [tooltipText, setTooltipText] = React.useState("Click to copy");
-  const [quizListState, setQuizListState] =
-    React.useState<QuizList[]>(quizList);
-
-  let entries = 0;
-  if (quizListState !== undefined) {
-    quizListState.map((quiz, index) => {
-      if (!quiz.isDeleted) {
-        entries++;
-      }
-    });
-  }
-
-  React.useEffect(() => {
-    quizListState.map((quiz, index) => {
-      quiz.isDeleted = false;
-    });
-  }, []);
 
   return (
     <>
-      <div className={styles.tableHeading}>
-        <div>Title</div>
-        <div>Code</div>
-        <div>Created At</div>
-        <div>Action</div>
-      </div>
-
       {quizListState?.slice(0, visibleEntries).map((quiz, index) => {
         // {quizListState?.map((quiz, index) => {
         if (quiz.isDeleted) {
@@ -77,7 +60,7 @@ export default function CreatedQuizList({
                 })}
               </div>
               {/* Add a button here */}
-              
+
               <div className="dropdown dropdown-hover dropdown-bottom">
                 <label tabIndex={0} className="hover:bg-base-200  rounded-md">
                   <Image
@@ -123,7 +106,7 @@ export default function CreatedQuizList({
                             deleteQuiz(
                               quiz.id,
                               setQuizListState,
-                              setIsLoading,
+                              setIsDeleting,
                               setErrorMsg,
                               setStatusCode
                             )
@@ -149,6 +132,77 @@ export default function CreatedQuizList({
           </React.Fragment>
         );
       })}
+    </>
+  );
+}
+
+export default function CreatedQuizList({
+  quizList,
+  isLoading,
+}: {
+  quizList: QuizList[];
+  isLoading: boolean;
+}) {
+  const [isDeleting, setIsDeleting] = React.useState(false);
+  const [statusCode, setStatusCode] = React.useState(0);
+  const [errorMsg, setErrorMsg] = React.useState("");
+  const [visibleEntries, setVisibleEntries] = React.useState(5);
+
+  const [quizListState, setQuizListState] =
+    React.useState<QuizList[]>(quizList);
+  useEffect(() => {
+    setQuizListState(quizList);
+  }, [quizList]);
+  let entries = 0;
+  if (quizListState !== undefined) {
+    quizListState.map((quiz, index) => {
+      if (!quiz.isDeleted) {
+        entries++;
+      }
+    });
+  }
+
+  React.useEffect(() => {
+    quizListState.map((quiz, index) => {
+      quiz.isDeleted = false;
+    });
+  }, []);
+
+  return (
+    <>
+      {(quizListState?.length != 0 || isLoading) && (
+        <div className={styles.tableHeading}>
+          <div>Title</div>
+          <div>Code</div>
+          <div>Created At</div>
+          <div>Action</div>
+        </div>
+      )}
+
+      {isLoading ? (
+        <>
+          <Skeleton columns={4} />
+        </>
+      ) : quizListState?.length ? (
+        <TableElements
+          quizListState={quizListState}
+          visibleEntries={visibleEntries}
+          setIsDeleting={setIsDeleting}
+          setQuizListState={setQuizListState}
+          setErrorMsg={setErrorMsg}
+          setStatusCode={setStatusCode}
+        />
+      ) : (
+        <div className={styles.noEntriesBox}>
+          You have not created any quizzes.
+          <br />
+          <div className="p-2">
+            {" "}
+            Click on <span className={styles.smCreateBtn}>Create Quiz</span> to
+            Create one.
+          </div>
+        </div>
+      )}
       {entries > 5 && quizListState.length > visibleEntries && (
         <button
           className="btn w-4/5 join-item m-1 mt-2 btn-outline btn-accent"
@@ -159,7 +213,7 @@ export default function CreatedQuizList({
       )}
       <DeleteQuizToast
         statusCode={statusCode}
-        isLoading={isLoading}
+        isDeleting={isDeleting}
         errorMsg={errorMsg}
       />
     </>

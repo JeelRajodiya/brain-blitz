@@ -1,10 +1,10 @@
 // component for the toast message when quiz is deleted
 export default function DeleteQuizToast({
-  isLoading,
+  isDeleting,
   statusCode,
   errorMsg,
 }: {
-  isLoading: boolean;
+  isDeleting: boolean;
   statusCode: number;
   errorMsg: string;
 }) {
@@ -17,7 +17,7 @@ export default function DeleteQuizToast({
         </div>
       )}
 
-      {isLoading && (
+      {isDeleting && (
         <div className="alert alert-warning flex ">
           <span>Deleting the quiz...</span>
           <span className="loading loading-infinity loading-md"></span>

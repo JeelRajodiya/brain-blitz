@@ -13,7 +13,8 @@ export default function DifficultyTags({
     setDifficultyRating(n);
   };
   console.log(difficulty);
-  const [difficultyRating, setDifficultyRating] = useState<Difficulty>("Easy"); // Default difficulty rating is 1 -> easy
+  const [difficultyRating, setDifficultyRating] =
+    useState<Difficulty>("Medium"); // Default difficulty rating is 1 -> easy
 
   useEffect(() => {
     setDifficultyRating(difficulty);
