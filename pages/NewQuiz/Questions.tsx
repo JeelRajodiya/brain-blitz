@@ -43,6 +43,30 @@ async function postQuestions(
   });
 }
 
+function showWarning(
+  question: CreateQuizQuestion,
+
+  setMsg: Function
+) {
+  const optionsSet = new Set(question.options);
+  const emptyOptions = question.options.filter((s) => s.trim() === "");
+  if (question.question.trim() === "") {
+    setMsg("Can not leave question empty");
+    return true;
+  } else if (emptyOptions.length !== 0) {
+    setMsg("Can not leave any option empty");
+    return true;
+  } else if (optionsSet.size !== question.options.length) {
+    setMsg("You can not have duplicate options ");
+    return true;
+  } else if (question.correctOption === null) {
+    setMsg("Please select a correct option");
+    return true;
+  }
+
+  return false;
+}
+
 export default function Questions() {
   const router = useRouter();
 
@@ -76,55 +100,10 @@ export default function Questions() {
     setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
 
-  // for individual question to account all entries filled or not
-  function allEntriesFilled() {
-    if (
-      question.question.trim() === "" ||
-      question.options.length === 0 ||
-      question.correctOption === null
-    ) {
-      return false;
-    }
-
-    for (let i = 0; i < question.options.length; i++) {
-      if (question.options[i].trim() === "") {
-        return false;
-      }
-    }
-
-    const optionsSet = new Set(question.options);
-    if (optionsSet.size !== question.options.length) {
-      return false;
-    }
-
-    return true;
-  }
+  const [msg, setMsg] = useState("");
+  const [isWarningVisible, setIsWarningVisible] = useState(false);
 
   // for message to be shown when the warning button is clicked
-  function warningMessage() {
-    if (question.question.trim() === "") {
-      return "Question is empty";
-    }
-    if (question.options.length === 0) {
-      return "No options added";
-    }
-    if (question.correctOption === null) {
-      return "No correct option selected";
-    }
-
-    for (let i = 0; i < question.options.length; i++) {
-      if (question.options[i].trim() === "") {
-        return "Empty option found";
-      }
-    }
-
-    const optionsSet = new Set(question.options);
-    if (optionsSet.size !== question.options.length) {
-      return "Duplicate options found";
-    }
-
-    return "";
-  }
 
   return (
     <>
@@ -195,10 +174,12 @@ export default function Questions() {
                 Question: {activeQuestion}
               </h1>
 
-              {allEntriesFilled() ? (
-                <button
-                  className="btn mb-4 btn-outline btn-success btn-sm"
-                  onClick={() => {
+              {/* the different action buttons save question and warning */}
+
+              <button
+                className="btn mb-4 btn-outline btn-success btn-sm"
+                onClick={() => {
+                  if (!showWarning(question, setMsg)) {
                     const newQuestions = structuredClone(questions);
                     if (activeQuestion == questions.length) {
                       newQuestions.push(question);
@@ -208,21 +189,14 @@ export default function Questions() {
                     setActiveQuestion((e) => e + 1);
                     setQuestions(newQuestions);
                     setQuestion(emptyQuestion);
-                  }}
-                >
-                  Save Question
-                </button>
-              ) : (
-                <button
-                  className="btn mb-4 btn-outline btn-warning btn-sm"
-                  // show the warning message when the warning button is clicked
-                  onClick={() => {
-                    alert(warningMessage());
-                  }}
-                >
-                  Warning!
-                </button>
-              )}
+                  } else {
+                    setIsWarningVisible(true);
+                    setTimeout(() => setIsWarningVisible(false), 1500);
+                  }
+                }}
+              >
+                Save Question
+              </button>
             </div>
 
             {/* Write the main question:  */}
@@ -271,6 +245,18 @@ export default function Questions() {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Warning message to be shown when the warning button is clicked */}
+
+        <div
+          className={classnames(
+            "toast toast-end ",
+            styles.warningMsg,
+            isWarningVisible && styles.visibleWarning
+          )}
+        >
+          <div className="alert alert-warning">{msg}</div>
         </div>
       </Layout>
     </>
