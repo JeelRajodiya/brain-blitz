@@ -75,9 +75,9 @@ function TableElements({
                   tabIndex={0}
                   className="dropdown-content shadow bg-base-300 rounded-box z-50 p-2"
                 >
-                  <li>
+                  {/* <li>
                     <button className="btn btn-xs"> Edit</button>
-                  </li>
+                  </li> */}
                   <li>
                     <dialog id={`deleteQuizModal${index}`} className="modal">
                       <form method="dialog" className="modal-box">
