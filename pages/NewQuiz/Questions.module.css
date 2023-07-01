@@ -75,3 +75,11 @@
   color: greenyellow;
   border: greenyellow 1px solid;
 }
+.warningMsg {
+  transform: translateX(100%);
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-in-out;
+}
+.visibleWarning {
+  transform: translateX(0%);
+}
