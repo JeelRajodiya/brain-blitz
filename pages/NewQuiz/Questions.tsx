@@ -43,7 +43,7 @@ async function postQuestions(
   });
 }
 
-function allEntriesFilled(question: CreateQuizQuestion) {
+function allEntriesFilled(question: CreateQuizQuestion, setShowWarning: any) {
   if (question.question.trim() === "") {
     return false;
   }
@@ -67,6 +67,7 @@ function allEntriesFilled(question: CreateQuizQuestion) {
     return false;
   }
 
+  setShowWarning(false);
   return true;
 }
 
