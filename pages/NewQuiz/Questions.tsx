@@ -49,7 +49,7 @@ export default function Questions() {
   const {
     title,
     difficultyTags,
-    isPolls,
+
     jumpQuestions,
     timeForAQuestion,
     markForCorrect,
@@ -267,7 +267,6 @@ export default function Questions() {
                         index={i - 1}
                         question={question}
                         setQuestion={setQuestion}
-                        isPoll={isPolls == "true" ? true : false}
                       />
                     );
                   })}

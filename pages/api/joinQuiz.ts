@@ -78,7 +78,7 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
     title: quiz.title,
     creatorName,
     difficultyTags: quiz.difficultyTags,
-    isPoll: quiz.isPoll,
+
     jumpQuestions: quiz.jumpQuestions,
     timeForAQuestion: quiz.timeForAQuestion,
     markForCorrect: quiz.markForCorrect,

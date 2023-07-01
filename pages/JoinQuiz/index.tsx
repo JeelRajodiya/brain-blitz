@@ -25,7 +25,7 @@ import QuestionBoxes from "../components/QuestionBoxes";
 import Timer from "../components/Timer";
 import { store } from "../../util/store";
 import { updateResult } from "../../util/slices/resultSlice";
-export default function Questions() {
+export default function Questions({ isDemo = false }) {
   const router = useRouter();
   let code: string = router.query.code as string;
 
@@ -42,7 +42,6 @@ export default function Questions() {
   const [question, setQuestion] = useState<JoinQuizQuestion>(emptyQuestion);
   const [activeQuestion, setActiveQuestion] = useState(1);
 
-  const [isPolls, setIsPolls] = useState(false);
   const [difficultyTags, setDifficultyTags] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const [jumpQuestions, setJumpQuestions] = useState(false);
@@ -72,7 +71,7 @@ export default function Questions() {
       });
       setQuestion(res.questions[0]);
       setActiveQuestion(1);
-      setIsPolls(res.isPoll);
+
       setDifficultyTags(res.difficultyTags);
       setJumpQuestions(res.jumpQuestions);
 
@@ -97,7 +96,22 @@ export default function Questions() {
       nextQuestion();
     }
   }, [timer]);
-
+  useEffect(() => {
+    if (isDemo) {
+      const demoQuestion = {
+        id: "demo",
+        difficulty: "Easy",
+        options: ["Of Course ", "Hmm", "Sure", "Correct"],
+        question: "This is a sample question",
+      } as JoinQuizQuestion;
+      setQuestion({
+        ...demoQuestion,
+      });
+      setQuestions([demoQuestion, demoQuestion, demoQuestion]);
+      setShowSidebar(true);
+      setTimer(100);
+    }
+  }, []);
   const nextQuestion = () => {
     if (activeQuestion < totalQuestions) {
       setActiveQuestion(activeQuestion + 1);
@@ -124,7 +138,7 @@ export default function Questions() {
       pathname: "/JoinQuiz/QuizResult",
     });
   }
-  if (isLoading) {
+  if (isLoading && !isDemo) {
     return (
       <div className="flex justify-center items-center h-screen">
         <span className="loading loading-spinner text-slate-100 "></span>
@@ -139,131 +153,129 @@ export default function Questions() {
   complete = Math.round(complete);
 
   let isLastQuestion: boolean = activeQuestion == totalQuestions;
+  const mainElements = (
+    <>
+      {/* sidebar if enabled */}
+      <div className={styles.wrapper}>
+        <div
+          className={classnames(
+            styles.sideBar,
+            ShowSidebar && styles.showSideBar
+          )}
+        >
+          {
+            <QuestionBoxes
+              activeQuestion={activeQuestion}
+              numberOfQuestions={questions.length}
+              setActiveQuestion={setActiveQuestion}
+            />
+          }
+        </div>
 
+        {/* main window */}
+
+        <div className={styles.mainWindow}>
+          {/* toggle to show Sidebar: */}
+          <div
+            onClick={toggleSidebar}
+            className={classnames(
+              styles.drawerBtn,
+              ShowSidebar && styles.drawerBtnOpen
+            )}
+          >
+            <p>{">"}</p>
+          </div>
+
+          {/* progress bar*/}
+          <div className="navbar rounded-lg mb-1 bg-neutral flex flex-row items-center justify-between w-full">
+            <RadicalProgress
+              complete={complete}
+              toggleSidebar={toggleSidebar}
+            />
+
+            {/* question number */}
+            <div>
+              <h1 className="text-lg font-bold bg-base-100 p-2 rounded-md">
+                Question {activeQuestion}
+              </h1>
+            </div>
+
+            <Timer minutes={minutes} secondsLeft={secondsLeft} />
+          </div>
+
+          {/* question body: */}
+          <div
+            className={classNames(
+              `navbar w-full rounded-lg  bg-neutral `,
+              styles.questionContent
+            )}
+          >
+            <div>
+              <p className="p-2 text-lg font-semibold">{question?.question}</p>
+            </div>
+
+            {/* Difficulty tag if it is enabled */}
+            <div>
+              {difficultyTags && (
+                <DifficultyTagViewer
+                  difficulty={question.difficulty as Difficulty}
+                />
+              )}
+            </div>
+          </div>
+
+          <div className="divider"></div>
+
+          {/* options here: */}
+          <div className={styles.optionsWrapper}>
+            {question?.options.map((option, index) => {
+              //  Critical bug here: Options is re rendered on every state change
+              // console.log(option);
+              return (
+                <JoinQuizOption
+                  key={index}
+                  text={option}
+                  index={index}
+                  isSelected={ItoA[index] === answerSheet[question.id]}
+                  setAnswerSheet={setAnswerSheet}
+                  questionId={question.id}
+                />
+              );
+            })}
+          </div>
+
+          <div className={classNames(`navbar rounded-lg `, styles.quizActions)}>
+            {isLastQuestion ? (
+              <button
+                className="btn btn-error btn-outline"
+                onClick={submitQuiz}
+              >
+                Final Submit
+              </button>
+            ) : (
+              <button
+                className="btn btn-accent btn-outline"
+                onClick={nextQuestion}
+              >
+                {" "}
+                Save and Next
+              </button>
+            )}
+          </div>
+          {isSubmitting && (
+            <div className={classnames("alert alert-warning", styles.toast)}>
+              <span>Submitting ... </span>
+              <span className="loading loading-infinity loading-md"></span>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
   return (
     <>
       {/* @ts-ignore */}
-      <Layout>
-        {/* sidebar if enabled */}
-        <div className={styles.wrapper}>
-          <div
-            className={classnames(
-              styles.sideBar,
-              ShowSidebar && styles.showSideBar
-            )}
-          >
-            {
-              <QuestionBoxes
-                activeQuestion={activeQuestion}
-                numberOfQuestions={questions.length}
-                setActiveQuestion={setActiveQuestion}
-              />
-            }
-          </div>
-
-          {/* main window */}
-
-          <div className={styles.mainWindow}>
-            {/* toggle to show Sidebar: */}
-            <div
-              onClick={toggleSidebar}
-              className={classnames(
-                styles.drawerBtn,
-                ShowSidebar && styles.drawerBtnOpen
-              )}
-            >
-              <p>{">"}</p>
-            </div>
-
-            {/* progress bar*/}
-            <div className="navbar rounded-lg mb-1 bg-neutral flex flex-row items-center justify-between w-full">
-              <RadicalProgress
-                complete={complete}
-                toggleSidebar={toggleSidebar}
-              />
-
-              {/* question number */}
-              <div>
-                <h1 className="text-lg font-bold bg-base-100 p-2 rounded-md">
-                  Question {activeQuestion}
-                </h1>
-              </div>
-
-              <Timer minutes={minutes} secondsLeft={secondsLeft} />
-            </div>
-
-            {/* question body: */}
-            <div
-              className={classNames(
-                `navbar w-full rounded-lg  bg-neutral `,
-                styles.questionContent
-              )}
-            >
-              <div>
-                <p className="p-2 text-lg font-semibold">
-                  {question?.question}
-                </p>
-              </div>
-
-              {/* Difficulty tag if it is enabled */}
-              <div>
-                {difficultyTags && (
-                  <DifficultyTagViewer
-                    difficulty={question.difficulty as Difficulty}
-                  />
-                )}
-              </div>
-            </div>
-
-            <div className="divider"></div>
-
-            {/* options here: */}
-            <div className={styles.optionsWrapper}>
-              {question?.options.map((option, index) => {
-                //  Critical bug here: Options is re rendered on every state change
-                // console.log(option);
-                return (
-                  <JoinQuizOption
-                    key={index}
-                    text={option}
-                    index={index}
-                    isSelected={ItoA[index] === answerSheet[question.id]}
-                    setAnswerSheet={setAnswerSheet}
-                    questionId={question.id}
-                  />
-                );
-              })}
-            </div>
-
-            <div
-              className={classNames(`navbar rounded-lg `, styles.quizActions)}
-            >
-              {isLastQuestion ? (
-                <button
-                  className="btn btn-error btn-outline"
-                  onClick={submitQuiz}
-                >
-                  Final Submit
-                </button>
-              ) : (
-                <button
-                  className="btn btn-accent btn-outline"
-                  onClick={nextQuestion}
-                >
-                  {" "}
-                  Save and Next
-                </button>
-              )}
-            </div>
-            {isSubmitting && (
-              <div className={classnames("alert alert-warning", styles.toast)}>
-                <span>Submitting ... </span>
-                <span className="loading loading-infinity loading-md"></span>
-              </div>
-            )}
-          </div>
-        </div>
-      </Layout>
+      {isDemo ? mainElements : <Layout>{mainElements}</Layout>}
     </>
   );
 }
