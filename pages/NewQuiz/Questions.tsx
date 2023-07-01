@@ -208,7 +208,8 @@ export default function Questions() {
               <h1 className={classnames("text-2xl mb-4", styles.mobileFonts)}>
                 Question: {activeQuestion}
               </h1>
-
+              
+              {/* the different action buttons save question and warning */}
               {allEntriesFilled() ? (
                 <button
                   className="btn mb-4 btn-outline btn-success btn-sm"
