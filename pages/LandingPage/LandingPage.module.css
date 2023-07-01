@@ -7,3 +7,9 @@
 .text-red-400 {
   color: hsl(0, 100%, 61%);
 }
+
+.demoJoin {
+  transform: rotateX(40deg) rotateZ(-15deg);
+  transform-style: preserve-3d;
+  /* width: 60%; */
+}
