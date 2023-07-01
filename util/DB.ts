@@ -11,7 +11,6 @@ export type QuizCol = {
   userId: string; // the user's id who created the quiz
   id: string;
   difficultyTags: boolean;
-  isPoll: boolean;
   jumpQuestions: boolean;
   timeForAQuestion: number; // in seconds, 5 means you have 5 seconds to solve each question, default 30s
   markForCorrect: number; // default +4

@@ -7,7 +7,7 @@ import Loading from "./loading";
 export default function NewQuiz() {
   const [quizName, setQuizName] = React.useState("");
   const [enableDifficultyTags, setEnableDifficultyTags] = React.useState(false);
-  const [enablePolls, setEnablePolls] = React.useState(false);
+
   const [jumpQuestions, setJumpQuestions] = React.useState(false);
   const [timeForAQuestion, setTimeForAQuestion] = React.useState(10);
   const [markForCorrect, setMarkForCorrect] = React.useState(5);
@@ -19,7 +19,7 @@ export default function NewQuiz() {
     const quizData: any = {
       title: quizName,
       difficultyTags: enableDifficultyTags,
-      isPolls: enablePolls,
+
       jumpQuestions: jumpQuestions,
       timeForAQuestion: timeForAQuestion,
       markForCorrect: markForCorrect,
@@ -82,19 +82,7 @@ export default function NewQuiz() {
               checked={enableDifficultyTags}
             />
           </div>
-          <div className="flex justify-between">
-            <label className="label m-5">
-              <span className=" text-lg label-text">Enable Polls </span>
-            </label>
-            <input
-              type="checkbox"
-              className="toggle toggle-md toggle-accent m-5"
-              onChange={(e) => {
-                setEnablePolls(e.target.checked);
-              }}
-              checked={enablePolls}
-            />
-          </div>
+
           <div className="flex justify-between">
             <label className="label m-5">
               <span className=" text-lg label-text">Jump Questions </span>
