@@ -43,6 +43,61 @@ async function postQuestions(
   });
 }
 
+function allEntriesFilled(question: CreateQuizQuestion) {
+  if (question.question.trim() === "") {
+    return false;
+  }
+
+  if (question.options.length === 0) {
+    return false;
+  }
+
+  if (question.correctOption === null) {
+    return false;
+  }
+
+  for (let i = 0; i < question.options.length; i++) {
+    if (question.options[i].trim() === "") {
+      return false;
+    }
+  }
+
+  const optionsSet = new Set(question.options);
+  if (optionsSet.size !== question.options.length) {
+    return false;
+  }
+
+  return true;
+}
+
+// function warningMessage(question: CreateQuizQuestion) {
+//   let wmsg: string = "";
+
+//   if (question.question.trim() === "") {
+//     wmsg = "Question is empty";
+//   }
+//   if (question.options.length === 0) {
+//     wmsg = "No options added";
+//   }
+//   if (question.correctOption === null) {
+//     wmsg = "No correct option selected";
+//   }
+
+//   const optionsSet = new Set(question.options);
+//   if (optionsSet.size !== question.options.length) {
+//     wmsg = "Duplicate options found";
+//   }
+
+//   for (let i = 0; i < question.options.length; i++) {
+//     if (question.options[i].trim() === "") {
+//       wmsg = "Empty options found";
+//       break;
+//     }
+//   }
+
+//   return wmsg;
+// }
+
 export default function Questions() {
   const router = useRouter();
 
@@ -79,36 +134,6 @@ export default function Questions() {
   const [msg, setMsg] = useState("");
   const [showWarning, setShowWarning] = useState(false);
 
-  // for individual question to account all entries filled or not
-  function allEntriesFilled() {
-    if (question.question.trim() === "") {
-      
-      return false;
-    }
-    
-    if (question.options.length === 0) {
-      return false;
-    }
-    
-    if (question.correctOption === null) {
-      return false;
-    }
-    
-    for (let i = 0; i < question.options.length; i++) {
-      if (question.options[i].trim() === "") {
-        return false;
-      }
-    }
-
-    const optionsSet = new Set(question.options);
-    if (optionsSet.size !== question.options.length) {
-      return false;
-    }
-
-    // this causes the infinite loop:
-    // setShowWarning(false);
-    return true;
-  }
 
   // for message to be shown when the warning button is clicked
   function warningMessage() {
@@ -208,9 +233,9 @@ export default function Questions() {
               <h1 className={classnames("text-2xl mb-4", styles.mobileFonts)}>
                 Question: {activeQuestion}
               </h1>
-              
+
               {/* the different action buttons save question and warning */}
-              {allEntriesFilled() ? (
+              {allEntriesFilled(question) ? (
                 <button
                   className="btn mb-4 btn-outline btn-success btn-sm"
                   onClick={() => {
@@ -232,7 +257,7 @@ export default function Questions() {
                   className="btn mb-4 btn-outline btn-warning btn-sm"
                   // show the warning message when the warning button is clicked
                   onClick={() => {
-                    setShowWarning(!showWarning)
+                    setShowWarning(!showWarning);
                     warningMessage();
                   }}
                 >
