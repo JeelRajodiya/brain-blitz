@@ -5,12 +5,10 @@ import { QuestionCol } from "../../util/DB";
 import { CreateQuizQuestion, QuestionOption } from "../../util/types";
 import { ItoA } from "../../util/types";
 export default function Option({
-  isPoll,
   question,
   setQuestion,
   index,
 }: {
-  isPoll: boolean;
   question: CreateQuizQuestion;
   setQuestion: Function;
   index: number;
@@ -38,7 +36,7 @@ export default function Option({
   );
   return (
     <tr className="flex justify-center items-center">
-      {!isPoll ? checkBox : null}
+      {checkBox}
 
       <td className="OptionBox w-full">
         <input

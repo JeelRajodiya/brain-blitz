@@ -44,14 +44,12 @@ async function postQuestions(
 }
 
 export default function Questions() {
-  
-
   const router = useRouter();
 
   const {
     title,
     difficultyTags,
-    isPolls,
+
     jumpQuestions,
     timeForAQuestion,
     markForCorrect,
@@ -77,7 +75,6 @@ export default function Questions() {
   React.useEffect(() => {
     setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
-
 
   // for individual question to account all entries filled or not
   function allEntriesFilled() {
@@ -128,8 +125,6 @@ export default function Questions() {
 
     return "";
   }
-
-
 
   return (
     <>
@@ -256,7 +251,6 @@ export default function Questions() {
                         index={i - 1}
                         question={question}
                         setQuestion={setQuestion}
-                        isPoll={isPolls == "true" ? true : false}
                       />
                     );
                   })}

@@ -42,7 +42,6 @@ export default function Questions() {
   const [question, setQuestion] = useState<JoinQuizQuestion>(emptyQuestion);
   const [activeQuestion, setActiveQuestion] = useState(1);
 
-  const [isPolls, setIsPolls] = useState(false);
   const [difficultyTags, setDifficultyTags] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const [jumpQuestions, setJumpQuestions] = useState(false);
@@ -72,7 +71,7 @@ export default function Questions() {
       });
       setQuestion(res.questions[0]);
       setActiveQuestion(1);
-      setIsPolls(res.isPoll);
+
       setDifficultyTags(res.difficultyTags);
       setJumpQuestions(res.jumpQuestions);
 
