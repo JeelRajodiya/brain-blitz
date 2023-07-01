@@ -44,8 +44,6 @@ async function postQuestions(
 }
 
 export default function Questions() {
-  
-
   const router = useRouter();
 
   const {
@@ -78,17 +76,24 @@ export default function Questions() {
     setQuestion(questions[activeQuestion] || emptyQuestion);
   }, [activeQuestion]);
 
+  const [msg, setMsg] = useState("");
+  const [showWarning, setShowWarning] = useState(false);
 
   // for individual question to account all entries filled or not
   function allEntriesFilled() {
-    if (
-      question.question.trim() === "" ||
-      question.options.length === 0 ||
-      question.correctOption === null
-    ) {
+    if (question.question.trim() === "") {
+      
       return false;
     }
-
+    
+    if (question.options.length === 0) {
+      return false;
+    }
+    
+    if (question.correctOption === null) {
+      return false;
+    }
+    
     for (let i = 0; i < question.options.length; i++) {
       if (question.options[i].trim() === "") {
         return false;
@@ -100,36 +105,40 @@ export default function Questions() {
       return false;
     }
 
+    // this causes the infinite loop:
+    // setShowWarning(false);
     return true;
   }
 
   // for message to be shown when the warning button is clicked
   function warningMessage() {
+    let wmsg: string = "";
+
     if (question.question.trim() === "") {
-      return "Question is empty";
+      wmsg = "Question is empty";
     }
     if (question.options.length === 0) {
-      return "No options added";
+      wmsg = "No options added";
     }
     if (question.correctOption === null) {
-      return "No correct option selected";
-    }
-
-    for (let i = 0; i < question.options.length; i++) {
-      if (question.options[i].trim() === "") {
-        return "Empty option found";
-      }
+      wmsg = "No correct option selected";
     }
 
     const optionsSet = new Set(question.options);
     if (optionsSet.size !== question.options.length) {
-      return "Duplicate options found";
+      wmsg = "Duplicate options found";
     }
 
-    return "";
+    for (let i = 0; i < question.options.length; i++) {
+      if (question.options[i].trim() === "") {
+        wmsg = "Empty options found";
+        break;
+      }
+    }
+
+    setMsg(wmsg);
+    return;
   }
-
-
 
   return (
     <>
@@ -222,7 +231,8 @@ export default function Questions() {
                   className="btn mb-4 btn-outline btn-warning btn-sm"
                   // show the warning message when the warning button is clicked
                   onClick={() => {
-                    alert(warningMessage());
+                    setShowWarning(!showWarning)
+                    warningMessage();
                   }}
                 >
                   Warning!
@@ -278,6 +288,13 @@ export default function Questions() {
             </div>
           </div>
         </div>
+
+        {/* Warning message to be shown when the warning button is clicked */}
+        {showWarning && (
+          <div className="toast toast-end">
+            <div className="alert alert-warning">{msg}</div>
+          </div>
+        )}
       </Layout>
     </>
   );
