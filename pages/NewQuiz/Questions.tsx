@@ -97,44 +97,39 @@ export default function Questions() {
       return false;
     }
 
-    return true;
+    return true && showWarning === false;
   }
+
+  const [showWarning, setShowWarning] = useState(false);
 
   // for message to be shown when the warning button is clicked
+  let message: string;
   function warningMessage() {
+    let message: string | null = null;
+  
     if (question.question.trim() === "") {
-      <div className="toast toast-end">
-        <div className="alert alert-warning">"Question is empty";</div>
-      </div>;
-    }
-    if (question.options.length === 0) {
-      <div className="toast toast-end">
-        <div className="alert alert-warning">"No options added";</div>
-      </div>;
-    }
-    if (question.correctOption === null) {
-      <div className="toast toast-end">
-        <div className="alert alert-warning">"No correct option selected";</div>
-      </div>;
-    }
-
-    for (let i = 0; i < question.options.length; i++) {
-      if (question.options[i].trim() === "") {
-        <div className="toast toast-end">
-          <div className="alert alert-warning">"Empty option found";</div>
-        </div>;
+      message = "Question cannot be empty";
+    } else if (question.options.length === 0) {
+      message = "All options need to be filled";
+    } else if (question.correctOption === null) {
+      message = "Correct option cannot be empty";
+    } else {
+      for (let i = 0; i < question.options.length; i++) {
+        if (question.options[i].trim() === "") {
+          message = "Options cannot be empty";
+          break;
+        }
+      }
+  
+      const optionsSet = new Set(question.options);
+      if (optionsSet.size !== question.options.length) {
+        message = "Options cannot be repeated";
       }
     }
-
-    const optionsSet = new Set(question.options);
-    if (optionsSet.size !== question.options.length) {
-      <div className="toast toast-end">
-        <div className="alert alert-warning">"Duplicate options found";</div>
-      </div>;
-    }
-
-    return "";
+  
+    return message || ""; // Return an empty string if message is null
   }
+  
 
   return (
     <>
@@ -227,7 +222,7 @@ export default function Questions() {
                   className="btn mb-4 btn-outline btn-warning btn-sm"
                   // show the warning message when the warning button is clicked
                   onClick={() => {
-                    warningMessage;
+                    setShowWarning(!showWarning);
                   }}
                 >
                   Warning!
@@ -283,6 +278,13 @@ export default function Questions() {
             </div>
           </div>
         </div>
+
+        {/* Warning message to be shown when the warning button is clicked */}
+        {showWarning && (
+          <div className="toast toast-end">
+            <div className="alert alert-warning">{warningMessage()}</div>
+          </div>
+        )}
       </Layout>
     </>
   );
