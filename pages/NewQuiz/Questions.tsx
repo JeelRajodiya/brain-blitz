@@ -97,15 +97,16 @@ export default function Questions() {
       return false;
     }
 
-    return true && showWarning === false;
+    setShowWarning(false);
+    return true;
   }
 
   const [showWarning, setShowWarning] = useState(false);
+  const [messageWarning, setMessageWarning] = useState<string>();
 
   // for message to be shown when the warning button is clicked
-  let message: string;
   function warningMessage() {
-    let message: string | null = null;
+    let message: string = "";
 
     if (question.question.trim() === "") {
       message = "Question cannot be empty";
@@ -127,9 +128,8 @@ export default function Questions() {
       }
     }
 
-    // return message || "";
-    // return to close the warning button when the message is empty
-    return message;
+    // set messageWarning state
+    setMessageWarning(message);
   }
 
   return (
@@ -224,6 +224,7 @@ export default function Questions() {
                   // show the warning message when the warning button is clicked
                   onClick={() => {
                     setShowWarning(!showWarning);
+                    warningMessage();
                   }}
                 >
                   Warning!
@@ -283,7 +284,7 @@ export default function Questions() {
         {/* Warning message to be shown when the warning button is clicked */}
         {showWarning && (
           <div className="toast toast-end">
-            <div className="alert alert-warning">{warningMessage()}</div>
+            <div className="alert alert-warning">{messageWarning}</div>
           </div>
         )}
       </Layout>
