@@ -5,6 +5,7 @@ Live Demo is available on https://brain-blitz-three.vercel.app
 # Quiz App
 
 Welcome to the Quiz App! This interactive and engaging application allows you to create, play, and manage quizzes effortlessly. Whether you're a student, educator, or trivia enthusiast, this app is designed to keep you entertained while expanding your knowledge.
+# ⚠️ Development is paused till 5th August 2023
 
 ## Features
 
